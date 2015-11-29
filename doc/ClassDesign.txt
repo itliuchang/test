@@ -1,0 +1,250 @@
+/**
+ * This is class for Auth
+ * Create by Leon 2015/11/29
+ */
+Class Auth{
+/**
+ * These methods for login
+ * @param  [string] openId
+ * @param  [string] email
+ * @param  [string] mobile
+ * @param  [string] password
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		data:{
+ * 			account:'fsdaklfsadkfjsakl',
+ * 			userId:23,
+ * 			nickName:'leon',
+ * 			userType:'freelanceer'
+ * 		}
+ * }
+ */
+function openIdLogin (openId){ }
+function emailLogin (email,password){ }
+function mobileLogin (mobile,password){ }
+
+/**
+ * This is method for logout
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * }
+ */
+function logout (){ }
+
+/**
+ * These methods for register
+ * @param  [string] mobile
+ * @param  [string] email
+ * @param  [string] password
+ * @return [array] {
+ * 		code:200,
+ * 		message:'',
+ * 		data:{
+ * 			account:'fsfsdfs',
+ * 			nickName:'leon',
+ * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			userId:23,
+ * 			useRole:2
+ * 		}
+ * }
+ */
+function mobileRegister(mobile,password){ }
+function emailRegister(email,password){ }
+
+/**
+ * This is method for getInfo
+ * @param  [int] userId
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		data:{
+ * 			userId:23,
+ * 			nickName:'leon',
+ * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 		}
+ * }
+ */
+function getInfo(userId){}
+
+/**
+ * This is method for update
+ * @param  [string] userId
+ * @return [array] {
+ * 		code : 200,
+ * 		mes : '',
+ * 		data:{
+ * 			userId:23, 
+ * 			nickName:'leon',
+ * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			mobile:'18655445187',
+ * 			email:'lc@yoyoplay.cn',
+ * 		}
+ * }
+ */
+function update(account){ }
+
+}//Auth end
+
+/**
+ * This is Class for Post
+ * Create by Leon 2015/11/29 
+ */
+Class Post{
+
+/**
+ * This is method for list
+ * @param  [int] type (1:all posts，2:youself post，3：userId own post)
+ * @param  [int] userId (default '')
+ * @param  [int] page
+ * @param  [int] size
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		data{
+ * 			count:10,
+ * 			list:[
+ * 				{
+ * 					postId:11,
+ * 					content:'hello',
+ * 					owner:{
+ * 						userId:43242,
+ * 						nickName:'leon',
+ * 						companyName:'naked',
+ * 						work:'IT'
+ * 					},
+ * 					pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 					createTime:'13400000',
+ * 					messageNum:4,
+ * 					likeNum:4,
+ * 				}
+ * 			]
+ * 		}
+ * }
+ */
+function list(type,userId,page,size){}
+
+/**
+ * This is method for create
+ * @param  [string] account
+ * @param  [string] content
+ * @param  [string] pic
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		data:{
+ * 			postId:2,
+ * 			content:'hello',
+ * 			owner:{
+ * 				userId:3243,
+ * 				nickName:'leon',
+ * 				companyName:'naked',
+ * 				work:'IT'
+ * 			},
+ * 			pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			createTime:'1340000'
+ * 		}
+ * }
+ */
+function create(account,content,pic){}
+
+/**
+ * This is method for getPostInfo
+ * @param  [int] postId
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		data:{
+ * 			postId:2,
+ * 			content:'hello',
+ * 			owner:{
+ * 				userId:32,
+ * 				nickName:'leon',
+ * 				companyName:'naked',
+ * 				work:'IT'
+ * 			},
+ * 			pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			createTime:'1340000',
+ * 			messageNum:4,
+ * 			likeNum:4,
+ * 			messageList:[
+ * 				{
+ * 					id:66
+ * 				},
+ * 				{
+ * 					id:66
+ * 				}
+ * 			]
+ * 		}
+ * }
+ */
+function getPostInfo(postId){}
+}
+
+/**
+ * This is Class for  Order
+ * Create by Leon 2015/11/29
+ */
+Class Order{
+
+/**
+ * This is method for list
+ * @param  [string] account
+ * @param  [int] page
+ * @param  [int] size
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		data:{
+ * 			orderCount:4,
+ * 			orderList:[
+ * 				{
+ * 					orderId:'4352345432',
+ * 					productId:'43354',
+ * 					productName:'table',
+ * 					orderAmount:100,
+ * 					payAmount:100,
+ * 					status:1,
+ * 					userId:3244,
+ * 					orderTime:'1350000',
+ * 					updateTime:'1360000'
+ * 				}
+ * 			]
+ * 		}
+ * }
+ */
+function list(account,page,size){}
+
+/**
+ * This is method for new
+ * @param  [string] account
+ * @param  [array] data
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		{
+ * 			orderId:'4352345432',
+ * 		    productId:'43354',
+ * 			productName:'table',
+ * 			orderAmount:100,
+ * 			payAmount:100,
+ *	 		status:1,
+ *	 		userId:3244,
+ *	 		orderTime:'1350000',
+ *	 		updateTime:'1360000'
+ * 		}
+ * 		
+ * }
+ */
+function new(account,data){}
+
+}
+
+
+
+
+
+
+
+
