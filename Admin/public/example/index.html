@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="initial-scale=1.1,user-scalable=no">
+        <title>LBSGuideManager</title>
+        <link rel="stylesheet" href="../js/lib/bootstrap/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="../js/lib/bootstrap/css/bootstrap-theme.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="./assets/main.css">
+    </head>
+    <body>
+        <div id="container" class="clearfix">
+            <div id="sidebar">
+                <div class="wrap">
+                    <div id="searchContainer">
+                        <div class="case">
+                            <label for="">
+                                <input type="radio" name="searchType" value="keyword" checked="">按关键字搜索
+                            </label>
+                            <label for="">
+                                <input type="radio" name="searchType" value="coordinate">按坐标搜索
+                            </label>
+                            <input type="text" class="search form-control" placeholder="按关键字搜索">
+                        </div>
+
+                        <div class="geoxy">
+                            <label for="">坐标拾取结果：</label>
+                            <input type="text" class="coordinate form-control" readonly="readonly" placeholder="121.129761,31.311408">
+                        </div>
+                    </div>
+
+                    <ul class="xy"></ul>
+                    <button class="addpolygon btn btn-info" type="submit">闭合</button>
+                </div>
+            </div>
+
+            <div id="main">
+                <div id="mapContainer"></div>
+                <div id="tip">
+                    <div class="info"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../js/lib/jquery.min.js"></script>
+        <script src="../js/lib/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=817e3f70ed37113574dba086ec488638"></script>
+        <script type="text/javascript">
+            var coordinates = []; //鼠标拾取的坐标
+            var map; //地图实例
+
+            (function(exports){
+                map = new AMap.Map('mapContainer', {
+                    resizeEnable: true,
+                    //rotateEnable: true,
+                    //dragEnable: true,
+                    //zoomEnable: true,
+                    //设置可缩放的级别
+                    // zooms: [3,18],
+                    //传入2D视图，设置中心点和缩放级别
+                    view: new AMap.View2D({
+                        //地图中心点
+                        //center: new AMap.LngLat(116.397428, 39.90923),
+                        center: new AMap.LngLat(121.548668, 31.21938),
+                        //地图显示的缩放级别
+                        zoom: 12
+                    }),
+                    lang:"zh_cn"//设置语言类型，中文简体
+                });
+
+                //显示当前城市
+                // AMap.service(["AMap.CitySearch"], function(){
+                //     //实例化城市查询类
+                //     var citysearch = new AMap.CitySearch();
+                //     //自动获取用户IP，返回当前城市
+                //     citysearch.getLocalCity(function(status, result){
+                //         if(status === 'complete' && result.info === 'OK'){
+                //             if(result && result.city && result.bounds){
+                //                 var cityinfo = result.city;
+                //                 var citybounds = result.bounds;
+                //                 $('#tip .info').html('您当前所在城市：' + cityinfo);
+                //                 //地图显示当前城市
+                //                 map.setBounds(citybounds);
+                //             }else{
+                //                 $('#tip .info').html('您当前所在城市：' + result.info);
+                //             }
+                //         }
+                //     });
+                // });
+                
+                // 浏览器精准定位: 需要配置域名访问
+                map.plugin('AMap.Geolocation', function(){
+                    var geolocation = new AMap.Geolocation({
+                        enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                        timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+                        maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+                        convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                        showButton: true,        //显示定位按钮，默认：true
+                        buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+                        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                        showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+                        showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+                        panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
+                        zoomToAccuracy:true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                    });
+                    map.addControl(geolocation);
+                    AMap.event.addListener(geolocation, 'complete', function(data){
+                        $('#tip .info').html(
+                            '<div style="font-weight: bold;">定位成功</div>' +
+                            '<div>经度：' + data.position.getLng() + '</div>' +
+                            '<div>纬度：' + data.position.getLat() + '</div>' +
+                            '<div>精度：' + data.accuracy + '</div>' +
+                            '<div>是否经过偏移：' +  (data.isConverted ? '是' : '否') + '</div>'
+                        );
+                        //当前坐标位置
+                        $('#searchContainer .geoxy .coordinate').val(data.position.getLng() + ', ' + data.position.getLat());
+                    });//返回定位信息
+                    AMap.event.addListener(geolocation, 'error', function(data){
+                        var str = '';
+                        switch(data.info){
+                            case 'PERMISSION_DENIED': str = '浏览器阻止了定位操作';break;
+                            case 'POSITION_UNAVAILBLE': str = '无法获得当前位置';break;
+                            case 'TIMEOUT': str = '定位超时';break;
+                            default: str = '未知错误';
+                        }
+                        $('#tip .info').html(
+                            '<div style="font-weight: bold;">定位失败</div>' +
+                            '<div>' + str + '</div>'
+                        );
+                    });//返回定位出错信息
+
+                    //获取当前位置信息
+                    geolocation.getCurrentPosition();
+                    //监控当前位置并获取当前位置信息
+                    // geolocation.watchPosition();
+                });
+
+                //地图类型切换
+                map.plugin(["AMap.MapType"], function(){
+                    var type = new AMap.MapType({defaultType:0});//初始状态使用2D地图
+                    map.addControl(type);
+                });
+                //地图中添加地图操作ToolBar插件
+                map.plugin(['AMap.ToolBar'],function(){
+                    //设置地位标记为自定义标记
+                    var toolBar = new AMap.ToolBar();
+                    map.addControl(toolBar);
+                });
+
+                //为地图注册click事件获取鼠标点击出的经纬度坐标
+                var clickEventListener = AMap.event.addListener(map,'click',function(e){
+                    // coordinates.push({x: e.lnglat.getLng(), y: e.lnglat.getLat()});
+                    coordinates.push(new AMap.LngLat(e.lnglat.getLng(), e.lnglat.getLat()));
+                    if(coordinates.length > 2) $('#sidebar .btn.addpolygon').show();
+                    $('#sidebar ul.xy').append(
+                        '<li>' +
+                        '<span class="title">X:</span><span class="value">' + e.lnglat.getLng() + '</span>' +
+                        '<span class="title">Y:</span><span class="value">' + e.lnglat.getLat() + '</span>' +
+                        '</li>'
+                    );
+                });
+
+                //Todo: 1.关键词搜索自动完成 2.多边形编辑 3.折线绘制 4.鼠标直接画多边形/折线
+            })(window);
+
+            $(function(){
+                $('#searchContainer .case input[type=radio]').click(function(e){
+                    var _this = $(this), val = _this.val(), q = $('#searchContainer .case input.search');
+                    if(val == 'keyword'){
+                        q.attr('placeholder', '按关键字搜索');
+                    }else{
+                        q.attr('placeholder', '按坐标搜索');
+                    }
+                });
+
+                $('#sidebar .btn.addpolygon').click(function(event){
+                    var _this = $(this);
+                    if(_this.hasClass('reset')){
+                        _this.removeClass('reset').hide().text('闭合');
+                        $('#output').remove();
+                        $('#sidebar ul.xy').empty();
+                        map.clearMap(); //删除所有覆盖物
+                        return;
+                    }
+                    if(coordinates.length > 2){
+                        var polygon = new AMap.Polygon({
+                            path: coordinates,//设置多边形边界路径
+                            strokeColor: '#F77E8E', //线颜色
+                            strokeOpacity: 0.2, //线透明度
+                            strokeWeight: 2,    //线宽
+                            fillColor: '#FCD5DA', //填充色
+                            fillOpacity: 0.35//填充透明度
+                        });
+                        polygon.setMap(map);
+                        var range = [];
+                        for(var i = 0; i < coordinates.length; i++){
+                            range.push({lng: coordinates[i].lng, lat: coordinates[i].lat});
+                        }
+                        _this.after('<div id="output">' + JSON.stringify([{range: range}]) + '</div>');
+                        //获取多边形面积: http://lbs.amap.com/api/javascript-api/reference/overlay/#Polygon
+                        //console.info(polygon.getArea());
+                        
+                        coordinates = [];
+                        _this.addClass('reset').text('Reset');
+                    }else{
+                        alert('坐标点不足！');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

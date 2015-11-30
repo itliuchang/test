@@ -1,0 +1,231 @@
+/* common style */
+.yoyo-logo {
+	position: absolute;
+	left: 20px;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	background: url('/images/logo.png') 0 0 no-repeat;
+	background-size: 20px;
+	background-position: 0 0;
+}
+.FA-background {
+	background-color: #00acec !important;
+}
+.FB-background {
+	background-color: #9564e2 !important;
+}
+.FC-background {
+	background-color: #49bf67 !important;
+}
+.FD-background {
+	background-color: #fcd052 !important; 
+}
+.FE-background {
+	background-color: #924e31 !important;
+}
+.FF-background {
+	background-color: #3d579d !important;
+}
+.FG-background {
+	background-color: #f8a326 !important;
+}
+.FH-background {
+	background-color: #c44a83 !important;
+}
+
+.select2-container--default .select2-selection--multiple ul li input {
+	margin-bottom:0 !important;
+}
+
+/* product list */
+#viewModal .modal-body {
+	max-height: 500px;
+}
+#viewModal .modal-body iframe {
+	width: 100%;
+	height: 480px;
+	border: 0;
+}
+
+/* route product edit */
+.product_features_model .product_features_data li {
+	margin: 4px 0;
+}
+.product_features_model .product_features_data li i {
+	cursor: pointer;
+}
+.product_features_meta ul li {
+	margin-bottom: 5px;
+}
+.product_features_meta ul li span {
+	cursor: pointer;
+	border: 2px solid;
+}
+.product_features_meta ul li .selected {
+	border-color: red;
+	filter:alpha(opacity=60);
+    -moz-opacity:0.6;
+    opacity:0.6; 
+    color: red;
+}
+.control-group .product-image-btn {
+	height: 180px;
+	position: relative
+}
+.control-group .product-image-btn img {
+	width: 300px;
+	height: 180px;	
+	border: 1px solid #eeeeee;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.control-group .product-image-btn .progress {
+	position: absolute;
+	width: 180px;
+	left: 60px;
+	top: 100px;
+	z-index: 1000;
+	display: none;
+	filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    opacity:0.8;
+}
+.travel-date ul {
+	overflow: hidden;
+}
+.travel-date ul li {
+	width: 140px;
+	float: left;
+	margin: 10px 10px 0 0;	
+	padding: 6px 10px 6px 10px;
+	color: #3a87ad;
+	background-color: #bce8f1;
+	border: 1px solid #81d0f8;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.travel-date ul li .close {
+	position: relative;
+	top: 0;
+	right: -5px;
+	line-height: 20px;
+}
+.travel-date ul .displayed {
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+.travel-date .travel-date-datepicker {
+	float: left;
+}
+.travel-date .travel-date-datepicker input {
+	width: 120px;
+}
+.travel-date .travel-date-inventory {
+	float: left;
+	margin-left: 10px;
+}
+.travel-date .travel-date-inventory input {
+	width: 80px;
+}
+
+/* route base edit */
+.base-pictures-view ul {
+	position: relative;
+}
+.base-pictures-view ul li img {
+	width: 160px;
+	height: 100px;
+}
+.base-pictures-view ul li .progress {
+	position: absolute;
+	width: 160px;
+	height: 5px;
+	left: 0;
+	bottom: 0;
+	margin-bottom: 0px;
+	z-index: 1000;
+	display: none;
+	filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    opacity:0.8;
+}
+
+/* route day edit */
+.route-slide-tool {
+	position: fixed; 
+	top: 140px; 
+	right: -100px;
+	cursor: pointer;	
+}
+.route-slide-tool .btn-slide-tool {
+	float:left;
+	width:26px;
+	text-align:center;
+	color:white;
+	margin-top: 30px;
+}
+.route-slide-tool ul {
+	float:left;
+	width: 100px;
+	padding: 0 !important;	
+}
+.route-slide-tool ul li {
+	line-height: 30px;
+	padding-left: 10px;
+}
+.route-slide-tool ul li:hover {
+	background: #00acec !important;
+	color: white !important;
+}
+.route-slide-tool ul li i {
+	margin-right: 10px;
+}
+.route-slide-tool ul li:hover i {
+	color: white !important;
+}
+
+.timeline ol li .content img {
+	width: 140px;
+	height: 90px;
+} 
+
+/* poi tools style */
+.poi_tools_time_picker {
+	width: 100px;
+}
+.poi_tools_time_picker ul {
+	height:30px;
+	list-style: none;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+.poi_tools_time_picker ul li {
+	line-height: 30px;
+	display: none;
+}
+.poi_tools_time_picker ul li:first-child {
+	display: block;
+}
+
+.poi-tools-pictures-view ul {
+	position: relative;
+}
+.poi-tools-pictures-view ul li img {
+	width: 140px;
+	height: 90px;
+}
+.poi-tools-pictures-view ul li .progress {
+	position: absolute;
+	width: 140px;
+	height: 4px;
+	left: 0;
+	bottom: 0;
+	margin-bottom: 0px;
+	z-index: 1000;
+	display: none;
+	filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    opacity:0.8;
+}

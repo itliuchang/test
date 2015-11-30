@@ -1,0 +1,58 @@
+/*https://github.com/warfares/pretty-json*/
+/* common */
+/*<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Quicksand" />*/
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Quicksand Regular'), local('Quicksand-Regular'), url(/font/quicksand.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+.mark-water{
+    color:#bbb;
+}
+/* eof common */
+
+/* node */
+.node-content-wrapper{
+    font-family: 'Quicksand', sans-serif;
+    background-color:#fff;
+}
+.node-content-wrapper ul{
+    border-left:1px dotted #ccc;
+    list-style:none;
+    padding-left:25px;
+    margin:0px;
+}
+.node-content-wrapper ul li{
+    list-style:none;
+    border-bottom:0; 
+    padding-bottom:0
+}
+.node-hgl-path{
+    background-color:#fefbdf;
+}
+.node-bracket{
+    font-weight:bold;
+    display:inline-block;
+    cursor:pointer;
+}
+.node-bracket:hover{
+    color:#999;
+}
+/* eof node */
+
+/* leaf */
+.leaft-container{
+    width:100%;
+    max-width:300px;
+    height:100%;
+}
+
+.node-content-wrapper .title{ color:#ccc;}
+.node-content-wrapper .string{ color:#080;}
+.node-content-wrapper .number{ color:#ccaa00;}
+.node-content-wrapper .boolean{ color:#1979d3;}
+.node-content-wrapper .date{ color:#aa6655;}
+.node-content-wrapper .null{ color:#ff5050;}
+/* eof leaf */

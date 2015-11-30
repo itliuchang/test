@@ -1,0 +1,15 @@
+#edit-order-page table tbody td {
+	padding: 4px;
+	margin: 0;
+}
+#edit-order-page table tbody td input, #edit-order-page table tbody td select {
+	width: 100%;
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+#edit-order-page table tbody .travel-user-remove {
+	text-align: center;
+	padding: 6px;
+}

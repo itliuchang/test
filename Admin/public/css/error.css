@@ -1,0 +1,16 @@
+.error {
+	padding: 80px;
+	text-align: center;
+}
+.error403{
+    background-color: #FE5500;
+}
+.error500{
+    background-color: #fff;
+}
+.error403 img,
+.error404 img,
+.error500 img{
+    width: 100%;
+    height: 100%;
+}

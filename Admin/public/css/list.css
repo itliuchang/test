@@ -1,0 +1,108 @@
+#main{
+    overflow: auto;
+    padding: 20px 10px;
+}
+
+.dataColumn{
+    /*margin: 20px 0;*/
+}
+
+.dataColumn .table-striped{
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.dataColumn .table-striped.table > thead > tr > th{
+    border-bottom: 1px solid #ddd;
+}
+
+.dataColumn .table-striped > tbody > tr:nth-of-type(odd){
+    background-color: #F9F7ED;
+}
+
+.dataColumn .table-striped.table>tbody > tr > td,
+.dataColumn .table-striped.table > tbody > tr > th{
+    border-top: 1px solid #eee;
+}
+
+.dataColumn nav{
+    text-align: right;
+    height: 32px;
+    line-height: 32px;
+}
+
+.dataColumn nav .pagerinfo{
+    float: right;
+    font-size: 15px; 
+    margin-right: 18px;
+}
+
+.dataColumn nav ul.pagination{
+    margin: 0;
+    float: right;
+}
+
+.dataColumn nav ul.pagination li a.on{
+    color: #FA0B0B;
+}
+
+.dataColumn .table td:last-child{
+    text-align: center;
+}
+
+.dataColumn .table .btn{
+    padding: 0;
+    color: #07A7FA;
+}
+.dataColumn .table .btn:hover{
+    text-decoration: underline;
+    color: #59C3FA;
+}
+.dataColumn .table .btn.active,
+.dataColumn .table .btn:active{
+    -webkit-box-shadow: none;
+    box-shadow:none;
+}
+
+.fullmodal{
+    padding: 0 !important;
+    overflow: auto;
+}
+.fullmodal .modal-dialog{
+    width: 100%;
+    margin: 0;
+}
+#siteSetModal #siteid,
+#siteSetModal #sitehashcode,
+#DetailSetModal #detailid{
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+/*#siteSetModal .gravity{
+    display: inline-block;
+    margin-left: 15px;
+}*/
+#siteSetModal .gravity input:first-child{
+    margin-right: 8px;
+}
+#siteSetModal #siterange li{
+    margin-bottom: 10px;
+}
+#siteSetModal #siterange li:last-child{
+    margin-bottom: 0;
+}
+#siteSetModal #siterange li input:first-child{
+    margin-right: 10px;
+}
+#auditModal label.radio-inline{
+    margin-bottom: 5px;
+}
+#auditModal .auditresult-group label:first-child{
+    margin-right: 15px;
+}
+.modal .modal-title .stamp{
+    font-size: 12px;
+    padding-left: 15px;
+    color: #F41313;
+}
