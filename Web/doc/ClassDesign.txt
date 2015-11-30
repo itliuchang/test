@@ -220,6 +220,7 @@ function list(account,page,size){}
  * This is method for new
  * @param  [string] account
  * @param  [array] data
+ * @param  [array] orderId
  * @return [array] {
  * 		code:200,
  * 		mes:'',
@@ -237,9 +238,194 @@ function list(account,page,size){}
  * 		
  * }
  */
-function new(account,data){}
+function new(account,data,orderId){}
+
+/**
+ * This is method for paystatus
+ * @param  [string] account 
+ * @param  [int] status 
+ * @param  [string] payInfo
+ * @param  [string] orderId 
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		orderId:'3241431'
+ *         }
+ * }
+ */
+function paystatus(account,status,payInfo,orderId){}
+
+/**
+ * This is method for status
+ * @param  [string] account 
+ * @param  [int] status  
+ * @param  [string] orderId 
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		orderId:'4123423',
+ *         		status:1
+ *         }
+ * } 
+ */
+function status(account,status,orderId){}
+
+/**
+ * This is method for refund
+ * @param  [string] account 
+ * @param  [string] orderId 
+ * @return  [array] {
+ *          code:200,
+ *          mes:'',
+ *          data:{
+ *          	orderId:'432534432'
+ *          }
+ * }
+ */
+function refund(account,orderId){}
+
+/**
+ * This is method for cancel
+ * @param  [string] account 
+ * @param  [string] orderId 
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		orderId:'3423423'
+ *         }
+ * }
+ */
+function cancel(account,orderId){}
 
 }
+
+/**
+ * This is Class for Reservation
+ * Create by Leon 2015/11/30
+ */
+Class Reservation{
+
+/**
+ * This is method for list
+ * @param  [int] type 
+ * @param  [int] page 
+ * @param  [int] size 
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		count:10,
+ *         		list:[
+ *         			{	
+ *         				productId:32,
+ *         				productName:'table',
+ *         				picture:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         				location:'fuxing',
+ *         				floor:4,
+ *         				type:1,
+ *         				quantity:12,
+ *         				price:100,
+ *         				createTime:1434234234,
+ *         				updateTime:1435345345,
+ *         			},
+ *         		]
+ *         } 
+ * }
+ */
+function list(type,page,size){}
+
+/**
+ * This is method for getProductInfo
+ * @param  [string] roductId 
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		productId:32,
+ *         		productName:'table',
+ *         		picture:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         		location:'fuxing',
+ *         		floor:4,
+ *         		type:1,
+ *         		quantity:12,
+ *         		price:100,
+ *         		createTime:1434234234,
+ *         		updateTime:1435345345,
+ *         }
+ * }
+ */
+function getProductInfo(productId){}
+
+}
+
+/**
+ * This is Class for CompanyServices
+ * @param [int] page 
+ * @param [int] size 
+ * Create by Leon 2015/11/30
+ */
+Class CompanyServices{
+
+/**
+ * This is method for list
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		count:102,
+ *         		list:[
+ *         			{	
+ *         				serviceId:342,
+ *         				serviceName:'IT',
+ *         				nearCompanyNum:32,
+ *         				picture:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         			}
+ *         		]
+ *         }
+ * }
+ */
+function list(page,size){}
+
+}
+
+/**
+ * This is Class for Company
+ * Create by Leon 2015/11/30
+ */
+Class Company{
+
+/**
+ * This is method for list
+ * @param  [int] type
+ * @param  [int] serviceName
+ * @param  [int] page 
+ * @param  [int] size
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		count:10,
+ *         		list:[
+ *         			{
+ *         				companyId:322,
+ *         				companyName:'yoyo',
+ *         				location:'fuxing',
+ *         				floor:4,
+ *         				picture:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         				service:'IT'
+ *         			}
+ *         		]
+ *         }
+ * } 
+ */
+function list(type,serviceName,page,size)
+
+
+}
+
 
 
 
