@@ -17,7 +17,7 @@ class UserIdentity{
 	 * @param  string the user input
 	 * @param  string the user input
 	 * @return array[] {
-	 *         		'code':2,
+	 *         		'code':200,
 	 *         		'message':'SUCCESS'
 	 * }
 	 */
