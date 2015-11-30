@@ -16,7 +16,10 @@ class UserIdentity{
 	 * This is method for login
 	 * @param  string the user input
 	 * @param  string the user input
-	 * @return boolean whether the administrator has login
+	 * @return array[] {
+	 *         		'code':2,
+	 *         		'message':'SUCCESS'
+	 * }
 	 */
 	public function login($username,$password){
 
