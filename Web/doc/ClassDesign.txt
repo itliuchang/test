@@ -16,7 +16,22 @@ Class Auth{
  * 			account:'fsdaklfsadkfjsakl',
  * 			userId:23,
  * 			nickName:'leon',
- * 			userType:'freelanceer'
+ * 			userType:'freelanceer',
+ * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			background:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			title:'hello',
+ * 			website:'www.baidu.com',
+ * 			aboutMe:'hello',
+ * 			dob(date of birthday):'13900000',
+ * 			gender:1,(1 instead male,2 instead female)
+ * 			skills:['basketball','footerball'],
+ * 			interests:['pingpang'],
+ * 			wechatId:'lc',
+ * 			facebookId:'lc',
+ * 			twitterId:'lc',
+ * 			linkedInid:'lc',
+ * 			instagramId:'lc',
+ * 			
  * 		}
  * }
  */
@@ -36,6 +51,7 @@ function logout (){ }
 /**
  * These methods for register
  * @param  [string] mobile
+ * @param  [int] code                                
  * @param  [string] email
  * @param  [string] password
  * @return [array] {
@@ -43,14 +59,12 @@ function logout (){ }
  * 		message:'',
  * 		data:{
  * 			account:'fsfsdfs',
- * 			nickName:'leon',
- * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
- * 			userId:23,
- * 			useRole:2
+ * 			userId:324,
  * 		}
  * }
  */
-function mobileRegister(mobile,password){ }
+
+function mobileRegister(mobile,code){ }
 function emailRegister(email,password){ }
 
 /**
@@ -62,30 +76,83 @@ function emailRegister(email,password){ }
  * 		data:{
  * 			userId:23,
  * 			nickName:'leon',
+ * 			userType:'freelanceer',
  * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			background:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			title:'hello',
+ * 			website:'www.baidu.com',
+ * 			aboutMe:'hello',
+ * 			dob(date of birthday):'13900000',
+ * 			gender:1,(1 instead male,2 instead female)
+ * 			skills:['basketball','footerball'],
+ * 			interests:['pingpang'],
+ * 			wechatId:'lc',
+ * 			facebookId:'lc',
+ * 			twitterId:'lc',
+ * 			linkedInid:'lc',
+ * 			instagramId:'lc',
  * 		}
  * }
  */
-function getInfo(userId){}
+function getUserInfo(userId){}
 
 /**
  * This is method for update
- * @param  [string] userId
+ * @param  [string] account
+ * @param  [array]  data{
+ *          nickName:'leon',
+ * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			background:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			title:'hello',
+ * 			website:'www.baidu.com',
+ * 			aboutMe:'hello',
+ * 			dob(date of birthday):'13900000',
+ * 			gender:1,(1 instead male,2 instead female)
+ * 			skills:['basketball','footerball'],
+ * 			interests:['pingpang'],
+ * 			facebookId:'lc',
+ * 			twitterId:'lc',
+ * 			linkedInid:'lc',
+ * 			instagramId:'lc',
+ * }
  * @return [array] {
  * 		code : 200,
  * 		mes : '',
  * 		data:{
- * 			userId:23, 
+ * 			userId:23,
  * 			nickName:'leon',
+ * 			userType:'freelanceer',
  * 			portrait:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
- * 			mobile:'18655445187',
- * 			email:'lc@yoyoplay.cn',
+ * 			background:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * 			title:'hello',
+ * 			website:'www.baidu.com',
+ * 			aboutMe:'hello',
+ * 			dob(date of birthday):'13900000',
+ * 			gender:1,(1 instead male,2 instead female)
+ * 			skills:['basketball','footerball'],
+ * 			interests:['pingpang'],
+ * 			wechatId:'lc',
+ * 			facebookId:'lc',
+ * 			twitterId:'lc',
+ * 			linkedInid:'lc',
+ * 			instagramId:'lc',
  * 		}
  * }
  */
-function update(account){ }
+function update(account,data){ }
 
 }//Auth end
+
+/**
+ * This is Class for User
+ * Create by Leon 2015/11/30
+ */
+Class User{
+
+/**
+function
+
+}
 
 /**
  * This is Class for Post
@@ -112,7 +179,7 @@ Class Post{
  * 						userId:43242,
  * 						nickName:'leon',
  * 						companyName:'naked',
- * 						work:'IT'
+ * 						...
  * 					},
  * 					pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
  * 					createTime:'13400000',
@@ -140,10 +207,11 @@ function list(type,userId,page,size){}
  * 				userId:3243,
  * 				nickName:'leon',
  * 				companyName:'naked',
- * 				work:'IT'
+ * 				...
  * 			},
  * 			pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
- * 			createTime:'1340000'
+ * 			createTime:'1340000',
+ * 			updateTime:'1346456',
  * 		}
  * }
  */
@@ -162,10 +230,11 @@ function create(account,content,pic){}
  * 				userId:32,
  * 				nickName:'leon',
  * 				companyName:'naked',
- * 				work:'IT'
+ * 				...
  * 			},
  * 			pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
  * 			createTime:'1340000',
+ * 			updateTime:'1345464',
  * 			messageNum:4,
  * 			likeNum:4,
  * 			messageList:[
@@ -188,117 +257,97 @@ function getPostInfo(postId){}
  */
 Class Order{
 
+
+}
+
+/**
+ * This is Class for MeetingRoom
+ * Create by Leon 2015/12/1
+ */
+Class MeetingRoom{
+
 /**
  * This is method for list
- * @param  [string] account
- * @param  [int] page
- * @param  [int] size
- * @return [array] {
- * 		code:200,
- * 		mes:'',
- * 		data:{
- * 			orderCount:4,
- * 			orderList:[
- * 				{
- * 					orderId:'4352345432',
- * 					productId:'43354',
- * 					productName:'table',
- * 					orderAmount:100,
- * 					payAmount:100,
- * 					status:1,
- * 					userId:3244,
- * 					orderTime:'1350000',
- * 					updateTime:'1360000'
- * 				}
- * 			]
- * 		}
+ * @param  [int] location 1:fuxing
+ * @return [array]{
+ *         code:200,
+ *         mes:'',
+ *         data:{[{
+ *         		roomId:1221,
+ *         		roomName:'',
+ *         		floor:3,
+ *         		seats:8,
+ *         		pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         		doneTime:[1,2,3,48],(every part instead half hour)
+ *         	 	},
+ *         ]
+ *         }
  * }
  */
-function list(account,page,size){}
+function list(location)
 
 /**
- * This is method for new
- * @param  [string] account
- * @param  [array] data
- * @param  [array] orderId
- * @return [array] {
- * 		code:200,
- * 		mes:'',
- * 		{
- * 			orderId:'4352345432',
- * 		    productId:'43354',
- * 			productName:'table',
- * 			orderAmount:100,
- * 			payAmount:100,
- *	 		status:1,
- *	 		userId:3244,
- *	 		orderTime:'1350000',
- *	 		updateTime:'1360000'
- * 		}
- * 		
- * }
- */
-function new(account,data,orderId){}
-
-/**
- * This is method for paystatus
- * @param  [string] account 
- * @param  [int] status 
- * @param  [string] payInfo
- * @param  [string] orderId 
+ * This is method for getInfo
+ * @param  [int] roomId 
  * @return [array] {
  *         code:200,
  *         mes:'',
  *         data:{
- *         		orderId:'3241431'
+ *         		roomId:1221,
+ *         		roomName:'',
+ *         		floor:3,
+ *         		seats:8,
+ *         		pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         		doneTime:[1,2,3,48],(every part instead half hour)
  *         }
  * }
  */
-function paystatus(account,status,payInfo,orderId){}
+function getInfo(roomId)
+
+}
 
 /**
- * This is method for status
- * @param  [string] account 
- * @param  [int] status  
- * @param  [string] orderId 
+ * This is Class for Workspace
+ * Create by Leon 2015/12/1
+ */
+
+Class Workspace{
+
+/**
+ * This is method for list
+ * @param  [int] cityId 
  * @return [array] {
  *         code:200,
  *         mes:'',
  *         data:{
- *         		orderId:'4123423',
- *         		status:1
+ *         		[
+ *         			{
+ *         				workspaceId:324,
+ *         				location:'fuxing',
+ *         				pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         				seatsLeft:10,
+ *         			}
+ *         		]
  *         }
- * } 
- */
-function status(account,status,orderId){}
-
-/**
- * This is method for refund
- * @param  [string] account 
- * @param  [string] orderId 
- * @return  [array] {
- *          code:200,
- *          mes:'',
- *          data:{
- *          	orderId:'432534432'
- *          }
  * }
  */
-function refund(account,orderId){}
+function list(cityId)
 
 /**
- * This is method for cancel
- * @param  [string] account 
- * @param  [string] orderId 
- * @return [array] {
+ * This is method for getInfo
+ * @param  [int] workspaceId
+ * @return [array]{
  *         code:200,
  *         mes:'',
  *         data:{
- *         		orderId:'3423423'
+ *         		workspaceId:1221,
+ *         		location:'fuxing',
+ *         		pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         		seats:10,
  *         }
  * }
  */
-function cancel(account,orderId){}
+function getInfo(workspaceId)
 
 }
 
@@ -309,58 +358,132 @@ function cancel(account,orderId){}
 Class Reservation{
 
 /**
- * This is method for list
- * @param  [int] type 
- * @param  [int] page 
- * @param  [int] size 
+ * This is method for reservationWorkspaceList
+ * @param  [string] account
+ * @param  [int] page
+ * @param  [int] size
+ * @param  [int] status (1:previous 2:upcoming )
  * @return [array] {
- *         code:200,
- *         mes:'',
- *         data:{
- *         		count:10,
- *         		list:[
- *         			{	
- *         				productId:32,
- *         				productName:'table',
- *         				picture:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
- *         				location:'fuxing',
- *         				floor:4,
- *         				type:1,
- *         				quantity:12,
- *         				price:100,
- *         				createTime:1434234234,
- *         				updateTime:1435345345,
- *         			},
- *         		]
- *         } 
+ * 		code:200,
+ * 		mes:'',
+ * 		data:{
+ * 			orderCount:4,
+ * 			orderList:[
+ * 				{
+ * 					reservationId:'4352345432',
+ * 					userId:3244,
+ * 					location:'',
+ * 					date:'',
+ * 					createTime:'1350000',
+ * 					updateTime:'1360000'
+ * 				}
+ * 			]
+ * 		}
  * }
  */
-function list(type,page,size){}
+function reservationWorkspaceList(account,page,size,status){}
 
 /**
- * This is method for getProductInfo
- * @param  [string] roductId 
+ * This is method for reservationRoomList
+ * @param  [string] account
+ * @param  [int] page
+ * @param  [int] size
+ * @param  [int] status (1:previous 2:upcoming )
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		data:{
+ * 			orderCount:4,
+ * 			orderList:[
+ * 				{
+ * 					reservationId:'4352345432',
+ * 					userId:3244,
+ * 					room:'',
+ * 					location:'',
+ * 					date:'',
+ * 					startTime:'',
+ * 					endTime:'',
+ * 					createTime:'1350000',
+ * 				}
+ * 			]
+ * 		}
+ * }
+ */
+function reservationRoomList(account,page,size,status){}
+
+/**
+ * This is method for newReservationRoom
+ * @param  [string] account
+ * @param  [array] data{
+ * 		   userId:3244,
+ * 		   room:'',
+ * 		   location:'',
+ * 		   date:'',
+ * 		   startTime:'',
+ * 		   endTime:'',
+ * 		   createTime:'1350000',
+ * }
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		{
+ * 			reservationId:'4352345432',
+ * 		}
+ * 		
+ * }
+ */
+function newReservationRoom(account,data){}
+
+/**
+ * This is method for newReservationRoom
+ * @param  [string] account
+ * @param  [array] data{
+ * 		   userId:3244,
+ * 		   location:'',
+ * 		   date:'',
+ * 		   createTime:'1350000',
+ * }
+ * @return [array] {
+ * 		code:200,
+ * 		mes:'',
+ * 		{
+ * 			reservationId:'4352345432',
+ * 		}
+ * 		
+ * }
+ */
+function newReservationWorkspace(account,data){}
+
+
+/**
+ * This is method for cancelRoom
+ * @param  [string] account 
+ * @param  [string] reservationId 
  * @return [array] {
  *         code:200,
  *         mes:'',
  *         data:{
- *         		productId:32,
- *         		productName:'table',
- *         		picture:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
- *         		location:'fuxing',
- *         		floor:4,
- *         		type:1,
- *         		quantity:12,
- *         		price:100,
- *         		createTime:1434234234,
- *         		updateTime:1435345345,
+ *         		reservationId:'3423423'
  *         }
  * }
  */
-function getProductInfo(productId){}
+function cancelRoom(account,reservationId){}
+
+/**
+ * This is method for cancelWorkspace
+ * @param  [string] account 
+ * @param  [string] reservationId 
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		reservationId:'3423423'
+ *         }
+ * }
+ */
+function cancelWorkspace(account,reservationId){}
 
 }
-
 /**
  * This is Class for CompanyServices
  * @param [int] page 
@@ -423,6 +546,53 @@ Class Company{
  */
 function list(type,serviceName,page,size)
 
+/**
+ * This is method for getInfo
+ * @param  [string] companyId 
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data:{
+ *         		companyId:232,
+ *         		companyName:'yoyo',
+ *         		location:'fuxing',
+ *         		followers:39,
+ *         		descTags:['social','brand'],
+ *         		intro:'hello',
+ *         		pic:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         		background:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *         		Email:'lc@yoyoplay.cn',
+ *         		phone:18655445678,
+ *         		websit:'www.baidu.com',
+ *         }
+ * }
+ */
+function getInfo(companyId){}
+
+/**
+ * This is method for createCompany
+ * @param  [string] account 
+ * @param  [array] data {
+ *                      	name:'yoyo',
+ *                      	email:'lc@yoyoplay.cn',
+ *                      	phone:'18655445267',
+ *                      	websit:'www.baidu.com',
+ *                      	intro:'hello',
+ *                      	service:['IT','pinter'],
+ *                      	facebookId:'leon',
+ *                      	linkedId:'leon'
+ *                       	logo:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ *                       	background:'http://q.qlogo.cn/qqapp/1104566934/4F54EC3310FD140F55B1BCC91A06C328/100',
+ * }    
+ * @return [array] {
+ *         code:200,
+ *         mes:'',
+ *         data{
+ *         		companyId:32,
+ *         }
+ * }
+ */
+ function createCompany(account,data)
 
 }
 
@@ -434,3 +604,5 @@ function list(type,serviceName,page,size)
 
 
 
+
+ 
