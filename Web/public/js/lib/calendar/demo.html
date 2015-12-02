@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/default.date.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<style type="text/css">
+		.picker__box{
+			color: #fff;
+			padding: 0;
+			background-color: #222;
+			font-size: 15px;
+		}
+		.picker__table{
+			margin: 0;
+		}
+		.picker__box td{
+			background-color: #282828;
+		}
+		
+		.picker__day{
+			height: 100%;
+			width: inherit;
+		}
+		.picker__day .success{
+			color: #9d9d9d;
+			font-size: 14px;
+			height: 30px;
+			line-height: 30px;
+			padding-bottom: 0;
+			margin: 0!important;
+		}
+		
+		.picker__day--disabled p{
+			line-height: 30px;
+			font-size: 14px;
+			margin: 0;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="datepicker">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/picker.js"></script>
+<script type="text/javascript" src="js/picker.date.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.datepicker').pickadate({
+									  weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
+									  weekdaysFull: ['日', '一', '二', '三', '四', '五', '六'],
+									  monthsShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+									  monthsFull: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+									  format:'yyyy年mm月dd日',
+									  min:new Date(),
+									  showMonthsShort: true,
+										 date:{
+											 	8:{
+											 		20:{
+													 	text:{
+													 		content:'剩：8',
+													 		className:'success'
+													 	}
+												 	}
+											 	}
+										 },
+	});
+	});
+</script>
+</body>
+</html>

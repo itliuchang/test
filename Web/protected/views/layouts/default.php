@@ -11,5 +11,6 @@
     
     <body class="<?php echo $this->bodyCss ?>">
 	    <?php echo $content ?>
+    <script src="/js/all.js"></script>
     </body>
 </html>
