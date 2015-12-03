@@ -30,8 +30,8 @@
 		</div>
 	</div>
 	<div class="footer">
-		<a href="#" class="registered">BECOME A WEWORK MEMBER</a>
-		<a href="#" class="login">I'M ALREADY A WEWORK MEMBER</a>
+		<a href="#" class="registered">BECOME A NAKEDHUB MEMBER</a>
+		<a href="#" class="login">I'M ALREADY A NAKEHUB MEMBER</a>
 	</div>
 <?php
     $cs = Yii::app()->clientScript;
