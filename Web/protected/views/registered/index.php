@@ -1,11 +1,37 @@
 <div id="access">
-	<div class="banner">
-		<ul>
-		    <li><img src="/images/403.png"></li>
-		    <li><img src="/images/404.png"></li>
-		    <li><img src="/images/500.png"></li>
-		    <li><img src="/images/51daren.png"></li>
-		</ul>
+	<div class="bannerWrapper">
+		<div class="banner">
+			<ul>
+			    <li>
+			    	<div class="pic pic1"></div>
+			    	<h2>THE COMMUNITY</h2>
+			    	<div class="underLine"></div>
+			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    </li>
+			    <li>
+			    	<div class="pic pic2"></div>
+			    	<h2>THE COMMUNITY</h2>
+			    	<div class="underLine"></div>
+			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    </li>
+			    <li>
+			    	<div class="pic pic3"></div>
+			    	<h2>THE COMMUNITY</h2>
+			    	<div class="underLine"></div>
+			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    </li>
+			    <li>
+			    	<div class="pic pic4"></div>
+			    	<h2>THE COMMUNITY</h2>
+			    	<div class="underLine"></div>
+			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    </li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<a href="#" class="registered">BECOME A WEWORK MEMBER</a>
+		<a href="#" class="login">I'M ALREADY A WEWORK MEMBER</a>
 	</div>
 <?php
     $cs = Yii::app()->clientScript;

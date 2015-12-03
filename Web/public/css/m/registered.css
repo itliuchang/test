@@ -1,42 +1,72 @@
-#access .banner{
+body.access{
+	width: 100%;
+}
+#access{
 	position: relative;
+	width: 100%;
+}
+#access .bannerWrapper{
+	width: 100%;
+	padding-bottom: 100px;
+}
+#access .banner{
 	padding-bottom: 20px;
 	overflow: auto;	
-	width: 789px;
 	margin: 0 auto;
+	margin-bottom: 40px;
 	z-index: 1;
-	margin-bottom: 20px;
-}
-#access .banner>.leftdownload{
-	position: absolute;
-	cursor: pointer;
-	top: 20%;
-	left: 0;
-	width: 50%;
-	height: 30%;
-	z-index: 100;
-	cursor: pointer;
-}
-#access .banner>a{
-	position: absolute;
-	top: 20%;
-	right: 0;
-	width: 50%;
-	height: 30%;
-	z-index: 100;
 }
 #access .banner >ul>li{
 	float: left;
-	width: 1000px;
+}
+#access .banner ul li .pic{
+	width: 100%;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#access .banner ul li .pic1{
+	background-image: url(/images/403.png);
+}
+#access .banner ul li .pic2{
+	background-image: url(/images/403.png);
+}
+#access .banner ul li .pic3{
+	background-image: url(/images/403.png);
+}
+#access .banner ul li .pic4{
+	background-image: url(/images/403.png);
 }
 #access .banner ul li>img{
 	width: 100%;
+	height: 200px;
+}
+#access .banner ul li .underLine{
+	width: 20px;
+	height: 5px;
+	background-color: #000;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+#access .banner >ul>li h2{
+	margin-top: 20px;
+	font-size: 16px;
+	text-align: center;
+}
+#access .banner>ul>li p{
+	margin-top: 20px;
+	font-size: 14px;
+	padding: 0 10px;
+	text-align: center;
+	color: #b5b5b5;
 }
 #access .banner .dots {
-	position: absolute;
+	position: fixed;
+	padding-left: 0;
 	left: 0;
 	right: 0;
-	bottom: 0px;
+	margin-bottom: 10px;
+	bottom: 100px;
 	width: 100%;
 	text-align: center;
 }
@@ -66,4 +96,34 @@
 #access .banner .dots li.active {
 	background-color: #ffb553;
 	opacity: 1;
+}
+#access .footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+#access .footer a{
+	display: inline-block;
+	font-size: 14px;
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	text-align: center;
+}
+#access .footer .registered{
+	background-color: #f5ad55;
+}
+#access .footer .registered:link,#access .footer .registered:visited,#access .footer .registered:hover{
+	color: #fff;
+	text-decoration: none;
+}
+#access .footer .login{
+	background-color: #faf7f9;
+}
+#access .footer .login:link,#access .footer .login:visited,#access .footer .login:hover{
+	color: #8b8b8d;
+	text-decoration: none;
+}
+@media screen and (max-width: 320px){
+	
 }
