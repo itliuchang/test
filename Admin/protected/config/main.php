@@ -72,7 +72,7 @@ return array(
 			// 'connectionString' => 'mysql:host=192.168.1.103:3306;dbname=sgs',
 			// 'username' => 'sgs',
 			// 'password' => 'sgs2015',
-			'connectionString' => 'mysql:host=121.42.15.193:3306;dbname=naked',
+			'connectionString' => 'mysql:host=localhost;dbname=naked',
 			'username' => 'root',
 			'password' => 'Email@2015',
 			'charset' => 'utf8',
