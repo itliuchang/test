@@ -18,5 +18,7 @@
  */
 return array (
   "BECOME A NAKEDHUB MEMBER" => "成为裸心社会员",
-  "I'M ALREADY A NAKEHUB MEMBER" => "已经是裸心社会员"
+  "I'M ALREADY A NAKEHUB MEMBER" => "已经是裸心社会员",
+  "THE COMMUNITY" => "社区",
+  "NakeHub members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community." =>"NakeHub成员是令人难以置信的多样化，从启动，自由职业者和艺术家的小型企业和大型跨国企业有一个问题？问社区。"
 );

@@ -4,27 +4,27 @@
 			<ul>
 			    <li>
 			    	<div class="pic pic1"></div>
-			    	<h2>THE COMMUNITY</h2>
+			    	<h2><?php echo Yii::t('registered','THE COMMUNITY') ?></h2>
 			    	<div class="underLine"></div>
-			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    	<p><?php echo Yii::t('registered','NakeHub members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.') ?></p>
 			    </li>
 			    <li>
 			    	<div class="pic pic2"></div>
-			    	<h2>THE COMMUNITY</h2>
+			    	<h2><?php echo Yii::t('registered','THE COMMUNITY') ?></h2>
 			    	<div class="underLine"></div>
-			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    	<p><?php echo Yii::t('registered','NakeHub members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.') ?></p>
 			    </li>
 			    <li>
 			    	<div class="pic pic3"></div>
-			    	<h2>THE COMMUNITY</h2>
+			    	<h2><?php echo Yii::t('registered','THE COMMUNITY') ?></h2>
 			    	<div class="underLine"></div>
-			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    	<p><?php echo Yii::t('registered','NakeHub members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.') ?></p>
 			    </li>
 			    <li>
 			    	<div class="pic pic4"></div>
-			    	<h2>THE COMMUNITY</h2>
+			    	<h2><?php echo Yii::t('registered','THE COMMUNITY') ?></h2>
 			    	<div class="underLine"></div>
-			    	<p>Wework members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.</p>
+			    	<p><?php echo Yii::t('registered','NakeHub members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.') ?></p>
 			    </li>
 			</ul>
 		</div>
