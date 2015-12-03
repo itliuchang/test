@@ -25,7 +25,6 @@ class RouteController extends Controller{
           'list' => 'application.controllers.route.ListAction',
           'create' => 'application.controllers.route.CreateAction',
         	'edit' => 'application.controllers.route.EditAction',
-        	'submit' => 'application.controllers.route.SubmitAction',
         	'down' => 'application.controllers.route.DownAction',
         	'up' => 'application.controllers.route.UpAction',
         	'delete' => 'application.controllers.route.DeleteAction',

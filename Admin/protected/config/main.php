@@ -73,7 +73,7 @@ return array(
 			// 'username' => 'sgs',
 			// 'password' => 'sgs2015',
 			'connectionString' => 'mysql:host=localhost;dbname=naked',
-			'username' => 'root',
+			'username' => 'naked',
 			'password' => 'Email@2015',
 			'charset' => 'utf8',
 			'emulatePrepare' => true,
