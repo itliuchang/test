@@ -4,8 +4,7 @@ $(function() {
     data = $unslider.data('unslider');
     $banner.hammer().on('swiperight',function(){
     	data.prev();
-    })
-    $banner.hammer().on('swiperleft',function(){
+    }).on('swipeleft',function(){
     	data.next();
     });
 });
