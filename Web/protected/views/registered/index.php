@@ -30,8 +30,8 @@
 		</div>
 	</div>
 	<div class="footer">
-		<a href="#" class="registered">BECOME A NAKEDHUB MEMBER</a>
-		<a href="#" class="login">I'M ALREADY A NAKEHUB MEMBER</a>
+		<a href="#" class="registered"><?php echo Yii::t('registered','BECOME A NAKEDHUB MEMBER') ?></a>
+		<a href="#" class="login"><?php echo Yii::t('registered',"I'M ALREADY A NAKEHUB MEMBER") ?></a>
 	</div>
 <?php
     $cs = Yii::app()->clientScript;
