@@ -116,12 +116,20 @@
 }
 #myprofile label{
 	color: #dad4d3;
+	font-size: 14px;
 }
+
 #myprofile input{
 	border: none;
+	font-size: 14px;
+
 }
 #myprofile select{
 	border: none;
+	background: transparent;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
 }
 #myprofile .sex{
 	margin-left: 20px;
