@@ -1,0 +1,128 @@
+#myprofile{
+	background-color: #ececec;
+}
+#myprofile .top{
+	width: 100%;
+}
+#myprofile .background{
+	position: relative;
+	width: 100%;
+	height: 185px;
+	background-color: #fb9b41;
+}
+#myprofile .background .addBackground{
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	bottom: 10px;
+	right: 20px;
+	background-image: url(/images/addBackground.png);
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+}
+#myprofile .wrapperPortrait{
+	position: relative;
+	background-color: #fff;
+	height: 100px;
+}
+#myprofile .wrapperPortrait .portrait{
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	top: -70px;
+	left: 50%;
+	box-shadow: 0 0px 0px 6px #fff;
+	margin-left: -75px;
+	border-radius: 100%;
+	background-color: #cbcbcb;
+	background-image: url(/images/defaultPortrait.png);
+	background-repeat: no-repeat;
+	background-size: 80px;
+	background-position: center;
+}
+#myprofile .inputSection{
+	margin-top: 20px;
+	border-top: 1px solid #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+	padding: 20px 20px;
+	padding-bottom: 10px;
+	background-color: #fff;
+}
+#myprofile .inputSection input[type="text"],
+#myprofile .inputSection input[type="email"]{
+	border: none;
+	width: 100%;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e9e9e9;
+}
+#myprofile .lastinput{
+	border-bottom: none!important;
+	padding-bottom: 0;
+	margin-bottom: 0!important;
+}
+#myprofile textarea{
+	width: 100%;
+	border: none;
+	font-size: 14px;
+	resize:none;
+}
+#myprofile .birthdayWrapper{
+
+}
+#myprofile .birthday{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+#myprofile .link{
+	margin-bottom: 80px;
+}
+#myprofile .link input{
+	padding-left: 40px;
+	background-repeat: no-repeat;
+	background-position: left 3px;
+}
+#myprofile .link input.wechatId{
+	background-image: url(/images/wechat.png);
+	background-size: 18px 15px;
+}
+#myprofile .link input.facebook{
+	background-image: url(/images/facebook.png);
+	background-size: 10px 20px;
+}
+#myprofile .link input.twitter{
+	background-image: url(/images/twitter.png);
+	background-size: 18px 15px;
+}
+#myprofile .link input.linkIn{
+	background-image: url(/images/linkIn.png);
+	background-size: 17px;
+}
+#myprofile .link input.instagram{
+	background-image: url(/images/instagram.png);
+	background-size: 17px;
+}
+#myprofile .footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #fb9b41;
+	font-size: 16px;
+	line-height: 50px;
+	text-align: center;
+	color: #fff;
+}
+#myprofile label{
+	color: #dad4d3;
+}
+#myprofile input{
+	border: none;
+}
+#myprofile select{
+	border: none;
+}
+#myprofile .sex{
+	margin-left: 20px;
+}
