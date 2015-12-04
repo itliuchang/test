@@ -20,7 +20,6 @@
 			<label>birthday</label>
 			<input type="date" class="birthday">
 		</div>
-		
 		<label>gender</label>
 		<select class="sex">
 			<option>male</option>
@@ -33,7 +32,7 @@
 		<div class="interests"></div>
 	</div>
 	<div class="inputSection link">
-		<input type="text" placeholder="WechatID" class="wechatId">
+		<input type="text" placeholder="WechatID" disabled class="wechatId">
 		<input type="email" placeholder="Facebook url" class="facebook"> 
 		<input type="text" placeholder="Twitter" class="twitter">
 		<input type="email" placeholder="LinkIn url" class="linkIn">
