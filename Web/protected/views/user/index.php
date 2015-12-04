@@ -28,8 +28,10 @@
 		</select>
 	</div>
 	<div class="inputSection">
-		<div class="skill"></div>
-		<div class="interests"></div>
+		<textarea placeholder="Enter your skills(PS:design,develop)" maxlength=140 rows=4 ></textarea>
+	</div>
+	<div class="inputSection">
+		<textarea placeholder="Enter your interests(PS:pingpong,basketball)" maxlength=140 rows=4 ></textarea>
 	</div>
 	<div class="inputSection link">
 		<input type="text" placeholder="WechatID" disabled class="wechatId">
