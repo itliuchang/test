@@ -5,6 +5,7 @@
 	padding: 0 10px;
 	line-height: 60px;
 	font-size: 20px;
+	font-weight: 700;
 }
 
 #orderDetail .content .month{
@@ -36,6 +37,7 @@
 }
 #orderDetail .content .day h2{
 	font-size: 20px;
+	font-weight: 700;
 }
 #orderDetail .content .day .date{
 	font-size: 12px;
