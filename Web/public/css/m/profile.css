@@ -1,5 +1,6 @@
 #myprofile{
 	background-color: #ececec;
+	padding-bottom: 80px;
 }
 #myprofile .top{
 	width: 100%;
@@ -69,12 +70,14 @@
 	resize:none;
 }
 #myprofile .birthdayWrapper{
-
+	border-bottom: 1px solid #e3e3e3;
+	padding-bottom: 5px;
 }
 #myprofile .birthday{
 	margin-left: 10px;
 	margin-right: 20px;
 }
+#myprofile .birthday::-webkit-inner-spin-button { visibility: hidden; }
 #myprofile .link{
 	margin-bottom: 80px;
 }
@@ -133,4 +136,7 @@
 }
 #myprofile .sex{
 	margin-left: 20px;
+	margin-top: 10px;
+}
+#myprofile .sex option{
 }
