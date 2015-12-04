@@ -26,10 +26,10 @@
 	position: absolute;
 	right: 0;
 	top: 35px;
-	font-weight: 700;
 }
 #orderDetail .content .month .price h3{
 	display: inline-block;
+	font-weight: 700;
 	font-size: 20px;
 }
 #orderDetail .content .day{
