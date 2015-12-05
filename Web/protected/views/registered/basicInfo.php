@@ -4,15 +4,16 @@
 		<label class="smallTitle">Full Name</label>
 		<input type="text" value="">
 	</div>
-	<div class="inputOption">
-		<label>Phone Number</label>
+	<div class="inputOption clearfix">
+		<label class="smallTitle">Phone Number</label>
 		<input type="phone" value="">
-		<input type="number">
-		<a href="#">CODE</a>
+		<input type="number" class="codenum">
+		<a href="#" class="codebutton">CODE</a>
 	</div>
 	<div class="inputOption">
-		<label>I AM A...</label>
+		<label class="bigTitle">I AM A...</label>
 		<select>
+			<option>Member Type</option>
 			<option></option>
 		</select>
 	</div>

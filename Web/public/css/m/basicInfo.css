@@ -15,3 +15,35 @@
 	font-size: 12px;
 	color: #58aae4;
 }
+#basicInfo .inputOption .codenum{
+	float: left;
+	margin-top: 10px;
+	width: 70%;
+}
+#basicInfo .inputOption .codebutton{
+	float: right;
+	margin-top: 10px;
+	width: 25%;
+	height: 35px;
+	line-height: 35px;
+	background-color: #4a4a4a;
+	text-decoration: none;
+	text-align: center;
+}
+#basicInfo .inputOption .codebutton:link,
+#basicInfo .inputOption .codebutton:hover,
+#basicInfo .inputOption .codebutton:visited{
+	color: #fff;
+	text-decoration: none;	
+}
+#basicInfo .inputOption .bigTitle{
+	display: block;
+	font-weight: bolder;
+	font-size: 14px;
+}
+#basicInfo .inputOption select{
+	width: 100%;
+}
+#basicInfo .inputOption select option{
+	height: 35px;
+}
