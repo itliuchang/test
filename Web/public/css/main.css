@@ -72,7 +72,6 @@ a:hover,a:active {
     padding: 0 5px;
     vertical-align: middle;
 }
-/*提示消息*/
 #tipModal .modal-dialog{
     padding: 0 10px;
     width: 280px;
@@ -155,7 +154,78 @@ a:hover,a:active {
 .popover-content{
     font-size: 12px;
 }
-
+#overflow-name{
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-height: 1.5em;
+}
+#overflow-line1{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+#overflow-line2{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.quickBar{
+    position: fixed;
+    padding: 10px;
+    background-color: #fff;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    z-index: 1050;
+    -webkit-transition:all .5s;
+}
+.quickBar-header .icon{
+    display: inline-block;
+    float: left;
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+}
+.quickBar-title{
+    float: left;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+.quickBar-body{
+    padding: 20px 0;
+    font-size: 14px;
+}
+.quickBar-footer .cancel{
+    border-radius: 0;
+    background-color: #d1cfcf;
+}
+.quickBar.up{
+    bottom: 0;
+}
+.quickBarbg{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 1000;
+    opacity: 0;
+    -webkit-transition:all .5s;
+}
+.quickBarbg.in{
+    opacity: .5;
+}
 /*Layout*/
 /*#container{
     overflow: hidden;
