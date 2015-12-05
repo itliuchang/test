@@ -18,13 +18,13 @@
 		</select>
 	</div>
 	<div class="inputOption">
-		<label>LOG IN INFORMATION</label>
-		<label>Email</label>
-		<input type="email" value="" placeholder="Create a Email">
-		<input type="text" placeholder="Create a password">
+		<label class="bigTitle">LOG IN INFORMATION</label>
+		<label class="smallTitle">Email</label>
+		<input type="email" value="" placeholder="Create a Email" class="email">
+		<input type="text" placeholder="Create a password" class="password">
 	</div>
 	<div class="footer">
-		<a href="#">BACK</a>
-		<a href="#">NEXT</a>
+		<a href="#" class="back">BACK</a>
+		<a href="#" class="next">NEXT</a>
 	</div>
 </div>

@@ -52,3 +52,33 @@
 }
 #basicInfo .inputOption select option{
 }
+#basicInfo .inputOption input{
+	padding-left: 10px;
+}
+#basicInfo .inputOption .password{
+	margin-top: 10px;
+}
+#basicInfo .footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: #d7d7d7;
+}
+#basicInfo .footer a{
+	float: left;
+	width: 50%;
+	display: inline-block;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+#basicInfo .footer .back{
+	color: #000;
+}
+#basicInfo .footer .next{
+	background-color: #fca442;
+	color: #fff;
+}
+#basicInfo .inputOption:nth-child(5){
+	margin-bottom: 100px;
+}
