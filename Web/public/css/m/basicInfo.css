@@ -79,6 +79,6 @@
 	background-color: #fca442;
 	color: #fff;
 }
-#basicInfo .inputOption:nth-child(5){
-	margin-bottom: 100px;
+#basicInfo{
+	padding-bottom: 100px;
 }
