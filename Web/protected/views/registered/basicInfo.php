@@ -6,8 +6,8 @@
 	</div>
 	<div class="inputOption clearfix">
 		<label class="smallTitle">Phone Number</label>
-		<input type="phone" value="">
-		<input type="number" class="codenum">
+		<input type="text" value="">
+		<input type="text" class="codenum">
 		<a href="#" class="codebutton">CODE</a>
 	</div>
 	<div class="inputOption">

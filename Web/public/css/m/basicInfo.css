@@ -44,6 +44,11 @@
 #basicInfo .inputOption select{
 	width: 100%;
 	height: 35px;
+	background-color: #fff;
+	border-radius: 0;
+	padding-left: 10px;
+	appearance:none;
+	-webkit-appearance:none;
 }
 #basicInfo .inputOption select option{
 }
