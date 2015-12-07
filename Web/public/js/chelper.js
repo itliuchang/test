@@ -1,13 +1,13 @@
 (function(exports){
     Date.prototype.Format = function(fmt){
         var o = {
-            "M+": this.getMonth() + 1, //月份 
-            "d+": this.getDate(), //日 
-            "h+": this.getHours(), //小时 
-            "m+": this.getMinutes(), //分 
-            "s+": this.getSeconds(), //秒 
-            "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-            "S": this.getMilliseconds() //毫秒 
+            "M+": this.getMonth() + 1,
+            "d+": this.getDate(),
+            "h+": this.getHours(),
+            "m+": this.getMinutes(),
+            "s+": this.getSeconds(),
+            "q+": Math.floor((this.getMonth() + 3) / 3),
+            "S": this.getMilliseconds()
         };
         if(/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
         for(var k in o)
@@ -153,7 +153,6 @@
             });
         },
         getXDate: function(start, days){
-            //var yesday = new Date(new Date()-24*60*60*1000); //昨天
             start = start.toString().length == 10? start * 1000 : start;
             var s = new Date(start);
             s.setDate(s.getDate() + days);
@@ -171,7 +170,6 @@
             return url;
         },
 
-        //登录判断
         checkIsLogin: function(isReturn){
             if(isReturn){
                 return !isGuest;
@@ -196,17 +194,14 @@
             return /^\d{4}(\-|\/)\d{1,2}\1\d{1,2}$/.test(d);
         },
 
-        //判断字符串是否为true
         isTrue: function(v){
             return v === true || v === 'true';
         },
         
-        //判断是否为对象
         isObject: function(v){
             return typeof v === 'object';
         },
         
-        //判断是否是函数
         isFunction: function(v){
             return typeof v === 'function';
         },
@@ -216,8 +211,6 @@
         },
         
         isArray: function(v){
-            //return v instanceof Array;
-            //return Object.prototype.toString.call(v) == '[object Array]';
             return this.type(v) === 'array';
         },
         
@@ -227,7 +220,6 @@
         
         type: function(v){
             if(v === null) return String(v);
-            //type: Boolean Number String Function Array Date RegExp Object Error, etc
             return this.isObject(v) || this.isFunction(v)? this.toString.call(v).slice(8, -1).toLowerCase() || 'object' : typeof v;
         },
         
@@ -237,15 +229,14 @@
             return true;
         },
 
-        //检查数组中是否存在该元素，i表示从哪个index开始查找。如果存在则返回index、否则返回-1
+        //i: from where to begin, if no then -1
         inArray: function(item, array, i){
             if(this.isArray(array)){
                 try{
                     return [].indexOf.call(array, item, i);
                 }catch(e){
                     var len = array.length;
-                    //i = i? i < 0? Math.max(0, len + i) : i : 0;
-                    i = i? (i < 0? Math.max(0, len + i) : i) : 0; //支持逆向查找-从数组末尾
+                    i = i? (i < 0? Math.max(0, len + i) : i) : 0;
                     for(; i < len; i++){
                         if(i in array && array[i] === item) return i;
                     }
@@ -254,20 +245,17 @@
             return -1;
         },
 
-        //阻止事件冒泡
         stopPropagation: function(e){
             e = e || window.event;
             if(e.stopPropagation){
                 e.stopPropagation();
             }else{
-                e.cancelBubble = true; //IE
+                e.cancelBubble = true; // for IE
             }
         },
 
-        //扩展对象
         extend: function(){
             var target = arguments[0], n = 1, source;
-            //如果只有一个参数则扩展lenote.helper自身
             if(arguments.length === 1){
                 target = this;
                 n = 0;
@@ -279,10 +267,8 @@
             return target;
         },
 
-        //@e是否保留原值仅扩展, @o是否仅替换已有值, @d是否深扩展
         extend2: function(target, source, e, o, d){
             function assign(_this, prop){
-                //if(d && _this.isObject(source[prop]) && (!target[prop] || _this.isObject(target[prop]))){
                 if(d && _this.isObject(source[prop]) && _this.isObject(target[prop])){
                     target[prop] = _this.extend2(target[prop] || {}, source[prop], e, o, d);
                 }else{
@@ -300,7 +286,6 @@
             return target;
         },
 
-        //创建函数实例
         createInstance: function(o){
             /*jslint evil: true */
             var f = new Function();
@@ -311,7 +296,6 @@
             return o;
         },
         
-        //对象继承
         inherits: function(subClass, superClass){
             var sub = subClass.prototype,
                 _super = this.createInstance(superClass.prototype);
@@ -320,7 +304,6 @@
             return (_super.constructor = subClass);
         },
 
-        //深度克隆对象
         clone: function(source, target){
             var temp;
             target = target || {};
@@ -339,7 +322,6 @@
             return target;
         },
 
-        //将json字符串转为json对象
         parseJSON: function(data, callback){
             if(this.isObject(data)) return data;
             var result = {};
@@ -353,20 +335,15 @@
             return result;
         },
         
-        //将json对象转换成字符串
         stringify: function(data){
             return JSON.stringify(data);
         },
 
-        //删除标签
         stripTags: function(content){
-            //content = (content || '').replace(/<[^>]+>/igm, '').replace(/&nbsp;/igm, ' ').replace(/\r?\n/igm, '<br/>');
-            //return content.replace(/<br\/?>|\s/ig, '') === ''? '' : content.replace(/\s/igm, '&nbsp;');
             content = (content || '').replace(/<[^>]+>/igm, '').replace(/\r?\n/igm, '<br/>');
             return content.replace(/<br\/?>|\s/ig, '') === ''? '' : content.trim();
         },
         
-        //删除空白
         stripSpace: function(content){
             return (content || '').replace(/\s+/igm, '');
         },
@@ -427,7 +404,6 @@
             return this.unhtml(content.replace(/&nbsp;/igm, '&amp;nbsp;'), reg).replace(/\s/igm, '&nbsp;');
         },
 
-        //判断元素是否包含指定的class
         hasClass: function(dom, className){
             if(!dom || (this.isObject(dom) && dom.nodeType !== 1)) return false;
             var classList = this.isString(dom)? dom : dom.className,
@@ -472,13 +448,11 @@
             dom.style.visibility = isDisplay? 'visible' : 'hidden';
         },
         
-        //判断是否给定的标签
         isTagNode: function(node, name){
             //return new RegExp('^' + node.tagName + '$','i').test(name);
             return node.nodeType === 1 && new RegExp('^' + node.nodeName + '$', 'i').test(name);
         },
         
-        //获取元素的位置
         getPosition: function(dom){
             var left = dom.offsetLeft,
                 top = dom.offsetTop,
@@ -491,23 +465,19 @@
             return {left: left, top: top};
         },
 
-        //获取元素宽度
         getWidth: function(dom){
             var w = parseFloat(dom.style.width) || dom.width || dom.offsetWidth;
             if(w && w > 0) return w;
             return Math.max(dom.scrollWidth, dom.clientWidth, parseFloat(dom.style.width) || 0);
         },
         
-        //获取元素高度
         getHeight: function(dom){
             var h = parseFloat(dom.style.height) || dom.height || dom.offsetHeight;
             if(h > 0) return h;
             return Math.max(dom.scrollHeight, dom.clientHeight, parseFloat(dom.style.height) || 0);
         },
 
-        //滑动到指定位置
         slideTo: function(target, speed){
-            //var pos = target.offsetTop - 5, current_pos = document.body.scrollTop, distance = pos - current_pos, duration = Math.abs(distance) / speed;
             if(!speed) speed = 100;
             if(target < 5) target = 5;
             var pos = target - 5, current_pos = document.body.scrollTop, distance = pos - current_pos, duration = Math.abs(distance) / speed;
@@ -529,35 +499,7 @@
             }, 1);
         },
 
-        //获取中文的数字
-        getCHNumber: function(v, addUnit){
-            function convert(n){
-                if(addUnit && n === 0) return '零';
-                return n? n.replace(/\d/g, function(m){
-                    return {
-                        0: 'O', 1: '一', 2: '二', 3: '三', 4: '四',
-                        5: '五', 6: '六', 7: '七', 8: '八', 9: '九', 10: '十'
-                    }[m];
-                }) : '';
-            }
-            v = parseInt(v) + '';
-            if(addUnit){
-                var unit = ['', '十', '百', '千', '万', '十万', '百万', '千万', '亿'], len = v.length, result = '';
-                for(var i = 0; i < len; i++){
-                   if(v[i] === 0 && v > 100 && len -1 !== i){
-                        result += convert(v[i]);
-                   }else if(v[i] !== 0){
-                        result += convert(v[i]) + unit[len - i - 1];
-                   }
-                }
-                return result.replace(/^一十(.*?)$/, '十$1');
-            }else{
-                return convert(v);
-            }
-        },
-
         scrollTo: function(sel){
-            //$('body').scrollTo(sel);
             $('html, body').stop(true).animate({scrollTop: $(sel).offset().top}, 1000);
         },
 
@@ -582,12 +524,6 @@
         },
 
         isWeixin: function(){
-          // var ua = navigator.userAgent.toLowerCase();
-          // if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-          //   return true;
-          // }else{
-          //   return false;
-          // }
           return /MicroMessenger/i.test(navigator.userAgent);
         },
 
@@ -601,54 +537,6 @@
                 i, n;
             for(i = 1, n = arg.length; i < n; i++) str = str.replace(/%s/, arg[i]);
             return str;
-        },
-
-        //判断功能键(未包含Mac键盘上的功能键、大写键、win键、打印翻页键、小键盘开关键等)，排除: 退格8、回车13、Delete46
-        isFunctionKey: function(keyCode){
-           switch(keyCode){
-               case 9: //Tab
-               case 16: case 17: case 18: //Shift、Ctrl、Alt
-               case 20: case 27: //大小写切换、esc
-               case 37: case 38: case 39: case 40: //左上右下
-               case 33: case 34: case 35: case 36: case 45: //PageUp、PageDown、End、Home、Insert
-               case 44: case 145: case 19: case 144: //PrintSc、Scroll Lock、Pause Break、NumLock
-               case 91: case 92: //左右win键
-                  return true; break;
-               default:
-                  if(keyCode >= 112 && keyCode <= 123) return true; //F1-F12
-                  return false;
-           }
-        },
-
-        getID: function(data, prefix, type){
-            prefix = prefix || '';
-            type = type || 'marker';
-            var str = '';
-            switch(type){
-                case 'marker': //data => marker
-                    var lnglat = data.getPosition();
-                    str = lnglat.getLng() + ',' + lnglat.getLat();
-                    break;
-                case 'lnglat':
-                    str = data.lng + ',' + data.lat;
-                    break;
-                default: //data = {#1: marker2, #2: marker2}
-                    var _tmp = [];
-                    for(var k in data){
-                        var lnglat = data[k].getPosition();
-                        _tmp.push(lnglat.lng + ',' + lnglat.lat);
-                    }
-                    str = _tmp.join(';');
-            }
-            return prefix + md5(str);
-        },
-
-        getHashcode: function(data){
-            var str = '';
-            for(var i in data){
-                str += data[i].lng + '' + data[i].lat;
-            }
-            return md5(str);
         },
 
         count: function(o){
@@ -687,7 +575,6 @@
 
         dgm: function(datetime){
           datetime = datetime.replace(/-/g, '/');
-          // var date = (datetime)?new Date(datetime):new Date(),
           var date = new Date(datetime) == 'Invalid Date'? new Date : new Date(datetime),
               tday = (new Date).getDate() - date.getDate(),
               from = Math.round(date.getTime() / 1000),
@@ -766,9 +653,7 @@
         // CHelper.prompt('show', null, 'test', 800)
         prompt: function(action, title, content, timeout){
             var _prompt = $('#prompt'), action = action || 'show';
-            //_prompt.popover({title:title, content:content}).popover('show');
             if(action == 'show'){
-                //$(window).height()
                 var _top = document.documentElement.clientHeight + document.body.scrollTop;
                 _prompt.css({'top' : _top}).attr({'data-content': content, 'data-original-title': title}).popover('show');
                 timeout = timeout || 0;
@@ -785,14 +670,12 @@
             var _modal = $('#tipModal');
             action = action || 'show';
             if(action == 'show'){
-                title = title || '保存成功';
+                title = title || 'Success!';
                 icon = icon || 'success';
-                // _modal.attr('data-type', icon).find('.tip-form .hint').text(title);
                 _modal.attr('data-type', icon).find('.tip-form .hint').html(title);
                 timeout = timeout || 0;
                 if(timeout > 0){
                     setTimeout(function(){
-                        //隐藏时执行回调函数callback
                         CHelper.toggleTip('hide', null, null, null, callback);
                     }, timeout);
                 }
@@ -824,16 +707,6 @@
           _modal.modal(action);
         },
 
-        getPriceUnit: function(priceUnit){
-            var unit = '人';
-            switch(priceUnit){
-                case 1: unit = '人';break;
-                case 2: unit = '家庭';break;
-                case 3: unit = '组';break;
-            }
-            return unit;
-        },
-
         caches: {},
         doing: {},
         asynRequest: function(url, data, callback, useCache, notMultiple, key){
@@ -842,12 +715,10 @@
             key = key || url;
             if(this.doing[key] === true && notMultiple) return;
             
-            //调用回调函数中的初始化函数
             if(typeof callback.init == 'function'){
                 callback.init();
             }
 
-            //缓存处理
             if(useCache && this.caches[url]){
                 return this.caches[url];
             }else if(this.caches[url]){
@@ -856,7 +727,6 @@
 
             this.doing[key] = true;
 
-            //通过data参数临时解决jquery ajax参数的问题
             data = data || {};
             var parameter = data.parameter || {};
             $.extend(data,parameter.data || {});
@@ -871,7 +741,7 @@
                   if(typeof callback.before == 'function'){
                       callback.before(xhr);
                   }else{
-                      CHelper.prompt('show', null, '处理中...');
+                      CHelper.prompt('show', null, 'In Progress...');
                   }
                 },
                 success: function(response, status){
@@ -885,21 +755,18 @@
                                     callback.success(response.data || {});
                                 }
                             }else{
-                                CHelper.prompt('show', null, '处理成功');
+                                CHelper.prompt('show', null, 'Success!');
                             }
                         }else{
                             if(typeof callback.failure == 'function'){
                                 callback.failure(response);
                             }else{
                                 if(response.code == 401){
-                                    // CHelper.prompt('show', null, '请先登录');
-                                    CHelper.toggleTip('show', '请先登录', 'warn', 800);
+                                    CHelper.toggleTip('show', 'please login', 'warn', 800);
                                 }else if(response.code == 403){
-                                    // CHelper.prompt('show', null, '请求无权限');
-                                    CHelper.toggleTip('show', '请求无权限', 'warn', 800);
+                                    CHelper.toggleTip('show', 'forbidden', 'warn', 800);
                                 }else{
-                                    // CHelper.prompt('show', null, '状态码错误');
-                                    CHelper.toggleTip('show', '状态码错误', 'warn', 800);
+                                    CHelper.toggleTip('show', 'status error', 'warn', 800);
                                 }
                             }
                         }
@@ -907,7 +774,7 @@
                         if(typeof callback.refuse == 'function'){
                             callback.refuse(response);
                         }else{
-                            CHelper.prompt('show', null, '数据异常');
+                            CHelper.prompt('show', null, 'data error');
                         }
                     }
                 },
@@ -925,7 +792,7 @@
                   if(typeof callback.error == 'function'){
                       callback.error(msg);
                   }else{
-                      CHelper.prompt('show', null, '内部错误');
+                      CHelper.prompt('show', null, 'internal error');
                   }
                 },               
             });
@@ -938,6 +805,5 @@
     template.helper('dataFormat', CHelper.dataFormat);
     template.helper('getXDate', CHelper.getXDate);
     template.helper('getPayURL', CHelper.getPayURL);
-    template.helper('getPriceUnit', CHelper.getPriceUnit);
     template.helper('getQiniuDomain', CHelper.getQiniuDomain);
 })(window);
