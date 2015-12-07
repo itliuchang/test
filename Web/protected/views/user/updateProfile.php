@@ -1,4 +1,4 @@
-<div id="myprofile">
+<div id="updateProfile">
 	<div class="top">
 		<div class="background">
 			<div class="addBackground"></div>

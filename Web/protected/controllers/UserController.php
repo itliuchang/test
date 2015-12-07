@@ -4,7 +4,8 @@ class UserController extends Controller{
 		return array(
 			'login' => 'application.controllers.user.LoginAction',
             'hello' => 'application.controllers.user.HelloAction',
-            'index' => 'application.controllers.user.IndexAction'
+            'updateprofile' => 'application.controllers.user.UpdateProfileAction',
+            'profile' => 'application.controllers.user.ProfileAction',
 		);
 	}
 }

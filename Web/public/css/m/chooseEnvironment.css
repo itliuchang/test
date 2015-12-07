@@ -1,0 +1,57 @@
+#chooseEnvironment{
+	padding-bottom: 120px;
+}
+#chooseEnvironment .pic{
+	width: 100%;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+#chooseEnvironment .pic1{
+	background-image: url(/images/banner/1.jpg);
+}
+#chooseEnvironment .underLine{
+	width: 20px;
+	height: 5px;
+	background-color: #000;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+#chooseEnvironment h2{
+	margin-top: 20px;
+	font-size: 16px;
+	text-align: center;
+}
+#chooseEnvironment p{
+	margin-top: 20px;
+	font-size: 14px;
+	padding: 0 30px;
+	text-align: center;
+	color: #b5b5b5;
+}
+#chooseEnvironment .footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+#chooseEnvironment .footer a{
+	display: inline-block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+}
+#chooseEnvironment .footer .open{
+	background-color: #fca443;
+}
+#chooseEnvironment .footer .private{
+	background-color: #4a4a4a;
+}
+#chooseEnvironment .footer a:link,
+#chooseEnvironment .footer a:hover,
+#chooseEnvironment .footer a:visited{
+	text-decoration: none;
+	color: #fff;
+}
