@@ -41,7 +41,13 @@ class Auth{
 	 * }
 	 */
 	public function addAdmin($data){
-
+		$result = new User;
+		$result->createTime=date('Y-m-d h:i:s',time());
+		foreach($data as $k=> $v){
+			$result->$k=$v;
+		}
+		$result->save();
+ 		return $result;
 	}
 
 	/**
@@ -58,6 +64,33 @@ class Auth{
         $data = User::model()->findAll($criteria);
  		return $result=array($count,$data);
  	
+	}
+
+	/**
+	 * This is method for get admin information
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function getAdminInfo($id){
+		$result = User::model()->findByAttributes(array('id'=>$id));
+ 		return $result;
+	}
+
+	public function updateAdmin($data,$id){
+		$result = User::model()->findByAttributes(array('id'=>$id));
+		$result->updateTime=date('Y-m-d h:i:s',time());
+		foreach($data as $k=> $v){
+			$result->$k=$v;
+		}
+		$result->save();
+ 		return $result;
+	}
+
+	public function deleteAdmin($id){
+		$result = User::model()->findByAttributes(array('id'=>$id));
+ 		$result->status='0';
+ 		$result->save();
+ 		return $result;
 	}
 
 	/**
