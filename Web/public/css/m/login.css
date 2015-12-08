@@ -1,0 +1,94 @@
+#login{
+	background-color: #ececec;
+	height: 100%;
+}
+#login .tabTitle{
+	padding: 20px;
+	background-color: #fff;
+}
+#login .tabTitle .wrapper{
+	border: 1px solid #dfdfdf;
+	border-radius: 5px;
+	margin: 0;
+}
+#login .tabTitle .wrapper .phone{
+	border-right: 1px solid #bebebe;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+#login .tabTitle .wrapper .phone,
+#login .tabTitle .wrapper .Email{
+	display: inline-block;
+	text-align: center;
+	height: 25px;
+	line-height: 25px;
+}
+#login .inputOption{
+	margin-top: 20px;
+	padding: 0 20px;
+}
+#login .inputOption input{
+	padding-left: 10px;
+	height: 35px;
+	width: 100%;
+	border: 1px solid #bebebe;
+	margin-bottom: 10px;
+}
+#login .inputOption .codenum{
+	float: left;
+	margin-top: 10px;
+	width: 70%;
+}
+#login .inputOption .codebutton{
+	float: right;
+	margin-top: 10px;
+	width: 25%;
+	height: 35px;
+	line-height: 35px;
+	background-color: #4a4a4a;
+	text-decoration: none;
+	text-align: center;
+	color: #fff;
+}
+#login .agree{
+	position: absolute;
+	left: 20px;
+	top: 300px;
+	line-height: 18px;
+}
+#login .agree p{
+	display: inline-block;
+	position: relative;
+	top: -5px;
+	left: 5px;
+}
+#login .agree .icon{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #e1e1e1;
+}
+#login .agree .hasAgree{
+	background-image: url(/images/nike.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#login .footer{
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+	background-color: #fca443;
+	text-align: center;
+}
+#login .footer:link,
+#login .footer:hover,
+#login .footer:visited{
+	color: #fff;
+	text-decoration: none;
+}
+
+#login .now{
+	background-color: #6d6d6d;
+}
