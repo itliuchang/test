@@ -1,17 +1,17 @@
-#updateProfile{
+#companyUpdateProfile{
 	background-color: #ececec;
 	padding-bottom: 80px;
 }
-#updateProfile .top{
+#companyUpdateProfile .top{
 	width: 100%;
 }
-#updateProfile .background{
+#companyUpdateProfile .background{
 	position: relative;
 	width: 100%;
 	height: 185px;
-	background-color: #fb9b41;
+	background-color: #3091dd;
 }
-#updateProfile .background .addBackground{
+#companyUpdateProfile .background .addBackground{
 	position: absolute;
 	width: 24px;
 	height: 24px;
@@ -21,12 +21,12 @@
 	background-repeat: no-repeat;
 	background-size: 24px 24px;
 }
-#updateProfile .wrapperPortrait{
+#companyUpdateProfile .wrapperPortrait{
 	position: relative;
 	background-color: #fff;
 	height: 100px;
 }
-#updateProfile .wrapperPortrait .portrait{
+#companyUpdateProfile .wrapperPortrait .portrait{
 	position: absolute;
 	width: 150px;
 	height: 150px;
@@ -34,14 +34,13 @@
 	left: 50%;
 	box-shadow: 0 0px 0px 6px #fff;
 	margin-left: -75px;
-	border-radius: 100%;
 	background-color: #cbcbcb;
-	background-image: url(/images/defaultPortrait.png);
+	background-image: url(/images/company.png);
 	background-repeat: no-repeat;
 	background-size: 80px;
 	background-position: center;
 }
-#updateProfile .inputSection{
+#companyUpdateProfile .inputSection{
 	margin-top: 20px;
 	border-top: 1px solid #e3e3e3;
 	border-bottom: 1px solid #e3e3e3;
@@ -49,8 +48,8 @@
 	padding-bottom: 10px;
 	background-color: #fff;
 }
-#updateProfile .inputSection input[type="text"],
-#updateProfile .inputSection input[type="email"]{
+#companyUpdateProfile .inputSection input[type="text"],
+#companyUpdateProfile .inputSection input[type="email"]{
 	border: none;
 	width: 100%;
 	font-size: 14px;
@@ -58,55 +57,55 @@
 	padding-bottom: 10px;
 	border-bottom: 1px solid #e9e9e9;
 }
-#updateProfile .lastinput{
+#companyUpdateProfile .lastinput{
 	border-bottom: none!important;
 	padding-bottom: 0;
 	margin-bottom: 0!important;
 }
-#updateProfile textarea{
+#companyUpdateProfile textarea{
 	width: 100%;
 	border: none;
 	font-size: 14px;
 	resize:none;
 }
-#updateProfile .birthdayWrapper{
+#companyUpdateProfile .birthdayWrapper{
 	border-bottom: 1px solid #e3e3e3;
 	padding-bottom: 5px;
 }
-#updateProfile .birthday{
+#companyUpdateProfile .birthday{
 	margin-left: 10px;
 	margin-right: 20px;
 }
-#updateProfile .birthday::-webkit-inner-spin-button { visibility: hidden; }
-#updateProfile .link{
+#companyUpdateProfile .birthday::-webkit-inner-spin-button { visibility: hidden; }
+#companyUpdateProfile .link{
 	margin-bottom: 80px;
 }
-#updateProfile .link input{
+#companyUpdateProfile .link input{
 	padding-left: 40px;
 	background-repeat: no-repeat;
 	background-position: left 3px;
 }
-#updateProfile .link input.wechatId{
+#companyUpdateProfile .link input.wechatId{
 	background-image: url(/images/wechat.png);
 	background-size: 18px 15px;
 }
-#updateProfile .link input.facebook{
+#companyUpdateProfile .link input.facebook{
 	background-image: url(/images/facebook.png);
 	background-size: 10px 20px;
 }
-#updateProfile .link input.twitter{
+#companyUpdateProfile .link input.twitter{
 	background-image: url(/images/twitter.png);
 	background-size: 18px 15px;
 }
-#updateProfile .link input.linkIn{
+#companyUpdateProfile .link input.linkIn{
 	background-image: url(/images/linkIn.png);
 	background-size: 17px;
 }
-#updateProfile .link input.instagram{
+#companyUpdateProfile .link input.instagram{
 	background-image: url(/images/instagram.png);
 	background-size: 17px;
 }
-#updateProfile .footer{
+#companyUpdateProfile .footer{
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -117,26 +116,54 @@
 	text-align: center;
 	color: #fff;
 }
-#updateProfile label{
+#companyUpdateProfile label{
 	color: #dad4d3;
 	font-size: 14px;
 }
 
-#updateProfile input{
+#companyUpdateProfile input{
 	border: none;
 	font-size: 14px;
 
 }
-#updateProfile select{
+#companyUpdateProfile select{
 	border: none;
 	background: transparent;
 	appearance:none;
 	-moz-appearance:none;
 	-webkit-appearance:none;
 }
-#updateProfile .sex{
+#companyUpdateProfile .sex{
 	margin-left: 20px;
 	margin-top: 10px;
 }
-#updateProfile .sex option{
+#companyUpdateProfile .sex option{
+}
+
+
+
+
+
+#companyUpdateProfile .servicelist{
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+	background-color: #fff;
+}
+#companyUpdateProfile .servicelist .outer{
+	padding: 0 20px;
+}
+#companyUpdateProfile .servicelist .outer>li{
+	border-bottom: 2px solid #000;
+}
+#companyUpdateProfile .servicelist .outer>li>p{
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+}
+#companyUpdateProfile .servicelist .outer>li .inner>li{
+	height: 30px;
+	line-height: 30px;
+	border-top: 1px solid #000;
 }

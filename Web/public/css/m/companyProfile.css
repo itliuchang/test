@@ -1,10 +1,10 @@
-#profile{
+#companyProfile{
 	background-color: #ececec;
 }
-#profile .top{
+#companyProfile .top{
 	width: 100%;
 }
-#profile .background{
+#companyProfile .background{
 	position: relative;
 	width: 100%;
 	height: 185px;
@@ -13,7 +13,7 @@
 	background-repeat: no-repeat;
 	background-color: #fb9b41;
 }
-#profile .background .update{
+#companyProfile .background .update{
 	position: absolute;
 	width: 24px;
 	height: 24px;
@@ -23,25 +23,25 @@
 	background-repeat: no-repeat;
 	background-size: 24px 24px;
 }
-#profile .wrapperPortrait{
+#companyProfile .wrapperPortrait{
 	position: relative;
 	background-color: #fff;
 	padding-bottom: 10px;
 }
-#profile .wrapperPortrait .messageWrapper{
+#companyProfile .wrapperPortrait .messageWrapper{
 	padding-top: 100px;
 	text-align: center;
 }
-#profile .wrapperPortrait .messageWrapper h3{
+#companyProfile .wrapperPortrait .messageWrapper h3{
 	font-size: 16px;
 }
-#profile .wrapperPortrait .messageWrapper p{
+#companyProfile .wrapperPortrait .messageWrapper p{
 	margin:10px auto;
 	width: 100px;
 	color: #9b9796;
 	font-size: 12px;
 }
-#profile .wrapperPortrait .portrait{
+#companyProfile .wrapperPortrait .portrait{
 	position: absolute;
 	width: 150px;
 	height: 150px;
@@ -49,14 +49,13 @@
 	left: 50%;
 	box-shadow: 0 0px 0px 6px #fff;
 	margin-left: -75px;
-	border-radius: 100%;
 	background-color: #cbcbcb;
-	background-image: url(/images/portrait-default.png);
+	background-image: url(/images/company-default.png);
 	background-repeat: no-repeat;
 	background-size: 150px;
 	background-position: center;
 }
-#profile .wrapperPortrait .message{
+#companyProfile .wrapperPortrait .message{
 	display: block;
 	height: 50px;
 	line-height: 50px;
@@ -67,46 +66,46 @@
 	background-color: #fca442;
 	font-size: 16px;
 }
-#profile .wrapperPortrait .message:link,
-#profile .wrapperPortrait .message:hover,
-#profile .wrapperPortrait .message:visited{
+#companyProfile .wrapperPortrait .message:link,
+#companyProfile .wrapperPortrait .message:hover,
+#companyProfile .wrapperPortrait .message:visited{
 	text-decoration: none;
 	color: #fff;
 }
-#profile .partOption{
+#companyProfile .partOption{
 	padding: 0 20px;
 	background-color: #fff;
 	margin: 10px 0;
 }
-#profile .partOption.aboutMe{
+#companyProfile .partOption.aboutMe{
 	padding-bottom: 20px;
 } 
-#profile .partOption h3{
+#companyProfile .partOption h3{
 	width: 100%;
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
 	font-size: 14px;
 }
-#profile .partOption .underLine{
+#companyProfile .partOption .underLine{
 	height: 2px;
 	width:100%;
 	background-color: #f7f7f7;
 }
-#profile .partOption .desc{
+#companyProfile .partOption .desc{
 	padding: 10px 10px;
 	text-align: center;
 	color: #9b9796;
 }
-#profile .partOption .ulist{
+#companyProfile .partOption .ulist{
 	margin-top: 20px;
 	text-align: center;
 }
-#profile .partOption .ulist ul li{
+#companyProfile .partOption .ulist ul li{
 	width: auto;
 	margin-top: 6px;
 }
-#profile .partOption .ulist ul li span{
+#companyProfile .partOption .ulist ul li span{
 	display: inline-block;
 	background-color: #2f92de;
 	border-radius: 10px;
@@ -115,55 +114,56 @@
 	padding: 0 10px;
 	color: #fff;
 }
-#profile .partOption .urlWrapper li{
+#companyProfile .partOption .urlWrapper li{
 	padding: 5px;
 }
-#profile .partOption .urlWrapper li h4{
+#companyProfile .partOption .urlWrapper li h4{
 	font-size: 12px;
 	margin-bottom: 5px;
 	margin-top: 5px;
 }
-#profile .partOption .urlWrapper li p{
+#companyProfile .partOption .urlWrapper li p{
 	color: #8cc0ec;
 }
-#profile .partOption .companyWrapper{
+#companyProfile .partOption .companyWrapper{
 	position: relative;
 	padding-left: 100px;
 	height: 100px;
 }
-#profile .partOption .companyWrapper img{
+#companyProfile .partOption .companyWrapper img{
 	position: absolute;
 	left: -20px;
 	width: 100px;
 	height: 100px;
 }
-#profile .partOption .companyWrapper h4{
+#companyProfile .partOption .companyWrapper h4{
 	padding-top: 30px;
 	font-size: 14px;
 }
-#profile .partOption .companyWrapper p{
+#companyProfile .partOption .companyWrapper p{
 	font-size: 12px;
 	color: #9b9796;
 }
-#profile .partOption .postWrapper{
+#companyProfile .partOption .postWrapper{
 	position: relative;
 }
-#profile .partOption .postWrapper .header{
+#companyProfile .partOption .postWrapper .header{
 	position: relative;
 	padding-left: 100px;
 	margin-top: 20px;
 }
-#profile .partOption .postWrapper .header p{
+#companyProfile .partOption .postWrapper .header p{
 	color: #9b9796;
 	font-size: 12px;
 }
-#profile .partOption .postWrapper .header img{
+#companyProfile .partOption .postWrapper .header img{
 	position: absolute;
 	left: 0;
 	width: 80px;
 	height: 80px;
 }
-#profile .partOption .postWrapper .content{
+#companyProfile .partOption .postWrapper .content{
 	padding: 20px 0;
 	font-size: 12px;
 }
+
