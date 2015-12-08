@@ -1,0 +1,13 @@
+env
+1. install node.js
+2. sudo npm install -g grunt-cli
+3. cd builder;npm install
+
+ref
+1. http://www.gruntjs.net
+2. https://docs.npmjs.com/files/package.json | http://cnpmjs.org/package/semver
+3. install plugins: npm install <moduleName> --save-dev，如npm install grunt --save-dev
+4. http://www.gruntjs.net/plugins
+
+build
+1. cd builder;grunt
