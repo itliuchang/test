@@ -23,14 +23,20 @@ class Product{
 	 */
 	public function getProductList($start,$size){
 		$start = 0+$start;
- 		$count = Products::model()->count('status!=0');
  		$criteria = new CDbCriteria;
         $criteria->addCondition('status!=0');
         $criteria->limit=$size;
         $criteria->offset=$start;
-        $data = Products::model()->with('hub')->findAll();
- 		return $result=array($count,$data);
- 		
+        $result = Products::model()->findAll($criteria);
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>Products::model()->count('status!=0'),
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
 	}
 
 	/**
@@ -48,7 +54,30 @@ class Product{
 	 * }
 	 */
 	public function getProductInfo($id){
-		
+		$result = Products::model()->findByAttributes(array('id'=>$id));
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
+	}
+
+	public function createProduct($data){
+		$result = new Products;
+		$result->createTime=date('Y-m-d h:i:s',time());
+		foreach($data as $k=> $v){
+			$result->$k=$v;
+		}
+		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
 
 	/**
@@ -60,6 +89,14 @@ class Product{
 	 * }
 	 */
 	public function deleteProduct($id){
-		
+		$result = Products::model()->findByAttributes(array('id'=>$id));
+ 		$result->status='0';
+ 		if($result->save()){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS'
+ 			);
+ 		}
+ 		return $data;
 	}
 }
