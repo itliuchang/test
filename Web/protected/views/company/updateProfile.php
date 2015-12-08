@@ -13,19 +13,18 @@
 		<input type="text" placeholder="website" class="website lastinput">
 	</div>
 	<div class="inputSection">
-		<textarea placeholder="about me (140 characters)" maxlength=140 rows=4 ></textarea>
+		<textarea placeholder="What we do" maxlength=140 rows=4 ></textarea>
 	</div>
 	<div class="inputSection">
-		<div class="birthdayWrapper">
-			<label>birthday</label>
-			<input type="date" class="birthday">
+		<h3 class="addService">Service offerings</h3>
+		<div class="serviceWrapper">
+			<ul class="clearfix">
+				<li><span>Design</span><span class="x">X</span></li>
+			    <li><span>design</span><span class="x">X</span></li>
+			    <li><span>design</span><span class="x">X</span></li>
+			    <li><span>design</span><span class="x">X</span></li>
+			</ul>
 		</div>
-		<label>gender</label>
-		<select class="sex">
-			<option>male</option>
-			<option>female</option>
-			<option>Prefer not to say</option>
-		</select>
 	</div>
 	<div class="inputSection link">
 		<input type="email" placeholder="Facebook url" class="facebook"> 
