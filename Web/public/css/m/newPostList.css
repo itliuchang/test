@@ -42,6 +42,7 @@
     width: 27px;
     height: 27px;
     background-size: 27px 27px;
+    background-repeat: no-repeat;
 }
 .tbar i.home{
 	background-image: url(/images/home.png);
@@ -54,4 +55,6 @@
 }
 .tbar i.more{
 	background-image: url(/images/more.png);
+	background-size: 27px 18px;
+	background-position: center 5px;
 }
