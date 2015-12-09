@@ -31,8 +31,30 @@ class Order{
 	 *         		}
 	 * }
 	 */
-	public function getOrderList(){
-		return 'order';
+	public function getOrderList($start,$size){
+		$start = 0+$start;
+ 		$count = Orders::model()->count('status!=0');
+ 		$criteria = new CDbCriteria();
+        $criteria->addCondition('t.status!=0');
+        $criteria->limit=$size;
+        $criteria->offset=$start;
+        $result = Orders::model()->with('product')->with('user')->findAll($criteria);
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>$count,
+ 				'data'=>$result
+ 			);
+ 		} else {
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>0,
+ 				'data'=>''
+ 			);
+ 		}
+ 		return $data;
 	}
 
 	/**
@@ -50,18 +72,27 @@ class Order{
 	 * }
 	 */
 	public function getOrderInfo($id){
-		
+		$result = Orders::model()->with('product')->with('user')->findByAttributes(array('id'=>$id));
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
 	}
 
-	/**
-	 * This is method for delete order from list
-	 * @param  string $id orderID
-	 * @return array[] {
-	 *         		'code':200,
-	 *         		'message':'SUCCESS'
-	 * }
-	 */
 	public function deleteOrder($id){
-		
+		$result = Orders::model()->findByAttributes(array('id'=>$id));
+ 		$result->status='0';
+ 		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
+
 }
