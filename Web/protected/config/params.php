@@ -1,5 +1,4 @@
 <?php
-
 return array(
     'adminEmail' => 'admin@naked.com',
     'partner' => array(
@@ -22,6 +21,15 @@ return array(
             'payment' => array( //微信商户配置见WxPay.Config.php
                 'notify' => '/payment/wxpay/notify',
             ),
+        ),
+        'emchat' => array(
+            'appkey' => 'naked#hubapp',
+            'org' => array('name' => 'naked'),
+            'app' => array(
+                'name' => 'hubapp',
+                'client_id' => 'YXA6BcP2sJ2IEeWr4cFwgvdI7Q',
+                'client_secret' => 'YXA6Ibw6ZXt7J_7UeEc9rIm-kXXn96o'
+            )
         )
     )
 );
