@@ -8,4 +8,7 @@ $(function(){
 		$(this).next('.inner').toggleClass('hide');
 		myscroll.refresh();
 	});
+	$('.x').hammer().on('tap',function(){
+		$(this).parent('li').remove();
+	});
 });

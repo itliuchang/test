@@ -1,0 +1,74 @@
+#more{
+	background-color: #eee;
+	padding-bottom: 55px;
+}
+#more a{
+	display: inline-block;
+	color:#000;
+}
+#more a:hover,
+#more a:link,
+#more a:visited{
+	color: #000;
+	text-decoration: none;
+}
+#more .book{
+	background-color: #fff;
+	margin: 0;
+	margin-top: 20px;
+}
+#more .room,
+#more .workspace{
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 5px;
+	background-position: center 20px;
+	background-repeat: no-repeat;
+
+}
+#more .room{
+	border-right: 2px solid #eee;
+	background-size: 52px 20px;
+	background-image: url(/images/room.png);
+}
+#more .workspace{
+	border-left: 2px solid #eee;
+	background-size: 35px 20px;
+	background-image: url(/images/workspace.png);
+}
+#more .option{
+	margin: 20px 0;
+	background-color: #fff;
+}
+#more .option li{
+	padding:10px 0;
+	padding-left: 40px;
+	border-bottom: 1px solid #f6f6f6;
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+}
+#more .option li.reservations{
+	background-image: url(/images/workspace.png);
+	background-size: 20px 12px;
+}
+#more .option li.myprofile{
+	background-image: url(/images/myprofile.png);
+	background-size: 20px 15px;
+}
+#more .option li.companyProfile{
+	background-image: url(/images/companyProfile.png);
+}
+#more .option li.account{
+	background-image: url(/images/account.png);
+}
+#more .option li.password{
+	background-image: url(/images/changePassword.png);
+	background-size: 18px 20px;
+}
+#more .option li.about{
+	background-image: url(/images/about.png);
+}
+#more .option li.logout{
+	background-image: url(/images/logout.png);
+}
