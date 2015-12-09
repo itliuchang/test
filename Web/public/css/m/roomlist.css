@@ -1,0 +1,145 @@
+#roomlist .location{
+	width: 100%;
+	height: 35px;
+	background-color: #fff;
+	border-radius: 0;
+	padding-left: 30px;
+	appearance:none;
+	-webkit-appearance:none;
+	background-image: url(/images/location.png);
+	background-repeat: no-repeat;
+	background-size: 12px 16px;
+	background-position: 8px center;
+	border: 0;
+	border-bottom: 1px solid #f6f6f6;
+}
+#roomlist>h3{
+	font-size: 14px;
+	padding:10px 0;
+	padding-left: 20px;
+}
+#roomlist input{
+	width: 100%;
+	height: 35px;
+	border: none;
+	padding-left: 30px;
+	background-image: url(/images/date.png);
+	background-repeat: no-repeat;
+	background-size: 12px 10px;
+	background-position: 8px center;
+	-webkit-appearance:none;
+}
+#roomlist .option{
+	width: 100%;
+	background-color: #fff;
+}
+
+#roomlist .option .imgWrapper{
+	position: relative;
+	overflow: hidden;
+	height: 150px;
+	width: 100%;
+}
+#roomlist .option .imgWrapper img{
+	width: 100%;
+}
+#roomlist .option .imgWrapper .detail{
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	color: #fff;
+}
+#roomlist .option .imgWrapper .detail h3{
+	font-size: 16px;
+	font-weight: bolder;
+}
+#roomlist .option .imgWrapper .detail p{
+	font-size: 12px;
+	margin-top: 5px;
+}
+#roomlist .option .imgWrapper .detail p .floor{
+	margin-right: 3px;
+}
+#roomlist .option .imgWrapper .detail p .peoples{
+	margin-left: 5px;
+	padding-left: 30px;
+	background-image: url(/images/people.png);
+	background-repeat: no-repeat;
+	background-size: 15px 10px;
+	background-position: 10px center;
+	border-left: 1px solid #968e8c;
+}
+#roomlist .option .line{
+	width: 100%;
+	background-color: #fff;
+	height: 100px;
+	border-bottom: 1px solid #ececec;
+}
+#roomlist .option .line .part{
+	width: 14.28%;
+	float: left;
+	height: 100px;
+}
+#roomlist .option .line .part p{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: bottom;
+	padding-left: 2px;
+}
+#roomlist .option .line .part .piece{
+	float: left;
+	width: 50%;
+	height: 50px;
+}
+#roomlist .option .line.second{
+	margin-top: 10px;
+}
+#roomlist .lborder{
+	border-left: 1px solid #ececec;
+}
+#roomlist .selected{
+	background-color: #e7e7e7;
+}
+#roomlist .option .footer{
+	text-align: center;
+	background-color: #eee;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+#roomlist .option .footer div{
+	padding: 0;
+}
+#roomlist .option .footer .mybook{
+	color: #f3a64a;
+	text-align: right;
+}
+
+#roomlist .option .footer .unavailable{
+	color: #aca4a8;  
+	text-align: left;    
+}
+#roomlist .option .footer .mybook span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: #f3a64a;
+	border: 1px solid #e7e7e7;
+	margin-right: 4px;
+}
+#roomlist .option .footer .available span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
+	border: 1px solid #e7e7e7;
+	margin-right: 4px;
+}
+#roomlist .option .footer .unavailable span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: #aca4a8;
+	border: 1px solid #e7e7e7;
+	margin-right: 4px;
+}
