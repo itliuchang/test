@@ -42,12 +42,17 @@ class Auth{
 	 */
 	public function addAdmin($data){
 		$result = new User;
-		$result->createTime=date('Y-m-d h:i:s',time());
+		$result->createTime=date('Y-m-d H:i:s',time());
 		foreach($data as $k=> $v){
 			$result->$k=$v;
 		}
-		$result->save();
- 		return $result;
+		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
 
 	/**
@@ -61,8 +66,16 @@ class Auth{
         $criteria->addCondition('status!=0');
         $criteria->limit=$size;
         $criteria->offset=$start;
-        $data = User::model()->findAll($criteria);
- 		return $result=array($count,$data);
+        $result = User::model()->findAll($criteria);
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>$count,
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
  	
 	}
 
@@ -73,24 +86,41 @@ class Auth{
 	 */
 	public function getAdminInfo($id){
 		$result = User::model()->findByAttributes(array('id'=>$id));
- 		return $result;
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
 	}
 
 	public function updateAdmin($data,$id){
 		$result = User::model()->findByAttributes(array('id'=>$id));
-		$result->updateTime=date('Y-m-d h:i:s',time());
+		$result->updateTime=date('Y-m-d H:i:s',time());
 		foreach($data as $k=> $v){
 			$result->$k=$v;
 		}
-		$result->save();
- 		return $result;
+		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
 
 	public function deleteAdmin($id){
 		$result = User::model()->findByAttributes(array('id'=>$id));
  		$result->status='0';
- 		$result->save();
- 		return $result;
+ 		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
 
 	/**
@@ -108,8 +138,23 @@ class Auth{
 	 *         		}
 	 * } 
 	 */
-	public function getUserList(){
-
+	public function getUserList($start,$size){
+		$start = 0+$start;
+ 		$count = Member::model()->count('status!=0');
+ 		$criteria = new CDbCriteria;
+        $criteria->addCondition('status!=0');
+        $criteria->limit=$size;
+        $criteria->offset=$start;
+        $result = Member::model()->findAll($criteria);
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>$count,
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
 	}
 
 	/**
@@ -121,7 +166,15 @@ class Auth{
 	 * 				}
 	 */
 	public function deleteUser($id){
-		
+		$result = Member::model()->findByAttributes(array('id'=>$id));
+ 		$result->status='0';
+ 		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
 
 	/**
@@ -138,7 +191,15 @@ class Auth{
 	 * }
 	 */
 	public function getUserInfo($id){
-		
+		$result = Member::model()->with('companyid')->with('usertypeid')->findByAttributes(array('id'=>$id));
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
 	}
 
 	/**
@@ -150,7 +211,18 @@ class Auth{
 	 * }
 	 */
 	public function editUserInfo($id){
-		
+		$result = Member::model()->findByAttributes(array('id'=>$id));
+		$result->updateTime=date('Y-m-d H:i:s',time());
+		foreach($data as $k=> $v){
+			$result->$k=$v;
+		}
+		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
 
 }
