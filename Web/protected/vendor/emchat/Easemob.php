@@ -1,13 +1,16 @@
 <?php
 /**
  * 环信-服务器端REST API
+ * http://docs.easemob.com
+ * REST API接口统一限流为30次/秒，超出则返回503。所以聊天发送消息需要用webIM端
  */
-class Easemob {
+class Easemob{
 	private $client_id;
 	private $client_secret;
 	private $org_name;
 	private $app_name;
 	private $url;
+	private static $_instance;
 	
 	/**
 	 * 初始化参数
@@ -18,7 +21,7 @@ class Easemob {
 	 * @param $options['org_name']    	
 	 * @param $options['app_name']   		
 	 */
-	public function __construct($options) {
+	private function __construct($options){
 		$emchat = Yii::app()->params['partner']['emchat'];
 		$this->client_id = isset($options['client_id'])? $options['client_id'] : $emchat['app']['client_id'];
 		$this->client_secret = isset($options['client_secret'])? $options['client_secret'] : $emchat['app']['client_secret'];
@@ -26,16 +29,34 @@ class Easemob {
 		$this->app_name = isset($options['app_name'])? $options['app_name'] : $emchat['app']['name'];
 		$this->url = 'https://a1.easemob.com/' . $this->org_name . '/' . $this->app_name . '/';
 	}
+
+	public static function getInstance($options = array()){
+		if(!(self::$_instance instanceof self)){
+			self::$_instance = new self($options);
+		}
+		return self::$_instance;
+	}
+
+    //http://docs.easemob.com/doku.php?id=start:450errorcode:10restapierrorcode
+	private function unpackResult($data){
+		$res = json_decode($data['result'], true);
+		if(isset($res['error'])){
+			Yii::log($data['code'] . ': ' $data['result'], CLogger::LEVEL_ERROR, 'easemob.request');
+		}
+		return $res;
+	}
+
 	/**
 	 * 开放注册模式
-	 *
-	 * @param $options['username'] 用户名        	
-	 * @param $options['password'] 密码        	
+	 * http://docs.easemob.com/doku.php?id=start:100serverintegration:20users
+	 * @param $options['username'] 用户名/环信ID
+	 * @param $options['password'] 密码
+	 * @param #options['nickname'] 昵称(可选)
 	 */
 	public function openRegister($options) {
 		$url = $this->url . "users";
 		$result = $this->postCurl ( $url, $options, $head = 0 );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	
 	/**
@@ -43,6 +64,7 @@ class Easemob {
 	 *
 	 * @param $options['username'] 用户名        	
 	 * @param $options['password'] 密码
+	 * @param #options['nickname'] 昵称(可选)
 	 *        	批量注册传二维数组
 	 */
 	public function accreditRegister($options) {
@@ -50,7 +72,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, $options, $header );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	
 	/**
@@ -58,19 +80,36 @@ class Easemob {
 	 *
 	 * @param $username 用户名        	
 	 */
-	public function userDetails($username) {
+	public function getUser($username) {
 		$url = $this->url . "users/" . $username;
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = 'GET' );
-		return $result;
+		return $this->unpackResult($result);
+	}
+
+	/**
+	 * 获取批量用户
+	 * @param $cursor 游标
+	 * @param $limit 返回的大小
+	 */
+	public function getUsers($cursor = null, $limit = 20){
+		if($cursor === ''){
+			return array();
+		}else{
+			$url = $this->url . 'users?';
+			$header[] = 'Authorization: Bearer ' . $this->getToken();
+			$options = array('limit' => $limit);
+			if(!empty($cursor)) $options['cursor'] = $cursor;
+			$result = $this->postCurl($url . http_build_query($options), '', $header, 'GET');
+			return $this->unpackResult($result);
+		}
 	}
 	
 	/**
 	 * 重置用户密码
 	 *
-	 * @param $options['username'] 用户名        	
-	 * @param $options['password'] 密码        	
+	 * @param $options['username'] 用户名
 	 * @param $options['newpassword'] 新密码        	
 	 */
 	public function editPassword($options) {
@@ -78,7 +117,19 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, $options, $header, $type = 'PUT');
-		return $result;
+		return $this->unpackResult($result);
+	}
+
+	/**
+	 * 修改用户昵称
+	 * @param $options['username'] 用户名
+	 * @param $options['nickname'] 昵称
+	 */
+	public function editNickname($options){
+		$url = $this->url . 'users/' . $options ['username'];
+		$header[] = 'Authorization: Bearer ' . $this->getToken();
+		$result = $this->postCurl($url, $options, $header, 'PUT');
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 删除用户
@@ -90,6 +141,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = 'DELETE' );
+		return $this->unpackResult($result);
 	}
 	
 	/**
@@ -108,90 +160,127 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = 'DELETE' );
+		return $this->unpackResult($result);
 	}
 	
 	/**
 	 * 给一个用户添加一个好友
 	 *
-	 * @param
-	 *        	$owner_username
-	 * @param
-	 *        	$friend_username
+	 * @param $owner_username   是要添加好友的用户名
+	 * @param $friend_username  是被添加的用户名
 	 */
 	public function addFriend($owner_username, $friend_username) {
 		$url = $this->url . "users/" . $owner_username . "/contacts/users/" . $friend_username;
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header );
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 删除好友
-	 *
-	 * @param
-	 *        	$owner_username
-	 * @param
-	 *        	$friend_username
+	 * @param $owner_username   是要添加好友的用户名
+	 * @param $friend_username  是被添加的用户名
 	 */
 	public function deleteFriend($owner_username, $friend_username) {
 		$url = $this->url . "users/" . $owner_username . "/contacts/users/" . $friend_username;
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "DELETE" );
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 查看用户的好友
 	 *
-	 * @param
-	 *        	$owner_username
+	 * @param $owner_username
 	 */
 	public function showFriend($owner_username) {
 		$url = $this->url . "users/" . $owner_username . "/contacts/users/";
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "GET" );
+		return $this->unpackResult($result);
 	}
+	/**
+	 * 查看用户的黑名单
+	 */
+	public function getBlankList($owner_username){
+		$url = $this->url . 'users/' . $owner_username . '/blocks/users';
+		$header[] = 'Authorization: Bearer ' . $this->getToken();
+		$result = $this->postCurl($url, '', $header, 'GET');
+		return $this->unpackResult($result);
+	}
+	/**
+	 * 往用户的黑名单中加人
+	 * $owner_username 要修改黑名单的用户名
+	 * $usernames 需要加入到黑名单中的用户名，数组Request Body ： {“usernames”:[“5cxhactgdj”, “mh2kbjyop1”]}
+	 */
+	public function addToBlankList($owner_username, $usernames){
+		$url = $this->url . 'users/' . $owner_username . '/blocks/users';
+		$header[] = 'Authorization: Bearer ' . $this->getToken();
+		$result = $this->postCurl($url, array('usernames' => $usernames), $header, 'POST');
+		return $this->unpackResult($result);
+	}
+	/**
+	 * 从用户的黑名单中减人
+	 */
+	public function plusFromBlankList($owner_username, $username){
+		$url = $this->url . 'users/' . $owner_username . '/blocks/users/' . $username;
+		$header[] = 'Authorization: Bearer ' . $this->getToken();
+		$result = $this->postCurl($url, '', $header, 'DELETE');
+		return $this->unpackResult($result);
+	}
+
 	// +----------------------------------------------------------------------
 	// | 聊天相关的方法
 	// +----------------------------------------------------------------------
 	/**
 	 * 查看用户是否在线
-	 *
-	 * @param
-	 *        	$username
+	 * @param $username
 	 */
 	public function isOnline($username) {
 		$url = $this->url . "users/" . $username . "/status";
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "GET" );
-		return $result;
+		return $this->unpackResult($result);
+	}
+	/**
+	 * 获取用户的离线消息数
+	 */
+	public function offlineMsgCount($username){
+		$url = $this->url . 'users/' . $username . '/offline_msg_count';
+		$header[] = 'Authorization: Bearer ' . $this->getToken();
+		$result = $this->postCurl($url, '', $header, 'GET');
+		return $this->unpackResult($result);
+	}
+	/**
+	 * 通过离线消息的id查看用户的该条离线消息状态
+	 */
+	public function getOfflineMsgStatus($username, $msgid){
+		$url = $this->url . 'users/' . $username . '/offline_msg_status/' . $msgid;
+		$header[] = 'Authorization: Bearer ' . $this->getToken();
+		$result = $this->postCurl($url, '', $header, 'GET');
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 发送消息
 	 *
-	 * @param string $from_user
-	 *        	发送方用户名
-	 * @param array $username
-	 *        	array('1','2')
-	 * @param string $target_type
-	 *        	默认为：users 描述：给一个或者多个用户(users)或者群组发送消息(chatgroups)
-	 * @param string $content        	
-	 * @param array $ext
-	 *        	自定义参数
+	 * @param string $from_user 发送方用户名, 无此字段Server会默认设置为"from":"admin",有from字段但值为空串("")时请求失败
+	 * @param array $username array('1','2') 用数组,数组长度建议不大于20, 即使只有一个用户,给用户发送时数组元素是用户名,给群组发送时数组元素是groupid
+	 * @param string $target_type 默认为：users 描述：给一个或者多个用户(users)或者群组发送消息(chatgroups)
+	 * @param string $content  内容    	
+	 * @param array $ext 扩展属性, 由app自己定义.可以没有这个字段，但是如果有，值不能是“ext:null“这种形式，否则出错
 	 */
-	function yy_hxSend($from_user = "admin", $username, $content, $target_type = "users", $ext) {
+	function sendTxtMsg($from_user = "admin", $username, $content, $target_type = "users", $ext) {
 		$option ['target_type'] = $target_type;
 		$option ['target'] = $username;
-		$params ['type'] = "txt";
-		$params ['msg'] = $content;
-		$option ['msg'] = $params;
+		$option ['msg'] = array('type' => 'txt', 'msg' => $content);
 		$option ['from'] = $from_user;
-		$option ['ext'] = $ext;
+		if(!empty($ext)) $option ['ext'] = $ext;
 		$url = $this->url . "messages";
-		$access_token = $this->getToken ();
-		$header [] = 'Authorization: Bearer ' . $access_token;
+		$header [] = 'Authorization: Bearer ' . $this->getToken();
 		$result = $this->postCurl ( $url, $option, $header );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 获取app中所有的群组
@@ -201,7 +290,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "GET" );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 创建群组
@@ -223,7 +312,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, $option, $header );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 获取群组详情
@@ -236,7 +325,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "GET" );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 删除群组
@@ -249,7 +338,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "DELETE" );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 获取群组成员
@@ -262,7 +351,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "GET" );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 群组添加成员
@@ -277,7 +366,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "POST" );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 群组删除成员
@@ -292,7 +381,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "DELETE" );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 聊天消息记录
@@ -312,7 +401,7 @@ class Easemob {
 		$access_token = $this->getToken ();
 		$header [] = 'Authorization: Bearer ' . $access_token;
 		$result = $this->postCurl ( $url, '', $header, $type = "GET " );
-		return $result;
+		return $this->unpackResult($result);
 	}
 	/**
 	 * 获取Token
@@ -360,7 +449,11 @@ class Easemob {
 		//$res = object_array ( json_decode ( $result ) );
 		//$res ['status'] = curl_getinfo ( $curl, CURLINFO_HTTP_CODE );
 		//pre ( $res );
-		curl_close ( $curl ); // 关闭CURL会话
-		return $result;
+		$data = array(
+			'code' => curl_getinfo($curl, CURLINFO_HTTP_CODE),
+			'result' => $result
+		);
+		curl_close($curl); // 关闭CURL会话
+		return $data;
 	}
 }
