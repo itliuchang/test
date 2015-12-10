@@ -1,0 +1,94 @@
+#myreservation{
+	background-color: #e0e0e0;
+}
+#myreservation .tabTitle{
+	padding: 20px;
+	background-color: #fff;
+}
+#myreservation .tabTitle .wrapper{
+	border: 1px solid #dfdfdf;
+	border-radius: 5px;
+	margin: 0;
+}
+#myreservation .tabTitle .wrapper .p{
+	border-right: 1px solid #bebebe;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+#myreservation .tabTitle .wrapper .p,
+#myreservation .tabTitle .wrapper .u{
+	display: inline-block;
+	text-align: center;
+	line-height: 25px;
+}
+#myreservation .option{
+	margin: 20px 0;
+	background-color: #fff;
+}
+#myreservation .option .title{
+	background-color: #ededed;
+	padding: 10px;
+}
+#myreservation .option .title span{
+	margin-right: 10px;
+}
+#myreservation .option .content{
+	width: 100%;
+	position: relative;
+}
+#myreservation .option .content .left{
+	position: absolute;
+	left: 10px;
+	width: 70px;
+	padding-top: 10px;
+	top: 5px;
+}
+#myreservation .option .content .left .date{
+	width: 100px;
+	margin-top: 5px;
+}
+#myreservation .option .content .left h3{
+	font-size: 12px;
+}
+#myreservation .option .content .left .start{
+	background-image: url(/images/time-background.png);
+	background-repeat: no-repeat;
+	height: 52px;
+	background-size: 60px 52px;
+	margin-top: 5px;
+	color: #fff;
+	font-size: 25px;
+	background-position: center;
+	line-height: 52px;
+	text-align: center;
+	margin-left: -10px;
+	font-weight: normal;
+}
+#myreservation .option .content .mid{
+	padding-left: 90px;
+	padding-top: 30px;
+	padding-bottom: 45px;
+}
+#myreservation .option .content .mid p{
+	font-size: 12px;
+}
+#myreservation .option .content .mid h3{
+	font-size: 14px;
+	font-weight: normal;
+}
+#myreservation .option .right{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	width: 90px;
+	height: 30px;
+	border-radius: 5px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #3e96db;
+	color: #fff;
+}
+#myreservation .selected{
+	background-color: #6d6d6d;
+	color: #fff;
+}

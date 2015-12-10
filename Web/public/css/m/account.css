@@ -1,0 +1,67 @@
+#account{
+	background-color: #e0e0e0;
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+#account .option{
+	margin-bottom: 20px;
+	background-color: #fff;
+}
+#account .option>h3{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 20px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	background-color: #ededed;
+}
+#account .content{
+	padding: 20px;
+	position: relative;
+}
+#account .content .left h4{
+	font-size: 14px;
+	font-weight: normal;
+}
+#account .content .left p{
+	font-size: 12px;
+	margin-top: 1px;
+}
+#account .content .right{
+	position: absolute;
+	right: 20px;
+	top: 30px;
+	text-align: center;
+	background-image: url(/images/leftdaybac.png);
+	background-repeat: no-repeat;
+	background-size: 56px 71px;
+	width: 56px;
+	height: 71px;
+	padding-top: 10px;
+}
+#account .content .right h3{
+	font-size: 16px;
+	font-weight: normal;
+}
+#account .content .right p{
+	font-size: 12px;
+}
+#account .option.nouse .detailtime{
+	visibility:hidden;
+}
+#account .footer{
+	width: 100%;
+	color: #fff;
+	position: fixed;
+	height: 50px;
+	line-height: 50px;
+	background-color: #fca443;
+	bottom: 0;
+	text-align: center;
+}
+#account .footer:hover,
+#account .footer:link,
+#account .footer:visited{
+	text-decoration: none;
+	color: #fff;
+}
