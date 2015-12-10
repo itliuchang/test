@@ -10,7 +10,6 @@ class Easemob{
 	private $org_name;
 	private $app_name;
 	private $url;
-	private static $_instance;
 	
 	/**
 	 * 初始化参数
@@ -21,20 +20,12 @@ class Easemob{
 	 * @param $options['org_name']    	
 	 * @param $options['app_name']   		
 	 */
-	private function __construct($options){
-		$emchat = Yii::app()->params['partner']['emchat'];
-		$this->client_id = isset($options['client_id'])? $options['client_id'] : $emchat['app']['client_id'];
-		$this->client_secret = isset($options['client_secret'])? $options['client_secret'] : $emchat['app']['client_secret'];
-		$this->org_name = isset($options['org_name'])? $options['org_name'] : $emchat['org']['name'];
-		$this->app_name = isset($options['app_name'])? $options['app_name'] : $emchat['app']['name'];
+	protected function __construct($options){
+		$this->client_id = isset($options['client_id'])? $options['client_id'] : '';
+		$this->client_secret = isset($options['client_secret'])? $options['client_secret'] : '';
+		$this->org_name = isset($options['org_name'])? $options['org_name'] : '';
+		$this->app_name = isset($options['app_name'])? $options['app_name'] : '';
 		$this->url = 'https://a1.easemob.com/' . $this->org_name . '/' . $this->app_name . '/';
-	}
-
-	public static function getInstance($options = array()){
-		if(!(self::$_instance instanceof self)){
-			self::$_instance = new self($options);
-		}
-		return self::$_instance;
 	}
 
     //http://docs.easemob.com/doku.php?id=start:450errorcode:10restapierrorcode
