@@ -35,7 +35,7 @@
 	background-repeat: no-repeat;
 	background-size: 12px 12px;
 	background-position: 8px center;
-	padding-left: 90px;
+	padding-left: 80px;
 	float: left;
 	height: 40px;
 	width: 50%;
@@ -49,7 +49,7 @@
 }
 #roomshow .time label{
 	position: absolute;
-	top: 12px;
+	top: 10px;
 	left: 30px;
 }
 #roomshow .hour{
@@ -63,13 +63,14 @@
 }
 #roomshow .hour label{
 	position: absolute;
-	top: 12px;
+	top: 10px;
 	left: 5px;
 }
 #roomshow .hour select{
 	width: 100%;
 	height: 20px;
 	margin-top: 10px;
+	border: none;
 	-webkit-appearance:none;
 }
 #roomshow .option{

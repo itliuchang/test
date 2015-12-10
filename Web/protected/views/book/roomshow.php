@@ -1,5 +1,4 @@
 <div id="roomshow">
-	<h3>NEAREST AVAILABLE:</h3>
 	<div class="option">
 		<div class="imgWrapper">
 			<img src="/images/banner/1.jpg" alt="">
@@ -8,15 +7,15 @@
 				<p><span class="floor">4</span>FL<span class="peoples">6</span></p>
 			</div>
 		</div>
-		<input type="date" class="date">
+		<input type="date" class="date" value="2015-12-20">
 		<div class="time">
 			<label>Starts</label>
-			<input type="time">
+			<input type="time" value="9:00">
 		</div>
 		<div class="hour">
 			<label>Times</label>
 			<select>
-				<option>1</option>
+				<option>1 hr</option>
 			</select>
 		</div>
 		<div class="line clearfix">
