@@ -10,7 +10,7 @@
 		<input type="date" class="date" value="2015-12-20">
 		<div class="time">
 			<label>Starts</label>
-			<input type="time" value="9:00">
+			<input type="time" value="12:00">
 		</div>
 		<div class="hour">
 			<label>Times</label>
