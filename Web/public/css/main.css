@@ -229,6 +229,95 @@ a:hover,a:active {
 .quickBarbg.in{
     opacity: .5;
 }
+/*底部tab*/
+#footer.tbar{
+    position: fixed;
+    bottom: 0;
+    height: 55px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.86);
+    z-index: 1000;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+
+#footer.tbar a .dot:after{
+    position: absolute;
+    top: 4px;
+    right: 50%;
+    margin-right: -16px;
+    display: inline-block;
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: red;
+}
+
+#footer.tbar a{
+    text-decoration: none;
+    color: #454a4a;
+}
+
+#footer.tbar a:hover{
+    text-decoration: none;
+}
+
+#footer.tbar h3{
+    opacity: 0.6;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+#footer.tbar .now h3{
+    color: #fff;
+    opacity: 1;
+}
+
+#footer.tbar i{
+    margin-top: 5px;
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background-size: 27px 27px;
+    background-repeat: no-repeat;
+}
+
+#footer.tbar i.home{
+    background-image: url(/images/home.png);
+}
+
+#footer.tbar i.community{
+    background-image: url(/images/community.png);
+}
+
+#footer.tbar i.message{
+    background-image: url(/images/message.png);
+}
+
+#footer.tbar i.more{
+    background-image: url(/images/more.png);
+    background-size: 27px 18px;
+    background-position: center 5px;
+}
+#footer.tbar .now i.home{
+    background-image: url(/images/now-home.png);
+}
+
+#footer.tbar .now i.community{
+    background-image: url(/images/now-community.png);
+}
+
+#footer.tbar .now i.message{
+    background-image: url(/images/now-message.png);
+}
+
+#footer.tbar .now i.more{
+    background-image: url(/images/now-more.png);
+    background-size: 27px 18px;
+    background-position: center 5px;
+}
 /*Layout*/
 /*#container{
     overflow: hidden;
