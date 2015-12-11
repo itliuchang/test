@@ -318,6 +318,38 @@ a:hover,a:active {
     background-size: 27px 18px;
     background-position: center 5px;
 }
+/*community顶部bar*/
+#head.community{
+    padding: 10px;
+    border-bottom: 1px solid #e3e3e3;
+    height: 55px;
+    background-color: #fff;
+}
+#head.community a{
+    height: 30px;
+    line-height: 30px;
+    color: #f3a64a;
+    border: 1px solid #f3a64a;
+    text-align: center;
+}
+#head.community a:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#head.community a:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#head.community a.nolborder{
+    border-left: none;
+}
+#head.community a.norborder{
+    border-right: none;
+}
+#head.community a.now{
+    background-color: #f3a64a;
+    color: #fff;
+}
 /*Layout*/
 /*#container{
     overflow: hidden;
