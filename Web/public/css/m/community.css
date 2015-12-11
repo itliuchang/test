@@ -1,0 +1,117 @@
+#community{
+	padding-top: 60px;
+}
+#community .serviceslist{
+	padding-bottom: 60px;
+}
+#community .serviceslist .option{
+	position: relative;
+	background-color: #fff;
+	height: 60px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+#community .serviceslist .option img{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+}
+#community .serviceslist .option .content{
+	padding-left: 65px;
+	padding-top: 15px;
+}
+#community .serviceslist .option .content h3{
+	font-size: 14px;
+	font-weight: normal;
+}
+#community .serviceslist .option .content p{
+	font-size: 12px;
+}
+
+#community .companylist{
+	padding-bottom: 60px;
+}
+#community .companylist .option{
+	position: relative;
+	background-color: #fff;
+	height: 60px;
+	width: 100%;
+	padding-left: 65px;
+}
+#community .companylist .option img{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+}
+#community .companylist .option .content{
+	padding-top: 15px;
+	height: 60px;
+	border-bottom: 1px solid #ededed;
+}
+#community .companylist .option .content h3{
+	font-size: 14px;
+	font-weight: normal;
+}
+#community .companylist .option .content p{
+	font-size: 12px;
+}
+body.whitecolor{
+	background-color: #fff;
+}
+
+
+#community .memberlist{
+	padding-bottom: 60px;
+}
+#community .memberlist .option{
+	position: relative;
+	width: 100%;
+	height: 100px;
+	padding-left: 100px;
+	padding-top: 35px;
+}
+#community .memberlist .option a.link{
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: 100px;
+	top: 0;
+	z-index: 100;
+}
+#community .memberlist .option h3{
+	font-size: 14px;
+	font-weight: normal;
+	padding-right: 30px;
+}
+#community .memberlist .option .content{
+	border-bottom: 1px solid #e8e8e8;
+	height: 65px;
+}
+#community .memberlist .option .content p{
+	margin-top: 5px;
+}
+#community .memberlist .option img{
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+	position: absolute;
+	left: 10px;
+	top: 20px;
+}
+#community .memberlist .option .time{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+
+#community .memberlist .pb60{
+	padding-bottom: 60px;
+}
+#community.nopt{
+	padding-top: 0;
+}
