@@ -1,5 +1,4 @@
-<div id="footer">
-	<div class="row tbar">
+	<div class="row">
 	    <a href="#" class="col-xs-3 now">
 	        <i class="home"></i><h3>Home</h3>
 	    </a>
@@ -13,5 +12,4 @@
 	        <i class="more"></i><h3>More</h3>
 	    </a>
 	</div>
-</div>
 
