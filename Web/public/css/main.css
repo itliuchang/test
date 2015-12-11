@@ -157,7 +157,7 @@ a:hover,a:active {
 .popover-content{
     font-size: 12px;
 }
-#overflow-name{
+.overflow-name{
     max-width: 150px;
     overflow: hidden;
     text-overflow:ellipsis;
@@ -166,14 +166,14 @@ a:hover,a:active {
     -webkit-box-orient: vertical;
     line-height: 1.5em;
 }
-#overflow-line1{
+.overflow-line1{
     overflow: hidden;
     text-overflow:ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
-#overflow-line2{
+.overflow-line2{
     overflow: hidden;
     text-overflow:ellipsis;
     display: -webkit-box;

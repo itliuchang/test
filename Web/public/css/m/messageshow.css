@@ -1,0 +1,173 @@
+
+#messageshow{
+	background-color: #fff;
+}
+body.messageshow{
+	background-color: #fff;
+}
+
+#messageshow .header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100px;
+	padding-left: 20px;
+	z-index: 1000;
+	padding-top: 35px;
+	background-color: #eee;
+}
+
+#messageshow .header a.link{
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: 100px;
+	top: 0;
+	z-index: 100;
+}
+
+#messageshow .header h3{
+	font-size: 14px;
+	font-weight: normal;
+	padding-right: 30px;
+}
+
+#messageshow .header .content{
+	height: 65px;
+	padding-left: 100px;
+}
+
+#messageshow .header .content p{
+	margin-top: 5px;
+}
+
+#messageshow .header img{
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+	position: absolute;
+	left:20px;
+	top: 10px;
+}
+
+#messageshow .header .time{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+#messageshow .wrapper{
+	padding-top: 120px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 50px;
+}
+#messageshow .wrapper .other{
+	position: relative;
+	margin-bottom: 20px;
+}
+#messageshow .wrapper .other .imgWrapper{
+	position: absolute;
+	left: 0px;
+	top: 5px;
+}
+#messageshow .wrapper .other .imgWrapper img{
+	width: 30px;
+	height: 30px;
+	margin-left: 10px;
+	border-radius: 100%;
+}
+#messageshow .wrapper .other .imgWrapper p{
+	font-size: 12px;
+}
+#messageshow .wrapper .other .content{
+	padding-left: 70px;
+	position: relative;
+	padding-right: 30px;
+}
+#messageshow .wrapper .other .content p{
+	padding: 10px;
+	background-color: #eee;
+	border-radius: 5px;
+}
+#messageshow .wrapper .other .content .lefto{
+	position: absolute;
+	top: 5px;
+	left:62px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #eee;
+    border-bottom: 5px solid transparent;
+}
+
+
+#messageshow .wrapper .my{
+	position: relative;
+}
+#messageshow .wrapper .my .imgWrapper{
+	position: absolute;
+	right: 0px;
+	top: 5px;
+}
+#messageshow .wrapper .my .imgWrapper img{
+	width: 30px;
+	height: 30px;
+	margin-left: 10px;
+	border-radius: 100%;
+}
+#messageshow .wrapper .my .imgWrapper p{
+	font-size: 12px;
+}
+#messageshow .wrapper .my .content{
+	padding-right: 70px;
+	position: relative;
+	padding-left: 30px;
+}
+#messageshow .wrapper .my .content p{
+	padding: 10px;
+	background-color: #f3a64a;
+	border-radius: 5px;
+}
+#messageshow .wrapper .my .content .righto{
+	position: absolute;
+	top: 5px;
+	right:62px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 10px solid #f3a64a;
+    border-bottom: 5px solid transparent;
+}
+
+
+
+
+#messageshow .footer{
+	position: fixed;
+	bottom: 0;
+	height: 40px;
+	background-color: #eee;
+	width: 100%;
+	padding: 8px;
+}
+#messageshow .footer textarea{
+	width: 80%;
+	resize:none;
+	border-radius: 3px;
+	height: 26px;
+	border: 1px solid #e1e1e1;
+	padding-left: 10px;
+}
+#messageshow .footer a{
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	width: 40px;
+	line-height: 40px;
+	color: #000;
+	font-weight: normal;
+}

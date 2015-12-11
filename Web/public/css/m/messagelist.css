@@ -1,0 +1,47 @@
+#messagelist{
+	background-color: #fff;
+	padding-left: 100px;
+}
+body.messagelist{
+	background-color: #fff;
+}
+#messagelist .option{
+	position: relative;
+	width: 100%;
+	height: 100px;
+	padding-left: 20px;
+	padding-top: 35px;
+}
+#messagelist .option a.link{
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: 100px;
+	top: 0;
+	z-index: 100;
+}
+#messagelist .option h3{
+	font-size: 14px;
+	font-weight: normal;
+	padding-right: 30px;
+}
+#messagelist .option .content{
+	border-bottom: 1px solid #e8e8e8;
+	height: 65px;
+}
+#messagelist .option .content p{
+	margin-top: 5px;
+}
+#messagelist .option img{
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+	position: absolute;
+	left: -80px;
+	top: 20px;
+}
+#messagelist .option .time{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
