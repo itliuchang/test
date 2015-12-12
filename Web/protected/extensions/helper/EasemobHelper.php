@@ -5,7 +5,7 @@ require_once('Easemob.php');
 class EasemobHelper extends Easemob{
     private static $_instance;
 
-    private function __construct($options){
+    protected function __construct($options){
         $emchat = Yii::app()->params['partner']['emchat'];
         $options['client_id'] = $options['client_id'] ?: $emchat['app']['client_id'];
         $options['client_secret'] = $options['client_secret'] ?: $emchat['app']['client_secret'];

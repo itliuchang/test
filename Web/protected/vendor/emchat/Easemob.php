@@ -32,7 +32,7 @@ class Easemob{
 	private function unpackResult($data){
 		$res = json_decode($data['result'], true);
 		if(isset($res['error'])){
-			Yii::log($data['code'] . ': ' $data['result'], CLogger::LEVEL_ERROR, 'easemob.request');
+			Yii::log($data['code'] . ': ' . $data['result'], CLogger::LEVEL_ERROR, 'easemob.request');
 		}
 		return $res;
 	}
@@ -402,13 +402,13 @@ class Easemob{
 		$data = file_exists($file)? json_decode(file_get_contents($file), true) : array();
 		if(empty($data) || $data['expire_time'] < time()){
 			$option = array(
-				'grant_type' => 'client_credentials'
+				'grant_type' => 'client_credentials',
 				'client_id' => $this->client_id,
 				'client_secret' => $this->client_secret
 			);
 			$url = $this->url . 'token';
 			$result = $this->postCurl($url, $option);
-			$result = json_decode($result);
+			$result = json_decode($result['result'], true);
 			$data = array(
 				'access_token' => $result['access_token'],
 				'expire_time' => $result['expires_in'] + time () - 200,
@@ -433,7 +433,7 @@ class Easemob{
 			curl_setopt ( $curl, CURLOPT_POSTFIELDS, $options ); // Post提交的数据包
 		}
 		curl_setopt ( $curl, CURLOPT_TIMEOUT, 30 ); // 设置超时限制防止死循环
-		curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header ); // 设置HTTP头
+		if(is_array($header)) curl_setopt ( $curl, CURLOPT_HTTPHEADER, $header ); // 设置HTTP头
 		curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 1 ); // 获取的信息以文件流的形式返回
 		curl_setopt ( $curl, CURLOPT_CUSTOMREQUEST, $type );
 		$result = curl_exec ( $curl ); // 执行操作

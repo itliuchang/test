@@ -1,6 +1,7 @@
 <?php
 class WebUser extends CWebUser{
 	public function getIsGuest(){
-        return empty($this->getState('__id');
+        $_id = $this->getState('__id');
+        return empty($_id);
 	}
 }
