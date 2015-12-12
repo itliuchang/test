@@ -10,7 +10,7 @@
 @import url(/css/m/companyProfile.css);
 @import url(/css/m/companyUpdateProfile.css);
 @import url(/css/m/login.css);
-@import url(/css/m/newPostList.css);
+@import url(/css/m/newpostList.css);
 @import url(/css/m/more.css);
 @import url(/css/m/roomlist.css);
 @import url(/css/m/workspacelist.css);
@@ -21,3 +21,5 @@
 @import url(/css/m/messagelist.css);
 @import url(/css/m/messageshow.css);
 @import url(/css/m/community.css);
+@import url(/css/m/newpost.css);
+@import url(/css/m/changepassword.css);

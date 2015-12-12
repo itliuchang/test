@@ -1,0 +1,33 @@
+#newpost textarea{
+	width: 100%;
+	border: none;
+	font-size: 14px;
+	resize:none;
+	padding: 20px;
+}
+#newpost p{
+	padding-left: 45px;
+	background-image: url(/images/addBackground.png);
+	height: 50px;
+	width: 120px;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	background-position: 5px top;
+}
+#newpost a{
+	position: fixed;
+	display: inline-block;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	background-color: #f3a64a;
+}
+#newpost a:hover,
+#newpost a:link,
+#newpost a:visited{
+	color: #fff;
+	text-decoration: none;
+}

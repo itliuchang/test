@@ -6,7 +6,8 @@ class UserController extends Controller{
             'hello' => 'application.controllers.user.HelloAction',
             'updateprofile' => 'application.controllers.user.UpdateProfileAction',
             'profile' => 'application.controllers.user.ProfileAction',
-            'account' => 'application.controllers.user.AccountAction'
+            'account' => 'application.controllers.user.AccountAction',
+            'changepassword' => 'application.controllers.user.ChangePasswordAction'
 		);
 	}
 }
