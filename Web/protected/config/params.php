@@ -3,8 +3,8 @@ return array(
     'adminEmail' => 'admin@naked.com',
     'partner' => array(
         'wechat' => array(
-            'appid' => 'wx7bb14f41743c6da0',
-            'appsecret' => '8b29a3940c907940d9b122d2524e6ece',
+            'appid' => 'wx9e34096f71f89c2d',
+            'appsecret' => '00d26d3784f5938698b44465abb57c1e',
             'oauth2' => array(
                 'callback' => '/wechat/login/callback',
                 'callback-quiet' => '/wechat/quiet/login/callback',

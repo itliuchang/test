@@ -1,35 +1,45 @@
 <?php
 class UserIdentity extends CUserIdentity{
-    public $id;
+    
+	public $id;
 
+	const ERROR_NO_BIND = 400;
+	
     public function logout(){
         Yii::app()->user->logout();
     }
 
-    public function authenticate(){
-        try{
-            //此处直接查询用户信息登录
-            if($value['code'] == 200){
-                $this->errorCode = self::ERROR_NONE;
-                $user = $value['data'];
-                if(empty($user['token'])){
-                    $this->errorCode = self::ERROR_PASSWORD_INVALID;
-                }else{
-                    $this->id = $user['userId'];
-                    $this->username = $user['nickName'];
-
-                    $this->setPersistentStates($user);
-                    if(YII_ENV == 'test') Yii::log(print_r($user, true), CLogger::LEVEL_ERROR, 'user.login');
-                }
-            }else{
-                $this->errorCode = self::ERROR_USERNAME_INVALID;
-            }
-        }catch(CException $e){
-            Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
-            $this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
-        }
-
-        return !$this->errorCode;
+    public function authWechat($wechat = '', $openid = ''){
+    	try{
+    		$unionid = $wechat['unionid'];
+    		$account = Account::model()->findByAttributes(array('account' => $unionid, 'source' => 1));
+    		if(!empty($account)) {
+    			if(!empty($account->user)) {
+    				$this->id = $account->user['id'];
+    				$this->username = $account->user['nickName'];
+    				
+    				$this->setPersistentStates($account->user);
+    			} else {
+    				$this->errorCode = self::ERROR_NO_BIND;
+    			}
+    		} else {
+    			// regist account
+    			
+    			$this->errorCode = self::ERROR_NO_BIND;
+    		}
+    	}catch(CException $e){
+    		Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
+    		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
+    	}
+    	return !$this->errorCode;
+    }
+    
+    public function authSMS($mobile = '', $code = '') {
+    	
+    }
+    
+    public function authMail($mail = '', $password = '') {
+    	
     }
     
     public function getId(){
