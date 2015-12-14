@@ -15,6 +15,39 @@
 	background-color: #ececec;
 	border-bottom: 1px solid #ddd;
 }
+#productlist .item .choosenum{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+#productlist .item .choosenum .wrapper .add{
+	border-left: 1px solid #c9c9c9;
+}
+#productlist .item .choosenum .wrapper .value{
+	display: inline-block;
+	text-align: center;
+	width: 30px;
+}
+#productlist .item .choosenum .wrapper .minus,
+#productlist .item .choosenum .wrapper .add{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 18px;
+	text-align: center;
+}
+#productlist .item .choosenum .wrapper{
+	border: 1px solid #c9c9c9;
+}
+#productlist .item .choosenum .wrapper .minus{
+	border-right: 1px solid #c9c9c9;
+	font-size: 14px;
+}
+#productlist .item .choosenum p{
+	text-align: center;
+}
 #productlist .item .circleWrapper{
 	position: absolute;
 	left: 20px;

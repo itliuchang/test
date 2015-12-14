@@ -16,6 +16,9 @@
 	font-size: 12px;
 	color: #58aae4;
 }
+#basicInfo .inputOption .phone{
+	margin-top: 10px;
+}
 #basicInfo .inputOption .codenum{
 	float: left;
 	margin-top: 10px;
