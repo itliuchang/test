@@ -15,7 +15,7 @@
 		<input type="text" placeholder="Enter a password" class="password">
 	</div>
 	<div class="agree"><div class="icon hasAgree"></div><p>I agree</p></div>
-	<a class="footer" href="#">LOG IN</a>
+	<a class="footer" href="/post/newlist">LOG IN</a>
 </div>
 <?php
     $cs = Yii::app()->clientScript;

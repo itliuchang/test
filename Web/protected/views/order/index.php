@@ -13,5 +13,5 @@
 		</div>
 	</div>
 	<div class="agree"><div class="icon hasAgree"></div><p>I agree</p></div>
-	<a class="footer">Wechat Pay</a>
+	<a class="footer" href="/post/newlist">Wechat Pay</a>
 </div>
