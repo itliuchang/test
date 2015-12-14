@@ -1,15 +1,16 @@
 <div id="roomlist">
 	<select class="location">
-		<option>New York</option>
+		<option>fuxing</option>
 	</select>
 	<input type="date">
 	<h3>NEAREST AVAILABLE:</h3>
+	<?php foreach($data as $value): ?>
 	<div class="option">
 		<div class="imgWrapper">
-			<img src="/images/banner/1.jpg" alt="">
+			<img src="<?php echo $value['picture'] ?>" alt="">
 			<div class="detail">
-				<h3>Broccoli NO.10</h3>
-				<p><span class="floor">4</span>FL<span class="peoples">6</span></p>
+				<h3><?php echo $value['name'] ?></h3>
+				<p><span class="floor"><?php echo $value['floor'] ?></span>FL<span class="peoples"><?php echo $value['seats'] ?></span></p>
 			</div>
 		</div>
 		<div class="line clearfix">
@@ -92,6 +93,7 @@
 			<div class="col-xs-4 unavailable"><span></span>Unavailable</div>
 		</div>
 	</div>
+	<?php endforeach; ?>
 </div>
 <?php
     $cs = Yii::app()->clientScript;

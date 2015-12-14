@@ -35,5 +35,5 @@
 			<p><span class="key">Conference：</span>&yen;24/hr</p>
 		</div>
 	</div>
-	<a class="footer">NEXT</a>
+	<a class="footer" href="/registered/basicInfo">NEXT</a>
 </div>

@@ -6,7 +6,7 @@
     	<p><?php echo Yii::t('registered','NakeHub members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community.') ?></p>
 	</div>
 	<div class="footer">
-		<a href="#" class="open">Open</a>
+		<a href="/registered/productlist" class="open">Open</a>
 		<a href="#" class="private">Private</a>
 	</div>
 </div>

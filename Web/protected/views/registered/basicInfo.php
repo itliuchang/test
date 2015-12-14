@@ -24,7 +24,7 @@
 		<input type="text" placeholder="Create a password" class="password">
 	</div>
 	<div class="footer">
-		<a href="#" class="back">BACK</a>
-		<a href="#" class="next">NEXT</a>
+		<a href="/registered/productlist" class="back">BACK</a>
+		<a href="/order/" class="next">NEXT</a>
 	</div>
 </div>

@@ -15,6 +15,7 @@ return array(
 		'application.components.*',
 		'application.components.widget.*',
 		'ext.helper.*',
+		'ext.foundation.*'
 	),
 
 	'components' => array(

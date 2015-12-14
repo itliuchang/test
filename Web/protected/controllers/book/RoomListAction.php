@@ -1,6 +1,8 @@
 <?php
 class RoomListAction extends CAction{
 	public function run(){
-		$this->controller->render('roomlist');
+		$room = new MeetingRoom;
+		$result = $room->listroom(1);
+		$this->controller->render('roomlist',$result);
 	}
 }
