@@ -30,6 +30,15 @@ return array(
                 'client_id' => 'YXA6BcP2sJ2IEeWr4cFwgvdI7Q',
                 'client_secret' => 'YXA6Ibw6ZXt7J_7UeEc9rIm-kXXn96o'
             )
-        )
+        ),
+    	'sms' => array(
+    		'send_url' => 'http://116.255.238.170:8085/sms.aspx',
+    		'userid' => '',
+    		'account' => '',
+    		'password' => '',
+    		'action' => 'send',
+    		'login_tpl' => 'You login code is %d',
+    		'regist_tpl' => 'You regist code is %d',
+    	)
     )
 );

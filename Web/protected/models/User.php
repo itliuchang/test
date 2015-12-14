@@ -4,6 +4,10 @@ class User extends CActiveRecord{
         return parent::model($className);
     }
 
+    public function validatePassword($password){
+    	return md5($password) === $this->password;
+    }
+    
     public function tableName(){
         return 'user';
     }
