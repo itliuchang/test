@@ -40,6 +40,13 @@ class BReservation{
  				'count'=>$count = Reservations::model()->count(),
  				'data'=>$result
  			);
+ 		} else {
+ 			$data=array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>$count = Reservations::model()->count(),
+ 				'data'=>''
+ 			);
  		}
  		return $data;
 	}

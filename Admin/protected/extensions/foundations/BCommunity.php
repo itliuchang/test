@@ -28,12 +28,27 @@ class BCommunity{
 		$start = 0+$start;
  		$count = Posts::model()->count('status!=0');
  		$criteria = new CDbCriteria;
-        $criteria->addCondition('status!=0');
+        $criteria->addCondition('t.status!=0');
         $criteria->limit=$size;
         $criteria->offset=$start;
-        $data = Posts::model()->findAll($criteria);
- 		return $result=array($count,$data);
-	}
+ 		$result = Posts::model()->findAll($criteria);
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>$count,
+ 				'data'=>$result
+ 			);
+ 		} else {
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'count'=>$count,
+ 				'data'=>''
+ 			);
+ 		}
+ 		return $data;	
+ 	}
 
 	/**
 	 * This is method for get post information
@@ -51,7 +66,14 @@ class BCommunity{
 	 */
 	public function getPostInfo($id){
 		$result = Posts::model()->findByAttributes(array('id'=>$id));
- 		return $result;
+ 		if($result){
+ 			$data = array(
+ 				'code'=>200,
+ 				'message'=>'SUCCESS',
+ 				'data'=>$result
+ 			);
+ 		}
+ 		return $data;
 	}
 
 	/**
@@ -65,7 +87,12 @@ class BCommunity{
 	public function deletePost($id){
 		$result = Posts::model()->findByAttributes(array('id'=>$id));
  		$result->status='0';
- 		$result->save();
- 		return $result;
+ 		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
 	}
 }

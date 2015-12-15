@@ -74,7 +74,22 @@ class BProduct{
 
 	public function createProduct($data){
 		$result = new Products;
-		$result->createTime=date('Y-m-d h:i:s',time());
+		$result->createTime=date('Y-m-d H:i:s',time());
+		foreach($data as $k=> $v){
+			$result->$k=$v;
+		}
+		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
+	}
+
+	public function updateProduct($data,$id){
+		$result = Products::model()->findByAttributes(array('id'=>$id));
+		$result->updateTime=date('Y-m-d H:i:s',time());
 		foreach($data as $k=> $v){
 			$result->$k=$v;
 		}
