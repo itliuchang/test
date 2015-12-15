@@ -61,34 +61,34 @@
 
 * 实例
 
-访问http://192.168.1.102:8080/supernote-store/goods/list
+访问http://192.168.1.102:8080/st/goods/list
 
 ```php
-    Yii::app()->curl->put('http://192.168.1.102:8080/supernote-store/goods/list', '{}');
+    Yii::app()->curl->put('http://192.168.1.102:8080/st/goods/list', '{}');
 ```
 
 或
 
 ```php
-    Yii::app()->curl->addHeader(array('Content-Type'=> 'application/json;charset=UTF-8'))->post('http://192.168.1.102:8080/supernote-store/goods/list', json_encode(array('title' => 1)));
+    Yii::app()->curl->addHeader(array('Content-Type'=> 'application/json;charset=UTF-8'))->post('http://192.168.1.102:8080/st/goods/list', json_encode(array('title' => 1)));
     // json_encode(array('title' => 1))可以直接写成'{title: 1}'
 ```
 
 或
 
 ```php
-    Yii::app()->curl->json()->post('http://192.168.1.102:8080/supernote-store/goods/list', json_encode(array('title'=>1)));
+    Yii::app()->curl->json()->post('http://192.168.1.102:8080/st/goods/list', json_encode(array('title'=>1)));
 ```
 
 addHeader是设置全局header的，会影响下次的curl请求，如果需要临时添加header而不需要调用resetOption(CURLOPT_HTTPHEADER)方法，可以这样：
 
 ```php
-    Yii::app()->curl->post('http://192.168.1.102:8080/supernote-store/goods/list', json_encode(array('title'=>1)), array(), array('Content-Type' => 'application/json;charset=UTF-8'));
+    Yii::app()->curl->post('http://192.168.1.102:8080/st/goods/list', json_encode(array('title'=>1)), array(), array('Content-Type' => 'application/json;charset=UTF-8'));
 ```
 或
 
 ```php
-    Yii::app()->curl->post('http://192.168.1.102:8080/supernote-store/goods/list', json_encode(array('title'=>1)), array(), array('Content-Type: application/json;charset=UTF-8'));
+    Yii::app()->curl->post('http://192.168.1.102:8080/st/goods/list', json_encode(array('title'=>1)), array(), array('Content-Type: application/json;charset=UTF-8'));
 ```
 
 options选项依然只支持全局的设置，Header头支持全局与局部两种设置方法。
@@ -96,9 +96,9 @@ options选项依然只支持全局的设置，Header头支持全局与局部两�
 测试设置的Header是否全局的可以：
 
 ```php
-    Yii::app()->curl->json()->post('http://192.168.1.102:8080/supernote-store/goods/list', json_encode(array('title'=>1)));
+    Yii::app()->curl->json()->post('http://192.168.1.102:8080/st/goods/list', json_encode(array('title'=>1)));
     Yii::app()->curl->setOption('a', 'b');
     print_r(Yii::app()->curl->request_options);
-    Yii::app()->curl->post('http://192.168.1.102:8080/supernote-store/goods/list', json_encode(array('title'=>1)), array(), array('Content-Type: application/json;charset=UTF-8'));
+    Yii::app()->curl->post('http://192.168.1.102:8080/st/goods/list', json_encode(array('title'=>1)), array(), array('Content-Type: application/json;charset=UTF-8'));
     print_r(Yii::app()->curl->request_options);
 ```
