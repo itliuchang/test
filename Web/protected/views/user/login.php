@@ -6,7 +6,7 @@
 		</div>
 	</div>
 	<div class="inputOption clearfix phoneContent">
-		<input type="text" value="" placeholder="Enter phone">
+		<input type="number" value="" placeholder="Enter phone">
 		<input type="text" class="codenum" placeholder="Enter code">
 		<div class="codebutton">CODE</div>
 	</div>
@@ -15,7 +15,7 @@
 		<input type="text" placeholder="Enter a password" class="password">
 	</div>
 	<div class="agree"><div class="icon hasAgree"></div><p>I agree</p></div>
-	<a class="footer" href="/post/newlist">LOG IN</a>
+	<a class="footer" href="#">LOG IN</a>
 </div>
 <?php
     $cs = Yii::app()->clientScript;

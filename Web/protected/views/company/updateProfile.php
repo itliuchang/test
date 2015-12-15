@@ -32,6 +32,11 @@
 	</div>
 	<h2 class="footer">NEXT</h2>
 	<div class="servicelist hide" id="wrapper">
+		<div class="header">
+			<h3>Services</h3>
+			<div class="cancel">cancel</div>
+			<div class="ok">ok</div>
+		</div>
 		<ul class="outer">
 		    <li>
 		    	<p>Photography</p>

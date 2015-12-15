@@ -4,7 +4,6 @@ Yii::import('application.vendor.converemojitostr.*');
 Yii::import('application.vendor.qiniu2.*');
 use Qiniu\Auth;
 
-require_once('autoload.php');
 require_once('useragent.class.php');
 require_once('emoji.php');
 
@@ -184,5 +183,9 @@ class Assist{
         $deviceID = 1;
         // demo: ios/safari/4.0.0/ipad/xxx或android/UC/10.3.2.559/xiaomi/xxx
         return sprintf('%s/%s/%s/%s/%s', $osType, $browserType, $browserVersion, $deviceType, $deviceID);
+    }
+
+    public static function getDefaultURL(){
+        return 'http://www.naked.com/post/newlist';
     }
 }

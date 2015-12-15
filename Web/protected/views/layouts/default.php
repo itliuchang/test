@@ -11,6 +11,18 @@
     
     <body class="<?php echo $this->bodyCss ?>">
 	    <?php echo $content ?>
+      <div class="modal fade" id="tipModal" role="dialog" data-type="success" data-keyboard="false" data-backdrop="static">
+          <div class="modal-dialog" data-verticalAlign="true">
+              <div class="modal-content">
+                  <div class="modal-body">
+                      <div class="tip-form">
+                          <div class="hint">保存成功</div>
+                          <div class="icon"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     <script src="/js/all.js"></script>
     </body>
 </html>

@@ -32,13 +32,13 @@ return array(
             )
         ),
     	'sms' => array(
-    		'send_url' => 'http://116.255.238.170:8085/sms.aspx',
-    		'userid' => '',
-    		'account' => '',
-    		'password' => '',
+    		'send_url' => 'http://115.29.170.211:8085/sms.aspx',
+    		'userid' => '2833',
+    		'account' => '101608601',
+    		'password' => 'shyb8899',
     		'action' => 'send',
-    		'login_tpl' => 'You login code is %d',
-    		'regist_tpl' => 'You regist code is %d',
+    		'login_tpl' => '验证码为%d，您现在正在进行裸心社手机登录［裸心社］',
+    		'regist_tpl' => '验证码为%d，您现在正在进行裸心社手机注册［裸心社］',
     	)
     )
 );

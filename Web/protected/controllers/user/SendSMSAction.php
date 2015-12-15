@@ -10,9 +10,11 @@ class SendSMSAction extends CAction{
 			if($type === 'login') {
 				SMSHelper::sendLoginCode($mobile, $code);
 				Yii::app()->session['login_code'] = $code;
+				echo CJSON::encode(array('code'=>200,'mes'=>''));
 			} elseif ($type === 'regist') {
 				SMSHelper::sendRegistCode($mobile, $code);
 				Yii::app()->session['regist_code'] = $code;
+				echo CJSON::encode(array('code'=>200,'mes'=>''));
 			}
 		}
 	}

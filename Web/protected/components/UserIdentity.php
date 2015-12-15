@@ -8,7 +8,10 @@ class UserIdentity extends CUserIdentity{
 	const ERROR_CODE_INVALID = 405;
 
 	const ERROR_MAIL_INVALID = 406;
-	
+	public function __construct()
+    {
+       
+    }
     public function logout(){
         Yii::app()->user->logout();
     }
@@ -56,7 +59,7 @@ class UserIdentity extends CUserIdentity{
     public function authMobile($mobile = '', $code = '') {
     	try{
     		$_code = Yii::app()->session['login_code'];
-    		if ($_code && $_code === $code) {
+    		if ($_code && $_code == $code) {
     			$user = User::model()->findByAttributes(array('mobile' => $mobile));
     			if(!empty($user)){
     				$this->errorCode = self::ERROR_NONE;
