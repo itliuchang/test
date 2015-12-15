@@ -1,6 +1,10 @@
 <?php
 class BasicInfoAction extends CAction{
 	public function run(){
-		$this->controller->render('basicInfo');
+		if(Yii::app()->user->isGuest) {
+			$this->controller->render('basicInfo');
+		} else {
+			$this->controller->redirect('/order');
+		}
 	}
 }

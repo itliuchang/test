@@ -9,15 +9,17 @@ class RegistAction extends CAction{
 				$code = Yii::app()->request->getParam('code');
 	
 				$email = Yii::app()->request->getParam('email');
-				$password = Yii::app()->request->getParam('$password');
+				$password = Yii::app()->request->getParam('password');
 				
-				$_code = Yii::app()->session['regist_code'];
-				if ($_code && $_code === $code) {
+				$_code = Yii::app()->session['regist_code'.$mobile];
+				if ($_code && $_code == $code) {
 					$user = new User();
 					$user->nickName = $name;
 					$user->mobile = $mobile;
 					$user->email = $email;
-					$user->password = md5($password);
+					if($password) {
+						$user->password = md5($password);
+					}
 					
 					$wechat = Yii::app()->session['wechat'];
 					if($wechat) {
@@ -26,7 +28,7 @@ class RegistAction extends CAction{
 						$user->gender = $wechat['sex'];
 					}
 					
-					$user->insert;
+					$user->insert();
 					
 					// 注册环信
 					EasemobHelper::getInstance()->accreditRegister(array(
@@ -35,8 +37,15 @@ class RegistAction extends CAction{
 						'nickname' => $name
 					));
 					
+					$user->isBindIM = 1;
+					$user->save();
+					
 					$identity = new UserIdentity();
 					$identity->registAuth($user);
+					
+					$duration = Yii::app()->getComponent('session')->getTimeout();
+					Yii::app()->user->login($identity, $duration);
+					echo CJSON::encode(array('code'=>200, 'message'=> 'success'));
 				} else {
 					echo CJSON::encode(array('code'=>500, 'message'=> '验证码错误'));
 				}

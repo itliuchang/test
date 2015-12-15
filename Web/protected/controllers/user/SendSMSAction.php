@@ -9,12 +9,17 @@ class SendSMSAction extends CAction{
 			$code = rand(1000, 9999);
 			if($type === 'login') {
 				SMSHelper::sendLoginCode($mobile, $code);
-				Yii::app()->session['login_code'] = $code;
-				echo CJSON::encode(array('code'=>200,'mes'=>''));
+				Yii::app()->session['login_code'.$mobile] = $code;
+				echo CJSON::encode(array('code'=>200,'message'=>''));
 			} elseif ($type === 'regist') {
-				SMSHelper::sendRegistCode($mobile, $code);
-				Yii::app()->session['regist_code'] = $code;
-				echo CJSON::encode(array('code'=>200,'mes'=>''));
+				$user = User::model()->findByAttributes(array('mobile' => $mobile));
+				if($user) {
+					echo CJSON::encode(array('code'=>500,'message'=>'手机号已注册'));
+				} else {
+					SMSHelper::sendRegistCode($mobile, $code);
+					Yii::app()->session['regist_code'.$mobile] = $code;
+					echo CJSON::encode(array('code'=>200,'message'=>''));
+				}
 			}
 		}
 	}

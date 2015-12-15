@@ -19,7 +19,6 @@ class UserIdentity extends CUserIdentity{
     public function registAuth($user = null) {
     	$this->id = $user['id'];
     	$this->username = $user['nickName'];
-    	
     	$this->setPersistentStates($user);
     }
     
@@ -58,7 +57,7 @@ class UserIdentity extends CUserIdentity{
     
     public function authMobile($mobile = '', $code = '') {
     	try{
-    		$_code = Yii::app()->session['login_code'];
+    		$_code = Yii::app()->session['login_code'.$mobile];
     		if ($_code && $_code == $code) {
     			$user = User::model()->findByAttributes(array('mobile' => $mobile));
     			if(!empty($user)){

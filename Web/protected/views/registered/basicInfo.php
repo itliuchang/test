@@ -1,9 +1,9 @@
 <div id="basicInfo">
 	<h2>BASIC INFO</h2>
 	<div class="inputOption">
-		<input type="text" value="" placeholder="Full Name">
-		<input type="text" value="" placeholder="Mobile Phone" class="phone">
-		<input type="text" class="codenum">
+		<input type="text" placeholder="Full Name" class="name">
+		<input type="text" placeholder="Mobile Phone" class="phone">
+		<input type="text" class="codenum" >
 		<a href="#" class="codebutton">CODE</a>
 	</div>
 		<!-- <div class="inputOption">
@@ -16,12 +16,18 @@
 	<div class="inputOption">
 		<label class="bigTitle">LOG IN INFORMATION</label>
 		<label class="smallTitle">Email</label>
-		<input type="email" value="" placeholder="Email" class="email">
+		<input type="email" placeholder="Email" class="email">
 		<input type="password" placeholder="Create a password" class="password">
 		<input type="password" placeholder="Repeat password" class="password">
 	</div>
 	<div class="footer">
 		<a href="/registered/productlist" class="back">BACK</a>
-		<a href="/order/" class="next">NEXT</a>
+		<a href="#" class="next">NEXT</a>
 	</div>
 </div>
+
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_registjs', null ,true);
+    $cs->registerScript('regist', $js, CClientScript::POS_END);
+?>
