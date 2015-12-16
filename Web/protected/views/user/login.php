@@ -6,7 +6,7 @@
 		</div>
 	</div>
 	<div class="inputOption clearfix phoneContent">
-		<input type="number" value="" placeholder="Enter phone">
+		<input type="tel" value="" placeholder="Enter phone">
 		<input type="text" class="codenum" placeholder="Enter code">
 		<div class="codebutton">CODE</div>
 	</div>
