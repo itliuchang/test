@@ -1,0 +1,165 @@
+body.newpostlist{
+}
+#newpostlist{
+	padding-bottom: 60px;
+}
+#newpostlist .postWrapper{
+	position: relative;
+	background-color: #fff;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ececec;
+}
+#newpostlist .postWrapper .header{
+	position: relative;
+	padding-left: 120px;
+	padding-top: 20px;
+}
+#newpostlist .postWrapper .header p.time{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 12px;
+}
+#newpostlist .postWrapper .header p{
+	color: #9b9796;
+	font-size: 12px;
+}
+#newpostlist .postWrapper .header>img{
+	position: absolute;
+	left: 20px;
+	width: 80px;
+	height: 80px;
+}
+#newpostlist .postWrapper .content{
+	padding: 20px;
+	font-size: 12px;
+	padding-bottom: 10px;
+}
+#newpostlist .postWrapper .face{
+	width: 100%;
+	height: 150px;
+}
+#newpostlist .postWrapper .footerWrapper{
+	padding: 0 20px;
+}
+#newpostlist .postWrapper .footerWrapper>p{
+	border-bottom: 1px solid #ececec;
+	padding: 8px 0;
+}
+#newpostlist .postWrapper .footerWrapper>p span{
+	margin-right: 2px;
+}
+#newpostlist .postWrapper .footerWrapper>p span:nth-child(2){
+	margin-left: 10px;
+}
+#newpostlist .postWrapper .footerWrapper .operation{
+	height: 30px;
+	line-height: 30px;
+}
+#newpostlist .postWrapper .footerWrapper .operation a{
+	color: #000;
+	font-weight: normal;
+	margin-right: 20px;
+}
+#newpostlist .postWrapper .footerWrapper .operation a:link,
+#newpostlist .postWrapper .footerWrapper .operation a:hover,
+#newpostlist .postWrapper .footerWrapper .operation a:visited{
+	color: #000;
+	text-decoration: none;
+}
+#newpostlist .write{
+	position: fixed;
+	bottom: 60px;
+	right: 10px;
+	background-image: url(/images/write.png);
+	background-color: #3f96db;
+	width: 50px;
+	height: 50px;
+	background-size: 24px 24px;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 100%;
+}
+#newpostlist .commentWrapper{
+	background-color: #fff;
+	border-top: 1px solid #ececec;
+}
+#newpostlist .commentWrapper .comment{
+	position: relative;
+	padding-left: 60px;
+	padding-top: 20px;
+	border-bottom: 1px solid #ececec;
+}
+#newpostlist .commentWrapper .comment img{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+}
+#newpostlist .commentWrapper .comment .right .title .name{
+	font-size: 14px;
+	font-weight: normal;
+}
+#newpostlist .commentWrapper .comment .right .content{
+	padding: 10px 0;
+}
+#newpostlist .like{
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+}
+#newpostlist .likelist{
+	background-color: #fff;
+	margin-top: 10px;
+}
+#newpostlist .likelist .option{
+	position: relative;
+	padding-left: 60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ececec;
+}
+#newpostlist .likelist .option img{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+#newpostlist .likelist .option .right>h3{
+	font-size: 14px;
+	font-weight: normal;
+}
+#newpostlist .footer{
+	position: fixed;
+	bottom: 0;
+	height: 40px;
+	background-color: #fff;
+	width: 100%;
+	padding: 8px;
+	border-top: 1px solid #ececec;
+}
+#newpostlist .footer textarea{
+	width: 80%;
+	resize:none;
+	border-radius: 3px;
+	height: 26px;
+	border: 1px solid #e1e1e1;
+	padding-left: 10px;
+	padding-top: 2px;
+}
+#newpostlist .footer a{
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	width: 40px;
+	line-height: 40px;
+	color: #000;
+	font-weight: normal;
+}
+
