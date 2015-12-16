@@ -186,6 +186,6 @@ class Assist{
     }
 
     public static function getDefaultURL(){
-        return 'http://www.naked.com/post/newlist';
+        return '/post/newlist';
     }
 }

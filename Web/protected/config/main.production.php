@@ -16,6 +16,7 @@ return array(
         'application.components.*',
         'application.components.widget.*',
         'ext.helper.*',
+        'ext.foundation.*'
     ),
 
     'modules'=>array(),
