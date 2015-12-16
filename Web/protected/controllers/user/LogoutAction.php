@@ -5,6 +5,7 @@ class LogoutAction extends CAction{
 		if(!Yii::app()->user->isGuest){
 			$_identity = new UserIdentity();
 			$_identity->logout();
+			$this->controller->redirect('/registered/');
 		}
 	}
 
