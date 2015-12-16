@@ -41,3 +41,8 @@
 <div class="container-fluid tbar" id="footer">
     <?php $this->widget('FTBarWidget') ?>
 </div>
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_newlistjs', null ,true);
+    $cs->registerScript('post', $js, CClientScript::POS_END);
+?>

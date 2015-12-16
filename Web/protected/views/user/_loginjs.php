@@ -1,4 +1,7 @@
 $(function(){
+	$('.agree .icon').hammer().on('tap',function(){
+		$(this).toggleClass('hasAgree');
+	});
 	$('.phone,.Email').hammer().on('tap',function(){
 		$('.Email,.phone').toggleClass('now');
 		$('.EmailContent,.phoneContent').toggleClass('hide');

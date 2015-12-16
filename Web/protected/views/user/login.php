@@ -14,7 +14,7 @@
 		<input type="email" value="" placeholder="Enter Email" class="email">
 		<input type="text" placeholder="Enter a password" class="password">
 	</div>
-	<div class="agree"><div class="icon hasAgree"></div><p>I agree</p></div>
+	<div class="agree"><div class="icon hasAgree"></div><p>I agree automatic landing</p></div>
 	<a class="footer" href="#">LOG IN</a>
 </div>
 <?php

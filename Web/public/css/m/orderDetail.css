@@ -1,3 +1,6 @@
+body.orderDetail{
+	background-color: #fff;
+}
 #orderDetail .title{
 	width: 100%;
 	height: 60px;
@@ -21,6 +24,7 @@
 #orderDetail .content .month h2{
 	font-size: 20px;
 	font-weight: bold;
+	margin-bottom: 10px;
 }
 #orderDetail .content .month .price{
 	position: absolute;
@@ -50,25 +54,33 @@
 	right: 0;
 	font-size: 20px;
 	font-weight: 700;
-	top: 30px;
+	top: 20px;
 }
 #orderDetail .content{
 	position: relative;
 	padding: 0 20px;
 }
 #orderDetail .agree{
-	position: absolute;
-	left: 20px;
-	bottom: 60px;
+	position: relative;
+	margin-top: 30px;
+	padding-left: 20px;
 	line-height: 18px;
+	width: 100%;
+	background-color: #fff;
+	padding-bottom: 60px;
 }
 #orderDetail .agree p{
 	display: inline-block;
 	position: relative;
-	top: -5px;
-	left: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 100%;
 }
 #orderDetail .agree .icon{
+	position: absolute;
+	z-index: 2;
+	top: 0px;
+	left: 15px;
 	display: inline-block;
 	width: 18px;
 	height: 18px;
@@ -89,6 +101,7 @@
 	text-align: center;
 	background-color: #fca443;
 	color: #fff;
+	z-index: 1000;
 }
 #orderDetail .footer:link,#orderDetail .footer:hover,#orderDetail .footer:visited{
 	color: #fff;

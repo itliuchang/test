@@ -3,7 +3,7 @@
 	height: 100%;
 }
 #login input{
-	-webkit-appearance:none;
+	-webkit-appearance:none!important;
 }
 #login .tabTitle{
 	padding: 20px;
@@ -53,10 +53,13 @@
 	text-align: center;
 	color: #fff;
 }
+#login .inputOption .password{
+	margin-top: 10px;
+}
 #login .agree{
 	position: absolute;
 	left: 20px;
-	top: 300px;
+	top: 200px;
 	line-height: 18px;
 }
 #login .agree p{
@@ -93,5 +96,6 @@
 }
 
 #login .now{
+	color: #fff;
 	background-color: #6d6d6d;
 }
