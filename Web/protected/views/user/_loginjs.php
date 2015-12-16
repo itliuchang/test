@@ -17,17 +17,17 @@ $(function(){
 		$(this)[0].disabled=true;
 		var $code = $('.codebutton'),
 					time = 60;
-				$code.removeClass('act').addClass('timing');
-				var t = setInterval(function(){
-					if(!time){
-						that.hammer().on('tap',timing);
-						$code.addClass('act').text('CODE');
-						clearInterval(t);
-					}else{
-						$code.text(time);
-						time--;
-					}
-				}, 1000);
+		$code.removeClass('act').addClass('timing');
+		var t = setInterval(function(){
+			if(!time){
+				that.hammer().on('tap',timing);
+				$code.addClass('act').text('CODE');
+				clearInterval(t);
+			}else{
+				$code.text(time);
+				time--;
+			}
+		}, 1000);
 		CHelper.asynRequest('/user/sendsms',{mobile:$('.phoneContent input').first().val(),type:'login',parameter:{type:'GET'}},{
 			success:function(){
 			},
@@ -36,7 +36,7 @@ $(function(){
 			}
 		});
 	}
-	}
+	}//验证码读秒
 	$('.footer').hammer().on('tap',function(){
 		var nowClass = $('.now').hasClass('phone')? 'phoneContent' : 'EmailContent';
 		if(!$('.'+nowClass+' input').first().val()||!$('.'+nowClass+' input').last().val()){

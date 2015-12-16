@@ -8,17 +8,17 @@ $(function(){
 		var that = $(this);
 		var $code = $('.codebutton'),
 					time = 60;
-				$code.removeClass('act').addClass('timing');
-				var t = setInterval(function(){
-					if(!time){
-						that.hammer().on('tap',timing);
-						$code.addClass('act').text('CODE');
-						clearInterval(t);
-					}else{
-						$code.text(time);
-						time--;
-					}
-				}, 1000);
+		$code.removeClass('act').addClass('timing');
+		var t = setInterval(function(){
+			if(!time){
+				that.hammer().on('tap',timing);
+				$code.addClass('act').text('CODE');
+				clearInterval(t);
+			}else{
+				$code.text(time);
+				time--;
+			}
+		}, 1000);
 		CHelper.asynRequest('/user/sendsms',{mobile:$('.phone').val(),type:'regist',parameter:{type:'GET'}},{
 			success:function(){
 			},
@@ -33,12 +33,7 @@ $(function(){
 			}
 		});
 	}
-	}
-
-
-
-
-	
+	}//验证码读秒
 	
 	$('#basicInfo .footer .next').hammer().on('tap',function(){
 		if(!$('#basicInfo .name').val()) {
