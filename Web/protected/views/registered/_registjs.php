@@ -1,21 +1,44 @@
 $(function(){
-	$('#basicInfo .codebutton').hammer().on('tap',function(){
-		if(!$('#basicInfo .phone').val()) {
-			CHelper.toggleTip('show','Empty mobile phone.','error',1000);
-			return;
-		}
-	
-		CHelper.asynRequest('/user/sendsms',{mobile:$('#basicInfo .phone').val(),type:'regist',parameter:{type:'GET'}},{
+	$('.act').hammer().on('tap',timing);
+	function timing(){
+		if(!$('.phone').val()){
+			CHelper.toggleTip('show','请输入手机号码','error',1000);
+		}else{
+		$(this).hammer().off();
+		var that = $(this);
+		var $code = $('.codebutton'),
+					time = 60;
+				$code.removeClass('act').addClass('timing');
+				var t = setInterval(function(){
+					if(!time){
+						that.hammer().on('tap',timing);
+						$code.addClass('act').text('CODE');
+						clearInterval(t);
+					}else{
+						$code.text(time);
+						time--;
+					}
+				}, 1000);
+		CHelper.asynRequest('/user/sendsms',{mobile:$('.phone').val(),type:'regist',parameter:{type:'GET'}},{
 			success:function(){
 			},
 			failure:function(d){
 				CHelper.toggleTip('show',d.message,'error',1000);
+				that.hammer().on('tap',timing);
+				clearInterval(t);
+				$code.addClass('act').text('CODE');
 			},
 			error:function(){
 				CHelper.toggleTip('show','发送失败请稍候尝试','error',1000);
 			}
 		});
-	});
+	}
+	}
+
+
+
+
+	
 	
 	$('#basicInfo .footer .next').hammer().on('tap',function(){
 		if(!$('#basicInfo .name').val()) {

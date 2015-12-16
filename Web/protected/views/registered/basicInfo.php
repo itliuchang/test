@@ -4,7 +4,7 @@
 		<input type="text" placeholder="Full Name" class="name">
 		<input type="text" placeholder="Mobile Phone" class="phone">
 		<input type="text" class="codenum" >
-		<a href="#" class="codebutton">CODE</a>
+		<a href="#" class="codebutton act">CODE</a>
 	</div>
 		<!-- <div class="inputOption">
 		<label class="bigTitle">I AM A...</label>

@@ -8,7 +8,7 @@
 	<div class="inputOption clearfix phoneContent">
 		<input type="tel" value="" placeholder="Enter phone">
 		<input type="text" class="codenum" placeholder="Enter code">
-		<div class="codebutton">CODE</div>
+		<div class="codebutton act">CODE</div>
 	</div>
 	<div class="inputOption hide EmailContent">
 		<input type="email" value="" placeholder="Enter Email" class="email">
