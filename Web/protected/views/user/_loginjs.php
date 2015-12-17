@@ -31,6 +31,9 @@ $(function(){
 		CHelper.asynRequest('/user/sendsms',{mobile:$('.phoneContent input').first().val(),type:'login',parameter:{type:'GET'}},{
 			success:function(){
 			},
+			failure:function(){
+				CHelper.toggleTip('show',d.message,'error',1000);
+			},
 			error:function(){
 				CHelper.toggleTip('show','发送失败请稍候尝试','error',1000);
 			}

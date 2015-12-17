@@ -5,8 +5,13 @@ return array(
     'showScriptName' => false,
     'urlSuffix' => '.html',
     'rules' => array(
-    	'login' => 'user/login',
         'messages' => 'message',
+        'login' => 'user/login',
+        'logout' => 'user/logout',
+        'wechat/login' => 'user/wechatConnect',
+        'wechat/login/callback' =>'user/wechatConnectCallback',
+        'wechat/quiet/login' => 'user/wechatQuietConnect',
+        'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
         
         '<controller:\w+>/<id:\d+>'=>'<controller>/view',
         '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

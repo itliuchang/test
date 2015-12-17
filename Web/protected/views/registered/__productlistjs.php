@@ -19,4 +19,12 @@ $(function(){
 	$('.item.selected .choosenum .add').hammer().on('tap',function(){
 			$(this).prev().text(Number($(this).prev().text())+1);
 	});
+	$('.footer').hammer().on('tap',function(){
+		var $selected = $('.selected'),
+			type = $selected.find('.productType').val(),
+			name = $selected.find('.type').text(),
+			num = $selected.find('.value').text(),
+			price = $selected.find('.price').text();
+		location.href='/registered/basicInfo?type='+type+'&name='+name+'&num='+num+'&price='+price;
+	});
 });
