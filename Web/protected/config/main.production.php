@@ -54,7 +54,7 @@ return array(
         'urlManager' => require(dirname(__FILE__).'/route.php'),
 
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=naked',
+            'connectionString' => 'mysql:host=127.0.0.1;dbname=naked',
             'username' => 'root',
             'password' => 'Email@2015',
             'charset' => 'utf8',
