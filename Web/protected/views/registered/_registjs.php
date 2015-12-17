@@ -91,7 +91,7 @@ $(function(){
 	
 		CHelper.asynRequest('/user/regist', data,{
 			success:function(){
-				location.href='/order/';
+				location.href='/order/index?type='+type+'&num='+num+'&name='+name+'&price='+price;
 			},
 			failure:function(d){
 				CHelper.toggleTip('show',d.message,'error',1000);

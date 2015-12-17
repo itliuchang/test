@@ -19,7 +19,11 @@ class UserIdentity extends CUserIdentity{
     public function registAuth($user = null) {
     	$this->id = $user['id'];
     	$this->username = $user['nickName'];
-    	$this->setPersistentStates($user);
+        try{
+        $this->setPersistentStates($user);
+        }catch(CException $e){
+            Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
+        }
     }
     
     public function authWechat($wechat = '', $openid = ''){
