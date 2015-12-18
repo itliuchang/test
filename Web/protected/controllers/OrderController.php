@@ -11,7 +11,7 @@ class OrderController extends Controller{
         $input = new WxPayUnifiedOrder();
         $input->SetBody($productName);
         $input->SetOut_trade_no((string)rand(100000,9000000));
-        $input->SetTotal_fee($productPrice*$productNum);
+        $input->SetTotal_fee($productPrice*$productNum＊100);
         $input->SetTime_start(date('YmdHis'));
         $input->SetTime_expire('20151230091010');
         $input->SetProduct_id((string)rand(100000,9000000));
