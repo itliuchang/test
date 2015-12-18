@@ -10,11 +10,11 @@ class OrderController extends Controller{
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
         $input->SetBody($productName);
-        $input->SetOut_trade_no((string)(rand(100000,9000000));
+        $input->SetOut_trade_no((string)rand(100000,9000000));
         $input->SetTotal_fee($productPrice*$productNum);
         $input->SetTime_start(date('YmdHis'));
         $input->SetTime_expire('20151230091010');
-        $input->SetProduct_id((string)(rand(100000,9000000));
+        $input->SetProduct_id((string)rand(100000,9000000));
         $input->SetNotify_url(Yii::app()->request->getHostInfo() . $wechat['payment']['notify']);
         $input->SetTrade_type('JSAPI');
         $input->SetOpenid($openid);
