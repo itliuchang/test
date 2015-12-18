@@ -91,7 +91,7 @@ $(function(){
 	
 		CHelper.asynRequest('/user/regist', data,{
 			success:function(){
-				location.href='/payment/wxpay/jsapi/?type='+type+'&num='+num+'&name='+name+'&price='+price;
+				location.href='/payment/wxpay/jsapi/';
 			},
 			failure:function(d){
 				CHelper.toggleTip('show',d.message,'error',1000);
