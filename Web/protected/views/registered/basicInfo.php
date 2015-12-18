@@ -25,13 +25,6 @@
 		<a href="#" class="next">NEXT</a>
 	</div>
 </div>
-<script>
-	type = <?php echo $type ?>;
-	name = '<?php echo $name ?>';
-	num = <?php echo $num ?>;
-	price = <?php echo $price ?>;
-</script>
-
 <?php
     $cs = Yii::app()->clientScript;
     $js = $this->renderPartial('_registjs', null ,true);
