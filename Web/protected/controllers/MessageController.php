@@ -9,7 +9,7 @@ class MessageController extends Controller{
     // public function accessRules(){
     //     return array(
     //         array('allow',
-    //             'actions' => array('index'),
+    //             'actions' => array('index', 'show'),
     //             'users' => array('@'),
     //         ),
     //         array('deny',
