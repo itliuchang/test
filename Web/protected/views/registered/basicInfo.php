@@ -25,7 +25,7 @@
 		<a href="#" class="next">NEXT</a>
 	</div>
 </div>
-<<script>
+<script>
 	type = <?php echo $type ?>;
 	name = '<?php echo $name ?>';
 	num = <?php echo $num ?>;

@@ -13,7 +13,8 @@ class BasicInfoAction extends CAction{
 				'price' => $productPrice,
 			));
 		} else {
-			$this->controller->redirect('/order?type='.$productType.'&name='.$productName.'&num='.$productNum.'&price='.$productPrice);
+			$this->controller->redirect('/payment/wxpay/jsapi/
+?type='.$productType.'&name='.$productName.'&num='.$productNum.'&price='.$productPrice);
 		}
 	}
 }
