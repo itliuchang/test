@@ -6,6 +6,7 @@ class OrderController extends Controller{
 		$productName = Yii::app()->user->productName;
 		$productNum = Yii::app()->user->productNum;
 		$productPrice = Yii::app()->user->productPrice;
+		echo $productNum;die;
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
