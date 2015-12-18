@@ -22,6 +22,7 @@ class OrderController extends Controller{
         $bill = WxPayApi::unifiedOrder($input);
         try{
             $jsApiParameters = $jsapi->GetJsApiParameters($bill);
+       	    Yii::log(print_r($jsApiParameters,1), CLogger::LEVEL_ERROR)
         }catch(Exception $e){
             Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
         }
