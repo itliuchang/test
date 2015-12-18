@@ -9,13 +9,13 @@ class OrderController extends Controller{
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
-        $input->SetBody('start');
+        $input->SetBody('stfart');
         $input->SetAttach('naked');
-        $input->SetOut_trade_no('fsfdfsdfs4');
+        $input->SetOut_trade_no('fsfdffssdfs4');
         $input->SetTotal_fee(1);
         $input->SetTime_start(date('YmdHis'));
         $input->SetTime_expire('20151230091010');
-        $input->SetProduct_id('12235413214070556458054');
+        $input->SetProduct_id('12235413214070556478054');
         $input->SetNotify_url(Yii::app()->request->getHostInfo() . $wechat['payment']['notify']);
         $input->SetTrade_type('JSAPI');
         $input->SetOpenid($openid);
