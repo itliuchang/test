@@ -29,7 +29,7 @@
                 if(res.err_msg == 'get_brand_wcpay_request:ok'){
                     //跳转到支付成功页
                     // location.href = location.protocol + '//' + location.host + '/payment/wxpay/result-ok.html';
-                    location.href = '/post/newlist';
+                    location.href = 'http://www.baidu.com';
                 }else if(res.err_msg == 'get_brand_wcpay_request:cancel'){
                     location.href = 'http://www.taobao.com';
                 }else{ //get_brand_wcpay_request:fail

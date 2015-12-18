@@ -188,21 +188,4 @@ class Assist{
     public static function getDefaultURL(){
         return '/post/newlist';
     }
-    public static function getTypePrice($type){
-        switch ($type) {
-            case 1:
-                $price = 300;
-                break;
-            case 2:
-                $price = 1000;
-                break;
-            case 3:
-                $price = 2100;
-                break;
-            default:
-                return false;
-                break;
-        }
-        return $price;
-    }
 }
