@@ -11,7 +11,7 @@ class OrderController extends Controller{
         $input = new WxPayUnifiedOrder();
         $input->SetBody('start');
         $input->SetAttach('naked');
-        $input->SetOut_trade_no('fsfd3424');
+        $input->SetOut_trade_no('fsfd342fs4');
         $input->SetTotal_fee(1);
         $input->SetTime_start(date('YmdHis'));
         $input->SetTime_expire('20151230091010');
