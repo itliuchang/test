@@ -30,12 +30,8 @@ class RegistAction extends CAction{
 					
 					$user->insert();
 					
-					// 注册环信
-					EasemobHelper::getInstance()->accreditRegister(array(
-						'username' => $user->id,
-						'password' => 'naked',
-						'nickname' => $name
-					));
+					//消息系统初始化
+					EasemobHelper::initIM($user->id, array('username' => $user->id, 'password' => 'nakedim', 'nickname' => $name));
 					
 					$user->isBindIM = 1;
 					$user->save();
@@ -55,5 +51,4 @@ class RegistAction extends CAction{
     		}
 		}
 	}
-
 }

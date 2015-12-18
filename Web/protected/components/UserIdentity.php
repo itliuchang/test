@@ -1,17 +1,11 @@
 <?php
 class UserIdentity extends CUserIdentity{
-    
 	public $id;
-
 	const ERROR_NO_BIND = 400;
 	const ERROR_MOBILE_INVALID = 404;
 	const ERROR_CODE_INVALID = 405;
-
 	const ERROR_MAIL_INVALID = 406;
-	public function __construct()
-    {
-       
-    }
+
     public function logout(){
         Yii::app()->user->logout();
     }

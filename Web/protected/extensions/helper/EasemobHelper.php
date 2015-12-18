@@ -20,4 +20,15 @@ class EasemobHelper extends Easemob{
         }
         return self::$_instance;
     }
+
+    public static function initIM($uid, $data){
+        //注册环信
+        self::getInstance()->accreditRegister($data);
+        //注册系统消息
+        $mr = new MessageRelation;
+        $mr->id1 = $uid;
+        $mr->id2 = 0;
+        $mr->utime = time();
+        $mr->save();
+    }
 }
