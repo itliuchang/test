@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	<div class="agree"><div class="icon hasAgree"></div><p>I have read and understood the <a href="#">Terms & Conditions</a> of naked Hub and hereby agree to fully abide by them</p></div>
-	<a class="footer" href="">Wechat Pay</a>
+	<div class="footer">Wechat Pay</div>
 </div>
 <script type="text/javascript">
     function jsApiCall(){
