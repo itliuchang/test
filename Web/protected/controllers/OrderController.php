@@ -21,7 +21,7 @@ class OrderController extends Controller{
         $input->SetTime_start(date('YmdHis'));
         $input->SetTime_expire('20151230091010');
         $input->SetProduct_id($productType);
-        $input->SetNotify_url('http://hubapp.livenaked.com' . $wechat['payment']['notify']);
+        $input->SetNotify_url('http://www.baidu.com');
         $input->SetTrade_type('JSAPI');
         $input->SetOpenid($openid);
         $bill = WxPayApi::unifiedOrder($input);
