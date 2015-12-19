@@ -29,6 +29,12 @@ return array(
                 'name' => 'hubapp',
                 'client_id' => 'YXA6BcP2sJ2IEeWr4cFwgvdI7Q',
                 'client_secret' => 'YXA6Ibw6ZXt7J_7UeEc9rIm-kXXn96o'
+            ),
+            'sysAccount' => array( //默认发送通知或消息的系统帐号
+                'name' => 'hubappAdmin',
+                'password' => 'hubappAdmin!@#',
+                'nickname' => 'System notification',
+                'icon' => '/images/sysnotify.png'
             )
         ),
     	'sms' => array(

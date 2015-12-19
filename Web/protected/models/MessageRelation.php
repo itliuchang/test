@@ -5,6 +5,6 @@ class MessageRelation extends CActiveRecord{
     }
 
     public function tableName(){
-        return 'MessageRelation';
+        return 'messageRelation';
     }
 }

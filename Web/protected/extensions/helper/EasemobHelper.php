@@ -31,4 +31,10 @@ class EasemobHelper extends Easemob{
         $mr->utime = time();
         $mr->save();
     }
+
+    public static function hasNewMessage($uid){
+        //是否有新的或离线私聊
+        //是否有新的系统通知(一对一)
+        //是否有新的全局系统消息
+    }
 }
