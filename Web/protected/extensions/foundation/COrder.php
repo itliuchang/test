@@ -8,10 +8,11 @@ class COrder{
 		$order-> orderTime = $data['orderTime'];
 		$order-> createTime = $data['orderTime'];
 		if($order->save()){
+			$result = Order::model()->findByAttributes(array('orderTime'=> $data['orderTime']));
 			return array(
 					'code' => 200,
 					'mes' => 'success',
-					'data' => array('orderId' => Order::model()->findByAttributes(array('createTime'=> $data['createTime']))->id)
+					'data' => array('orderId' => $result->id)
 				);
 		}else{
 			return array(

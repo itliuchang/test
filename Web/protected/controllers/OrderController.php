@@ -11,7 +11,7 @@ class OrderController extends Controller{
 		}
 		$wechat = Yii::app()->params['partner']['wechat'];
 		$order = new COrder;
-		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')))['data']['orderId'];
+		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
