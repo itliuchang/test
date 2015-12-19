@@ -11,7 +11,7 @@ class COrder{
 			return array(
 					'code' => 200,
 					'mes' => 'success',
-					'data' => { 'orderId' => Order::model()->findByAttributes(array('createTime'=> $data['createTime']))->id}
+					'data' => array('orderId' => Order::model()->findByAttributes(array('createTime'=> $data['createTime']))->id)
 				);
 		}else{
 			return array(
