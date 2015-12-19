@@ -14,6 +14,7 @@ return array(
         'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
         
         'payment/wxpay/jsapi/' => 'order/',
+        'payment/wxpay/notify' => 'order/notify',
 
         '<controller:\w+>/<id:\d+>'=>'<controller>/view',
         '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

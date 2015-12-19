@@ -5,7 +5,9 @@ class UserIdentity extends CUserIdentity{
 	const ERROR_MOBILE_INVALID = 404;
 	const ERROR_CODE_INVALID = 405;
 	const ERROR_MAIL_INVALID = 406;
-
+    public function __construct(){
+        
+    }
     public function logout(){
         Yii::app()->user->logout();
     }

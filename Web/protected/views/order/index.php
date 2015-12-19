@@ -25,15 +25,15 @@
             function(res){
                 WeixinJSBridge.log(res.err_msg);
                 // alert(res.err_code+res.err_desc+res.err_msg);
-                alert('支付结果:'+res.err_code+','+res.err_desc+','+res.err_msg);
+                // alert('支付结果:'+res.err_code+','+res.err_desc+','+res.err_msg);
                 if(res.err_msg == 'get_brand_wcpay_request:ok'){
                     //跳转到支付成功页
                     // location.href = location.protocol + '//' + location.host + '/payment/wxpay/result-ok.html';
-                    location.href = '/post/newlist';
+                    alert('支付成功');
                 }else if(res.err_msg == 'get_brand_wcpay_request:cancel'){
-                    location.href = 'http://www.taobao.com';
+                    alert('订单已取消');
                 }else{ //get_brand_wcpay_request:fail
-                    location.href = 'http://www.taobao.com';
+                    alert('支付失败');
                 }
             }
         );

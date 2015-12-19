@@ -57,25 +57,14 @@ class WxJSPayNotifyHelper extends WxPayNotify{
             return false;
         }
         //更新订单状态
-        $proxy = new OrderProxy();
-        $result = $proxy->update($data['attach'], CConstant::ORDER_PAYED, $data['transaction_id']);
-        // if($result['code'] != 200){
-        //     Yii::log(print_r($result, true), CLogger::LEVEL_ERROR, 'order.update.status');
-        // }
-        // return true;
-        // 订单更新失败则返回false，让微信可以继续通知
-        // Yii::log(print_r($result, true), CLogger::LEVEL_ERROR, 'order.update.tmp');
-        if($result['code'] == 200){
-            return true;
-        }else{
-            // 因微信callback时是无状态的异步通知，所以没有用户登录状态
-            // $result['token'] = Yii::app()->user->token;
-            // $result['params'] = array(
-            //     'id' => $data['attach'], 'status' => CConstant::ORDER_PAYED,
-            //     'info' => $data['transaction_id']
-            // );
-            Yii::log(print_r($result, true), CLogger::LEVEL_ERROR, 'order.update.status');
-            return false;
-        }
+       
+       $order = new COrder;
+       $result = $order->update($data['transaction_id']);
+       if($result['code']!==200){
+            Yii::log(echo 'update fail', CLogger::LEVEL_ERROR, 'payment.notify');
+            throw new Exception("update fail", 1);
+       }
+       Yii::log(echo $msg, CLogger::LEVEL_ERROR, 'payment.notify');
+
     }
 }
