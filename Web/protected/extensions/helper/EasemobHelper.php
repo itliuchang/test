@@ -110,5 +110,6 @@ class EasemobHelper extends Easemob{
     //创建全局系统消息
     public static function addSystemMessage(){}
 
+    //创建与某人的私聊消息
     public static function addMessage(){}
 }
