@@ -10,7 +10,7 @@ class OrderController extends Controller{
 		}catch(CException $e){
 			echo '订单创建失败';die;
 		}
-		if(Yii::app()->user->productCreate == 0){
+		if(Yii::app()->user->productCreated == 0){
 		$wechat = Yii::app()->params['partner']['wechat'];
 		$order = new COrder;
 		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
@@ -35,15 +35,16 @@ class OrderController extends Controller{
         }catch(Exception $e){
             Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
         }
-		$this->bodyCss='orderDetail';
-		$this->render('index',array(
-				'type' => $productType,
-				'name' => $productName,
-				'num' => $productNum,
-				'price' => $productPrice,
-				'jsparams' => $jsApiParameters,
-			));
+		Yii::app()->user->setState('jsparams',$jsApiParameters);
 	}
+	$this->bodyCss='orderDetail';
+	$this->render('index',array(
+			'type' => $productType,
+			'name' => $productName,
+			'num' => $productNum,
+			'price' => $productPrice,
+			'jsparams' => Yii::app()->user->jsparams,
+		));
 	}
 	}
 	public function actionNotify(){
