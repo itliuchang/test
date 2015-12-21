@@ -11,5 +11,13 @@ class User extends CActiveRecord{
     public function tableName(){
         return 'user';
     }
+    
+    public function relations(){
+    	return array(
+            'companyid' => array(self::BELONGS_TO, 'Company', 'company'),
+            'usertypeid'=>array(self::BELONGS_TO,'MemberType','userType'),
+            'reservation'=>array(self::HAS_MANY,'Reservations','userId')
+        );
+    }
 
 }

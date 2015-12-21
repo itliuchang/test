@@ -5,7 +5,6 @@ class Member extends CActiveRecord{
     }
 
     public function tableName(){
-        
         return 'user';
     }
 
