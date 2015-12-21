@@ -35,4 +35,25 @@ class Controller extends CController{
             Yii::app()->language=strtolower(str_replace('-', '_', $lang[0]));
         }
 	}
+	
+	public function filters() {
+		return array(
+			'wechat'
+		);
+	}
+	
+	public function filterWechat($filterChain) {
+		if(Assist::isWeixin()){
+			if(!Yii::app()->session['wechat']) {
+				if(!strpos(Yii::app()->request->getPathInfo(), 'wechatconnect')){
+					$this->redirect('/user/wechatconnect');
+					return false;
+				}
+			}
+			$filterChain->run();
+			return true;
+		}
+		return false;
+	}
+	
 }
