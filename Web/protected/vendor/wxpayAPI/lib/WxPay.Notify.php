@@ -23,6 +23,7 @@ class WxPayNotify extends WxPayNotifyReply
 			$this->ReplyNotify(false);
 			
 			Yii::log($this->ToXml(), CLogger::LEVEL_ERROR, 'payment.to.wx.response');
+			Yii::log(echo 'this is handle', CLogger::LEVEL_ERROR, 'payment.notify');
 			return;
 		} else {
 			//该分支在成功回调到NotifyCallBack方法，处理完成之后流程
