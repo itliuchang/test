@@ -45,7 +45,7 @@ class WxJSPayNotifyHelper extends WxPayNotify{
         //     [transaction_id] => 1005280712201507270489874922
         // )
         // Yii::log(print_r($data, true), CLogger::LEVEL_ERROR, 'payment.notify');
-        Yii::log(echo 'this is notifyprocess', CLogger::LEVEL_ERROR, 'payment.notify');
+
         $notfiyOutput = array();
         if(!array_key_exists("transaction_id", $data)){
             $msg = "输入参数不正确";
@@ -63,8 +63,6 @@ class WxJSPayNotifyHelper extends WxPayNotify{
        if($result['code']!==200){
             Yii::log(echo 'update fail', CLogger::LEVEL_ERROR, 'payment.notify');
             throw new Exception("update fail", 1);
-       }else{
-            Yii::log(echo 'success', CLogger::LEVEL_ERROR, 'hehe');
        }
        Yii::log(echo $msg, CLogger::LEVEL_ERROR, 'payment.notify');
 
