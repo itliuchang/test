@@ -11,6 +11,7 @@
     
     <body class="<?php echo $this->bodyCss ?>">
 	    <?php echo $content ?>
+      <input type="hidden" id="_csrftoken" value="<?php echo Yii::app()->request->csrfToken ?>">
       <div class="modal fade" id="tipModal" role="dialog" data-type="success" data-keyboard="false" data-backdrop="static">
           <div class="modal-dialog" data-verticalAlign="true">
               <div class="modal-content">

@@ -9,6 +9,7 @@ class OrderController extends Controller{
 		}catch(CException $e){
 			echo '订单创建失败';die;
 		}
+		echo Assist::getOrderExpireTime(time());die;
 		$wechat = Yii::app()->params['partner']['wechat'];
 		$order = new COrder;
 		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
