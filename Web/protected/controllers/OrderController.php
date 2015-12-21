@@ -10,12 +10,11 @@ class OrderController extends Controller{
 		}catch(CException $e){
 			echo '订单创建失败';die;
 		}
-		if(Yii::app()->user->productCreated == 0){
 		$wechat = Yii::app()->params['partner']['wechat'];
 		$order = new COrder;
 		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
 		$orderId = $orderId['data']['orderId'];
-		Yii::app()->user->setState('productCreate',1);
+		Yii::log('1',CLogger::LEVEL_ERROR);
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
@@ -35,16 +34,14 @@ class OrderController extends Controller{
         }catch(Exception $e){
             Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
         }
-		Yii::app()->user->setState('jsparams',$jsApiParameters);
-	}
-	$this->bodyCss='orderDetail';
-	$this->render('index',array(
-			'type' => $productType,
-			'name' => $productName,
-			'num' => $productNum,
-			'price' => $productPrice,
-			'jsparams' => Yii::app()->user->jsparams,
-		));
+		$this->bodyCss='orderDetail';
+		$this->render('index',array(
+				'type' => $productType,
+				'name' => $productName,
+				'num' => $productNum,
+				'price' => $productPrice,
+				'jsparams' => $jsApiParameters,
+			));
 	}
 	}
 	public function actionNotify(){
