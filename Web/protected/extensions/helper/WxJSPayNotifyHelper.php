@@ -60,12 +60,13 @@ class WxJSPayNotifyHelper extends WxPayNotify{
             return false;
         }
         //更新订单状态
-       
+       Yii::log( $data['transaction_id'], CLogger::LEVEL_ERROR, 'id');
        $order = new COrder;
        $result = $order->update($data['transaction_id']);
        if($result['code']!==200){
             Yii::log('update fail', CLogger::LEVEL_ERROR, 'payment.notify');
        }
+
 
     }
 }
