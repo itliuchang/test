@@ -1,6 +1,7 @@
 <?php
 class OrderController extends Controller{
 	public function actionIndex(){
+		if(!Yii::app()->request->isAjaxRequest){
 		try{
 			$productType = Yii::app()->user->productType;
 			$productName = Yii::app()->user->productName;
@@ -41,6 +42,7 @@ class OrderController extends Controller{
 				'price' => $productPrice,
 				'jsparams' => $jsApiParameters,
 			));
+	}
 	}
 	public function actionNotify(){
 		Yii::log($GLOBALS['HTTP_RAW_POST_DATA'], CLogger::LEVEL_ERROR, 'heeh');
