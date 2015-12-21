@@ -64,10 +64,8 @@ class WxJSPayNotifyHelper extends WxPayNotify{
        $order = new COrder;
        $result = $order->update($data['transaction_id']);
        if($result['code']!==200){
-            Yii::log(echo 'update fail', CLogger::LEVEL_ERROR, 'payment.notify');
-            throw new Exception("update fail", 1);
+            Yii::log('update fail', CLogger::LEVEL_ERROR, 'payment.notify');
        }
-       Yii::log(echo $msg, CLogger::LEVEL_ERROR, 'payment.notify');
 
     }
 }
