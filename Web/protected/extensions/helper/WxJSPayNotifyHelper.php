@@ -6,6 +6,9 @@ require_once('WxPay.Notify.php');
 
 class WxJSPayNotifyHelper extends WxPayNotify{
     //查询订单
+    public function __construct(){
+        Yii::log('heeee',LEVEL_ERROR);
+    }
     public function Queryorder($transaction_id, $scope = 'JSAPI'){
         $input = new WxPayOrderQuery();
         $input->SetTransaction_id($transaction_id);
