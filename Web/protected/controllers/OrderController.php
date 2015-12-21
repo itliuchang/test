@@ -19,6 +19,7 @@ class OrderController extends Controller{
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
         $input->SetBody($productName);
+        $input->SetAttach($productNum);
         $input->SetOut_trade_no((string)$orderId);
         $input->SetTotal_fee($productPrice*$productNum);
         $input->SetTime_start(date('YmdHis'));
