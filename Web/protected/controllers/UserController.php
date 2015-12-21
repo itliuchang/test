@@ -14,6 +14,7 @@ class UserController extends Controller{
             'account' => 'application.controllers.user.AccountAction',
 			'updateprofile' => 'application.controllers.user.UpdateProfileAction',
             'changepassword' => 'application.controllers.user.ChangePasswordAction'
+				
 		);
 	}
 }
