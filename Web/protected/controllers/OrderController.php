@@ -13,6 +13,7 @@ class OrderController extends Controller{
 		$order = new COrder;
 		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
 		$orderId = $orderId['data']['orderId'];
+		Yii::log('1',CLogger::LEVEL_ERROR);
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
