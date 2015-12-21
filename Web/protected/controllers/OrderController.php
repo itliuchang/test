@@ -43,8 +43,7 @@ class OrderController extends Controller{
 	}
 	public function actionNotify(){
 		Yii::log($GLOBALS['HTTP_RAW_POST_DATA'], CLogger::LEVEL_ERROR, 'heeh');
-		
-    	$notify = new WxPayNotify();
+    	$notify = new WxJSPayNotifyHelper();
         $notify->Handle(false);
 
 	}
