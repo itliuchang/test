@@ -42,8 +42,13 @@ class OrderController extends Controller{
 			));
 	}
 	public function actionNotify(){
-		Yii::log($GLOBALS['HTTP_RAW_POST_DATA'], CLogger::LEVEL_ERROR, 'payment.notify');
-        $notify = new WxJSPayNotifyHelper();
+		Yii::log($GLOBALS['HTTP_RAW_POST_DATA'], CLogger::LEVEL_ERROR, 'heeh');
+		try{
+        	$notify = new WxJSPayNotifyHelper();
+		}catch(e){
+			Yii::log('msg error', CLogger::LEVEL_ERROR,'info');
+		}
+		Yii::log('handerbefore', CLogger::LEVEL_ERROR,'info');
         $notify->Handle(false);
 	}
 }
