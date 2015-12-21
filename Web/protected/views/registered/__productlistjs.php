@@ -20,7 +20,6 @@ $(function(){
 			$(this).prev().text(Number($(this).prev().text())+1);
 	});
 	$('.footer').hammer().on('tap',function(){
-		$(this).hammer().off();
 		var $selected = $('.selected'),
 			type = $selected.find('.productType').val(),
 			name = $selected.find('.type').text(),

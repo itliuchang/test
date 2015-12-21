@@ -36,7 +36,6 @@ $(function(){
 	}//验证码读秒
 	
 	$('#basicInfo .footer .next').hammer().on('tap',function(){
-		$(this).hammer().off();
 		if(!$('#basicInfo .name').val()) {
 			CHelper.toggleTip('show','Empty full name','error',1000);
 			return;
@@ -91,6 +90,9 @@ $(function(){
 		}
 	
 		CHelper.asynRequest('/user/regist', data,{
+			before:function(){
+				CHelper.toggleTip('show','处理中..','success');
+			},
 			success:function(){
 				location.href='/payment/wxpay/jsapi/';
 			},
