@@ -7,6 +7,7 @@ class BasicInfoAction extends CAction{
 		Yii::app()->user->setState('productName' , Yii::app()->request->getParam('name'));
 		Yii::app()->user->setState('productNum' , Yii::app()->request->getParam('num'));
 		Yii::app()->user->setState('productPrice' , Yii::app()->request->getParam('price'));
+		Yii::app()->user->setState('productCreated',0);
 		if(Yii::app()->user->isGuest) {
 			$this->controller->render('basicInfo');
 		} else {
