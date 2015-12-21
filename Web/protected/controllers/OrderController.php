@@ -28,12 +28,7 @@ class OrderController extends Controller{
         $input->SetTrade_type('JSAPI');
         $input->SetOpenid($openid);
         $bill = WxPayApi::unifiedOrder($input);
-        try{
-            $jsApiParameters = $jsapi->GetJsApiParameters($bill);
-       	    Yii::log(print_r($jsApiParameters,1), CLogger::LEVEL_ERROR);
-        }catch(Exception $e){
-            Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
-        }
+        $jsApiParameters = $jsapi->GetJsApiParameters($bill);
 		$this->bodyCss='orderDetail';
 		$this->render('index',array(
 				'type' => $productType,
