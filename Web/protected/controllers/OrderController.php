@@ -20,7 +20,7 @@ class OrderController extends Controller{
         $input->SetOut_trade_no((string)$orderId);
         $input->SetTotal_fee($productPrice*$productNum);
         $input->SetTime_start(date('YmdHis'));
-        $input->SetTime_expire(Assist::getOrderExpireTime(date()));
+        $input->SetTime_expire(Assist::getOrderExpireTime(time()));
         $input->SetProduct_id($productType);
         $input->SetNotify_url('http://hubapp.livenaked.com' . $wechat['payment']['notify']);
         $input->SetTrade_type('JSAPI');
