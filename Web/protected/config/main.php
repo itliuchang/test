@@ -23,7 +23,7 @@ return array(
 			'class' => 'application.components.HttpRequest',
 			'enableCsrfValidation' => true,
 			'noCsrfValidationRoutes' => array(
-				'payment/wxpay/notify',
+				'order/notify',
 			),
 			'enableCookieValidation' => true,
 		),

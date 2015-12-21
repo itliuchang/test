@@ -15,6 +15,7 @@ return array(
         
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
+        'registered/basicinfo' => 'registered/basicinfo',
 
         '<controller:\w+>/<id:\d+>'=>'<controller>/view',
         '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
