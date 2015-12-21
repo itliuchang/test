@@ -34,12 +34,12 @@ class EasemobHelper extends Easemob{
     }
 
     //查询是否有新消息
-    public static function hasNewMessage($uid){
-        //是否有新的(离线)消息或一对一的系统通知
-        $n = Message::model()->countBySql('select count(*) from message where RecID=:uid and type in(0,1) and status=0', array(':uid' => $uid));
+    public static function hasNewMessage(){
+        //是否有我的新(离线)消息或一对一的系统通知-只有接收者是当前登录用户的才需要置为已读
+        $n = Message::model()->countBySql('select count(*) from message where RecID=:uid and type in(0,1) and status=0', array(':uid' => Yii::app()->user->id));
         if($n > 0) return true;
         //是否有新的全局系统消息
-        $n = Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => $uid));
+        $n = Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
         return $n > 0;
     }
 
@@ -60,40 +60,68 @@ class EasemobHelper extends Easemob{
                 // 有则插入数据否则更新
                 MessageLog::model()->dbConnection->createCommand('insert into messageLog values(' . $m->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time())->execute();
             }
-            //更新与此发送者的最后聊天记录
-            $lastMsg = mb_substr(Assist::removeXSS(Assist::removeEmoji($m->body)), 0, 50, 'utf-8');
-            if($m->type == 0){//私聊
-                $mr = MessageRelation::model()->findBySql('select * from messageLog where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => $m->senderID, ':recId' => $m->RecID));
-                $senderID = $m->senderID;
-                $RecID = $m->RecID;
-            }else{//系统消息/通知
-                $mr = MessageRelation::model()->findBySql('select * from messageLog where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
-                $senderID = Yii::app()->user->id;
-                $RecID = 0;
-            }
-            if($mr){
-                $mr->lastMsg = $lastMsg;
-                $mr->utime = time();
-                $mr->save();
-            }else{
-                $mrelation = new MessageRelation;
-                $mrelation->id1 = $senderID;
-                $mrelation->id2 = $RecID;
-                $mrelation->lastMsg = $lastMsg;
-                $mrelation->utime = time();
-                $mrelation->save();
-            }
         }
     }
 
     //设置当前登录用户与某人所有聊天记录为已读, $senderID=0表示设置与系统的所有聊天记录为已读(含一对一的通知与全局系统消息)
-    public static function readAll($senderID){}
+    public static function readAll($senderID){
+        if($senderID == 0){//使当前登录用户所有的系统消息与通知为已读
+            //将一对一的系统通知置为已读
+            Message::model()->updateAll(array('status' => 1, 'utime' => time()), 'senderID=0 and RecID=:RecId and type=1 and status=0', array(':RecId' => Yii::app()->user->id));
+            //将全局系统消息置为已读
+            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+            $sql = '';
+            foreach($messages as $message){
+                $sql += 'insert into messageLog values(' . $message->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time() . ';';
+            }
+            if($sql) MessageLog::model()->dbConnection->createCommand($sql)->execute();
+        }else{//使用当前用户与此人的私聊全部为已读，自己发送的消息不需要置为已读
+            Message::model()->updateAll(array('status' => 1, 'utime' => time()), 'senderID=:senderId and RecID=:RecId and type=0 and status=0', array(':senderId' => $senderID, ':RecId' => Yii::app()->user->id));
+        }
+    }
 
-    //分页获取当前用户好友列表
-    public static function getAll($page, $size){}
+    //分页获取当前用户好友列表,在消息列表中ajax添加dom列表时过滤掉已在dom中存在的项，避免多个终端显示消息列表时因有新聊天而导致取列表数据错位的问题
+    public static function getAll($page = 1, $size = 15){
+        $fields = 'mr.*, u1.nickName as u1name, u1.portrait as u1img, u2.nickName as u2name, u2.portrait as u2img';
+        $where = 'from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id order by utime desc';
+        $count = MessageRelation::model()->countBySql('select count(*) ' . $where);
+        $total = ceil($count / $size);
+        $limit = '';
 
-    //分磁获取当前用户与某好友的聊天消息列表
-    public static function getAllMessage($fid, $page, $size){}
+        $list = MessageRelation::model()->findAllBySql('select  ');
+    }
+
+    //分页获取当前用户与某好友的聊天消息列表,使用start而非使用常规分页是为了避免当在聊天窗口有新的聊天记录时获取消息列表错位的问题
+    public static function getAllMessage($fid, $start = 0, $size = 15){
+        //查找senderID分别是自己与好友
+        //这里倒序查数据库,在页面中中倒序输出这里的结果,这样上拉聊天记录时消息显示顺序就正确了: 按时间正序排序了
+    }
+
+    //更新最后的聊天记录
+    public static function updateLastMsg($senderId, $recId, $msg){
+        $lastMsg = mb_substr(Assist::removeXSS(Assist::removeEmoji($msg)), 0, 50, 'utf-8');
+        if($senderId == 0){//系统消息/通知
+            $mr = MessageRelation::model()->findBySql('select * from messageLog where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
+            $senderID = Yii::app()->user->id;
+            $RecID = 0;
+        }else{//私聊
+            $mr = MessageRelation::model()->findBySql('select * from messageLog where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => $senderId, ':recId' => $recId));
+            $senderID = $m->senderID;
+            $RecID = $m->RecID;
+        }
+        if($mr){
+            $mr->lastMsg = $lastMsg;
+            $mr->utime = time();
+            $mr->save();
+        }else{
+            $mrelation = new MessageRelation;
+            $mrelation->id1 = $senderID;
+            $mrelation->id2 = $RecID;
+            $mrelation->lastMsg = $lastMsg;
+            $mrelation->utime = time();
+            $mrelation->save();
+        }
+    }
 
     //创建评论新回复通知
     public static function addCommentReplyNotify($recId, $body, $pid, $cid){
@@ -105,6 +133,7 @@ class EasemobHelper extends Easemob{
         $m->type = 1;
         $m->ctime = $m->utime = time();
         $m->save();
+        //更新最后记录
     }
 
     //创建全局系统消息
