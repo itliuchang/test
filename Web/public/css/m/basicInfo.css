@@ -68,7 +68,7 @@
 	width: 100%;
 	background-color: #d7d7d7;
 }
-#basicInfo .footer a{
+#basicInfo .footer a,#basicInfo .footer .next{
 	float: left;
 	width: 50%;
 	display: inline-block;

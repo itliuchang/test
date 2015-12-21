@@ -22,7 +22,7 @@
 	</div>
 	<div class="footer">
 		<a href="/registered/productlist" class="back">BACK</a>
-		<a href="#" class="next">NEXT</a>
+		<div class="next">NEXT</div>
 	</div>
 </div>
 <?php
