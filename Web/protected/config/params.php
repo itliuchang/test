@@ -33,8 +33,8 @@ return array(
             'sysAccount' => array( //默认发送通知或消息的系统帐号
                 'name' => 'hubappAdmin',
                 'password' => 'hubappAdmin!@#',
-                'nickname' => 'System notification',
-                'icon' => '/images/sysnotify.png'
+                'nickName' => 'hubapp',
+                'portrait' => '/images/sysnotify.png'
             )
         ),
     	'sms' => array(
