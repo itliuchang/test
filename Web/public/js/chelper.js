@@ -152,6 +152,86 @@
                 }
             });
         },
+        //阿里云上传配置
+        uploadOSS: function(token,options,callback){
+            var defaults = {
+                'browse_button':'selectfiles',
+                'container':'container',
+                'max_file_size':'12mb',
+                'url':'http://naked.oss-cn-shanghai.aliyuncs.com'
+            };
+            options = $.extend(true,{}, defaults, options || {});
+            token = token;
+            var callback = callback || {};
+            var uploader = new plupload.Uploader({
+                runtimes : 'html5,flash,silverlight,html4',
+                browse_button : options.browse_button, 
+                container: options.container,
+                flash_swf_url : 'lib/plupload-2.1.2/js/Moxie.swf',
+                silverlight_xap_url : 'lib/plupload-2.1.2/js/Moxie.xap',
+                unique_names: true,
+                filter:{
+                    max_file_size:'5mb',
+                    mime_types:[{
+                        title:'图片类型',
+                        extensions:'jpg,gif,png'
+                    }]
+                },
+                url : options.url,
+                multipart_params : {
+                    'key':token.key,
+                    'policy':token.policy,
+                    'OSSAccessKeyId':token.OSSAccessKeyId,
+                    'success_action_status':'200',
+                    'signature':token.signature
+                },
+
+                init: {
+                    PostInit: function(){
+                        uploader.setOption('multipart_params',{
+                            'key':'img/'+uploader.id,
+                            'policy':token.policy,
+                            'OSSAccessKeyId':token.OSSAccessKeyId,
+                            'success_action_status':'200',
+                            'signature':token.signature
+                        });
+
+                    },
+
+                    FilesAdded: function(up, files) {
+                        plupload.each(files, function(file) {
+                            
+                            CHelper.toggleTip('show', '上传中(<span style="color:#EA2424;">0%</span>)..', 'loader');
+                            uploader.start(); 
+                            
+                        });                   
+                    },
+
+                    UploadProgress: function(up, file) {
+                         // 每个文件上传时,处理相关的事情
+                        if(typeof callback.UploadProgress == 'function')
+                            callback.UploadProgress(up,file);
+                        else{
+                            $('#tipModal[data-type=loader] .hint span').text(file.percent + '%');
+                        }
+                        
+                    },
+
+                    FileUploaded: function(up, file, info) {
+                        if(typeof callback.FileUploaded == 'function')
+                           callback.FileUploaded(up,file);
+                       else
+                            CHelper.toggleTip('hide');
+                        
+                    },
+
+                    Error: function(up, err) {
+                        console.log(err.response)
+                    }
+                }
+            });
+            uploader.init();
+        },
         getXDate: function(start, days){
             start = start.toString().length == 10? start * 1000 : start;
             var s = new Date(start);

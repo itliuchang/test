@@ -13,6 +13,7 @@ return array(
         'wechat/quiet/login' => 'user/wechatQuietConnect',
         'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
         
+        'book/roomshow-<id:\d+>' => 'book/roomshow',
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',

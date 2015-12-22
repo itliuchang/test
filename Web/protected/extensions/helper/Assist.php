@@ -2,6 +2,7 @@
 Yii::import('application.vendor.php-useragent.*');
 Yii::import('application.vendor.converemojitostr.*');
 Yii::import('application.vendor.qiniu2.*');
+Yii::import('application.vendor.oss.*');
 use Qiniu\Auth;
 
 require_once('useragent.class.php');
@@ -25,6 +26,17 @@ class Assist{
         $domain = Yii::app()->params['partner']['qiniu']['domain'];
         $auth = new Auth($ak, $sk);
         $upToken = $auth->uploadToken($bucket);
+        return array('uptoken'=>$upToken,'domain'=>$domain);
+    }
+
+    public static function getOSSToken(){
+        $bucket = Yii::app()->params['partner']['oss']['bucket'];
+        $domain = Yii::app()->params['partner']['oss']['domain'];
+        $id = Yii::app()->params['partner']['oss']['id'];
+        $key = Yii::app()->params['partner']['oss']['key'];
+        $host = Yii::app()->params['partner']['oss']['host'];
+        $oss = new upload($id, $key, $domain);
+        $upToken = $oss->uploadToken($bucket);
         return array('uptoken'=>$upToken,'domain'=>$domain);
     }
 

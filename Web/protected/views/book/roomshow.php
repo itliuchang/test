@@ -1,13 +1,16 @@
 <div id="roomshow">
 	<div class="option">
+	<input type='hidden' >
+	<input type='hidden' name='my' data-my='<?php echo $my?>'>
+	<input type='hidden' name='other' data-other='<?php echo $other?>'>
 		<div class="imgWrapper">
-			<img src="/images/banner/1.jpg" alt="">
+			<img src="<?php echo $data['picture']?>" alt="">
 			<div class="detail">
-				<h3>Broccoli NO.10</h3>
-				<p><span class="floor">4</span>FL<span class="peoples">6</span></p>
+				<h3><?php echo $data['name']?></h3>
+				<p><span class="floor"><?php echo $data['floor']?></span>FL<span class="peoples"><?php echo $data['seats']?></span></p>
 			</div>
 		</div>
-		<input type="date" class="date" value="2015-12-20">
+		<input type="date" class="date" value="<?php echo $date?>">
 		<div class="time">
 			<label>Starts</label>
 			<input type="time" value="12:00">
@@ -101,6 +104,6 @@
 </div>
 <?php
     $cs = Yii::app()->clientScript;
-    $js = $this->renderPartial('_roomlistjs', null ,true);
+    $js = $this->renderPartial('_roomshowjs', null ,true);
     $cs->registerScript('room', $js, CClientScript::POS_END);
 ?>

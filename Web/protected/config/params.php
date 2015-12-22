@@ -33,8 +33,8 @@ return array(
             'sysAccount' => array( //默认发送通知或消息的系统帐号
                 'name' => 'hubappAdmin',
                 'password' => 'hubappAdmin!@#',
-                'nickname' => 'System notification',
-                'icon' => '/images/sysnotify.png'
+                'nickName' => 'hubapp',
+                'portrait' => '/images/sysnotify.png'
             )
         ),
     	'sms' => array(
@@ -45,6 +45,14 @@ return array(
     		'action' => 'send',
     		'login_tpl' => '验证码为%d，您现在正在进行裸心社手机登录［裸心社］',
     		'regist_tpl' => '验证码为%d，您现在正在进行裸心社手机注册［裸心社］',
-    	)
+    	),
+         //阿里云OSS配置
+        'oss' => array(
+            'bucket' => 'naked',
+            'domain' => 'http://naked.oss-cn-shanghai.aliyuncs.com',
+            'id' => '4BdbMZOR4c67xntc',
+            'key' => 'tdKA6T1JCKaQcB6yFBw33SJo9tNGxw',
+            'host' => 'http://oss.aliyuncs.com'
+        ),
     )
 );

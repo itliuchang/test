@@ -19,12 +19,5 @@ $(function(){
 		});
 	}	
 		
-	$('.option').hammer().on('tap press',function(e){
-		e.gesture.srcEvent.preventDefault();
-		var id = $(this).children('input[name="id"]').val();
-
-		location.href='/book/roomshow-'+id;
-	});	
-
 	
 });

@@ -43,6 +43,17 @@ class EasemobHelper extends Easemob{
         return $n > 0;
     }
 
+    //获取当前登录用户与对方的新/离线消息数
+    public static function getNewMessageNum($senderId){
+        if($senderId == 0){//获取系统消息
+            $n = Message::model()->countBySql('select count(*) from message where senderID=0 and RecID=:uid and type=1 and status=0', array(':uid' => Yii::app()->user->id));
+            $n += Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+        }else{
+            $n = Message::model()->countBySql('select count(*) from message where senderID=:senderId and RecID=:uid and type=0 and status=0', array(':senderId' => $senderId, ':uid' => Yii::app()->user->id));
+        }
+        return $n;
+    }
+
     //设置某消息的已读状态
     public static function read($id){
         $m = Message::model()->findByPk($id);
@@ -80,21 +91,37 @@ class EasemobHelper extends Easemob{
         }
     }
 
-    //分页获取当前用户好友列表,在消息列表中ajax添加dom列表时过滤掉已在dom中存在的项，避免多个终端显示消息列表时因有新聊天而导致取列表数据错位的问题
+    //分页获取当前用户好友列表,在消息列表中ajax添加dom时过滤已在dom存在的项，避免多终端显示消息列表时因有新聊天而导致取列表数据错位的问题
     public static function getAll($page = 1, $size = 15){
-        $fields = 'mr.*, u1.nickName as u1name, u1.portrait as u1img, u2.nickName as u2name, u2.portrait as u2img';
-        $where = 'from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id order by utime desc';
-        $count = MessageRelation::model()->countBySql('select count(*) ' . $where);
+        $fields = ' mr.*, u1.nickName as u1name, u1.portrait as u1img, u2.nickName as u2name, u2.portrait as u2img';
+        $where = ' from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id where id1=:uid or id2=:uid order by utime desc';
+        $count = MessageRelation::model()->countBySql('select count(*) ' . $where, array(':uid' => Yii::app()->user->id));
         $total = ceil($count / $size);
-        $limit = '';
+        $start = $page * $size - 1;
+        $limit = " limit {$start},{$size}";
 
-        $list = MessageRelation::model()->findAllBySql('select  ');
+        $list = MessageRelation::model()->findAllBySql('select' . $fields . $where . $limit, array(':uid' => Yii::app()->user->id));
+        foreach($list as $item){
+            if($item['id2'] == 0){
+                $item['ncount'] = self::getNewMessageNum(0);
+            }else{
+                $item['ncount'] = self::getNewMessageNum($item['id1'] != Yii::app()->user->id? $item['id1'] : $item['id2']);
+            }
+        }
+        return $list;
     }
 
     //分页获取当前用户与某好友的聊天消息列表,使用start而非使用常规分页是为了避免当在聊天窗口有新的聊天记录时获取消息列表错位的问题
     public static function getAllMessage($fid, $start = 0, $size = 15){
-        //查找senderID分别是自己与好友
         //这里倒序查数据库,在页面中中倒序输出这里的结果,这样上拉聊天记录时消息显示顺序就正确了: 按时间正序排序了
+        if($fid == 0){//系统通知与消息
+            $sysaccount = Yii::app()->params['partner']['emchat']['sysAccount'];
+            $user = array('id' => 0, 'nickName' => $sysaccount['nickName'] ?: $sysaccount['name'], 'portrait' => $sysaccount['portrait']);
+        }else{//私聊
+            $user = User::model()->findByPk($fid);
+            $data = Message::model()->findAllBySql('select * from message where ((senderID=:senderId and RecID=:RecId) or (senderID=:RecId and RecID=:senderId)) and type=0 order by ctime desc limit :offset, :limit', array(':senderId' => Yii::app()->user->id, ':RecId' => $fid, ':offset' => $start, ':limit' => $size));
+        }
+        return array('user' => $user, 'data' => $data);
     }
 
     //更新最后的聊天记录
