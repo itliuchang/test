@@ -11,6 +11,7 @@ class Products extends CActiveRecord{
 
     public function relations(){
     	return array(
+            'order'=>array(self::HAS_MANY,'Order','productId'),
     	);
     }	
 }

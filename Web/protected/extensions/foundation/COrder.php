@@ -58,4 +58,17 @@ class COrder{
 	public function checkProduct($orderId){
 		return OrderProduct::model()->findByAttributes(array('orderId'=>$orderId));
 	}
+
+	public function getlist($userId){
+		$order = Order::model()->findAllByAttributes(array('userId'=>$userId,'status'=>1));
+		$length = count($order);
+		$products = array();
+		for($i=0;$i<$length;$i++){
+			$products[$i]['content'] = OrderProduct::model()->findAllByAttributes(array("orderId"=>$order[$i]['id']));
+			$products[$i]['productType'] = $order[$i]['productId'];
+			$relate = Order::model()->with('product')->findByAttributes(array("productId"=>$order[$i]['productId']));
+			$products[$i]['times'] = $relate['product']['times'];
+		}
+		print_r($products);die;
+	}
 }

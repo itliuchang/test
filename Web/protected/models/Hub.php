@@ -12,7 +12,8 @@ class Hub extends CActiveRecord{
     
     public function relations(){
         return array(
-            'reservation'=>array(self::HAS_MANY,'Reservations','hubId')
+            'reservation'=>array(self::HAS_MANY,'Reservations','hubId'),
+            'hubId' => array(self::HAS_MANY,'User','location'),
         );
     } 
 

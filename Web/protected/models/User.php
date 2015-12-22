@@ -16,7 +16,8 @@ class User extends CActiveRecord{
     	return array(
             'companyid' => array(self::BELONGS_TO, 'Company', 'company'),
             'usertypeid'=>array(self::BELONGS_TO,'MemberType','userType'),
-            'reservation'=>array(self::HAS_MANY,'Reservations','userId')
+            'reservation'=>array(self::HAS_MANY,'Reservations','userId'),
+            'hubId' => array(self::BELONGS_TO,'Hub','location'),
         );
     }
 

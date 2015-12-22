@@ -31,7 +31,6 @@ class OrderController extends Controller{
         $input->SetOpenid($openid);
         $bill = WxPayApi::unifiedOrder($input);
         $jsApiParameters = $jsapi->GetJsApiParameters($bill);
-		Yii::log('test', CLogger::LEVEL_ERROR,'info');
 		$this->bodyCss='orderDetail';
 		$this->render('index',array(
 				'type' => $productType,
