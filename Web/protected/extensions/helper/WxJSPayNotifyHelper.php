@@ -64,6 +64,15 @@ class WxJSPayNotifyHelper extends WxPayNotify{
        $result = $order->update($data['out_trade_no']);
        if($result['code']!==200){
             Yii::log('update fail', CLogger::LEVEL_ERROR, 'payment.notify');
+       }else{
+            $date = date('U');
+            for($i=0;$i<$data['attach'];$i++){
+                $rtuorder = $order->createProduct(array('orderId'=>$data['out_trade_no'],'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+$date+2505600)));
+                $date = $date+2592000;
+                if($rtuorder['code']!=200){
+                    throw new Exception("create product fail", 1);
+                }
+            }
        }
 
 

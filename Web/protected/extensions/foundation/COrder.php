@@ -37,4 +37,21 @@ class COrder{
 		}	
 
 	}
+	public function createProduct($data){
+		$orderProduct = new OrderProduct;
+		$orderProduct-> orderId = $data['orderId'];
+		$orderProduct-> startDate = $data['startDate'];
+		$orderProduct-> endDate = $data['endDate'];
+		if($orderProduct->save()){
+			return array(
+					'code' => 200,
+					'mes' =>'success'
+				);
+		}else{
+			return array(
+					'code' => 500,
+					'mes' => 'create fail'
+				);
+		}	
+	}
 }
