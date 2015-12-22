@@ -10,10 +10,12 @@ class OrderController extends Controller{
 		}catch(CException $e){
 			echo '订单创建失败';die;
 		}
-		$wechat = Yii::app()->params['partner']['wechat'];
-		$order = new COrder;
-		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
-		$orderId = $orderId['data']['orderId'];
+		if(Yii::app()->request->getParam('code')){
+			$wechat = Yii::app()->params['partner']['wechat'];
+			$order = new COrder;
+			$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
+			$orderId = $orderId['data']['orderId'];
+		};
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
@@ -29,6 +31,7 @@ class OrderController extends Controller{
         $input->SetOpenid($openid);
         $bill = WxPayApi::unifiedOrder($input);
         $jsApiParameters = $jsapi->GetJsApiParameters($bill);
+		Yii::log('test', CLogger::LEVEL_ERROR,'info');
 		$this->bodyCss='orderDetail';
 		$this->render('index',array(
 				'type' => $productType,
