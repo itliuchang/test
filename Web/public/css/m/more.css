@@ -40,7 +40,8 @@
 	margin: 20px 0;
 	background-color: #fff;
 }
-#more .option li{
+#more .option li a{
+	width: 100%;
 	padding:10px 0;
 	padding-left: 40px;
 	border-bottom: 1px solid #f6f6f6;
@@ -48,27 +49,27 @@
 	background-repeat: no-repeat;
 	background-position: 10px center;
 }
-#more .option li.reservations{
+#more .option li.reservations a{
 	background-image: url(/images/workspace.png);
 	background-size: 20px 12px;
 }
-#more .option li.myprofile{
+#more .option li.myprofile a{
 	background-image: url(/images/myprofile.png);
 	background-size: 20px 15px;
 }
-#more .option li.companyProfile{
+#more .option li.companyProfile a{
 	background-image: url(/images/companyProfile.png);
 }
-#more .option li.account{
+#more .option li.account a{
 	background-image: url(/images/account.png);
 }
-#more .option li.password{
+#more .option li.password a{
 	background-image: url(/images/changePassword.png);
 	background-size: 18px 20px;
 }
-#more .option li.about{
+#more .option li.about a{
 	background-image: url(/images/about.png);
 }
-#more .option li.logout{
+#more .option li.logout a{
 	background-image: url(/images/logout.png);
 }

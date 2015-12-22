@@ -38,5 +38,5 @@
 	</div>
 </div>
 <div class="container-fluid tbar" id="footer">
-    <?php $this->widget('FTBarWidget') ?>
+    <?php $this->widget('FTBarWidget',array('currentTab' => '/community/companylist')) ?>
 </div>

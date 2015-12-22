@@ -62,6 +62,6 @@
 
 	</div>
 </div>
-<div id="footer" class="tbar">
-	<?php $this->widget('FTBarWidget') ?>
+<div class="container-fluid tbar" id="footer">
+    <?php $this->widget('FTBarWidget',array('currentTab' => '/community/companylist')) ?>
 </div>
