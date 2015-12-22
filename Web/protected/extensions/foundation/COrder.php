@@ -54,4 +54,8 @@ class COrder{
 				);
 		}	
 	}
+
+	public function checkProduct($orderId){
+		return OrderProduct::model()->findByAttributes(array('orderId'=>$orderId));
+	}
 }
