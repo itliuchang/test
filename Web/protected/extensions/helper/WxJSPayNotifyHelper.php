@@ -64,7 +64,7 @@ class WxJSPayNotifyHelper extends WxPayNotify{
        $result = $order->update($data['out_trade_no']);
        if($result['code']!==200){
             Yii::log('update fail', CLogger::LEVEL_ERROR, 'payment.notify');
-       }else if(!COrder->checkProduct($data['out_trade_no'])){
+       }else if(!$order->checkProduct($data['out_trade_no'])){
             $date = date('U');
             Yii::log($data['attach'], CLogger::LEVEL_TRACE,'info');
             for($i=0;$i<(int)$data['attach'];$i++){
