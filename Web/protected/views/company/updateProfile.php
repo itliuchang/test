@@ -1,10 +1,10 @@
 <div id="companyUpdateProfile">
 	<div class="top">
-		<div class="background">
-			<div class="addBackground"></div>
+		<div class="background" id='background_container'>
+			<div class="addBackground" id="selectbackground"></div>
 		</div>
-		<div class="wrapperPortrait">
-			<img class="portrait">
+		<div class="wrapperPortrait" id='portrait_container'>
+			<img class="portrait" id='selectportrait' src=''>
 		</div>
 	</div>
 	<div class="inputSection">
@@ -95,6 +95,14 @@
 		</ul>
 	</div>
 </div>
+<script type="text/javascript">
+
+    var domain = '<?php echo Assist::getOSSToken()['domain'] ?>',
+    	token = '<?php echo Assist::getOSSToken()['uptoken']?>';
+    	token = eval('(' + token + ')')
+
+    
+</script>
 <?php
     $cs = Yii::app()->clientScript;
     $js = $this->renderPartial('_updateProfilejs', null ,true);

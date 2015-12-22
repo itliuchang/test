@@ -2,12 +2,18 @@
 /**
  * This is Class for MeetingRoom
  * Create by Leon 2015/12/1
- */
+ */ 
 Class MeetingRoom{
 
-	public $date;
-	public function __construct() {
-		$this->date = date('Y-m-d',time());
+	private $date;
+	private $userId;
+	private $roomId;
+	private $location;
+	function __construct($date,$userId,$roomId,$location) {
+		$this->date = $date;
+		$this->userId = $userId;
+		$this->roomId = $roomId;
+		$this->location = $location;
 	}
 	/**
 	 * This is method for list
@@ -27,14 +33,25 @@ Class MeetingRoom{
 	 *         }
 	 * }
 	 */
-	public function listroom($location=1,$date=''){
-		$date = $date?:$this->date;
-		$data = Room::model()->findAllByAttributes(array('hubId'=>$location));
+	public function listroom(){
+		$data = Room::model()->findAllByAttributes(array('hubId'=>$this->location,'status'=>1));
+		$value=array();
 		if($data){
+			foreach ($data as $list){
+				$key = $list['id'];
+				$my= self::mySelect($this->date,$this->userId,$list['id'],$this->location);
+				$other=self::otherSelect($this->date,$this->userId,$list['id'],$this->location);
+
+				$value[] = array(
+					'info'=>$list,
+					'my'=>$my,
+					'other'=>$other
+				);
+			}
 			return array(
 					'code' => '200',
 					'mes' => '',
-					'data' => $data
+					'data' => $value
 				);
 		}else{
 			return '';
@@ -57,14 +74,30 @@ Class MeetingRoom{
 	 *         }
 	 * }
 	 */
-	public function getInfo($roomId){
-
+	public function getInfo(){
+		$data = Room::model()->findByAttributes(array('id'=>$this->roomId,'hubId'=>$this->location,'status'=>1));
+		if($data){
+			$my= self::mySelect($this->date,$this->userId,$this->roomId,$this->location);
+			$other=self::otherSelect($this->date,$this->userId,$this->roomId,$this->location);
+			$value = array(
+				'info'=>$data,
+				'my'=>$my,
+				'other'=>$other
+			);
+			return array(
+					'code' => '200',
+					'mes' => '',
+					'data' => $value
+				);
+		}else{
+			return '';
+		}
 	}
 
-	public function otherSelect($date,$userId,$roomId){
+	public function otherSelect($date,$userId,$roomId,$location){
 		$date = $date?:$this->date;
 		$criteria = new CDbCriteria;
-		$criteria->addCondition(array('status=1','type=2','conferenceroomId='.$roomId,'userId!='.$userId));
+		$criteria->addCondition(array('status=1','type=2','conferenceroomId='.$roomId,'userId!='.$userId,'hubId='.$location));
 		$criteria->addSearchCondition('startTime',$date);
 		$result = Reservations::model()->findAll($criteria);
 		if(!empty($result)){
@@ -82,10 +115,10 @@ Class MeetingRoom{
 		}
 	}
 
-	public function mySelect($date,$userId,$roomId){
+	public function mySelect($date,$userId,$roomId,$location){
 		$date = $date?:$this->date;
 		$criteria = new CDbCriteria;
-		$criteria->addCondition(array('status=1','type=2','userId='.$userId,'conferenceroomId='.$roomId));
+		$criteria->addCondition(array('status=1','type=2','userId='.$userId,'conferenceroomId='.$roomId,'hubId='.$location));
 		$criteria->addSearchCondition('startTime',$date);
 		$result = Reservations::model()->findAll($criteria);
 		if(!empty($result)){
