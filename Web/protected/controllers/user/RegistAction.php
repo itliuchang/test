@@ -30,7 +30,7 @@ class RegistAction extends CAction{
 					
 					$user->insert();
 					//消息系统初始化
-					// EasemobHelper::initIM($user->id, array('username' => $user->id, 'password' => 'nakedim', 'nickname' => $name));
+					EasemobHelper::initIM($user->id, array('username' => $user->id, 'password' => 'nakedim', 'nickname' => $name));
 					
 					$user->isBindIM = 1;
 					$user->save();

@@ -117,6 +117,7 @@ class EasemobHelper extends Easemob{
         if($fid == 0){//系统通知与消息
             $sysaccount = Yii::app()->params['partner']['emchat']['sysAccount'];
             $user = array('id' => 0, 'nickName' => $sysaccount['nickName'] ?: $sysaccount['name'], 'portrait' => $sysaccount['portrait']);
+            $data = '';
         }else{//私聊
             $user = User::model()->findByPk($fid);
             $data = Message::model()->findAllBySql('select * from message where ((senderID=:senderId and RecID=:RecId) or (senderID=:RecId and RecID=:senderId)) and type=0 order by ctime desc limit :offset, :limit', array(':senderId' => Yii::app()->user->id, ':RecId' => $fid, ':offset' => $start, ':limit' => $size));
