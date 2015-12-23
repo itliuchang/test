@@ -10,7 +10,7 @@ class Order extends CActiveRecord{
 
     public function relations(){
     	return array(
-    			'product'=>array(self::BELONGS_TO,'Products','productId','select'=>'times'),
+    			'product'=>array(self::BELONGS_TO,'Products','productId'),
     		);
     }
 }

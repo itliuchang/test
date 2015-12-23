@@ -63,12 +63,34 @@ class COrder{
 		$order = Order::model()->findAllByAttributes(array('userId'=>$userId,'status'=>1));
 		$length = count($order);
 		$products = array();
-		for($i=0;$i<$length;$i++){
-			$products[$i]['content'] = OrderProduct::model()->findAllByAttributes(array("orderId"=>$order[$i]['id']));
-			$products[$i]['productType'] = $order[$i]['productId'];
-			$relate = Order::model()->with('product')->findByAttributes(array("productId"=>$order[$i]['productId']));
-			$products[$i]['times'] = $relate['product']['times'];
+		for($i=0,$j=0;$i<$length;$i++){
+			$orderproductarr = array();
+			$orderproduct = OrderProduct::model()->findAllByAttributes(array("orderId"=>$order[$i]['id']));
+			foreach($orderproduct as $orderproduct){
+				$orderproductarr[]=$orderproduct->attributes;
+			}
+			$productId = $order[$i]['productId'];
+			$relate = Order::model()->with('product')->findByAttributes(array("productId"=>$productId));
+			$times = $relate['product']['times'];
+			$productname = $relate['product']['name'];
+			foreach($orderproductarr as &$value){
+				if(strtotime(date('Ymd'))>=strtotime($value['startDate'])&&strtotime(date('Ymd'))<=strtotime($value['endDate'])){
+					$value['now'] =1;
+				}
+				$value['times'] = $times;
+				$value['productname'] = $productname;
+				$products[$j]=$value;
+				$j++;
+			}
 		}
-		print_r($products);die;
+		$user = User::model()->findByAttributes(array('id'=>$userId));
+		return array(
+				'code'=>200,
+				'mes'=> '',
+				'data' => array(
+						'user'=>$user,
+						'list'=> $products,
+					)
+			);
 	}
 }
