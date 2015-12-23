@@ -7,6 +7,12 @@
 	    <title><?php echo $this->pageTitle ?></title>
       <link rel="stylesheet" type="text/css" href="/css/m/all.css">
       <!-- <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" /> -->
+      <script type="text/javascript">
+        var systemVar = {
+          isGuest: <?php echo Yii::app()->user->isGuest? 1 : 0 ?>,
+          controller: '<?php echo $this->id ?>', action: '<?php echo $this->action->id ?>'
+        };
+      </script>
     </head>
     
     <body class="<?php echo $this->bodyCss ?>">
