@@ -4,7 +4,7 @@
 		<a class="col-xs-6 workspace">Book Workspace</a>
 	</div>
 	<ul class="option">
-		<li class="reservations"><a>Upcoming Reservations</a></li>
+		<li class="reservations"><a href="/book/myreservations">Upcoming Reservations</a></li>
 		<li class="myprofile"><a>My Profile</a></li>
 		<li class="companyProfile"><a>Company Profile</a></li>
 		<li class="account"><a href="/user/account">Account</a></li>

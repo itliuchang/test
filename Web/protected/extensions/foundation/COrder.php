@@ -79,8 +79,11 @@ class COrder{
 				}
 				$value['times'] = $times;
 				$value['productname'] = $productname;
-				$products[$j]=$value;
-				$j++;
+				if(strtotime(date('Ymd'))<=strtotime($value['endDate'])){
+					$products[$j]=$value;
+					$j++;	
+				}//排除过期的订单
+				
 			}
 		}
 		$user = User::model()->findByAttributes(array('id'=>$userId));
