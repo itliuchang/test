@@ -34,5 +34,5 @@
 		</div>
 	</div>
 	<?php endforeach; ?>
-	<a href="#" class="footer">ADD SUBSCRIPTION</a>
+	<a href="/registered/productlist" class="footer">ADD SUBSCRIPTION</a>
 </div>

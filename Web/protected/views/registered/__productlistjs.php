@@ -25,6 +25,25 @@ $(function(){
 			name = $selected.find('.type').text(),
 			num = $selected.find('.value').text(),
 			price = $selected.find('.price').text();
-		location.href='/registered/basicInfo?type='+type+'&name='+name+'&num='+num+'&price='+price;
+			CHelper.asynRequest('/order/createSession',{
+				'type' : type,
+				'name' : name,
+				'price' : price,
+				'num' : num,
+			},{
+				before:function(){
+				CHelper.toggleTip('show','处理中..','success');
+				},
+				success:function(){
+					location.href='/registered/basicInfo';
+				},
+				failure:function(d){
+					CHelper.toggleTip('show',d.message,'error',1000);
+				},
+				error:function(d){
+					CHelper.toggleTip('show',d.message,'error',1000);
+				}
+			});
+		
 	});
 });

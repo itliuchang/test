@@ -47,4 +47,17 @@ class OrderController extends Controller{
         $notify->Handle(false);
 
 	}
+
+	public function actionCreateSession(){
+		if(Yii::app()->request->isAjaxRequest){
+			Yii::app()->user->setState('productType',Yii::app()->request->getParam('type'));
+			Yii::app()->user->setState('productName' , Yii::app()->request->getParam('name'));
+			Yii::app()->user->setState('productNum' , Yii::app()->request->getParam('num'));
+			Yii::app()->user->setState('productPrice' , Yii::app()->request->getParam('price'));
+			echo CJSON::encode(array(
+				'code' => 200,
+				'mes' => 'success'
+			));
+		}
+	}
 }
