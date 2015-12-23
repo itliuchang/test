@@ -117,7 +117,7 @@ class EasemobHelper extends Easemob{
         if($fid == 0){//系统通知与消息
             $sysaccount = Yii::app()->params['partner']['emchat']['sysAccount'];
             $user = array('id' => 0, 'nickName' => $sysaccount['nickName'] ?: $sysaccount['name'], 'portrait' => $sysaccount['portrait']);
-            $data = '';
+            $data = Message::model()->findAllBySql('select * from message where senderID=0 and (RecID=0 or RecID=:RecId) and type in(1,2) order by ctime desc limit :offset, :limit', array(':RecId' => Yii::app()->user->id, ':offset' => $start, ':limit' => $size));
         }else{//私聊
             $user = User::model()->findByPk($fid);
             $data = Message::model()->findAllBySql('select * from message where ((senderID=:senderId and RecID=:RecId) or (senderID=:RecId and RecID=:senderId)) and type=0 order by ctime desc limit :offset, :limit', array(':senderId' => Yii::app()->user->id, ':RecId' => $fid, ':offset' => $start, ':limit' => $size));
@@ -134,8 +134,8 @@ class EasemobHelper extends Easemob{
             $RecID = 0;
         }else{//私聊
             $mr = MessageRelation::model()->findBySql('select * from messageLog where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => $senderId, ':recId' => $recId));
-            $senderID = $m->senderID;
-            $RecID = $m->RecID;
+            $senderID = $senderId;
+            $RecID = $recId;
         }
         if($mr){
             $mr->lastMsg = $lastMsg;
@@ -151,10 +151,11 @@ class EasemobHelper extends Easemob{
         }
     }
 
-    //创建评论新回复通知
+    //当前用户回复评论时的系统通知
     public static function addCommentReplyNotify($recId, $body, $pid, $cid){
+        if($recId == Yii::app()->user->id) return;
         $m = new Message;
-        $m->senderID = Yii::app()->user->id;
+        $m->senderID = 0;
         $m->RecID = $recId;
         $m->body = $body; //评论内容
         $m->typeID = $pid . '-' . $cid; //格式: 文章ID-评论ID
@@ -162,11 +163,30 @@ class EasemobHelper extends Easemob{
         $m->ctime = $m->utime = time();
         $m->save();
         //更新最后记录
+        self::updateLastMsg($m->senderID, $m->RecID, $m->body);
     }
 
     //创建全局系统消息
-    public static function addSystemMessage(){}
+    public static function addSystemMessage($body, $expireTime = 0){
+        $m = new Message;
+        $m->senderID = $m->RecID = 0;
+        $m->body = $body;
+        $m->type = 2;
+        $m->expireTime = $expireTime;
+        $m->ctime = $m->utime = time();
+        $m->save();
+        self::updateLastMsg(0, 0, $m->body);
+    }
 
     //创建与某人的私聊消息
-    public static function addMessage(){}
+    public static function addMessage($senderId, $recId, $body){
+        $m = new Message;
+        $m->senderID = $senderId;
+        $m->RecID = $recId;
+        $m->body = $body;
+        $m->type = 0;
+        $m->ctime = $m->utime = time();
+        $m->save();
+        self::updateLastMsg($m->senderID, $m->RecID, $m->body);
+    }
 }
