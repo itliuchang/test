@@ -19,6 +19,7 @@
 		</div>
 	</div>
 	<div class="item">
+		<input type="text" value="1" class="productType" hidden>
 		<div class="choosenum">
 			<div class="wrapper"><span class="minus">—</span><span class="value">1</span><span class="add">+</span></div>
 			<p>months</p>
@@ -34,6 +35,7 @@
 		</div>
 	</div>
 	<div class="item">
+		<input type="text" value="1" class="productType" hidden>
 		<div class="choosenum">
 			<div class="wrapper"><span class="minus">—</span><span class="value">1</span><span class="add">+</span></div>
 			<p>months</p>

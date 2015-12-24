@@ -8,7 +8,7 @@ class OrderController extends Controller{
 			$productNum = Yii::app()->user->productNum;
 			$productPrice = Yii::app()->user->productPrice;
 		}catch(CException $e){
-			echo Yii::app()->user->productType;;die;
+			echo '订单创建失败';die;
 		}
 		if(Yii::app()->request->getParam('code')){
 			$wechat = Yii::app()->params['partner']['wechat'];
