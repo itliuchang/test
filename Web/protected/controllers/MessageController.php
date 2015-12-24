@@ -25,7 +25,7 @@ class MessageController extends Controller{
             //聊天界面
 			'show' => 'application.controllers.message.ShowAction',
             //检查是否有新消息
-            'hasnew' => 'application.controllers.message.hasNewAction'
+            'hasnew' => 'application.controllers.message.HasNewAction'
 		);
 	}
 }
