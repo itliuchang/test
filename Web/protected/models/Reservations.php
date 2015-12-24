@@ -12,8 +12,8 @@ class Reservations extends CActiveRecord{
     public function relations(){
     	return array(
     		'user'=>array(self::BELONGS_TO,'Member','userId','select'=>'nickName'),
-            'hub'=>array(self::BELONGS_TO,'Hub','hubId','select'=>'name'),
-            'room'=>array(self::BELONGS_TO,'Room','conferenceroomId','select'=>'name')
+            'hub'=>array(self::BELONGS_TO,'Hub','hubId'),
+            'room'=>array(self::BELONGS_TO,'Room','conferenceroomId')
     	);
     }
 

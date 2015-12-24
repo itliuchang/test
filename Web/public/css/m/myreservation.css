@@ -35,6 +35,7 @@
 #myreservation .option .content{
 	width: 100%;
 	position: relative;
+	height: 120px;
 }
 #myreservation .option .content .left{
 	position: absolute;
