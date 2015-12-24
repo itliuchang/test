@@ -68,7 +68,7 @@ class WxJSPayNotifyHelper extends WxPayNotify{
             $orderitem = Order::model()->findByAttributes(array('id'=>$data['out_trade_no']));
             $userId = $orderitem->userId;
             $user = User::model()->findByAttributes(array('id'=>$userId));
-            $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):;
+            $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):strtotime($user->deadDate);
             Yii::log($data['attach'], CLogger::LEVEL_TRACE,'info');
             for($i=0;$i<(int)$data['attach'];$i++){
                 $rtuorder = $order->createProduct(array('orderId'=>$data['out_trade_no'],'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+2505600)));
