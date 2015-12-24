@@ -8,7 +8,7 @@ class OrderController extends Controller{
 			$productNum = Yii::app()->user->productNum;
 			$productPrice = Yii::app()->user->productPrice;
 		}catch(CException $e){
-			echo '订单创建失败';die;
+			echo Yii::app()->user->productType;;die;
 		}
 		if(Yii::app()->request->getParam('code')){
 			$wechat = Yii::app()->params['partner']['wechat'];
@@ -50,14 +50,24 @@ class OrderController extends Controller{
 
 	public function actionCreateSession(){
 		if(Yii::app()->request->isAjaxRequest){
-			Yii::app()->user->setState('productType',Yii::app()->request->getParam('type'));
-			Yii::app()->user->setState('productName' , Yii::app()->request->getParam('name'));
-			Yii::app()->user->setState('productNum' , Yii::app()->request->getParam('num'));
-			Yii::app()->user->setState('productPrice' , Yii::app()->request->getParam('price'));
+			try{
+				Yii::app()->user->setState('productType',Yii::app()->request->getParam('type'));
+				Yii::app()->user->setState('productName' , Yii::app()->request->getParam('name'));
+				Yii::app()->user->setState('productNum' , Yii::app()->request->getParam('num'));
+				Yii::app()->user->setState('productPrice' , Yii::app()->request->getParam('price'));
+			}catch(Exception $e){
+				print_r($e);die;
+				echo CJSON::encode(array(
+				'code' => 500,
+				'mes' => 'fail'
+			));
+				return;
+			}
 			echo CJSON::encode(array(
 				'code' => 200,
 				'mes' => 'success'
 			));
+			
 		}
 	}
 }
