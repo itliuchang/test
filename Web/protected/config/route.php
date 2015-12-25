@@ -14,6 +14,7 @@ return array(
         'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
         
         'book/roomshow-<id:\d+>' => 'book/roomshow',
+        'book/workspaceconfirm-<id:\d+>/<date:\w\S+>' => 'book/workspaceconfirm',
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',

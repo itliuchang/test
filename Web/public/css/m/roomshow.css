@@ -146,6 +146,9 @@
 #roomshow .selected{
 	background-color: #e7e7e7;
 }
+#roomshow .myselected{
+	background-color: #F3A64A
+}
 #roomshow .option .footer{
 	text-align: center;
 	background-color: #eee;

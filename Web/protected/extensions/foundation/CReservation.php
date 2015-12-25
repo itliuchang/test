@@ -31,4 +31,44 @@ class CReservation{
 					);
 			}
 	}
+
+	public function createReservation($data){
+		$result = new Reservations;
+		$result->createTime=date('Y-m-d H:i:s',time());
+		foreach($data as $k=> $v){
+			$result->$k=$v;
+		}
+		if($result->save()){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS'
+			);
+		}
+ 		return $data;
+	}
+
+	public function getNumber($date){
+		$date =date('YmdHis',strtotime($date));
+		$hub = new Hub();
+		$hublist = $hub->getHUb();
+		$result = array();
+		foreach ($hublist as $key) {
+			$result []= Yii::app()->db->createCommand()->select('count(*) as num')->from('reservation')->where('status !=0 and type=1 and startTime='.$date .' and hubId='.$key['id'])->queryAll();
+		}
+		
+		if($result){
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS',
+				'count' => $result
+			);
+		} else {
+			$data = array(
+				'code'=>200,
+				'message'=>'SUCCESS',
+				'count' => ''
+			);
+		}
+		return $data;
+	}
 }

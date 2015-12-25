@@ -95,7 +95,7 @@ Class MeetingRoom{
 	}
 
 	public function otherSelect($date,$userId,$roomId,$location){
-		$date = $date?:$this->date;
+		
 		$criteria = new CDbCriteria;
 		$criteria->addCondition(array('status=1','type=2','conferenceroomId='.$roomId,'userId!='.$userId,'hubId='.$location));
 		$criteria->addSearchCondition('startTime',$date);
@@ -103,10 +103,11 @@ Class MeetingRoom{
 		if(!empty($result)){
 			$arr = array();
 			foreach($result as $list){
-				$start = date('H',strtotime($list['startTime']));
-				$end = date('H',strtotime($list['endTime']));
-				for($i = 0;$i<($end-$start)*2;$i++){
-					array_push($arr,($start-9)*2+$i);
+				$start = strtotime($list['startTime']);
+				$end = strtotime($list['endTime']);
+				$length = ($end-$start)/3600;
+				for($i = 0;$i<$length*2;$i++){
+					array_push($arr,(date('H',$start)-9)*2+$i);
 				}
 			}
 			return $arr;
@@ -116,7 +117,7 @@ Class MeetingRoom{
 	}
 
 	public function mySelect($date,$userId,$roomId,$location){
-		$date = $date?:$this->date;
+		
 		$criteria = new CDbCriteria;
 		$criteria->addCondition(array('status=1','type=2','userId='.$userId,'conferenceroomId='.$roomId,'hubId='.$location));
 		$criteria->addSearchCondition('startTime',$date);
@@ -124,10 +125,11 @@ Class MeetingRoom{
 		if(!empty($result)){
 			$arr = array();
 			foreach($result as $list){
-				$start = date('H',strtotime($list['startTime']));
-				$end = date('H',strtotime($list['endTime']));
-				for($i = 0;$i<($end-$start)*2;$i++){
-					array_push($arr,($start-9)*2+$i);
+				$start = strtotime($list['startTime']);
+				$end = strtotime($list['endTime']);
+				$length = ($end-$start)/3600;
+				for($i = 0; $i < $length*2; $i++){
+					array_push($arr,(date('H',$start)-9)*2+$i);
 				}
 			}
 			return $arr;

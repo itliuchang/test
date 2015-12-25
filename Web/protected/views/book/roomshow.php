@@ -1,6 +1,7 @@
 <div id="roomshow">
 	<div class="option">
-	<input type='hidden' >
+	<input type='hidden' name='id' value='<?php echo $data['id']?>'>
+	<input type='hidden' name='hubid' value='<?php echo '1'?>'>
 	<input type='hidden' name='my' data-my='<?php echo $my?>'>
 	<input type='hidden' name='other' data-other='<?php echo $other?>'>
 		<div class="imgWrapper">
@@ -13,12 +14,34 @@
 		<input type="date" class="date" value="<?php echo $date?>">
 		<div class="time">
 			<label>Starts</label>
-			<input type="time" value="12:00">
+			<select class="starts">
+				<option value='none'>无</option>
+				<option value='0'>9:00</option>
+				<option value='2'>10:00</option>
+				<option value='4'>11:00</option>
+				<option value='6'>12:00</option>
+				<option value='8'>13:00</option>
+				<option value='10'>14:00</option>
+				<option value='12'>15:00</option>
+				<option value='14'>16:00</option>
+				<option value='16'>17:00</option>
+				<option value='18'>18:00</option>
+				<option value='20'>19:00</option>
+				<option value='22'>20:00</option>
+				<option value='24'>21:00</option>
+				<option value='26'>22:00</option>
+			</select>
 		</div>
 		<div class="hour">
 			<label>Times</label>
-			<select>
-				<option>1 hr</option>
+			<select class='times'>
+				<option value=''>无</option>
+				<option value='0.5'>0.5 hr</option>
+				<option value='1'>1 hr</option>
+				<option value='1.5'>1.5 hr</option>
+				<option value='2'>2 hr</option>
+				<option value='2.5'>2.5 hr</option>
+				<option value='3'>3 hr</option>
 			</select>
 		</div>
 		<div class="line clearfix">
@@ -101,6 +124,7 @@
 			<div class="col-xs-4 unavailable"><span></span>Unavailable</div>
 		</div>
 	</div>
+	<input type="submit" name="Submit" class="submit" value="提交" />
 </div>
 <?php
     $cs = Yii::app()->clientScript;

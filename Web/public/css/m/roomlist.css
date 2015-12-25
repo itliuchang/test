@@ -101,6 +101,9 @@
 #roomlist .selected{
 	background-color: #e7e7e7;
 }
+#roomlist .myselected{
+	background-color: #F3A64A;
+}
 #roomlist .option .footer{
 	text-align: center;
 	background-color: #eee;

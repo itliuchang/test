@@ -2,7 +2,7 @@
 	<select class="location">
 		<option>fuxing</option>
 	</select>
-	<input type="date" id='date'>
+	<input type="date" id='date' value='<?php echo $date?>'>
 	<h3>NEAREST AVAILABLE:</h3>
 	<?php foreach($data as $value): ?>
 	<div class="option">
@@ -100,11 +100,7 @@
 	
 	<?php endforeach; ?>
 </div>
-<script type="text/javascript">
-	
-	
-	
-</script>
+
 <?php
     $cs = Yii::app()->clientScript;
     $js = $this->renderPartial('_roomlistjs', null ,true);
