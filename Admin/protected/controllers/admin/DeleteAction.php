@@ -4,15 +4,9 @@ class DeleteAction extends CAction{
 		
 		$id = Yii::app()->request->getParam('id');
 
-		$proxy = new Auth();
+		$proxy = new BAuth();
 		$result = $proxy->deleteAdmin($id);
-		if($result){
-			$data=array(
-				'code'=>200,
-				'message'=>'SUCCESS'
-			);
-		}
-		echo CJSON::encode($data);
+		echo CJSON::encode($result);
 		
 	}
 }

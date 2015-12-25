@@ -11,9 +11,11 @@ class Member extends CActiveRecord{
 
     public function relations(){
         return array(
-            'companyid' => array(self::BELONGS_TO, 'Company', 'company'),
+            'companyid' => array(self::BELONGS_TO, 'Companys', 'company'),
             'usertypeid'=>array(self::BELONGS_TO,'MemberType','userType'),
-            'reservation'=>array(self::HAS_MANY,'Reservations','userId')
+            'locationid'=>array(self::BELONGS_TO,'Hubs','location'),
+            'reservation'=>array(self::HAS_MANY,'Reservations','userId'),
+            'order'=>array(self::HAS_MANY,'Products','userId')
         );
     }
 

@@ -1,12 +1,12 @@
 <?php
 class UserIdentity extends CUserIdentity{
-	
-	const ERROR_NOT_DAREN_ROLE = 400;
-	
+
+	const ERROR_NOT_ADMIN = 400;
+
     public $id;
     public $partner = 5;
 	private $config = array();
-	
+
     public function __construct($config = array(), $partner = 5){
         $this->config = $config;
         $this->partner = $partner;
@@ -21,7 +21,7 @@ class UserIdentity extends CUserIdentity{
 			$url = Yii::app()->params['api']['user']['login'];
 			$header = array('Content-Type' => 'application/json;charset=UTF-8');
 			$data = array('access_token' => $accessToken, 'openid' => $openid, 'authtype'=>$this->partner, 'noregister' => 0);
-			
+
 			$output = Yii::app()->curl->post($url, json_encode($data), array(), $header);
             $value = json_decode($output, true);
             /**
@@ -37,7 +37,7 @@ class UserIdentity extends CUserIdentity{
             	$this->errorCode = self::ERROR_NOT_DAREN_ROLE;
             } else {
             	$this->errorCode = self::ERROR_PASSWORD_INVALID;
-            }           
+            }
 		}catch(CException $e){
 			Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
 			$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
@@ -50,11 +50,11 @@ class UserIdentity extends CUserIdentity{
     		$user = User::model()->findByAttributes(array('loginName' => $username));
     		if(!empty($user)){
     			$this->errorCode = self::ERROR_NONE;
-    			if($user->validatePassword($password)){
+    			if($user->password=$password){
     				$this->id = intval($user->id);
     				$this->username = $username;
-    				if($user->userRole == 3) {
-    					$this->errorCode = self::ERROR_NOT_DAREN_ROLE;
+    				if($user->level == 3) {
+    					$this->errorCode = self::ERROR_NOT_ADMIN;
     				} else {
     					$this->setPersistentStates($user);
     				}
@@ -68,10 +68,10 @@ class UserIdentity extends CUserIdentity{
     		Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
     		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
     	}
-    
+
     	return !$this->errorCode;
     }
-    
+
     public function getId(){
         return $this->id;
     }

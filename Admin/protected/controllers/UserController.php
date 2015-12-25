@@ -16,7 +16,7 @@ class UserController extends Controller{
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions' => array('list', 'upgrade', 'admin', 'edit','editadmin'),
+				'actions' => array('list', 'upgrade', 'admin','create','edit','editinfo','editadmin','view','delete'),
 				'users' => array('@'),
 			),
 			array('deny',
@@ -30,7 +30,11 @@ class UserController extends Controller{
             'login' => 'application.controllers.user.LoginAction',
             'logout' => 'application.controllers.user.LogoutAction',
         	'list' => 'application.controllers.user.ListAction',
+        	'create' => 'application.controllers.user.CreateAction',
         	'edit' => 'application.controllers.user.EditAction',
+        	'view' => 'application.controllers.user.ViewAction',
+        	'delete' => 'application.controllers.user.DeleteAction',
+        	'editinfo' => 'application.controllers.user.EditinfoAction'
         );
     }
 }

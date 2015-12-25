@@ -3,6 +3,19 @@
 // http://www.yiiframework.com/doc/guide/1.1/en/topics.auth#role-based-access-control
 // Yii::app()->user->checkAccess('staff')
 class WebUser extends CWebUser{
+	private $level;
+	private $name;
+
+	public function getlevel(){
+		$user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
+		return $this->level=$user->level;
+	}
+
+	public function getname(){
+		$user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
+		return $this->name=$user->name;
+	}
+
     public function checkAccess($operation, $params=array()){
         // Not identified => no rights
         if(empty($this->id)) return false;

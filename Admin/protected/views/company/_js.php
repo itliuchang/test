@@ -72,6 +72,7 @@
 		};
 
 		function set_upload_param(up){
+			
 		    var ret = get_signature()
 		    if (ret == true){
 		        new_multipart_params = {
@@ -81,6 +82,7 @@
 		            'success_action_status' : '200', //让服务端返回200,不然，默认会返回204
 		            'signature': signature,
 		        };
+		        
 		        up.setOption({
 		            'url': host,
 		            'multipart_params': new_multipart_params
@@ -101,7 +103,9 @@
 				PostInit: function() {
 					document.getElementById('osslogo').innerHTML = '';
 					document.getElementById('postlogo').onclick = function() {
+					
 		            set_upload_param(uploader);
+
 		            uploader.start();
 		            return false;
 					};
@@ -123,6 +127,7 @@
 					var progBar = prog.getElementsByTagName('div')[0]
 					progBar.style.width= 2*file.percent+'px';
 					progBar.setAttribute('aria-valuenow', file.percent);
+					console.log(file.loaded)
 				},
 
 				FileUploaded: function(up, file, info) {

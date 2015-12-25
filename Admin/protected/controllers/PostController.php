@@ -9,8 +9,7 @@ class PostController extends Controller{
     public function accessRules(){
         return array(
            array('allow',
-              'actions' => array('list', 'create', 'edit', 'submit', 'down', 'up',
-              		'delete'),
+              'actions' => array('list', 'delete'),
               'users' => array('@'),
            ),
            array('deny',
@@ -22,10 +21,6 @@ class PostController extends Controller{
     public function actions(){
         return array(
           'list' => 'application.controllers.post.ListAction',
-          'create' => 'application.controllers.post.CreateAction',
-        	'edit' => 'application.controllers.post.EditAction',
-        	'down' => 'application.controllers.post.DownAction',
-        	'up' => 'application.controllers.post.UpAction',
         	'delete' => 'application.controllers.post.DeleteAction',
         );
     }

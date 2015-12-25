@@ -3,7 +3,7 @@ class ListAction extends CAction{
     public function run(){
     	$start = Yii::app()->request->getParam('start');
 
-    	$proxy = new Order();
+    	$proxy = new BOrder();
     	$result = $proxy->getOrderList($start,10);
         $count = $result['count'];
         

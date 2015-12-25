@@ -5,7 +5,7 @@ class EditInfoAction extends CAction{
 		$type = Yii::app()->request->getParam('type');
 		$user = Yii::app()->request->getParam('user');
 		$hub = Yii::app()->request->getParam('hub');
-		$resTime = Yii::app()->request->getParam('resTime');
+		$startTime = Yii::app()->request->getParam('startTime');
 		$endTime = Yii::app()->request->getParam('endTime');
 		$room = Yii::app()->request->getParam('room');
 
@@ -13,12 +13,12 @@ class EditInfoAction extends CAction{
 			'type'=>$type,
 			'userId'=>$user,
 			'hubId'=>$hub,
-			'resTime'=>$resTime,
+			'startTime'=>$startTime,
 			'endTime'=>$endTime,
 			'conferenceroomId'=>$room
 		);
 
-		$proxy = new Reservation();
+		$proxy = new BReservation();
 		$result = $proxy->createReservation($data);
 		if($result['code']==200){
 			$this->controller->redirect('/reservation/list');

@@ -5,7 +5,7 @@ class EditAction extends CAction{
 		$type = Yii::app()->request->getParam('type');
 		$userId = Yii::app()->request->getParam('userId');
 		$hub = Yii::app()->request->getParam('hub');
-		$resTime = Yii::app()->request->getParam('resTime');
+		$startTime = Yii::app()->request->getParam('startTime');
 		$endTime = Yii::app()->request->getParam('endTime');
 		$room = Yii::app()->request->getParam('room');
 
@@ -13,23 +13,26 @@ class EditAction extends CAction{
 			'type'=>$type,
 			'userId'=>$userId,
 			'hubId'=>$hub,
-			'resTime'=>$resTime,
+			'startTime'=>$startTime,
 			'endTime'=>$endTime,
 			'conferenceroomId'=>$room
 		);
 
-		$proxy = new Reservation();
-		$dp = new Hubs();
+		$proxy = new BReservation();
+		$dc = new BConference();
+		$dp = new BHub();
 		if(Yii::app()->request->isAjaxRequest){
 			$result = $proxy->updateReservation($data,$id);
 			echo CJSON::encode($result);
 		} else {
 			$result = $proxy->getReservationInfo($id);
 			$hub = $dp->getHubList($start,10);
+			$room = $dc->getRoomList($start,10);
 			if($result['code']==200){
 				$this->controller->render('edit',array(
 					'data'=>$result['data'],
-					'hub'=>$hub['data']
+					'hub'=>$hub['data'],
+					'room'=>$room['data']
 				));
 			} else {
 				throw new CHttpException($result['code'],$result['message']);

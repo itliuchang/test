@@ -9,8 +9,7 @@ class RoomController extends Controller{
     public function accessRules(){
         return array(
            array('allow',
-              'actions' => array('list', 'create', 'edit', 'submit', 'down', 'up',
-              		'delete'),
+              'actions' => array('list', 'create', 'edit', 'editinfo','delete'),
               'users' => array('@'),
            ),
            array('deny',
@@ -23,7 +22,8 @@ class RoomController extends Controller{
         return array(
           'list' => 'application.controllers.room.ListAction',
           'create' => 'application.controllers.room.CreateAction',
-        	'edit' => 'application.controllers.room.EditAction',
+          'edit' => 'application.controllers.room.EditAction',
+        	'editinfo' => 'application.controllers.room.EditInfoAction',
         	'delete' => 'application.controllers.room.DeleteAction',
         );
     }

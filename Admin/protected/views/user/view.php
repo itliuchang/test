@@ -35,16 +35,28 @@
 							<label class='control-label'>用户类型： <small class='muted'><?php echo $data['usertypeid']['name']?></small></label>
 						</div>
 						<div class='control-group'>
-							<label class='control-label'>用户出生日期： <small class='muted'><?php echo $data['birthday']?></small></label>
+							<label class='control-label'>用户出生日期： <small class='muted'><?php echo substr($data['birthday'],0,10)?></small></label>
 						</div>
 						<div class='control-group'>
 							<label class='control-label'>用户被关注数目： <small class='muted'><?php echo $data['followers']?></small></label>
+						</div>
+						<div class='control-group'>
+							<label class='control-label'>常用办公地点： <small class='muted'><?php echo $data['locationid']['name']?></small></label>
+						</div>
+						<div class='control-group'>
+							<label class='control-label'>技能： <small class='muted'><?php echo $data['skills']?></small></label>
+						</div>
+						<div class='control-group'>
+							<label class='control-label'>爱好： <small class='muted'><?php echo $data['interests']?></small></label>
 						</div>
 						<div class='control-group'>
 							<label class='control-label'>用户邮箱： <small class='muted'><?php echo $data['email']?></small></label>
 						</div>
 						<div class='control-group'>
 							<label class='control-label'>用户网站： <small class='muted'><?php echo $data['website']?></small></label>
+						</div>
+						<div class='control-group'>
+							<label class='control-label'>WechatID： <small class='muted'><?php echo $data['wechatid']?></small></label>
 						</div>
 						<div class='control-group'>
 							<label class='control-label'>FacebookID： <small class='muted'><?php echo $data['facebookid']?></small></label>
