@@ -19,6 +19,10 @@ return array(
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
 
+        'messages(/<page:\d+>(/<size:\d+>)?)?' => 'message',
+        'message/<fid:\w+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',
+        'message/friend/<fid:\w+>/add' => 'message/addfriend',
+
         '<controller:\w+>/<id:\d+>'=>'<controller>/view',
         '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
         '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

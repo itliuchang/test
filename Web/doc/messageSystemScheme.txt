@@ -23,4 +23,4 @@
   b.新用户注册时初始化消息系统环境：创建环信帐号并在messageRelation创建该用户的系统消息关系
     代码见RegistAction中调用EasemobHelper::initIM方法处
   c.登录后立即ajax查有无新系统/离线消息并Message菜单高亮，然后5分钟轮询一次新消息(登录后php中不用检查新消息了, 代码只用一套)
-    代码见
+    代码见main.js
