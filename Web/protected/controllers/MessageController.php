@@ -9,7 +9,7 @@ class MessageController extends Controller{
     public function accessRules(){
         return array(
             array('allow',
-                'actions' => array('index', 'show', 'hasnew', 'addfriend'),
+                'actions' => array('index', 'show', 'hasnew', 'addfriend', 'sendmsg'),
                 'users' => array('@'),
             ),
             array('deny',
@@ -28,6 +28,8 @@ class MessageController extends Controller{
             'hasnew' => 'application.controllers.message.HasNewAction',
             //点击头像时自动添加对方为好友
             'addfriend' => 'application.controllers.message.AddFriendAction',
+            //发送私聊
+            'sendmsg' => 'application.controllers.message.SendMsgAction',
 		);
 	}
 }

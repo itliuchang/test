@@ -201,6 +201,8 @@ class EasemobHelper extends Easemob{
         $m->save();
         //更新最后记录
         self::updateLastMsg($m->senderID, $m->RecID, $m->body);
+        //检查是否是好友
+        // self::addAFriend(0);
         //通过环信发送
         self::getInstance()->sendTxtMsg(Yii::app()->user->id, array($recId), '|' . $m->typeID . '|' . $body);
     }
@@ -215,6 +217,8 @@ class EasemobHelper extends Easemob{
         $m->ctime = $m->utime = time();
         $m->save();
         self::updateLastMsg(0, 0, $m->body);
+        //检查是否是好友
+        // self::addAFriend(0);
     }
 
     //创建与某人的私聊消息
