@@ -1,65 +1,18 @@
 <div id="head" class="community">
-	<?php $this->widget('CommunityBarWidget') ?>
+	<?php $this->widget('CommunityBarWidget',array('currentTab' => '/community/companylist')) ?>
 </div>
 <div id="community">
 	<div class="companylist pb60">
+		<?php foreach($list as $value): ?>
 		<div class="option">
-			<img src="/images/company-default.png" alt="">
+			<input type='text' id='<?php echo $value['id'] ?>' hidden>
+			<img src="<?php echo $value['logo'] ?>" alt="">
 			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
+				<h3><?php echo $value['name'] ?></h3>
+				<p><?php echo $value['location'] ?></p>
 			</div>
 		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-
+		<?php endforeach; ?>
 	</div>
 </div>
 <div class="container-fluid tbar" id="footer">

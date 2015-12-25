@@ -1,64 +1,18 @@
 <div id="head" class="community">
-	<?php $this->widget('CommunityBarWidget') ?>
+	<?php $this->widget('CommunityBarWidget',array('currentTab' => '/community/serviceslist')) ?>
 </div>
 <div id="community">
 	<div class="serviceslist">
+		<?php foreach($list as $value): ?>
 		<div class="option">
-			<img src="/images/company-default.png" alt="">
+			<input type='text' id='<?php echo $value['id'] ?>' hidden>
+			<img src="<?php echo $value['picture'] ?>" alt="">
 			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
+				<h3><?php echo $value['name'] ?></h3>
+				<p><?php echo $value['num'] ?> members</p>
 			</div>
 		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>Web Development</h3>
-				<p>386 members</p>
-			</div>
-		</div>
+		<?php endforeach; ?>
 	</div>
 
 </div>

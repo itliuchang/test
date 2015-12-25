@@ -1,3 +1,3 @@
-<a class="col-xs-4">Services</a>
-<a class="col-xs-4 now nolborder norborder">Companies</a>
-<a class="col-xs-4">Members</a>
+<a class="col-xs-4 <?php echo $this->currentTab == '/community/serviceslist'? ' now' : '' ?>" href="/community/serviceslist ">Services</a>
+<a class="col-xs-4 nolborder norborder <?php echo $this->currentTab == '/community/companylist'? ' now' : '' ?>" href="/community/companylist">Companies</a>
+<a class="col-xs-4 <?php echo $this->currentTab == '/community/memberlist'? ' now' : '' ?>" href="/community/memberlist">Members</a>
