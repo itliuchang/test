@@ -31,6 +31,8 @@ class EasemobHelper extends Easemob{
         $mr->id2 = 0;
         $mr->utime = time();
         $mr->save();
+        //并且添加环信系统帐号为好友
+        self::getInstance()->addFriend($uid, Yii::app()->params['partner']['emchat']['sysAccount']['name']);
     }
 
     //查询是否有新消息
@@ -148,6 +150,41 @@ class EasemobHelper extends Easemob{
             $mrelation->lastMsg = $lastMsg;
             $mrelation->utime = time();
             $mrelation->save();
+            //新建用户关系时添加对方为当前登录用户的好友
+            if($RecID == 0){
+                self::getInstance()->addFriend(Yii::app()->user->id, Yii::app()->params['partner']['emchat']['sysAccount']['name']);
+            }elseif($senderID == Yii::app()->user->id){
+                self::getInstance()->addFriend($senderID, $RecID);
+            }else{
+                self::getInstance()->addFriend($RecID, $senderID);
+            }
+        }
+    }
+
+    //添加好友
+    public static function addAFriend($fid){
+        if($fid){
+           $mr = MessageRelation::model()->findBySql('select * from messageLog where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
+           $senderID = Yii::app()->user->id;
+           $RecID = 0;
+        }else{
+           $mr = MessageRelation::model()->findBySql('select * from messageLog where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => Yii::app()->user->id, ':recId' => $fid));
+            $senderID = Yii::app()->user->id;
+            $RecID = $fid;
+        }
+        if(!$mr){
+            $mrelation = new MessageRelation;
+            $mrelation->id1 = $senderID;
+            $mrelation->id2 = $RecID;
+            $mrelation->lastMsg = '';
+            $mrelation->utime = time();
+            $mrelation->save();
+            //新建用户关系时添加对方为当前登录用户的好友
+            if($RecID == 0){
+                self::getInstance()->addFriend(Yii::app()->user->id, Yii::app()->params['partner']['emchat']['sysAccount']['name']);
+            }else{
+                self::getInstance()->addFriend($senderID, $RecID);
+            }
         }
     }
 
@@ -164,6 +201,10 @@ class EasemobHelper extends Easemob{
         $m->save();
         //更新最后记录
         self::updateLastMsg($m->senderID, $m->RecID, $m->body);
+        //检查是否是好友
+        // self::addAFriend(0);
+        //通过环信发送
+        self::getInstance()->sendTxtMsg(Yii::app()->user->id, array($recId), '|' . $m->typeID . '|' . $body);
     }
 
     //创建全局系统消息
@@ -176,6 +217,8 @@ class EasemobHelper extends Easemob{
         $m->ctime = $m->utime = time();
         $m->save();
         self::updateLastMsg(0, 0, $m->body);
+        //检查是否是好友
+        // self::addAFriend(0);
     }
 
     //创建与某人的私聊消息

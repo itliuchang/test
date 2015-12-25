@@ -17,4 +17,10 @@ class Hub extends CActiveRecord{
         );
     } 
 
+    public function getHUb(){
+        $criteria  = new CDbCriteria;
+        $criteria->select=array('id');
+        return $this->findAll($criteria);
+    }
+
 }

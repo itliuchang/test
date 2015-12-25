@@ -14,9 +14,15 @@ return array(
         'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
         
         'book/roomshow-<id:\d+>' => 'book/roomshow',
+        'book/workspaceconfirm-<id:\d+>/<date:\w\S+>' => 'book/workspaceconfirm',
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
+
+        'messages(/<page:\d+>(/<size:\d+>)?)?' => 'message',
+        'message/<fid:\w+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',
+        'message/friend/<fid:\w+>/add' => 'message/addfriend',
+        'message/<fid:\w+>/send' => 'message/sendmsg',
 
         '<controller:\w+>/<id:\d+>'=>'<controller>/view',
         '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
