@@ -1,9 +1,8 @@
 <?php
 class BasicInfoAction extends CAction{
 	public function run(){
-			$order = new CCommunity;
-       $result = $order->getMemberList();
-       print_r($result);die;
+			// $order = new CCommunity;
+   //     $result = $order->getMemberList();
 		if(Yii::app()->user->isGuest) {
 			$this->controller->render('basicInfo');
 		} else {
