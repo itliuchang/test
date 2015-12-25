@@ -4,7 +4,7 @@ class ListAction extends CAction{
         $start = Yii::app()->request->getParam('start');
         $type = Yii::app()->request->getParam('type');
 
-        $proxy = new Reservation();
+        $proxy = new BReservation();
         $result = $proxy->getReservationList($start,10,$type);
         $count = $result['count'];
         

@@ -9,9 +9,7 @@ class RouteController extends Controller{
     public function accessRules(){
         return array(
            array('allow',
-              'actions' => array('list', 'create', 'edit', 'submit', 'down', 'up',
-              		'delete', 'editproduct', 'editbase', 'editday', 'deleteday',
-              		'createpoi', 'editpoi', 'deletepoi'),
+              'actions' => array('list', 'create', 'edit','delete', 'editproduct'),
               'users' => array('@'),
            ),
            array('deny',
@@ -25,10 +23,8 @@ class RouteController extends Controller{
           'list' => 'application.controllers.route.ListAction',
           'create' => 'application.controllers.route.CreateAction',
         	'edit' => 'application.controllers.route.EditAction',
-        	'down' => 'application.controllers.route.DownAction',
-        	'up' => 'application.controllers.route.UpAction',
         	'delete' => 'application.controllers.route.DeleteAction',
-        	'editProduct' => 'application.controllers.route.EditProductAction',
+        	'editproduct' => 'application.controllers.route.EditProductAction',
         );
     }
 }

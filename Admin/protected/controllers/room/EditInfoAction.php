@@ -14,7 +14,7 @@ class EditInfoAction extends CAction{
         	'price' => $price,
         	'seats' => $seats,
         	'floor' => $floor,
-        	'background' => $background
+        	'picture' => $background
         );
         $proxy = new BConference();
         $result = $proxy->createRoom($data);

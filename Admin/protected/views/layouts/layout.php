@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>YOYO-达人管理后台</title>
+    <title>裸心社管理后台</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
     
@@ -21,7 +21,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='/' style='margin-left: 10px'>
                     <i class='yoyo-logo'></i>
-                    <span class='hidden-phone'>悠游</span>
+                    <span class='hidden-phone'>裸心社</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -34,59 +34,7 @@
                             <div class='label'>0</div>
                         </a>
                         <ul class='dropdown-menu'>
-                        	<!-- 
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            	您有一个新订单 <small class='muted'>刚刚</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            	新订单 <small class='muted'>3 分钟前</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            	系统消息 <small class='muted'>1 小时前</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            	系统通知 <small class='muted'>上周</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                             -->
+                        	
                             <li class='widget-footer'>
                                 <a href='#'>暂无消息</a>
                             </li>
@@ -96,14 +44,14 @@
                     <!-- 用户信息 -->
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-                            <img alt='<?php echo Yii::app()->user->name ?>' height='23' src='<?php echo Yii::app()->user->portrait ?>' width='23' />
+                            <img alt='<?php echo Yii::app()->user->name ?>' height='23' src='<?php echo 'http://img4.duitang.com/uploads/item/201408/19/20140819120530_GVZJn.thumb.200_200_c.jpeg' ?>' width='23' />
                             <span class='user-name hidden-phone'><?php echo Yii::app()->user->name ?></span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
-                        	<?php if(2 === 2): ?>
+                        	<?php if(Yii::app()->user->level == 1): ?>
                             <li>
-                                <a href='/user/profile'><i class='icon-user'></i>&nbsp;&nbsp;个人资料</a>
+                                <a href='/admin/list'><i class='icon-user'></i>&nbsp;&nbsp;个人资料</a>
                             </li>
                             <li class='divider'></li>
                             <?php endif;?>
@@ -124,14 +72,14 @@
     </div>
 </header>
 
-<input type='hidden' id='daren-role' value='<?php  ?>'/>
+<input type='hidden' id='level' value='<?php Yii::app()->user->level ?>'/>
 <div id='wrapper'>
 	<div id='main-nav-bg'></div>
 	<!-- MENU -->
 	<nav class='' id='main-nav'>
 		<div class='navigation'>
 			<ul class='nav nav-stacked'>
-				<li class='active'>
+				<li class=''>
 				    <a href='/'>
 				        <i class='icon-dashboard'></i> <span>主页</span>
 				    </a>
@@ -145,72 +93,42 @@
 				    <a href='/route/list'>
 				        <i class=icon-th></i> <span>产品管理</span>
 				    </a>
-				</li>				
+				</li>
+                <li>
+                    <a href='/order/list'>
+                        <i class='icon-gift'></i> <span>订单管理</span>
+                    </a>
+                </li>				
 				<li>
-				    <a href='/order/list'>
-				        <i class='icon-gift'></i> <span>订单管理</span>
+				    <a href='/reservation/list'>
+				        <i class='icon-gift'></i> <span>预约管理</span>
 				    </a>
 				</li>
+                <li>
+                    <a href='/company/list'>
+                        <i class='icon-phone'></i> <span>公司管理</span>
+                    </a>
+                </li>
 				<li>
-				    <a href='/note/list'>
-				        <i class='icon-book'></i> <span>达人日记</span>
+				    <a href='/user/list'>
+				        <i class='icon-user'></i> <span>会员管理</span>
 				    </a>
 				</li>
-				<!-- 
-				<li>
-				    <a href='/poi/list'>
-				        <i class='icon-briefcase'></i> <span>POI管理</span>
-				    </a>
-				</li>  -->
-				<?php if(1 === 1): ?>
-					<li>
-					    <a href='/daren/list'>
-					        <i class='icon-group'></i> <span>达人管理</span>
-					    </a>
-					</li>
-                    <li>
-                        <a class='dropdown-collapse ' href='#'>
-                            <i class='icon-plane'></i> <span>渠道管理</span> <i class='icon-angle-down angle-down'></i>
-                        </a>
-                        <ul class='nav nav-stacked'>
-                            <li class=''>
-                                <a href='/channel/list'>
-                                    <i class='icon-comments'></i> <span>渠道列表</span>
-                                </a>
-                            </li>
-                            <li class=''>
-                                <a href='/channel/user'>
-                                    <i class='icon-envelope'></i> <span>渠道用户</span>
-                                </a>
-                            </li>
-                            <li class=''>
-                                <a href='/channel/order'>
-                                    <i class='icon-pencil'></i> <span>渠道订单</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href='/activity/list'>
-                            <i class='icon-list'></i> <span>活动管理</span>
-                        </a>
-                    </li>
-					<li>
-					    <a href='/user/list'>
-					        <i class='icon-user'></i> <span>用户管理</span>
-					    </a>
-					</li>
-                    <li>
-                        <a href='/category/list'>
-                            <i class='icon-user'></i> <span>分类管理</span>
-                        </a>
-                    </li>
-				<?php endif;?>
+                <li>
+                    <a href='/room/list'>
+                        <i class='icon-home'></i> <span>会议室管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href='/post/list'>
+                        <i class='icon-edit'></i> <span>发帖管理</span>
+                    </a>
+                </li>
 				<li>
 				    <a class='dropdown-collapse ' href='#'>
 				        <i class='icon-cogs'></i> <span>系统设置</span> <i class='icon-angle-down angle-down'></i>
 				    </a>
-				    <ul class='nav nav-stacked'>
+				   <!--  <ul class='nav nav-stacked'>
 				        <li class=''>
 				            <a href='#'>
 				                <i class='icon-comments'></i> <span>消息</span>
@@ -231,7 +149,7 @@
 				                <i class='icon-list-alt'></i> <span>待办事项</span>
 				            </a>
 				        </li>
-    				</ul>
+    				</ul> -->
 				</li>
 			</ul>
 		</div>
@@ -271,9 +189,17 @@
 <script type="text/javascript" charset="utf-8" src="/library/baidu/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
     $(function(){
-       $('.navigation>li').click(function(){
-            $('.navigation>ul>li').eq($(this).index()).addClass('active');
-       });
+        var urlstr = location.pathname;
+        $('.nav-stacked a').each(function(){
+            if ((urlstr).indexOf($(this).attr('href')) > -1 && $(this).attr('href')!='') {
+                $(this).parent('li').addClass('active'); 
+                $('.nav-stacked li').eq(0).removeClass('active');
+            } else {
+                if(urlstr=='/'){
+                    $('.nav-stacked li').eq(0).addClass('active');
+                }
+            }
+        });
     })
 </script>
 

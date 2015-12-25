@@ -4,7 +4,7 @@ class ConfirmAction extends CAction{
         $id = Yii::app()->request->getParam('id');
         
     	if(Yii::app()->request->isAjaxRequest){
-            $proxy = new Reservation();
+            $proxy = new BReservation();
             $result = $proxy->confirmReservation($id);
             echo CJSON::encode($result);
         }

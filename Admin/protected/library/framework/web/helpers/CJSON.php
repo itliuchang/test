@@ -267,6 +267,14 @@ class CJSON
 				}
 				else
 					$vars = get_object_vars($var);
+
+				//related
+				foreach ($var->relations() as $key=>$related){
+					if ($var->hasRelated($key)){
+						$vars[$key] = $var->$key;
+					}
+				}
+				
 				return '{' .
 					   join(',', array_map(array('CJSON', 'nameValue'),
 										   array_keys($vars),

@@ -61,7 +61,7 @@
 <script id='toolTemplate' type='text/html'>
 	<div class='text-left'>
 		
-		{{if status==1}}
+		{{if status==1 && type==1}}
 			<a class='btn row-edit btn-success btn-mini has-tooltip' _id='{{id}}' title='编辑'> <i class='icon-edit'></i> </a>
 			<a class='btn row-confirm btn-primary btn-mini has-tooltip' _id='{{id}}' title='预约确认'> <i class='icon-check'></i> </a>
 			<a class='btn row-cancel btn-danger btn-mini has-tooltip' _id='{{id}}' title='取消'> <i class='icon-remove'></i> </a>
@@ -74,10 +74,10 @@
 	{{if status == 0 }}
 		<span class='label muted-background'>已取消</span>
 	{{/if}}
-	{{if status == 1 }}
+	{{if status == 1 && type==1}}
 		<span class='label purple-background'>预约中</span>
 	{{/if}}
-	{{if status == 2 }}
+	{{if status == 2 || type==2}}
 		<span class='label label-success'>预约成功</span>
 	{{/if}}
 	
@@ -106,7 +106,7 @@
 		            {'data': 'type', 'sDefaultContent':''},
 					{'data': 'user.nickName', 'sDefaultContent':''},
 					{'data': 'hub.name', 'sDefaultContent':''},
-		            {'data': 'resTime', 'sDefaultContent':''},
+		            {'data': 'startTime', 'sDefaultContent':''},
 		            {'data': 'endTime', 'sDefaultContent':''},
 		            {'data': 'createTime', 'sDefaultContent':''},
 		            {'data': 'room.name', 'sDefaultContent':''},
@@ -134,8 +134,8 @@
 					{
                     	targets: 3,
                     	render: function (a, b, c, d) {
-							if(c.resTime) {
-            	        		return new Date(c.resTime).Format('yyyy-MM-dd hh:mm:ss');
+							if(c.startTime) {
+            	        		return new Date(c.startTime).Format('yyyy-MM-dd hh:mm:ss');
 							}
 							return '';
                     	}
@@ -170,14 +170,14 @@
                     {
                     	targets: 7,
                     	render: function (a, b, c, d) {
-                    		var data = {status:c.status};
+                    		var data = {status:c.status,type:c.type};
                     		return template('statusTemplate', data);
                     	}
                     },
                 	{
                     	targets: 8,
                     	render: function (a, b, c, d) {
-                    		var data = {id:c.id,status:c.status,level: $('#level').val()};
+                    		var data = {id:c.id,status:c.status,type:c.type,level: $('#level').val()};
                     		return template('toolTemplate', data);
                     	}
                     }

@@ -4,7 +4,7 @@ class CancelAction extends CAction{
         $id = Yii::app()->request->getParam('id');
         
     	if(Yii::app()->request->isAjaxRequest){
-            $proxy = new Reservation();
+            $proxy = new BReservation();
             $result = $proxy->cancelReservation($id);
             echo CJSON::encode($result);
         }

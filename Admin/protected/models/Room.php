@@ -11,7 +11,8 @@ class Room extends CActiveRecord{
 
     public function relations(){
     	return array(
-    		'reservation'=>array(self::HAS_MANY,'Reservations','conferenceroomId')
+    		'reservation'=>array(self::HAS_MANY,'Reservations','conferenceroomId'),
+            'hub'=>array(self::BELONGS_TO,'Hubs','hubId','select'=>'name')
     	);
     }
 

@@ -9,8 +9,7 @@ class CompanyController extends Controller{
     public function accessRules(){
         return array(
            array('allow',
-              'actions' => array('list', 'create', 'edit', 'submit', 'down', 'up',
-              		'delete'),
+              'actions' => array('list', 'create', 'edit','editinfo','delete','view'),
               'users' => array('@'),
            ),
            array('deny',
@@ -23,8 +22,10 @@ class CompanyController extends Controller{
         return array(
           'list' => 'application.controllers.company.ListAction',
           'create' => 'application.controllers.company.CreateAction',
-        	'edit' => 'application.controllers.company.EditAction',
-        	'delete' => 'application.controllers.company.DeleteAction',
+          'edit' => 'application.controllers.company.EditAction',
+        	'editinfo' => 'application.controllers.company.EditInfoAction',
+          'delete' => 'application.controllers.company.DeleteAction',
+        	'view' => 'application.controllers.company.ViewAction',
         );
     }
 }

@@ -13,10 +13,10 @@ class EditAdminAction extends CAction{
 			'password'=>md5($password),
 			'level'=>$level,
 		);
-		$proxy = new Auth();
+		$proxy = new BAuth();
 		
 		$result = $proxy->addAdmin($data);
-		if ($result){
+		if ($result['code']==200){
 			$this->controller->redirect('/admin/list');
 		} else {
 			throw new CHttpException($result['code'],$result['message']);

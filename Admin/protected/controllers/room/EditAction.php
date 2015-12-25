@@ -15,7 +15,7 @@ class EditAction extends CAction{
         	'price' => $price,
         	'seats' => $seats,
         	'floor' => $floor,
-        	'background' => $background
+        	'picture' => $background
         );
         $proxy = new BConference();
         $dp = new Hubs;

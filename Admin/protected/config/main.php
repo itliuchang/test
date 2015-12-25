@@ -9,7 +9,7 @@ Yii::setPathOfAlias('lib', dirname(__FILE__) . '/../library');
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'nakedadmin',
+	'name'=>'LBSManager',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -19,7 +19,10 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'ext.helper.*',
+		'application.proxy.*',
 		'application.extensions.baidu.*',
+		'application.extensions.foundations.*',
+		'application.extensions.oss_php_sdk.*'
 	),
 
 	'modules'=>array(
@@ -72,13 +75,14 @@ return array(
 			// 'connectionString' => 'mysql:host=192.168.1.103:3306;dbname=sgs',
 			// 'username' => 'sgs',
 			// 'password' => 'sgs2015',
-			'connectionString' => 'mysql:host=localhost;dbname=naked',
-			'username' => 'naked',
+			'connectionString' => 'mysql:host=120.55.160.183:3306;dbname=naked',
+			'username' => 'root',
 			'password' => 'Email@2015',
 			'charset' => 'utf8',
 			'emulatePrepare' => true,
 			'tablePrefix' => 'naked_',
 		),
+
 
 		'session' => array(
 			//'autoStart' => true,
@@ -116,4 +120,7 @@ return array(
 
 	),
 
+	// application-level parameters that can be accessed
+	// using Yii::app()->params['paramName']
+	'params' => require(dirname(__FILE__).'/params.php'),
 );

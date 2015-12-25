@@ -10,6 +10,8 @@ return array(
         'site/get/<id:\w+>' => 'data/getSite',
         '/site/get-detail/<hashcode:\w+>' => 'data/getSiteDetail',
 
+        'admin/edit/<id:\w+>' => 'admin/edit',
+    		
         'login' => 'user/login',
         'logout' => 'user/logout',
         '<controller:\w+>/<id:\d+>'=>'<controller>/view',

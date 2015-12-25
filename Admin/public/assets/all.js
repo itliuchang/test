@@ -54,6 +54,7 @@
 		'/assets/javascripts/plugins/bootstrap_hover_dropdown/twitter-bootstrap-hover-dropdown.min.js',
 		'/assets/javascripts/plugins/slider_nav/slidernav-min.js',
 		'/assets/javascripts/plugins/fuelux/wizard.js',
+		'/assets/javascripts/plugins/oss/plupload.full.min.js',
 		'/assets/javascripts/nav.js',
 		'/assets/javascripts/tables.js',
 		'/assets/javascripts/theme.js',
@@ -61,8 +62,7 @@
 		'/js/lib/template.js',
 		'/js/lib/xss.js',
 		'/js/chelper.js',
-		'/library/qiniu/qiniu.min.js',
-		'/library/qiniu/plupload.full.min.js',
+	
     ];
     
     for(var i = 0,file; file = paths[i++];){

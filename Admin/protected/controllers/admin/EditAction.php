@@ -14,22 +14,15 @@ class EditAction extends CAction{
 			'password'=>md5($password),
 			'level'=>$level,
 		);
-		$proxy = new Auth();
+		$proxy = new BAuth();
 		if(Yii::app()->request->isAjaxRequest){
 			$result = $proxy->updateAdmin($data,$id);
-			if($result){
-				$data=array(
-					'code'=>200,
-					'message'=>'SUCCESS'
-				);
-			}
-			echo CJSON::encode($data);
+			echo CJSON::encode($result);
 		} else {
-			
 			$result = $proxy->getAdminInfo($id);
-			if($result){
+			if($result['code']==200){
 				$this->controller->render('edit',array(
-					'data'=>$result
+					'data'=>$result['data']
 				));
 			} else {
 				throw new CHttpException($result['code'],$result['message']);

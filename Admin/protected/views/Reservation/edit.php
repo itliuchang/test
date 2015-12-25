@@ -38,7 +38,7 @@
 						<div class='controls'>
 							<div class='row-fluid'>
 								<div class='input-append form_datepicker date'>
-									<input readonly data-format='yyyy-MM-dd hh:mm' name="resTime"  value='<?php echo isset($data['resTime'])? $data['resTime']:""?>' type='text' style='width:130px;'/>
+									<input readonly data-format='yyyy-MM-dd hh:mm' name="startTime"  value='<?php echo isset($data['startTime'])? $data['startTime']:""?>' type='text' style='width:130px;'/>
 									<span class="add-on"><i class="icon-th"></i></span>
 								</div>
 							</div>
@@ -60,7 +60,9 @@
 						<div class='controls'>
 							<select name="room">
 								<option value="">无</option>
-								<option value="<?php echo $room['id']?>"><?php echo $room['name']?></option>
+								<?php foreach($room as $list): ?>
+								<option value="<?php echo $list['id']?>" <?php echo $list['id']==$data['conferenceroomId']?'selected=selected':''?>><?php echo $list['name']?></option>
+							<?php endforeach;?>
 							</select>
 						</div>
 					</div>

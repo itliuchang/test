@@ -35,30 +35,11 @@
 	</div>
 </div>
 
-<!-- view modal -->
-<div id='viewModal' class='modal hide fade' role='dialog' tabindex='-1' style="width:700px">
-	<div class='modal-header'>
-		<button class='close' data-dismiss='modal' type='button'>&times;</button>
-		<h3>订单详情</h3>
-	</div>
-    <div class='modal-body'>
-    </div>
-</div>
-
 <!-- tools temp -->
 <script id='toolTemplate' type='text/html'>
 	<div class='text-left'>
-			<a class='btn row-view btn-success btn-mini has-tooltip' _id='{{id}}' title='查看'> <i class='icon-eye-open'></i> </a>
-			<a class='btn row-edit btn-success btn-mini has-tooltip' _id='{{id}}' title='编辑'> <i class='icon-edit'></i> </a>
-		{{if status==2 && role == 1}}
-			<a class='btn row-up btn-info btn-mini has-tooltip' _id='{{id}}' title='上架'> <i class='icon-cloud-upload'></i> </a>
-		{{/if}}
-		{{if status != 5 }}
-			<a class='btn row-down btn-info btn-mini has-tooltip' _id='{{id}}' title='下架'> <i class='icon-cloud-download'></i> </a>
-		{{/if}}
-		
-			<a class='btn row-delete btn-danger btn-mini has-tooltip' _id='{{id}}' title='删除'> <i class='icon-trash'></i> </a>
-		
+		<a class='btn row-edit btn-success btn-mini has-tooltip' _id='{{id}}' title='编辑'> <i class='icon-edit'></i> </a>
+		<a class='btn row-delete btn-danger btn-mini has-tooltip' _id='{{id}}' title='删除'> <i class='icon-trash'></i> </a>
 	</div>
 </script>
 
@@ -108,7 +89,7 @@
                 	{
                     	targets: 5,
                     	render: function (a, b, c, d) {
-                    		var data = {id:c.id,status:c.status,role: $('#daren-role').val()};
+                    		var data = {id:c.id,status:c.status,role: $('#level').val()};
                     		return template('toolTemplate',data);
                     	}
                     },
@@ -144,7 +125,7 @@
 				}
 				
 				if(type == 'delete') {
-					CHelper.asynRequest('/activity/delete', {id: _id}, {
+					CHelper.asynRequest('/admin/delete', {id: _id}, {
 						before: function(xhr){},
 			            success: function(response){
 			            	_table.ajax.reload();
@@ -153,27 +134,7 @@
 			                $.jGrowl('系统异常，请重试');
 			            }
 					});
-				}  else if(type == 'down') {
-					CHelper.asynRequest('/activity/down', {id: _id}, {
-						before: function(xhr){},
-			            success: function(response) {
-			            	_table.ajax.reload();
-			            },
-			            failure: function(msg){
-			                $.jGrowl('系统异常，请重试');
-			            }
-					});
-				} else if(type == 'up') {
-					CHelper.asynRequest('/activity/up', {id: _id}, {
-						before: function(xhr){},
-			            success: function(response) {
-			            	_table.ajax.reload();
-			            },
-			            failure: function(msg){
-			                $.jGrowl('系统异常，请重试');
-			            }
-					});
-				}
+				}  
 				_m.modal('hide')
 			});
         });
