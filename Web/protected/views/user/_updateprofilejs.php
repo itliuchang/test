@@ -1,4 +1,7 @@
 $(function(){
+	if($('.name').val()){
+		$('.footer').text('SAVE');
+	}
 	CHelper.uploadOSS(token,{'domain':domain,'browse_button':'selectbackground', 'container':'background_container'},{
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
@@ -18,7 +21,7 @@ $(function(){
 
 	$('.footer').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
-		var name = CHelper.filterXSS($('.name').val()||''),
+		var name = CHelper.filterXSS($('.name').val()),
 			title = $('.title').val(),
 			website = $('.website').val(),
 			background = $('.backgroundurl').val(),
@@ -32,31 +35,40 @@ $(function(){
 			twitter = $('.twitter').val(),
 			linkedin = $('.linkIn').val(),
 			instagram = $('.instagram').val();
-		CHelper.asynRequest('/user/updateprofile',{
-			nickName:name,
-			title:title,
-			website:website,
-			background:background,
-			portrait:portrait,
-			birthday:birthday,
-			gender:gender,
-			description:description,
-			skills:skills,
-			interests:interests,
-			facebookid:facebook,
-			twitterid:twitter,
-			linkedinid:linkedin,
-			instagramid:instagram,
-		},{
-			before:function(){
-				CHelper.toggleTip('show','提交中...');
-			},
-			error:function(msg){
-				CHelper.toggleTip('show','ERROR','warn',1000);
-			},
-			success:function(response){
-				location.href = '/company/updateprofile';
-			}
-		});
+		if(!name){
+			CHelper.toggleTip('show','姓名不能为空','warn',2000);
+		} else {
+			CHelper.asynRequest('/user/updateprofile',{
+				nickName:name,
+				title:title,
+				website:website,
+				background:background,
+				portrait:portrait,
+				birthday:birthday,
+				gender:gender,
+				description:description,
+				skills:skills,
+				interests:interests,
+				facebookid:facebook,
+				twitterid:twitter,
+				linkedinid:linkedin,
+				instagramid:instagram,
+			},{
+				before:function(){
+					CHelper.toggleTip('show','提交中...');
+				},
+				error:function(msg){
+					CHelper.toggleTip('show','ERROR','warn',1000);
+				},
+				success:function(response){
+					if($('.footer').text()=='SAVE'){
+						location.href='/more';
+					} else {
+						location.href = '/company/updateprofile';
+					}
+				}
+			});
+		}
+		
 	});
 });

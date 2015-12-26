@@ -13,7 +13,7 @@ $(function(){
 		if(my=='')
 		continue;
 		my.forEach(function(v){
-			$('.option:eq('+i+') .piece').eq(v).addClass('myselected');
+			$('.option:eq('+i+') .piece').eq(v).addClass('myselected fix');
 		});
 	}
 		

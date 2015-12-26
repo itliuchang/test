@@ -38,10 +38,9 @@ $(function(){
 	});
 	$('.footer').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
-		var id = $('input[name="id"]').val(),
+		var id = $(this).parent('.option').children('input[name="id"]').val(),
 			date = $('#date').val(),
 			seatsleft = $('input[name="seatsLeft"]').val();
-
 		if(seatsleft<=0){
 			CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1000);
 		} else {

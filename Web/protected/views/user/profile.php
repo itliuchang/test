@@ -95,12 +95,12 @@
 		<div class="underLine"></div>
 		<div class="postWrapper">
 			<div class="header">
-				<img src="<?php echo empty($user['portrait']) ? '/images/portrait-default.png' : $user['portrait']?>" alt="">
+				<img src="/images/portrait-default.png" alt="">
 				<span class="time"></span>
-				<h4><?php echo $user['companyid']['name']?></h4>
-				<p class="title"><?php echo $user['title']?></p>
+				<h4>naked Retreats</h4>
+				<p class="title"><?php echo empty($user['title'])?'No title':$user['title']?></p>
 				<p class="companyName"><?php echo $user['companyid']['name']?></p>
-				<p class="location"><?php echo $user['companyid']['location']?></p>
+				<p class="location">Location</p>
 			</div>
 			<p class="content">
 				<?php echo $user['companyid']['introduction']?>

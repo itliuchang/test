@@ -11,7 +11,7 @@
 				<p><span class="floor"><?php echo $data['floor']?></span>FL<span class="peoples"><?php echo $data['seats']?></span></p>
 			</div>
 		</div>
-		<input type="date" class="date" value="<?php echo $date?>">
+		<input type="date" class="date" value="<?php echo $date?>" min="<?php echo date('Y-m-d') ?>">
 		<div class="time">
 			<label>Starts</label>
 			<select class="starts">
@@ -124,7 +124,7 @@
 			<div class="col-xs-4 unavailable"><span></span>Unavailable</div>
 		</div>
 	</div>
-	<input type="submit" name="Submit" class="submit" value="提交" />
+	<h2 class="submit" >SAVE</h2>
 </div>
 <?php
     $cs = Yii::app()->clientScript;

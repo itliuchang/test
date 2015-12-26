@@ -2,7 +2,7 @@
 	<select class="location">
 		<option>fuxing</option>
 	</select>
-	<input type="date" id='date' value='<?php echo $date?>'>
+	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>">
 	<h3>NEAREST AVAILABLE:</h3>
 	<?php foreach($data as $value): ?>
 	<div class="option">

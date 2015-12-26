@@ -4,8 +4,8 @@
 	</select>
 	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>">
 	<?php foreach($data as $value):?>
-	<input type='hidden' name='id' value='<?php echo $value['id']?>'>
 	<div class="option">
+	<input type='hidden' name='id' value='<?php echo $value['id']?>'>
 	<input type="hidden" name='seatsLeft' value='0'>
 		<div class="imgWrapper">
 			<img src="<?php echo $value['picture']?>" alt="">
