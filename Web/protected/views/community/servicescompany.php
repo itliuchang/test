@@ -1,33 +1,14 @@
 <div id="community" class="nopt">
 	<div class="companylist">
+		<?php foreach($list as $value): ?>
 		<div class="option">
-			<img src="/images/company-default.png" alt="">
+			<img src="<?php echo $value['logo'] ?>" alt="">
 			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
+				<h3><?php echo $value['name'] ?></h3>
+				<p><?php echo $value['locationName'] ?></p>
 			</div>
 		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/company-default.png" alt="">
-			<div class="content">
-				<h3>yoyo</h3>
-				<p>Web Development</p>
-			</div>
-		</div>
+		<?php endforeach; ?>
 	</div>
 </div>
 <div class="container-fluid tbar" id="footer">

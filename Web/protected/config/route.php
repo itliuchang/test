@@ -19,6 +19,9 @@ return array(
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
 
+        'community/servicescompany-<id:\d+>' => 'community/servicescompany',
+        
+
         'messages(/<page:\d+>(/<size:\d+>)?)?' => 'message',
         'message/<fid:\w+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',
         'message/friend/<fid:\w+>/add' => 'message/addfriend',

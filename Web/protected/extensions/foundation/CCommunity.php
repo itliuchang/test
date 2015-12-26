@@ -13,7 +13,7 @@ class CCommunity{
 			);
 	}
 	public function getCompanyList(){
-		$result = Yii::app()->db->createCommand()->setText('select * from company where status !=0 ')->queryAll();
+		$result = Yii::app()->db->createCommand()->setText('select a.*,b.name as locationName from company a left join hub b on a.hubId=b.id where a.status !=0 ')->queryAll();
 		return array(
 				'code' => 200,
 				'mes' => 'success',
@@ -22,6 +22,14 @@ class CCommunity{
 	}
 	public function getMemberList(){
 		$result = Yii::app()->db->CreateCommand()->setText('select a.*,b.name as locationName from user a left join hub b on a.location=b.id where a.status !=0')->queryAll();
+		return array(
+				'code' => 200,
+				'mes' => 'success',
+				'data' => $result
+			);
+	}
+	public function getCompanyListByService($id=null){
+		$result = Yii::app()->db->CreateCommand()->setText('select  distinct a.*,h.name as locationName from company a left join service_company  b on a.id=b.companyId left join hub h on a.hubId=h.id where a.id  in (select  c.companyId from service_company c left join service d  on c.serviceId=d.id  where d.parentId='.$id.')')->queryAll();
 		return array(
 				'code' => 200,
 				'mes' => 'success',
