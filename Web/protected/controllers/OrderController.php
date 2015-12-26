@@ -22,6 +22,7 @@ class OrderController extends Controller{
 				$date = $date+2592000;
 			}
 		};
+		Yii::log(date('Ymd',$date), CLogger::LEVEL_ERROR, 'payment.notify');
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
