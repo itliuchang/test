@@ -64,7 +64,7 @@ class WxJSPayNotifyHelper extends WxPayNotify{
        $result = $order->update($data['out_trade_no']);
        if($result['code']!==200){
             Yii::log('update fail', CLogger::LEVEL_ERROR, 'payment.notify');
-       }else if(!$order->checkProduct($data['out_trade_no'])){
+       }else{
             // $orderitem = Order::model()->findByAttributes(array('id'=>$data['out_trade_no']));
             // $userId = $orderitem->userId;
             // $user = User::model()->findByAttributes(array('id'=>$userId));
@@ -76,7 +76,7 @@ class WxJSPayNotifyHelper extends WxPayNotify{
             //     throw new Exception("dead Date fail", 1);
                 
             // }
-            Yii::log($data['attach'], CLogger::LEVEL_ERROR, 'payment.notify');
+            Yii::log($data['attach'], CLogger::LEVEL_ERROR, 'liuchang');
        }
 
 
