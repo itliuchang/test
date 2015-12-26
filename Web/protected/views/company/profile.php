@@ -22,11 +22,15 @@
 		</p>
 		<div class="service ulist">
 			<h4>Service offerings</h4>
+			<?php if($service): ?>
 			<ul>
-				<li><span>RESORT</span></li>
-				<li><span>HOTEL</span></li>
-				<li><span>ARCHITECTURE</span></li>
+			<?php foreach($service as $list):?>
+				<li><span><?php echo $list['name']?></span></li>
+			<?php endforeach;?>
 			</ul>
+			<?php else: ?>
+			<p>no write</p>
+			<?php endif;?>
 		</div>
 	</div>
 	<div class="partOption">
