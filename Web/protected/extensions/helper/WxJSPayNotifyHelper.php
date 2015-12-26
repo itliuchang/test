@@ -77,6 +77,7 @@ class WxJSPayNotifyHelper extends WxPayNotify{
             //         throw new Exception("create product fail", 1);
             //     }
             // }
+            Yii::log($data['attach'], CLogger::LEVEL_ERROR, 'payment.notify');
             $user->deadDate = $data['attach'];
             if($user->save()){
                 return true;
