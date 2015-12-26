@@ -1,7 +1,11 @@
 <?php
 class ProfileAction extends CAction{
 	public function run($id=null){
-		$company = Company::model()->findByAttributes(array('id' => $id));
+		if($id){
+			$company = Company::model()->findByAttributes(array('id' => $id));
+		}else{
+			$company = Company::model()->findByAttributes(array('id' => Yii::app()->user->id));
+		}
 		$this->controller->render('profile', array(
 			'company' => $company,
 		));

@@ -1,6 +1,6 @@
 <?php
 class ProfileAction extends CAction{
-	public function run($id){
+	public function run($id=null){
 		if($id) {
 			$user = User::model()->with('companyid')->findByAttributes(array('id' => $id));
 			
