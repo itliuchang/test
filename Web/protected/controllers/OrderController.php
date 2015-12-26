@@ -10,17 +10,23 @@ class OrderController extends Controller{
 		}catch(CException $e){
 			echo '订单创建失败';die;
 		}
+		$user = User::model()->findByAttributes(array('id'=>$userId));
+        $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):strtotime($user->deadDate);
 		if(Yii::app()->request->getParam('code')){
 			$wechat = Yii::app()->params['partner']['wechat'];
 			$order = new COrder;
 			$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
 			$orderId = $orderId['data']['orderId'];
+            for($i = 0;$i<$productNum;$i++){
+				$rtuorder = $order->createProduct(array('orderId'=>$orderId,'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+2505600)));
+				$date = $date+2592000;
+			}
 		};
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();
         $input->SetBody($productName);
-        $input->SetAttach($productNum);
+        $input->SetAttach($date);
         $input->SetOut_trade_no((string)$orderId);
         $input->SetTotal_fee($productPrice*$productNum);
         $input->SetTime_start(date('YmdHis'));
