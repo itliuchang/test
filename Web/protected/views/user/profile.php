@@ -2,7 +2,9 @@
 	<div class="top">
 		<div class="background">
 			<img src="<?php echo empty($user['background']) ? '/images/background-default.png' : $user['background']?>"/>
+			<?php if($user['id']==Yii::app()->user->id): ?>
 			<a href="/user/updateprofile"><div class="update"></div></a>
+			<?php endif; ?>
 		</div>
 		<div class="wrapperPortrait">
 			<img class="portrait" src='<?php echo empty($user['portrait']) ? '/images/portrait-default.png' : $user['portrait']?>'/>
@@ -21,19 +23,27 @@
 		</p>
 		<div class="skill ulist">
 			<h4>My Skills</h4>
+			<?php if($user['skills']): ?>
 			<ul>
 			<?php foreach(explode(',',$user['skills']) as $list):?>
 				<li><span><?php echo $list?></span></li>
 			<?php endforeach;?>
 			</ul>
+			<?php else: ?>
+			<p>no write</p>
+			<?php endif; ?>
 		</div>
 		<div class="interest ulist">
 			<h4>My Interests</h4>
+			<?php if($user['interests']): ?>
 			<ul>
 			<?php foreach(explode(',',$user['interests']) as $list):?>
 				<li><span><?php echo $list?></span></li>
 			<?php endforeach;?>
 			</ul>
+			<?php else: ?>
+			<p>no write</p>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div class="partOption">

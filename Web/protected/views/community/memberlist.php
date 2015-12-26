@@ -5,7 +5,7 @@
 	<div class="memberlist">
 		<?php foreach($list as $value): ?>
 		<div class="option">
-			<a href="#" class="link"></a>
+			<input type='text' id='<?php echo $value['id'] ?>' hidden>
 			<a href="#"><img src="<?php echo $value['portrait'] ?>" alt=""></a>
 			<div class="content">
 				<h3 class="overflow-line1"><?php echo $value['nickName'] ?></h3>
@@ -19,3 +19,8 @@
 <div class="container-fluid tbar" id="footer">
     <?php $this->widget('FTBarWidget',array('currentTab' => '/community/companylist')) ?>
 </div>
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_memberlistjs', null ,true);
+    $cs->registerScript('memberlistjs', $js, CClientScript::POS_END);
+?>

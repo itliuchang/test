@@ -1,8 +1,6 @@
 <?php
 class ProfileAction extends CAction{
-	public function run(){
-		$id = Yii::app()->request->getParam('id');
-		
+	public function run($id){
 		if($id) {
 			$user = User::model()->with('companyid')->findByAttributes(array('id' => $id));
 			

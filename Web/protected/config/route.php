@@ -15,12 +15,14 @@ return array(
         'book/roomshow-<id:\d+>' => 'book/roomshow',
         'book/workspaceconfirm-<id:\d+>/<date:\w\S+>' => 'book/workspaceconfirm',
         'company/updateprofile-<id:\d+>' => 'company/updateprofile',
+        'company/profile-<id:\d+>' => 'company/profile',
+        'user/profile-<id:\d+>' => 'user/profile',
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
 
         'community/servicescompany-<id:\d+>' => 'community/servicescompany',
-        
+
 
         'messages(/<page:\d+>(/<size:\d+>)?)?' => 'message',
         'message/<fid:\w+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',

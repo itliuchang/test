@@ -2,7 +2,9 @@
 <input type='hidden' name='id' value='<?php echo $company['id']?>'>
 	<div class="top">
 		<div class="background" style="background:url(<?php echo $company['background']?>)">
+			<?php if($company['ownerId']==Yii::app()->user->id): ?>
 			<div class="update"></div>
+			<?php endif; ?>
 		</div>
 		<div class="wrapperPortrait">
 			<img class="portrait" src='<?php echo $company['logo']?>'>
