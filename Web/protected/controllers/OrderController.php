@@ -10,7 +10,7 @@ class OrderController extends Controller{
 		}catch(CException $e){
 			echo '订单创建失败';die;
 		}
-		$user = User::model()->findByAttributes(array('id'=>$userId));
+		$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
         $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):strtotime($user->deadDate);
         Yii::log(date('Ymd',$date), CLogger::LEVEL_ERROR, '1111');
 		$wechat = Yii::app()->params['partner']['wechat'];
