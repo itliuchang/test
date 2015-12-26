@@ -170,6 +170,7 @@
                 flash_swf_url : 'lib/plupload-2.1.2/js/Moxie.swf',
                 silverlight_xap_url : 'lib/plupload-2.1.2/js/Moxie.xap',
                 unique_names: true,
+                auto_start: true,
                 filter:{
                     max_file_size:'5mb',
                     mime_types:[{
@@ -200,10 +201,8 @@
 
                     FilesAdded: function(up, files) {
                         plupload.each(files, function(file) {
-                            
                             CHelper.toggleTip('show', '上传中(<span style="color:#EA2424;">0%</span>)..', 'loader');
                             uploader.start(); 
-                            
                         });                   
                     },
 

@@ -1,18 +1,18 @@
 <div id="more">
 	<div class="row book">
-		<a class="col-xs-6 room">Book a Room</a>
-		<a class="col-xs-6 workspace">Book Workspace</a>
+		<a class="col-xs-6 room" href='/book/roomlist'>Book a Room</a>
+		<a class="col-xs-6 workspace" href='/book/workspacelist'>Book Workspace</a>
 	</div>
 	<ul class="option">
 		<li class="reservations"><a href="/book/myreservations">Upcoming Reservations</a></li>
-		<li class="myprofile"><a>My Profile</a></li>
-		<li class="companyProfile"><a>Company Profile</a></li>
+		<li class="myprofile" ><a href='/user/profile'>My Profile</a></li>
+		<li class="companyProfile"><a href='/company/profile'>Company Profile</a></li>
 		<li class="account"><a href="/user/account">Account</a></li>
 		<li class="password"><a>Change password</a></li>
 	</ul>
 	<ul class="option">
 		<li class="about"><a>About</a></li>
-		<li class="logout"><a>Log out</a></li>
+		<li class="logout"><a href='/user/logout'>Log out</a></li>
 	</ul>
 </div>
 <div class="container-fluid tbar" id="footer">

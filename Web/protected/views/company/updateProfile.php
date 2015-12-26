@@ -1,19 +1,22 @@
 <div id="companyUpdateProfile">
 	<div class="top">
-		<div class="background" id='background_container'>
+		<div class="background" id='background_container' style="background:url(<?php echo $company['background']?>)">
 			<div class="addBackground" id="selectbackground"></div>
 		</div>
-		<div class="wrapperPortrait" id='portrait_container'>
-			<img class="portrait" id='selectportrait' src=''>
+		<div class="wrapperPortrait" id='logo_container'>
+			<img class="portrait" id='selectlogo' src='<?php echo $company['logo']?>'>
 		</div>
 	</div>
 	<div class="inputSection">
-		<input type="text" placeholder="company name" class="name">
-		<input type="text" placeholder="company title" class="title">
-		<input type="text" placeholder="website" class="website lastinput">
+		<input type='hidden' name='id' value='<?php echo $company['id']?>'>
+		<input type='hidden' class='backgroundurl' value='<?php echo $company['background']?>'>
+		<input type="text" placeholder="company name" class="name" value='<?php echo $company['name']?>'>
+		<input type="email" placeholder="company email" class="email" value='<?php echo $company['email']?>'>
+		<input type="text" placeholder="company phone" class="phone" value='<?php echo $company['phone']?>'>
+		<input type="text" placeholder="website" class="website lastinput" value='<?php echo $company['website']?>'>
 	</div>
 	<div class="inputSection">
-		<textarea placeholder="What we do" maxlength=140 rows=4 ></textarea>
+		<textarea placeholder="What we do" maxlength=140 rows=4 class='introduction'><?php echo $company['introduction']?></textarea>
 	</div>
 	<div class="inputSection">
 		<h3 class="addService">Service offerings</h3>
@@ -27,8 +30,8 @@
 		</div>
 	</div>
 	<div class="inputSection link">
-		<input type="email" placeholder="Facebook url" class="facebook"> 
-		<input type="email" placeholder="LinkIn url" class="linkIn">
+		<input type="email" placeholder="Facebook" class="facebook" value='<?php echo $company['facebookid']?>'> 
+		<input type="email" placeholder="LinkIn" class="linkIn" value='<?php echo $company['linkedinid']?>'>
 	</div>
 	<h2 class="footer">NEXT</h2>
 	<div class="servicelist hide" id="wrapper">

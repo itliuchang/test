@@ -2,7 +2,7 @@
 	<div class="top">
 		<div class="background">
 			<img src="<?php echo empty($user['background']) ? '/images/background-default.png' : $user['background']?>"/>
-			<div class="update"></div>
+			<div class="update"><a href="/user/updateprofile"></a></div>
 		</div>
 		<div class="wrapperPortrait">
 			<img class="portrait" src='<?php echo empty($user['portrait']) ? '/images/portrait-default.png' : $user['portrait']?>'/>
@@ -22,17 +22,17 @@
 		<div class="skill ulist">
 			<h4>My Skills</h4>
 			<ul>
-				<li><span>RESORT</span></li>
-				<li><span>HOTEL</span></li>
-				<li><span>ARCHITECTURE</span></li>
+			<?php foreach(explode(',',$user['skills']) as $list):?>
+				<li><span><?php echo $list?></span></li>
+			<?php endforeach;?>
 			</ul>
 		</div>
 		<div class="interest ulist">
 			<h4>My Interests</h4>
 			<ul>
-				<li><span>RESORT</span></li>
-				<li><span>HOTEL</span></li>
-				<li><span>ARCHITECTURE</span></li>
+			<?php foreach(explode(',',$user['interests']) as $list):?>
+				<li><span><?php echo $list?></span></li>
+			<?php endforeach;?>
 			</ul>
 		</div>
 	</div>
@@ -47,7 +47,7 @@
 		    <div class="underLine"></div>
 		     <li>
 		    	<h4>Wechat</h4>
-		    	<p><?php echo $user['website']?></p>
+		    	<p><?php echo $user['wechatid']?></p>
 		    </li>
 		    <div class="underLine"></div>
 		     <li>
@@ -75,9 +75,9 @@
 		<h3>I Work At</h3>
 		<div class="underLine"></div>
 		<div class="companyWrapper">
-			<img src="/images/company-default.png" alt="">
-			<h4>naked Retreats</h4>
-			<p>Cheisea</p>
+			<img src="<?php echo $user['companyid']['logo']?>" alt="">
+			<h4><?php echo $user['companyid']['name']?></h4>
+			<p><?php echo $user['companyid']['location']?></p>
 		</div>
 	</div>
 	<div class="partOption">
@@ -85,15 +85,15 @@
 		<div class="underLine"></div>
 		<div class="postWrapper">
 			<div class="header">
-				<img src="/images/portrait-default.png" alt="">
+				<img src="<?php echo empty($user['portrait']) ? '/images/portrait-default.png' : $user['portrait']?>" alt="">
 				<span class="time"></span>
-				<h4>naked Retreats</h4>
-				<p class="title">title</p>
-				<p class="companyName">companyName</p>
-				<p class="location">location</p>
+				<h4><?php echo $user['companyid']['name']?></h4>
+				<p class="title"><?php echo $user['title']?></p>
+				<p class="companyName"><?php echo $user['companyid']['name']?></p>
+				<p class="location"><?php echo $user['companyid']['location']?></p>
 			</div>
 			<p class="content">
-				Membership at naked Hub offers individual the benefits of corporate work with 21st century freedom.
+				<?php echo $user['companyid']['introduction']?>
 			</p>
 		</div>
 	</div>

@@ -1,5 +1,23 @@
 <?php
 class BookController extends Controller{
+	public function filters(){
+		return array(
+			'accessControl',
+		);
+	}
+
+	public function accessRules(){
+		return array(
+			array('allow',
+				'actions' => array('workspaceconfirm','workspacelist','myreservations','roomlist','roomshow','commitroomreservation','commitconfirm'),
+				'users' => array('@'),
+			),
+			array('deny',
+				'users' => array('*'),
+			),
+		);
+	}
+
 	public function actions(){
 		return array(
 				'workspacelist' => 'application.controllers.book.WorkspaceListAction',
