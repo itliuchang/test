@@ -3,7 +3,7 @@ class LoginAction extends CAction{
 
 	public function run(){
 		if(Yii::app()->user->isGuest){
-			if(Assist::isWeixin()){
+			// if(Assist::isWeixin()){
 				if(Yii::app()->request->isAjaxRequest){
 					$mobile = Yii::app()->request->getParam('mobile');
 					$code = Yii::app()->request->getParam('code');
@@ -48,9 +48,9 @@ class LoginAction extends CAction{
 				} else {
 					$this->controller->render('login');
 				}
-			} else {
-				throw new CHttpException(403, Yii::t('yii','目前仅支持微信登录。'));
-			}
+			// } else {
+			// 	throw new CHttpException(403, Yii::t('yii','目前仅支持微信登录。'));
+			// }
 			
 		}else{
 			$this->controller->redirect(Assist::getDefaultURL());
