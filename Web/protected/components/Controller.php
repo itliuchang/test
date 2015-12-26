@@ -38,7 +38,7 @@ class Controller extends CController{
 	
 	public function filters() {
 		return array(
-			//'wechat'
+			// 'wechat'
 		);
 	}
 	
@@ -53,7 +53,8 @@ class Controller extends CController{
 			$filterChain->run();
 			return true;
 		}
-		return false;
+		// $this->redirect('/site/error');
+		// $this->render('error',403);
 	}
 	
 }

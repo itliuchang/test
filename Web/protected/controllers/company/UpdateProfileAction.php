@@ -1,18 +1,22 @@
 <?php
 class UpdateProfileAction extends CAction{
-	public function run(){
-		if(Yii::app()->request->isAjaxRequest){
-			$name = Yii::app()->request->getParam('name');
-			$result = Company::model()->findByAttributes(array('name'=>$name));
-			if($result){
-				echo CJSON::encode(array('code'=>400, 'message'=> 'HAVING'));
-			} else {
+	public function run($id=''){
+		if(!$id){
+			if(Yii::app()->request->isAjaxRequest){
+				
 				$id = Yii::app()->request->getParam('id');
-							
+				$name = Yii::app()->request->getParam('name');		
 				if(!$id){
-					$company = new Company;
+					$result = Company::model()->findByAttributes(array('name'=>$name));
+					if($result){
+						echo CJSON::encode(array('code'=>400, 'message'=> 'HAVING'));die;
+					} else {
+						$company = new Company;
+						$company->createTime = date('Y-m-d H:i:s');
+					}
 				} else {
 					$company = Company::model()->findByAttributes(array('id'=>$id));
+					$company->updateTime = date('Y-m-d H:i:s');
 				}
 				$company->name = $name;
 				$company->email = Yii::app()->request->getParam('email');
@@ -23,11 +27,11 @@ class UpdateProfileAction extends CAction{
 				$company->introduction = Assist::removeXSS(Yii::app()->request->getParam('introduction'));
 				$company->facebookid = Yii::app()->request->getParam('facebookid');
 				$company->linkedinid = Yii::app()->request->getParam('linkedinid');
-				$company->save();
-				
+				$company->save();				
 				echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS'));
+			} else {
+				$this->controller->render('updateProfile');
 			}
-			
 		} else {
 			$id = Yii::app()->request->getParam('id');
 			$company = Company::model()->findByAttributes(array('id' => $id));
@@ -35,5 +39,6 @@ class UpdateProfileAction extends CAction{
 					'company' => $company
 			));
 		}
+			
 	}
 }

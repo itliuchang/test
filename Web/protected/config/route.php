@@ -14,6 +14,7 @@ return array(
         
         'book/roomshow-<id:\d+>' => 'book/roomshow',
         'book/workspaceconfirm-<id:\d+>/<date:\w\S+>' => 'book/workspaceconfirm',
+        'company/updateprofile-<id:\d+>' => 'company/updateprofile',
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',

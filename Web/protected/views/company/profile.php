@@ -1,13 +1,14 @@
 <div id="companyProfile">
+<input type='hidden' name='id' value='<?php echo $company['id']?>'>
 	<div class="top">
-		<div class="background">
+		<div class="background" style="background:url(<?php echo $company['background']?>)">
 			<div class="update"></div>
 		</div>
 		<div class="wrapperPortrait">
-			<img class="portrait">
+			<img class="portrait" src='<?php echo $company['logo']?>'>
 			<div class="messageWrapper">
-				<h3 class="companyName">yoyoplay</h3>
-				<p class="location">fuxing</p>
+				<h3 class="companyName"><?php echo $company['name']?></h3>
+				<p class="location"><?php echo $company['location']?></p>
 			</div>
 		</div>
 	</div>
@@ -15,7 +16,7 @@
 		<h3>What we do</h3>
 		<div class="underLine"></div>
 		<p class="desc">
-			Membership at naked Hub offers individual the benefits of corporate work with 21st century freedom.
+			<?php echo $company['introduction']?>
 		</p>
 		<div class="service ulist">
 			<h4>Service offerings</h4>
@@ -32,32 +33,17 @@
 		<ul class="urlWrapper">
 		    <li>
 		    	<h4>Homepage</h4>
-		    	<p>www.baidu.com</p>
-		    </li>
-		    <div class="underLine"></div>
-		     <li>
-		    	<h4>Wechat</h4>
-		    	<p>www.baidu.com</p>
+		    	<p><?php echo $company['website']?></p>
 		    </li>
 		    <div class="underLine"></div>
 		     <li>
 		    	<h4>Facebook</h4>
-		    	<p>www.baidu.com</p>
-		    </li>
-		    <div class="underLine"></div>
-		    <li>
-		    	<h4>Twitter</h4>
-		    	<p>www.baidu.com</p>
+		    	<p><?php echo $company['facebookid']?></p>
 		    </li>
 		    <div class="underLine"></div>
 		    <li>
 		    	<h4>Linkedin</h4>
-		    	<p>www.baidu.com</p>
-		    </li>
-		    <div class="underLine"></div>
-		    <li>
-		    	<h4>Instagram</h4>
-		    	<p>www.baidu.com</p>
+		    	<p><?php echo $company['linkedinid']?></p>
 		    </li>
 		</ul>
 	</div>
@@ -79,3 +65,8 @@
 		</div>
 	</div>
 </div>
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_profilejs', null ,true);
+    $cs->registerScript('profile', $js, CClientScript::POS_END);
+?>

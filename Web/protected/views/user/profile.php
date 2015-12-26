@@ -2,7 +2,7 @@
 	<div class="top">
 		<div class="background">
 			<img src="<?php echo empty($user['background']) ? '/images/background-default.png' : $user['background']?>"/>
-			<div class="update"><a href="/user/updateprofile"></a></div>
+			<a href="/user/updateprofile"><div class="update"></div></a>
 		</div>
 		<div class="wrapperPortrait">
 			<img class="portrait" src='<?php echo empty($user['portrait']) ? '/images/portrait-default.png' : $user['portrait']?>'/>

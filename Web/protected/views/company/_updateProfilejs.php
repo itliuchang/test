@@ -24,7 +24,7 @@ $(function(){
 			email = $('.email').val(),
 			website = $('.website').val(),
 			background = $('.backgroundurl').val(),
-			logo = $('.logo').attr('src'),
+			logo = $('.portrait').attr('src'),
 			introduction = CHelper.filterXSS($('.introduction').val()),
 			facebook = $('.facebook').val(),
 			linkedin = $('.linkIn').val();
@@ -45,7 +45,8 @@ $(function(){
 				before:function(){
 					CHelper.toggleTip('show','提交中...');
 				},
-				error:function(msg){
+				error:function(msg,response){
+					console.log(response)
 					CHelper.toggleTip('show','ERROR','warn',1000);
 				},
 				failure:function(response){
