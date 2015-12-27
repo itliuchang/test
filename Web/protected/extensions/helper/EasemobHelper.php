@@ -24,6 +24,7 @@ class EasemobHelper extends Easemob{
     //初始化新用户聊天系统
     public static function initIM($uid, $data){
         //注册环信
+        usleep(200*1000); //暂停200毫秒，防接口次数调用超出
         self::getInstance()->accreditRegister($data);
         //创建系统消息的帐号
         $mr = new MessageRelation;
@@ -41,7 +42,7 @@ class EasemobHelper extends Easemob{
         $n = Message::model()->countBySql('select count(*) from message where RecID=:uid and type in(0,1) and status=0', array(':uid' => Yii::app()->user->id));
         if($n > 0) return true;
         //是否有新的全局系统消息
-        $n = Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+        $n = Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
         return $n > 0;
     }
 
@@ -49,7 +50,7 @@ class EasemobHelper extends Easemob{
     public static function getNewMessageNum($senderId){
         if($senderId == 0){//获取系统消息
             $n = Message::model()->countBySql('select count(*) from message where senderID=0 and RecID=:uid and type=1 and status=0', array(':uid' => Yii::app()->user->id));
-            $n += Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+            $n += Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
         }else{
             $n = Message::model()->countBySql('select count(*) from message where senderID=:senderId and RecID=:uid and type=0 and status=0', array(':senderId' => $senderId, ':uid' => Yii::app()->user->id));
         }
@@ -82,7 +83,7 @@ class EasemobHelper extends Easemob{
             //将一对一的系统通知置为已读
             Message::model()->updateAll(array('status' => 1, 'utime' => time()), 'senderID=0 and RecID=:RecId and type=1 and status=0', array(':RecId' => Yii::app()->user->id));
             //将全局系统消息置为已读
-            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
             $sql = '';
             foreach($messages as $message){
                 $sql += 'insert into messageLog values(' . $message->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time() . ';';
@@ -99,18 +100,21 @@ class EasemobHelper extends Easemob{
         $where = ' from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id where id1=:uid or id2=:uid order by utime desc';
         $count = MessageRelation::model()->countBySql('select count(*) ' . $where, array(':uid' => Yii::app()->user->id));
         $total = ceil($count / $size);
-        $start = $page * $size - 1;
+        $start = ($page - 1) * $size;
         $limit = " limit {$start},{$size}";
 
         $list = MessageRelation::model()->findAllBySql('select' . $fields . $where . $limit, array(':uid' => Yii::app()->user->id));
+        $items = array();
         foreach($list as $item){
+            $item = $item->attributes;
             if($item['id2'] == 0){
                 $item['ncount'] = self::getNewMessageNum(0);
             }else{
                 $item['ncount'] = self::getNewMessageNum($item['id1'] != Yii::app()->user->id? $item['id1'] : $item['id2']);
             }
+            array_push($items, $item);
         }
-        return $list;
+        return $items;
     }
 
     //分页获取当前用户与某好友的聊天消息列表,使用start而非使用常规分页是为了避免当在聊天窗口有新的聊天记录时获取消息列表错位的问题
@@ -151,6 +155,7 @@ class EasemobHelper extends Easemob{
             $mrelation->utime = time();
             $mrelation->save();
             //新建用户关系时添加对方为当前登录用户的好友
+            usleep(200*1000);
             if($RecID == 0){
                 self::getInstance()->addFriend(Yii::app()->user->id, Yii::app()->params['partner']['emchat']['sysAccount']['name']);
             }elseif($senderID == Yii::app()->user->id){
@@ -180,6 +185,7 @@ class EasemobHelper extends Easemob{
             $mrelation->utime = time();
             $mrelation->save();
             //新建用户关系时添加对方为当前登录用户的好友
+            usleep(200*1000);
             if($RecID == 0){
                 self::getInstance()->addFriend(Yii::app()->user->id, Yii::app()->params['partner']['emchat']['sysAccount']['name']);
             }else{
@@ -188,14 +194,15 @@ class EasemobHelper extends Easemob{
         }
     }
 
-    //当前用户回复评论时的系统通知
-    public static function addCommentReplyNotify($recId, $body, $pid, $cid){
-        if($recId == Yii::app()->user->id) return;
+    //创建新系统通知(一对一)
+    //$data 通知的附属信息，例如用户评论的回复通知：array(type=1, pid=x, cid=x)
+    //                          其它通知：array(type=0) 不支持跳转的纯文本通知类型
+    public static function addNotify($recId, $body, $data = array()){
         $m = new Message;
         $m->senderID = 0;
         $m->RecID = $recId;
         $m->body = $body; //评论内容
-        $m->typeID = $pid . '-' . $cid; //格式: 文章ID-评论ID
+        $m->data = CJSON::encode($data);
         $m->type = 1;
         $m->ctime = $m->utime = time();
         $m->save();
@@ -204,7 +211,10 @@ class EasemobHelper extends Easemob{
         //检查是否是好友
         // self::addAFriend(0);
         //通过环信发送
-        self::getInstance()->sendTxtMsg(Yii::app()->user->id, array($recId), '|' . $m->typeID . '|' . $body);
+        usleep(200*1000);
+        self::getInstance()->sendTxtMsg(
+            Yii::app()->params['partner']['emchat']['sysAccount']['name'], array($recId), $m->data . '||' . $body
+        );
     }
 
     //创建全局系统消息
