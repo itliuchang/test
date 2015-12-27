@@ -1,6 +1,6 @@
 $(function(){
     //检查是否有新消息
-    setInterval(function(){
+    function checkNewMessage(){
         var fbarM = $('.fbar-message');
         if(!systemVar.isGuest && fbarM.length == 1 && !fbarM.find('i.message').hasClass('dot') && systemVar.controller != 'message'){
             CHelper.asynRequest('/message/hasnew.html', null, {
@@ -14,5 +14,7 @@ $(function(){
                 complete: function(status){}
             });
         }
-    }, 60 * 1000);
+    }
+    checkNewMessage();
+    setInterval(checkNewMessage, 60 * 1000);
 });
