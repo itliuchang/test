@@ -19,7 +19,7 @@ class UpdateProfileAction extends CAction{
 					$company->updateTime = date('Y-m-d H:i:s');
 				}
 				$company->name = $name;
-				$company->ownerId = Yii::app()->user->id;
+				$company->ownerId = Yii::app()->user->id;  // FIXME 
 				$company->email = Yii::app()->request->getParam('email');
 				$company->website = Yii::app()->request->getParam('website');
 				$company->logo = Yii::app()->request->getParam('logo');
