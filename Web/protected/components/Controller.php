@@ -46,7 +46,7 @@ class Controller extends CController{
 		if(Assist::isWeixin()){
 			if(!Yii::app()->session['wechat']) {
 				if(!strpos(Yii::app()->request->getPathInfo(), 'wechatconnect')){
-					$this->redirect('/user/wechatconnect');
+					$this->redirect('/wechat/wechatconnect');
 					return false;
 				}
 			}
