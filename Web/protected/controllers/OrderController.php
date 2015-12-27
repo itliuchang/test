@@ -10,17 +10,22 @@ class OrderController extends Controller{
 		}catch(CException $e){
 			echo '订单创建失败';die;
 		}
-		if(Yii::app()->request->getParam('code')){
-			$wechat = Yii::app()->params['partner']['wechat'];
-			$order = new COrder;
-			$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
-			$orderId = $orderId['data']['orderId'];
-		};
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
+        $user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+        $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):strtotime($user->deadDate);
+		$wechat = Yii::app()->params['partner']['wechat'];
+		$order = new COrder;
+		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
+		$orderId = $orderId['data']['orderId'];
+		$times = Yii::app()->db->createCommand()->setText('select times from product where status!=0 and id='.$productType)->queryRow();
+        for($i = 0;$i<$productNum;$i++){
+			$rtuorder = $order->createProduct(array('orderId'=>$orderId,'totalTimes'=>$times['times'],'usedTimes'=>0  ,'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+2505600)));
+			$date = $date+2592000;
+		}
         $input = new WxPayUnifiedOrder();
         $input->SetBody($productName);
-        $input->SetAttach($productNum);
+        $input->SetAttach(date('Ymd',$date));
         $input->SetOut_trade_no((string)$orderId);
         $input->SetTotal_fee($productPrice*$productNum);
         $input->SetTime_start(date('YmdHis'));

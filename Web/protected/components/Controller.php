@@ -38,7 +38,11 @@ class Controller extends CController{
 	
 	public function filters() {
 		return array(
+<<<<<<< HEAD
 			// 'wechat'
+=======
+			  'wechat'
+>>>>>>> 3fca15bf42344e94059e70783aa68df13b544adf
 		);
 	}
 	
@@ -46,7 +50,7 @@ class Controller extends CController{
 		if(Assist::isWeixin()){
 			if(!Yii::app()->session['wechat']) {
 				if(!strpos(Yii::app()->request->getPathInfo(), 'wechatconnect')){
-					$this->redirect('/user/wechatconnect');
+					$this->redirect('/wechat/wechatconnect');
 					return false;
 				}
 			}

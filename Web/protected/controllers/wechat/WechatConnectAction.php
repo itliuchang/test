@@ -22,7 +22,6 @@ class WechatConnectAction extends CAction{
                     'scope' => $wechat['oauth2']['scope'][1],
                     'state' => 1
                 );
-                
                 $url = $wechat['oauth2']['authorize'] . http_build_query($params). '#wechat_redirect';
                 $this->controller->redirect($url);
             }else{

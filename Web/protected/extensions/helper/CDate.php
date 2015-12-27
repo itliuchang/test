@@ -9,7 +9,7 @@ class CDate{
                 'day' => 0, 'hour' => '0', 'minute' => 0, 'second' => 0
             );
         }
-        $res = [];
+        $res = array();
 
         $oneDay = 86400;
         $res['day'] = floor($timestamp / $oneDay);
@@ -33,31 +33,38 @@ class CDate{
 
     public static function dgm($d){
         $now = time();
-        $from = strtotime($d) ?: $now;
+        if(strlen('' . $d) == 10){
+            $from = $d;
+        }else{
+            $from = strtotime($d);
+        }
+        $from = $from ?: $now;
         $tday = date('j', $now) - date('j', $from);
         $time = $now - $from;
 
         if($tday == 0){
             if($time > 3600){
-                return intval($time / 3600) . '小时前';
+                return intval($time / 3600) . 'h'; //小时前
             }elseif($time > 60){
-                return intval($time / 60) . '分钟前';
+                return intval($time / 60) . 'min'; //分钟前
             }elseif($time > 0){
-                return $time . '秒前';
+                return $time . 's'; //秒前
             }else{
-                return '刚刚';
+                return 'now'; //刚刚
             }
         }else{
             $_time = strtotime(date('Y-m-d 00:00:00', $now)) - strtotime(date('Y-m-d 00:00:00', $from));
             $dday = ceil($_time / 86400.0);
             if($dday > 0 && $dday < 7){
-                if($dday <= 2){
-                  return $dday == 1? '昨天' : '前天';
+                // if($dday <= 2){
+                //   return $dday == 1? '昨天' : '前天';
+                if($dday <= 1){
+                  return 'yesterday';
                 }else{
-                  return $dday . '天前';
+                  return $dday . ' days ago'; //天前
                 }
             }else{
-                return date('n月j日 G:i', $from);
+                return date('n-j G:i', $from); //n月j日 G:i
             }
         }
     }

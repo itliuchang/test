@@ -1,5 +1,27 @@
 <?php
 class UserController extends Controller{
+	// public function filters() {
+	// 	return array(
+	// 		 'accessRules'
+	// 	);
+	// }
+	// public function accessRules(){
+ //        return array(
+ //            array('allow',
+ //                'actions'=>array(
+ //                    'wechatconnect', 'wechatconnectcallback',
+ //                ),
+ //                'users'=>array('*'),
+ //            ),
+ //            array('allow',
+ //                'actions' => array('login','logout','sendsms','regist','bind','profile','edit','account','updateprofile','changepassword'),
+ //                'users' => array('@'),
+ //            ),
+ //            array('deny',
+ //               'users' => array('*'),
+ //            ),
+ //        );
+ //    }
 	public function actions(){
 		return array(
 			'login' => 'application.controllers.user.LoginAction',
