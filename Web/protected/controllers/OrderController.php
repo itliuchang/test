@@ -12,16 +12,15 @@ class OrderController extends Controller{
 		}
 		$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
         $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):strtotime($user->deadDate);
-        Yii::log(date('Ymd',$date), CLogger::LEVEL_ERROR, '1111');
 		$wechat = Yii::app()->params['partner']['wechat'];
 		$order = new COrder;
 		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
 		$orderId = $orderId['data']['orderId'];
+		$times = Yii::app()->db->createCommand()->setText('select times from product where id='.$productType)->queryRow();
         for($i = 0;$i<$productNum;$i++){
-			$rtuorder = $order->createProduct(array('orderId'=>$orderId,'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+2505600)));
+			$rtuorder = $order->createProduct(array('orderId'=>$orderId,'totalTimes'=>$times['times'],'usedTimes'=>0,'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+2505600)));
 			$date = $date+2592000;
 		}
-		Yii::log(date('Ymd',$date), CLogger::LEVEL_ERROR, '22222');
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
         $input = new WxPayUnifiedOrder();

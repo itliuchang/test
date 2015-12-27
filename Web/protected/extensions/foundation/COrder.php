@@ -42,6 +42,8 @@ class COrder{
 		$orderProduct-> orderId = $data['orderId'];
 		$orderProduct-> startDate = $data['startDate'];
 		$orderProduct-> endDate = $data['endDate'];
+		$orderProduct-> totalTimes = $data['totalTimes'];
+		$orderProduct-> usedTimes = $data['usedTimes'];
 		if($orderProduct->save()){
 			return array(
 					'code' => 200,
