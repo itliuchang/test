@@ -1,5 +1,5 @@
 <?php
-class UserController extends CController{
+class WechatController extends CController{
 	public function actions(){
 		return array(
 			'wechatconnect' => 'application.controllers.wechat.WechatConnectAction',
