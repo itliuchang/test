@@ -43,7 +43,7 @@ class COrder{
 		$orderProduct-> startDate = $data['startDate'];
 		$orderProduct-> endDate = $data['endDate'];
 		$orderProduct-> totalTimes = $data['totalTimes'];
-		$orderProduct-> usedTimes = $data['usedTimes'];
+		$orderProduct-> usedTimes = $data['use'];
 		if($orderProduct->save()){
 			return array(
 					'code' => 200,
@@ -61,40 +61,13 @@ class COrder{
 		return OrderProduct::model()->findByAttributes(array('orderId'=>$orderId));
 	}
 
-	public function getlist($userId){
-		$order = Order::model()->findAllByAttributes(array('userId'=>$userId,'status'=>1));
-		$length = count($order);
-		$products = array();
-		for($i=0,$j=0;$i<$length;$i++){
-			$orderproductarr = array();
-			$orderproduct = OrderProduct::model()->findAllByAttributes(array("orderId"=>$order[$i]['id']));
-			foreach($orderproduct as $orderproduct){
-				$orderproductarr[]=$orderproduct->attributes;
-			}
-			$productId = $order[$i]['productId'];
-			$relate = Order::model()->with('product')->findByAttributes(array("productId"=>$productId));
-			$times = $relate['product']['times'];
-			$productname = $relate['product']['name'];
-			foreach($orderproductarr as &$value){
-				if(strtotime(date('Ymd'))>=strtotime($value['startDate'])&&strtotime(date('Ymd'))<=strtotime($value['endDate'])){
-					$value['now'] =1;
-				}
-				$value['times'] = $times;
-				$value['productname'] = $productname;
-				if(strtotime(date('Ymd'))<=strtotime($value['endDate'])){
-					$products[$j]=$value;
-					$j++;	
-				}//排除过期的订单
-				
-			}
-		}
-		$user = User::model()->findByAttributes(array('id'=>$userId));
+	public function getlist($userId=1144){
+		$result = Yii::app()->db->createCommand()->setText("select a.*,c.name as productName from order_product a left join `order` b on a.orderId=b.id left join product c on b.productId=c.id where a.status!=0 and b.status!=0 and b.userId=1144 and a.endDate> DATE_FORMAT(CURDATE(), 'MM-dd-yyyy') order by a.endDate asc")->queryAll();
 		return array(
 				'code'=>200,
 				'mes'=> '',
 				'data' => array(
-						'user'=>$user,
-						'list'=> $products,
+						'list'=> $result,
 					)
 			);
 	}
