@@ -2,7 +2,7 @@
     {{each data as v k}}
         <div class="option">
             {{if v.id2 == 0}}
-                <a href="message/{{v.id2}}/chat" class="link"></a>
+                <a href="/message/{{v.id2}}/chat" class="link"></a>
                 <a href="javascript:void(0);">
                   <img src="{{v.u2portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
                 </a>
@@ -11,7 +11,7 @@
                     <p class="overflow-line1">{{v.lastMsg | filterXSS}}</p>
                 </div>
             {{else if v.id2 == uid}}
-                <a href="message/{{v.id1}}/chat" class="link"></a>
+                <a href="/message/{{v.id1}}/chat" class="link"></a>
                 <a href="javascript:void(0);">
                   <img src="{{v.u1portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
                 </a>
@@ -20,7 +20,7 @@
                     <p class="overflow-line1">{{v.lastMsg | filterXSS}}</p>
                 </div>
             {{else}}
-                <a href="message/{{v.id2}}/chat" class="link"></a>
+                <a href="/message/{{v.id2}}/chat" class="link"></a>
                 <a href="javascript:void(0);">
                   <img src="{{v.u2portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
                 </a>
