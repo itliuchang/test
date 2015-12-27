@@ -24,6 +24,7 @@ class EasemobHelper extends Easemob{
     //初始化新用户聊天系统
     public static function initIM($uid, $data){
         //注册环信
+        usleep(200*1000); //暂停200毫秒，防接口次数调用超出
         self::getInstance()->accreditRegister($data);
         //创建系统消息的帐号
         $mr = new MessageRelation;
@@ -151,6 +152,7 @@ class EasemobHelper extends Easemob{
             $mrelation->utime = time();
             $mrelation->save();
             //新建用户关系时添加对方为当前登录用户的好友
+            usleep(200*1000);
             if($RecID == 0){
                 self::getInstance()->addFriend(Yii::app()->user->id, Yii::app()->params['partner']['emchat']['sysAccount']['name']);
             }elseif($senderID == Yii::app()->user->id){
@@ -180,6 +182,7 @@ class EasemobHelper extends Easemob{
             $mrelation->utime = time();
             $mrelation->save();
             //新建用户关系时添加对方为当前登录用户的好友
+            usleep(200*1000);
             if($RecID == 0){
                 self::getInstance()->addFriend(Yii::app()->user->id, Yii::app()->params['partner']['emchat']['sysAccount']['name']);
             }else{
@@ -188,14 +191,15 @@ class EasemobHelper extends Easemob{
         }
     }
 
-    //当前用户回复评论时的系统通知
-    public static function addCommentReplyNotify($recId, $body, $pid, $cid){
-        if($recId == Yii::app()->user->id) return;
+    //创建新系统通知(一对一)
+    //$data 通知的附属信息，例如用户评论的回复通知：array(type=1, pid=x, cid=x)
+    //                          其它通知：array(type=0) 不支持跳转的纯文本通知类型
+    public static function addNotify($recId, $body, $data = array()){
         $m = new Message;
         $m->senderID = 0;
         $m->RecID = $recId;
         $m->body = $body; //评论内容
-        $m->typeID = $pid . '-' . $cid; //格式: 文章ID-评论ID
+        $m->data = CJSON::encode($data);
         $m->type = 1;
         $m->ctime = $m->utime = time();
         $m->save();
@@ -204,7 +208,10 @@ class EasemobHelper extends Easemob{
         //检查是否是好友
         // self::addAFriend(0);
         //通过环信发送
-        self::getInstance()->sendTxtMsg(Yii::app()->user->id, array($recId), '|' . $m->typeID . '|' . $body);
+        usleep(200*1000);
+        self::getInstance()->sendTxtMsg(
+            Yii::app()->params['partner']['emchat']['sysAccount']['name'], array($recId), $m->data . '||' . $body
+        );
     }
 
     //创建全局系统消息
