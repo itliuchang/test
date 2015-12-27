@@ -7,10 +7,10 @@ return array(
     'rules' => array(
         'login' => 'user/login',
         'logout' => 'user/logout',
-        'wechat/login' => 'user/wechatConnect',
-        'wechat/login/callback' =>'user/wechatConnectCallback',
-        'wechat/quiet/login' => 'user/wechatQuietConnect',
-        'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
+        'wechat/login' => 'wechat/wechatconnect',
+        'wechat/login/callback' =>'wechat/wechatconnectcallback',
+        'wechat/quiet/login' => 'wechat/wechatQuietConnect',
+        'wechat/quiet/login/callback' =>'wechat/wechatQuietConnectCallback',
         
         'book/roomshow-<id:\d+>' => 'book/roomshow',
         'book/workspaceconfirm-<id:\d+>/<date:\w\S+>' => 'book/workspaceconfirm',
@@ -26,7 +26,7 @@ return array(
         'community/servicescompany-<id:\d+>' => 'community/servicescompany',
 
 
-        'messages(/<page:\d+>(/<size:\d+>)?)?' => 'message',
+        'message(/<page:\d+>(/<size:\d+>)?)?' => 'message',
         'message/<fid:\w+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',
         'message/friend/<fid:\w+>/add' => 'message/addfriend',
         'message/<fid:\w+>/send' => 'message/sendmsg',

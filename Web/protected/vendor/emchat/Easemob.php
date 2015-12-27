@@ -262,7 +262,7 @@ class Easemob{
 	 * @param string $content  内容    	
 	 * @param array $ext 扩展属性, 由app自己定义.可以没有这个字段，但是如果有，值不能是“ext:null“这种形式，否则出错
 	 */
-	function sendTxtMsg($from_user = "admin", $username, $content, $target_type = "users", $ext) {
+	function sendTxtMsg($from_user = "admin", $username, $content, $target_type = "users", $ext = '') {
 		$option ['target_type'] = $target_type;
 		$option ['target'] = $username;
 		$option ['msg'] = array('type' => 'txt', 'msg' => $content);

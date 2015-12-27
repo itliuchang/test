@@ -38,6 +38,35 @@ class CReservation{
 		foreach($data as $k=> $v){
 			$result->$k=$v;
 		}
+		
+		if($data['type']==1){
+			$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
+			if($orderid){
+				$now = date('Ymd',time());
+				foreach ($orderid as $list){
+					$dp = OrderProduct::model()->find('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now);
+				}
+				if($dp && (($dp['totalTimes']-$dp['usedTimes']) > 0)){
+					$dp->usedTimes++;
+					$dp->save();
+					$result->orderId = $dp['orderId'];
+					$result->save();
+				}
+				$data = array(
+					'code'=>400,
+					'message'=>'error'
+				);
+				return $data;
+				
+			} else {
+				$data = array(
+					'code'=>400,
+					'message'=>'error'
+				);
+				return $data;
+			}			
+		} 
+		
 		if($result->save()){
 			$data = array(
 				'code'=>200,

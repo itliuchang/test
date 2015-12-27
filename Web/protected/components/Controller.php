@@ -38,7 +38,7 @@ class Controller extends CController{
 	
 	public function filters() {
 		return array(
-			'wechat'
+			  'wechat'
 		);
 	}
 	
@@ -46,19 +46,21 @@ class Controller extends CController{
 		if(Assist::isWeixin()){
 			if(!Yii::app()->session['wechat']) {
 				if(!strpos(Yii::app()->request->getPathInfo(), 'wechatconnect')){
-					$this->redirect('/user/wechatconnect');
+					$this->redirect('/wechat/wechatconnect');
 					return false;
 				}
 			}
 			$filterChain->run();
 			return true;
+		} else {
+			// echo 'ERROR';
+			$this->layout = '//layouts/error';
+			$this->render('/site/error',array(
+				'code' => 403,
+				'message' => yii::t('yii','只能在微信登录')
+			));
 		}
-		// echo 'ERROR';
-		$this->layout = '//layouts/error';
-		$this->render('/site/error',array(
-			'code' => 403,
-			'message' => yii::t('yii','只能在微信登录')
-		));
+		
 	}
 	
 }

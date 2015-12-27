@@ -16,7 +16,7 @@ class UserIdentity extends CUserIdentity{
     	$this->id = $user['id'];
     	$this->username = $user['nickName'];
         try{
-        $this->setPersistentStates($user);
+        $this->setPersistentStates($user->attributes);
         }catch(CException $e){
             Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
         }
@@ -31,7 +31,7 @@ class UserIdentity extends CUserIdentity{
     				$this->id = $account->user['id'];
     				$this->username = $account->user['nickName'];
     				
-    				$this->setPersistentStates($account->user);
+    				$this->setPersistentStates($account->user->attributes);
     			} else {
     				$this->errorCode = self::ERROR_NO_BIND;
     			}
@@ -57,7 +57,7 @@ class UserIdentity extends CUserIdentity{
     				
     				$this->id = intval($user->id);
     				$this->username = $user['nickName'];
-    				$this->setPersistentStates($user);
+    				$this->setPersistentStates($user->attributes);
     				
     				$this->bindWechat($bind, $user);
     			}else{
@@ -81,7 +81,7 @@ class UserIdentity extends CUserIdentity{
     			if($user->validatePassword($password)){
     				$this->id = intval($user->id);
     				$this->username = $user['nickName'];
-    				$this->setPersistentStates($user);
+    				$this->setPersistentStates($user->attributes);
     				
     				$this->bindWechat($bind, $user);
     			} else {
