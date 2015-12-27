@@ -38,7 +38,7 @@ class Controller extends CController{
 	
 	public function filters() {
 		return array(
-			// 'wechat'
+			'wechat'
 		);
 	}
 	
@@ -52,13 +52,15 @@ class Controller extends CController{
 			}
 			$filterChain->run();
 			return true;
+		} else {
+			// echo 'ERROR';
+			$this->layout = '//layouts/error';
+			$this->render('/site/error',array(
+				'code' => 403,
+				'message' => yii::t('yii','只能在微信登录')
+			));
 		}
-		// echo 'ERROR';
-		$this->layout = '//layouts/error';
-		$this->render('/site/error',array(
-			'code' => 403,
-			'message' => yii::t('yii','只能在微信登录')
-		));
+		
 	}
 	
 }
