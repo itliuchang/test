@@ -104,6 +104,7 @@ body.messageshow{
 
 #messageshow .wrapper .my{
 	position: relative;
+	margin-bottom: 20px;
 }
 #messageshow .wrapper .my .imgWrapper{
 	position: absolute;
