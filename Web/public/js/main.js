@@ -6,7 +6,11 @@ $(function(){
             CHelper.asynRequest('/message/hasnew.html', null, {
                 before: function(xhr){},
                 success: function(data){
-                    if(data == true) $('.fbar-message .message').addClass('dot');
+                    if(data == true){
+                        $('.fbar-message .message').addClass('dot');
+                    }else{
+                        $('.fbar-message .message').removeClass('dot');
+                    }
                 },
                 error: function(msg){},
                 failure: function(response){},
