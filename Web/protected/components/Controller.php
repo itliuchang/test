@@ -38,7 +38,6 @@ class Controller extends CController{
 	
 	public function filters() {
 		return array(
-			// 'wechat'
 			  'wechat'
 		);
 	}
