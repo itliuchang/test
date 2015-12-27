@@ -7,4 +7,8 @@ class MessageLog extends CActiveRecord{
     public function tableName(){
         return 'messageLog';
     }
+
+    public function primaryKey(){
+        return array('mid', 'uid');
+    }
 }

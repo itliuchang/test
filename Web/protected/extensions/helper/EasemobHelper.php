@@ -83,10 +83,10 @@ class EasemobHelper extends Easemob{
             //将一对一的系统通知置为已读
             Message::model()->updateAll(array('status' => 1, 'utime' => time()), 'senderID=0 and RecID=:RecId and type=1 and status=0', array(':RecId' => Yii::app()->user->id));
             //将全局系统消息置为已读
-            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=t.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
             $sql = '';
             foreach($messages as $message){
-                $sql += 'insert into messageLog values(' . $message->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time() . ';';
+                $sql .= 'insert into messageLog values(' . $message->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time() . ';';
             }
             if($sql) MessageLog::model()->dbConnection->createCommand($sql)->execute();
         }else{//使用当前用户与此人的私聊全部为已读，自己发送的消息不需要置为已读
@@ -141,11 +141,11 @@ class EasemobHelper extends Easemob{
     public static function updateLastMsg($senderId, $recId, $msg){
         $lastMsg = mb_substr(Assist::removeXSS(Assist::removeEmoji($msg)), 0, 50, 'utf-8');
         if($senderId == 0){//系统消息/通知
-            $mr = MessageRelation::model()->findBySql('select * from messageLog where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
+            $mr = MessageRelation::model()->findBySql('select * from messageRelation where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
             $senderID = Yii::app()->user->id;
             $RecID = 0;
         }else{//私聊
-            $mr = MessageRelation::model()->findBySql('select * from messageLog where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => $senderId, ':recId' => $recId));
+            $mr = MessageRelation::model()->findBySql('select * from messageRelation where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => $senderId, ':recId' => $recId));
             $senderID = $senderId;
             $RecID = $recId;
         }

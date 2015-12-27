@@ -1,8 +1,13 @@
 <div id="messagelist">
     <?php foreach($data as $item): ?>
 		<div class="option">
-			<a href="message/" class="link"></a>
-			<a href="#"><img src="/images/portrait-default.png" alt=""></a>
+		    <?php if($item['id2'] == 0): ?>
+				<a href="message/" class="link"></a>
+				<a href="#"><img src="/images/portrait-default.png" alt=""></a>
+			<?php elseif($item['id2'] == Yii::app()->user->id): ?>
+			<?php else: ?>
+			<?php endif; ?>
+			
 			<div class="content">
 				<h3 class="overflow-line1">naked Retreats</h3>
 				<p class="overflow-line1">Hello Chinese members,in case </p>
