@@ -4,7 +4,7 @@ class RoomListAction extends CAction{
 		$now = date('Y-m-d',time());
 		$date = Yii::app()->request->getParam('date');
 		$date = $date==''?$now:$date;
-		$room = new MeetingRoom($date,1000,'',1);
+		$room = new MeetingRoom($date,Yii::app()->user->id,'',1);
 		
 		$result = $room->listroom();
 		foreach ($result['data'] as &$list){
