@@ -4,9 +4,8 @@ $.infinitScroll({
     perPage: 15, data: null, callbacks: {
         success: function(response){
             if(typeof response.data == 'object' && $.isArray(response.data.list)){
-                // var html = template('indexTpl', {data: response.data.list});
-                // $('#newest > ul').append(html);
-                console.info(response)
+                var html = template('indexTpl', {data: response.data.list, uid: systemVar.uid});
+                $('#messagelist').append(html);
             }
         }
     }

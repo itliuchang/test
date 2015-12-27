@@ -653,7 +653,12 @@
         },
 
         dgm: function(datetime){
-          datetime = datetime.replace(/-/g, '/');
+          if((typeof datetime == 'string' && datetime.length == 10) || typeof datetime == 'number'){
+              datetime = parseInt(datetime);
+              datetime = datetime.toString().length == 10? datetime * 1000 : datetime;
+          }else{
+              datetime = datetime.toString().replace(/-/g, '/');
+          }
           var date = new Date(datetime) == 'Invalid Date'? new Date : new Date(datetime),
               tday = (new Date).getDate() - date.getDate(),
               from = Math.round(date.getTime() / 1000),
@@ -661,26 +666,28 @@
               time = now - from;
           if(tday == 0){
               if(time > 3600){
-                  return Math.floor(time / 3600) + '小时前';
+                  return Math.floor(time / 3600) + 'h'; //小时前
               }else if(time > 60){
-                  return Math.floor(time / 60) + '分钟前';
+                  return Math.floor(time / 60) + 'min'; //分钟前
               }else if(time > 0){
-                  return time + '秒前';
+                  return time + 's'; //秒前
               }else{
-                  return '刚刚';
+                  return 'now'; //刚刚
               }
           }else{
-              var ftime = date.Format("MM月dd日 hh:mm"),
+              var ftime = date.Format("MM-dd hh:mm"), //MM月dd日
                   _now = new Date;
               date.setHours(0);date.setMinutes(0);date.setSeconds(0);date.setMilliseconds(0);
               _now.setHours(0);_now.setMinutes(0);_now.setSeconds(0);_now.setMilliseconds(0);
               var _time = Math.round((_now.getTime() - date.getTime()) / 1000);
                   dday = Math.ceil(_time / 86400);
               if(dday > 0 && dday < 7){
-                if(dday <= 2){
-                    return dday == 1? '昨天' : '前天';
+                // if(dday <= 2){
+                //     return dday == 1? '昨天' : '前天';
+                if(dday <= 1){
+                    return 'yesterday';
                 }else{
-                    return dday + '天前';
+                    return dday + ' days ago'; //天前
                 }
               }else{
                   return ftime;

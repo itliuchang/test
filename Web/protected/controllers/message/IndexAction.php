@@ -14,7 +14,7 @@ class IndexAction extends CAction{
 
         $data = EasemobHelper::getAll($page, $size);
         if(Yii::app()->request->isAjaxRequest){
-            echo CJSON::encode(array('code' => 200, 'data' => $data));
+            echo CJSON::encode(array('code' => 200, 'data' => array('list' => $data)));
         }else{
             $this->controller->render('index', array('data' => $data));
         }

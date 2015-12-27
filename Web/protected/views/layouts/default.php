@@ -10,7 +10,8 @@
       <script type="text/javascript">
         var systemVar = {
           isGuest: <?php echo Yii::app()->user->isGuest? 1 : 0 ?>,
-          controller: '<?php echo $this->id ?>', action: '<?php echo $this->action->id ?>'
+          controller: '<?php echo $this->id ?>', action: '<?php echo $this->action->id ?>',
+          uid: <?php echo Yii::app()->user->isGuest? 0 : Yii::app()->user->id ?>
         };
       </script>
     </head>
