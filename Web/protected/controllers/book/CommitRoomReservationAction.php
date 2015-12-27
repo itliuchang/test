@@ -15,7 +15,7 @@ class CommitRoomReservationAction extends CAction{
 			$data = array(
 				'startTime' => $startTime,
 				'endTime' => $endTime, 
-				'userId' => 1000,
+				'userId' => $userId,
 				'hubId' => $hubId,
 				'conferenceroomId' => $id,
 				'type' => 2
