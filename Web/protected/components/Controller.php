@@ -38,11 +38,8 @@ class Controller extends CController{
 	
 	public function filters() {
 		return array(
-<<<<<<< HEAD
 			// 'wechat'
-=======
 			  'wechat'
->>>>>>> 3fca15bf42344e94059e70783aa68df13b544adf
 		);
 	}
 	
