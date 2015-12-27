@@ -5,7 +5,7 @@
 		<div class="content">
 			<div class="left">
 				<h4>Entries:<?php echo $item['totalTimes'] ?> Days</h4>
-				<p>Product:<?php echo $item['productname'] ?></p>
+				<p>Product:<?php echo $item['productName'] ?></p>
 				<p>Duration:1 month</p>                             
 				<p>Vaild Date:<?php echo $item['startDate'] ?> - <?php echo $item['endDate'] ?></p>
 			</div>
