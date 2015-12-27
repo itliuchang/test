@@ -17,6 +17,7 @@ class RegistAction extends CAction{
 					$user->nickName = $name;
 					$user->mobile = $mobile;
 					$user->email = $email;
+					$user->status = 1;
 					if($password) {
 						$user->password = md5($password);
 					}
@@ -35,11 +36,12 @@ class RegistAction extends CAction{
 					$user->isBindIM = 1;
 					$user->save();
 					
-					$identity = new UserIdentity();
-					$identity->registAuth($user);
+					Yii::app()->session['user'] = $user;
+					//$identity = new UserIdentity();
+					//$identity->registAuth($user);
 					
-					$duration = Yii::app()->getComponent('session')->getTimeout();
-					Yii::app()->user->login($identity, $duration);
+					//$duration = Yii::app()->getComponent('session')->getTimeout();
+					//Yii::app()->user->login($identity, $duration);
 					echo CJSON::encode(array('code'=>200, 'message'=> 'success'));
 				} else {
 					echo CJSON::encode(array('code'=>500, 'message'=> '验证码错误'));
