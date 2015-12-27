@@ -7,7 +7,7 @@ $(function(){
 		CHelper.asynRequest('/book/commitconfirm',{
 				"date":date,
 				"hubId":hubId,
-				"userId":1000
+				"userId":userId
 			},{
 				error:function(){
 					CHelper.toggleTip('show','出现错误','warn',1000);

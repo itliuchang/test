@@ -43,7 +43,7 @@ $(function(){
 					console.log(xhr)
 				},
 				success:function(response){
-					 $('.piece').removeClass('myselected').removeClass('selected');
+					 $('.piece').removeClass('myselected').removeClass('selected fix');
 					 for(var i = 0;i < $('.option').length;i++){
 						my = eval(response['my']);
 						if(my=='')
