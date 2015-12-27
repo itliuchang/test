@@ -9,8 +9,8 @@ return array(
         'logout' => 'user/logout',
         'wechat/login' => 'wechat/wechatconnect',
         'wechat/login/callback' =>'wechat/wechatconnectcallback',
-        'wechat/quiet/login' => 'user/wechatQuietConnect',
-        'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
+        'wechat/quiet/login' => 'wechat/wechatQuietConnect',
+        'wechat/quiet/login/callback' =>'wechat/wechatQuietConnectCallback',
         
         'book/roomshow-<id:\d+>' => 'book/roomshow',
         'book/workspaceconfirm-<id:\d+>/<date:\w\S+>' => 'book/workspaceconfirm',
