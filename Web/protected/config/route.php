@@ -7,8 +7,8 @@ return array(
     'rules' => array(
         'login' => 'user/login',
         'logout' => 'user/logout',
-        'wechat/login' => 'user/wechatConnect',
-        'wechat/login/callback' =>'user/wechatConnectCallback',
+        'wechat/login' => 'wechat/wechatConnect',
+        'wechat/login/callback' =>'wechat/wechatConnectCallback',
         'wechat/quiet/login' => 'user/wechatQuietConnect',
         'wechat/quiet/login/callback' =>'user/wechatQuietConnectCallback',
         
