@@ -42,7 +42,7 @@ class EasemobHelper extends Easemob{
         $n = Message::model()->countBySql('select count(*) from message where RecID=:uid and type in(0,1) and status=0', array(':uid' => Yii::app()->user->id));
         if($n > 0) return true;
         //是否有新的全局系统消息
-        $n = Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+        $n = Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
         return $n > 0;
     }
 
@@ -50,7 +50,7 @@ class EasemobHelper extends Easemob{
     public static function getNewMessageNum($senderId){
         if($senderId == 0){//获取系统消息
             $n = Message::model()->countBySql('select count(*) from message where senderID=0 and RecID=:uid and type=1 and status=0', array(':uid' => Yii::app()->user->id));
-            $n += Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+            $n += Message::model()->countBySql('select count(*) from message m where senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
         }else{
             $n = Message::model()->countBySql('select count(*) from message where senderID=:senderId and RecID=:uid and type=0 and status=0', array(':senderId' => $senderId, ':uid' => Yii::app()->user->id));
         }
@@ -83,7 +83,7 @@ class EasemobHelper extends Easemob{
             //将一对一的系统通知置为已读
             Message::model()->updateAll(array('status' => 1, 'utime' => time()), 'senderID=0 and RecID=:RecId and type=1 and status=0', array(':RecId' => Yii::app()->user->id));
             //将全局系统消息置为已读
-            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and expireTime > :time and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
             $sql = '';
             foreach($messages as $message){
                 $sql += 'insert into messageLog values(' . $message->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time() . ';';
@@ -100,18 +100,21 @@ class EasemobHelper extends Easemob{
         $where = ' from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id where id1=:uid or id2=:uid order by utime desc';
         $count = MessageRelation::model()->countBySql('select count(*) ' . $where, array(':uid' => Yii::app()->user->id));
         $total = ceil($count / $size);
-        $start = $page * $size - 1;
+        $start = ($page - 1) * $size;
         $limit = " limit {$start},{$size}";
 
         $list = MessageRelation::model()->findAllBySql('select' . $fields . $where . $limit, array(':uid' => Yii::app()->user->id));
+        $items = array();
         foreach($list as $item){
+            $item = $item->attributes;
             if($item['id2'] == 0){
                 $item['ncount'] = self::getNewMessageNum(0);
             }else{
                 $item['ncount'] = self::getNewMessageNum($item['id1'] != Yii::app()->user->id? $item['id1'] : $item['id2']);
             }
+            array_push($items, $item);
         }
-        return $list;
+        return $items;
     }
 
     //分页获取当前用户与某好友的聊天消息列表,使用start而非使用常规分页是为了避免当在聊天窗口有新的聊天记录时获取消息列表错位的问题
