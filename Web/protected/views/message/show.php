@@ -56,10 +56,6 @@
 	<?php endif; ?>
 </div>
 
-<div class="container-fluid tbar" id="footer">
-    <?php $this->widget('FTBarWidget',array('currentTab' => '/message/')) ?>
-</div>
-
 <?php echo $this->renderPartial('_template') ?>
 <?php
 	$cs = Yii::app()->clientScript;
