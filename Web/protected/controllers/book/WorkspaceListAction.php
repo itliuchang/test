@@ -10,7 +10,7 @@ class WorkspaceListAction extends CAction{
 		if(Yii::app()->request->isAjaxRequest){
 			$id = Yii::app()->request->getParam('id');
 			if($id){
-				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>1148));
+				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
 				if($orderid){
 					$now = date('Ymd',time());
 					foreach ($orderid as $list){

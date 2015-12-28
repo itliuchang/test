@@ -16,7 +16,7 @@ class CommitConfirmAction extends CAction{
 			if($result['code']==200){
 				echo CJSON::encode($result);
 			} else {
-				throw new CHttpException('400','error');
+				throw new CHttpException('401','error');
 				
 			}
 		}
