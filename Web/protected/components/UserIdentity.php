@@ -29,7 +29,8 @@ class UserIdentity extends CUserIdentity{
     		if(!empty($account)) {
     			if(!empty($account->user)) {
     				$this->id = $account->userId;
-    				$this->username = User::model()->findByAttributes(array('id'=>$account->userId))['nickName'];
+                    $item = User::model()->findByAttributes(array('id'=>$account->userId))
+    				$this->username = $item['nickName'];
     				
     				$this->setPersistentStates($account->user->attributes);
     			} else {
