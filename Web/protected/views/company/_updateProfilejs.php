@@ -16,6 +16,18 @@ $(function(){
 			$('#selectlogo').attr('src', up.settings.url+'/img/'+up.id)
 		}
 	});
+		myscroll=new iScroll("wrapper");
+	$('.foote').click(function(){
+		$('.servicelist').removeClass('hide');
+		myscroll.refresh();
+	});
+	$('.outer>li>p').click(function(){
+		$(this).next('.inner').toggleClass('hide');
+		myscroll.refresh();
+	});
+	$('.x').hammer().on('tap',function(){
+		$(this).parent('li').remove();
+	}
 	$('.footer').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
 		var id = $('input[name="id"]').val(),
