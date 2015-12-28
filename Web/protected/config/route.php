@@ -22,6 +22,7 @@ return array(
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
+        'registered/' => 'wechat/index',
 
         'community/servicescompany-<id:\d+>' => 'community/servicescompany',
 
