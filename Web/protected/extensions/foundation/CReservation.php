@@ -46,25 +46,11 @@ class CReservation{
 				foreach ($orderid as $list){
 					$dp = OrderProduct::model()->find('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now);
 				}
-				if($dp && (($dp['totalTimes']-$dp['usedTimes']) > 0)){
-					$dp->usedTimes++;
-					$dp->save();
-					$result->orderId = $dp['orderId'];
-					$result->save();
-				}
-				$data = array(
-					'code'=>400,
-					'message'=>'error'
-				);
-				return $data;
-				
-			} else {
-				$data = array(
-					'code'=>400,
-					'message'=>'error'
-				);
-				return $data;
-			}			
+				$dp->usedTimes++;
+				$dp->save();
+				$result->orderId = $dp['orderId'];
+				$result->save();
+			}		
 		} 
 		
 		if($result->save()){
