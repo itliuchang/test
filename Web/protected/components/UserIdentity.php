@@ -33,6 +33,7 @@ class UserIdentity extends CUserIdentity{
     				$this->username = $item['nickName'];
     				
     				$this->setPersistentStates($item->attributes);
+                    $this->errorCode = self::ERROR_NONE;
     			} else {
     				$this->errorCode = self::ERROR_NO_BIND;
     			}
