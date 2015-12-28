@@ -30,7 +30,7 @@
                     //跳转到支付成功页
                     // location.href = location.protocol + '//' + location.host + '/payment/wxpay/result-ok.html';
                     alert('支付成功');
-                    location.href = '/post/newlist';
+                    location.href = '/registered/access';
                 }else if(res.err_msg == 'get_brand_wcpay_request:cancel'){
                     alert('订单已取消');
                     location.href = '/registered/';

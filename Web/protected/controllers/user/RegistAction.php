@@ -17,7 +17,7 @@ class RegistAction extends CAction{
 					$user->nickName = $name;
 					$user->mobile = $mobile;
 					$user->email = $email;
-					$user->status = 1;
+					$user->status = 0;
 					if($password) {
 						$user->password = md5($password);
 					}
