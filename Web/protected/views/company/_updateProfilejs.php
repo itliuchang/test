@@ -27,7 +27,7 @@ $(function(){
 	});
 	$('.x').hammer().on('tap',function(){
 		$(this).parent('li').remove();
-	}
+	});
 	$('.footer').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
 		var id = $('input[name="id"]').val(),
