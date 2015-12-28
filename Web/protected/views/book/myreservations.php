@@ -19,7 +19,7 @@
 				<div class="mid">
 					<p>conference room:</p>
 					<h3><?php echo $value['roomname'] ?></h3>
-					<p><?php echo date('h:m',strtotime($value['startTime'])) ?>-<?php echo date('h:m',$value['endTime']) ?></p>
+					<p><?php echo date('H:i',strtotime($value['startTime'])) ?>-<?php echo date('H:i',$value['endTime']) ?></p>
 				</div>
 				<a class="right">cancel</a>
 			</div>
@@ -57,7 +57,7 @@
 				<div class="mid">
 					<p>conference room:</p>
 					<h3><?php echo $value['roomname'] ?></h3>
-					<p><?php echo date('h:m',strtotime($value['startTime'])) ?>-<?php echo date('h:m',$value['endTime']) ?></p>
+					<p><?php echo date('H:i',strtotime($value['startTime'])) ?>-<?php echo date('H:i',$value['endTime']) ?></p>
 				</div>
 			</div>
 		</div>
