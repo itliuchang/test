@@ -10,7 +10,7 @@ class BookController extends Controller{
 				'myreservations' => 'application.controllers.book.MyReservationsAction',
 				'commitroomreservation' => 'application.controllers.book.CommitRoomReservationAction',
 				'commitconfirm' => 'application.controllers.book.CommitConfirmAction',
-				'cancel' => 'application.controller.book.CancelAction'
+				'cancel' => 'application.controllers.book.CancelAction'
 			);
 	}
 }
