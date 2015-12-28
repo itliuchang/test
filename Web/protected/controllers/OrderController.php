@@ -17,7 +17,7 @@ class OrderController extends Controller{
 		}
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
-        $user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+        $user = User::model()->findByAttributes(array('id'=>$userId));
         $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):strtotime($user->deadDate);
 		$wechat = Yii::app()->params['partner']['wechat'];
 		$order = new COrder;
