@@ -13,6 +13,7 @@ $(function(){
 					CHelper.toggleTip('show','出现错误','warn',1000);
 				},
 				success:function(){
+					CHelper.toggleTip('show','预约成功','success',1000);
 					location.href = '/post/newlist';
 				}
 			});
