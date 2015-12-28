@@ -10,10 +10,12 @@ class LoginAction extends CAction{
 				$email = Yii::app()->request->getParam('email');
 				$password = Yii::app()->request->getParam('password');
 				
+				$bind = Yii::app()->request->getParam('bind');
+
 				$_identity = new UserIdentity();
 				if ($mobile) {
 					Yii::log($code,CLogger::LEVEL_ERROR);
-					$_identity->authMobile($mobile, $code);
+					$_identity->authMobile($mobile, $code, $bind);
 					if($_identity->errorCode === UserIdentity::ERROR_NONE){
 						$duration = 86400;
 						Yii::app()->user->login($_identity, $duration);
@@ -27,7 +29,7 @@ class LoginAction extends CAction{
                     	echo CJSON::encode(array('code'=>500, 'message'=> '登录错误'));
                     }
 				} elseif ($email) {
-					$_identity->authMail($email, $password);
+					$_identity->authMail($email, $password, $bind);
 					if($_identity->errorCode === UserIdentity::ERROR_NONE){
 						$duration = 86400;
 						Yii::app()->user->login($_identity, $duration);

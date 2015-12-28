@@ -41,6 +41,11 @@ $(function(){
 	}
 	}//验证码读秒
 	$('.footer').hammer().on('tap',function(){
+		var bind = 1;
+		if(!$('#login .agree .icon.hasAgree')[0]) {
+			bind = 0;
+		}
+	
 		var nowClass = $('.now').hasClass('phone')? 'phoneContent' : 'EmailContent';
 		if(!$('.'+nowClass+' input').first().val()||!$('.'+nowClass+' input').last().val()){
 			CHelper.toggleTip('show','您有未填的选项','error',1000);
@@ -49,7 +54,7 @@ $(function(){
 			if(!re.test($('.phoneContent input').first().val())){
 				CHelper.toggleTip('show','电话号码格式有误','error',1000);
 			}else{
-				CHelper.asynRequest('/login',{mobile:$('.phoneContent input').first().val(),code:$('.phoneContent input').last().val(),parameter:{type:'GET'}},{
+				CHelper.asynRequest('/login',{mobile:$('.phoneContent input').first().val(),code:$('.phoneContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){
 						location.href='/post/newlist';
 					},
@@ -66,7 +71,7 @@ $(function(){
 			if(!re.test($('.EmailContent input').first().val())){
 				CHelper.toggleTip('show','Email格式有误','error',1000);
 			}else{
-				CHelper.asynRequest('/login',{email:$('.EmailContent input').first().val(),password:$('.EmailContent input').last().val(),parameter:{type:'GET'}},{
+				CHelper.asynRequest('/login',{email:$('.EmailContent input').first().val(),password:$('.EmailContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){
 						location.href='/post/newlist';
 					},

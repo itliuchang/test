@@ -83,10 +83,10 @@ class EasemobHelper extends Easemob{
             //将一对一的系统通知置为已读
             Message::model()->updateAll(array('status' => 1, 'utime' => time()), 'senderID=0 and RecID=:RecId and type=1 and status=0', array(':RecId' => Yii::app()->user->id));
             //将全局系统消息置为已读
-            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=m.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
+            $messages = Message::model()->findAll('senderID=0 and RecID=0 and type=2 and (expireTime > :time or expireTime=0) and status=0 and not exists(select mid from messageLog where mid=t.id and uid=:uid)', array(':time' => time(), ':uid' => Yii::app()->user->id));
             $sql = '';
             foreach($messages as $message){
-                $sql += 'insert into messageLog values(' . $message->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time() . ';';
+                $sql .= 'insert into messageLog values(' . $message->id . ',' . Yii::app()->user->id . ',' . time() . ') ON DUPLICATE KEY UPDATE ctime=' . time() . ';';
             }
             if($sql) MessageLog::model()->dbConnection->createCommand($sql)->execute();
         }else{//使用当前用户与此人的私聊全部为已读，自己发送的消息不需要置为已读
@@ -96,19 +96,25 @@ class EasemobHelper extends Easemob{
 
     //分页获取当前用户好友列表,在消息列表中ajax添加dom时过滤已在dom存在的项，避免多终端显示消息列表时因有新聊天而导致取列表数据错位的问题
     public static function getAll($page = 1, $size = 15){
-        $fields = ' mr.*, u1.nickName as u1name, u1.portrait as u1img, u2.nickName as u2name, u2.portrait as u2img';
+        $fields = ' mr.*, u1.nickName as u1name, u1.portrait as u1portrait, u2.nickName as u2name, u2.portrait as u2portrait';
         $where = ' from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id where id1=:uid or id2=:uid order by utime desc';
         $count = MessageRelation::model()->countBySql('select count(*) ' . $where, array(':uid' => Yii::app()->user->id));
         $total = ceil($count / $size);
         $start = ($page - 1) * $size;
         $limit = " limit {$start},{$size}";
 
-        $list = MessageRelation::model()->findAllBySql('select' . $fields . $where . $limit, array(':uid' => Yii::app()->user->id));
+        // $list = MessageRelation::model()->findAllBySql('select' . $fields . $where . $limit, array(':uid' => Yii::app()->user->id));
+        $dbcmd = Yii::app()->db->createCommand('select' . $fields . $where . $limit);
+        $dbcmd->bindParam(':uid', Yii::app()->user->id);
+        $list = $dbcmd->queryAll();
         $items = array();
         foreach($list as $item){
-            $item = $item->attributes;
+            // $item = $item->attributes;
             if($item['id2'] == 0){
                 $item['ncount'] = self::getNewMessageNum(0);
+                $sysaccount = Yii::app()->params['partner']['emchat']['sysAccount'];
+                $item['u2name'] = $sysaccount['nickName'];
+                $item['u2portrait'] = $sysaccount['portrait'];
             }else{
                 $item['ncount'] = self::getNewMessageNum($item['id1'] != Yii::app()->user->id? $item['id1'] : $item['id2']);
             }
@@ -135,11 +141,11 @@ class EasemobHelper extends Easemob{
     public static function updateLastMsg($senderId, $recId, $msg){
         $lastMsg = mb_substr(Assist::removeXSS(Assist::removeEmoji($msg)), 0, 50, 'utf-8');
         if($senderId == 0){//系统消息/通知
-            $mr = MessageRelation::model()->findBySql('select * from messageLog where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
+            $mr = MessageRelation::model()->findBySql('select * from messageRelation where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
             $senderID = Yii::app()->user->id;
             $RecID = 0;
         }else{//私聊
-            $mr = MessageRelation::model()->findBySql('select * from messageLog where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => $senderId, ':recId' => $recId));
+            $mr = MessageRelation::model()->findBySql('select * from messageRelation where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => $senderId, ':recId' => $recId));
             $senderID = $senderId;
             $RecID = $recId;
         }
@@ -169,11 +175,11 @@ class EasemobHelper extends Easemob{
     //添加好友
     public static function addAFriend($fid){
         if($fid){
-           $mr = MessageRelation::model()->findBySql('select * from messageLog where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
+           $mr = MessageRelation::model()->findBySql('select * from messageRelation where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
            $senderID = Yii::app()->user->id;
            $RecID = 0;
         }else{
-           $mr = MessageRelation::model()->findBySql('select * from messageLog where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => Yii::app()->user->id, ':recId' => $fid));
+           $mr = MessageRelation::model()->findBySql('select * from messageRelation where (id1=:senderId and id2=:recId) or (id1=:recId and id2=:senderId)', array(':senderId' => Yii::app()->user->id, ':recId' => $fid));
             $senderID = Yii::app()->user->id;
             $RecID = $fid;
         }

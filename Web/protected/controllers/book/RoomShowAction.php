@@ -5,7 +5,7 @@ class RoomShowAction extends CAction{
 		$date = Yii::app()->request->getParam('date');
 		$date = $date==''?$now:$date;
 		$userId = Yii::app()->user->id;
-		$proxy = new MeetingRoom($date,1000,$id,1);
+		$proxy = new MeetingRoom($date,$userId,$id,1);
 		$result = $proxy->getInfo();
 		$my = $result['data']['my'];
 		$other = $result['data']['other'];

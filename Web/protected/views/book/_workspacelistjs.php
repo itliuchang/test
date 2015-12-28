@@ -41,12 +41,25 @@ $(function(){
 		var id = $(this).parent('.option').children('input[name="id"]').val(),
 			date = $('#date').val(),
 			seatsleft = $('input[name="seatsLeft"]').val();
-		if(seatsleft<=0){
-			CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1000);
-		} else {
-			date = date.replace(/-/g,'$');		
-			location.href = '/book/workspaceconfirm-' + id +'/'+date;
-		}		
+		CHelper.asynRequest('/book/workspacelist', {"id":'999'} ,{
+			error:function(msg){
+				CHelper.toggleTip('show',msg,'warn',1000);
+			},
+			success:function(response){
+				// console.log(response)
+				if(response['num']<=0){
+					CHelper.toggleTip('show','你本月已没有次数','warn','2000');
+				} else {
+					if(seatsleft<=0){
+						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1000);
+					} else {
+						date = date.replace(/-/g,'$');		
+						location.href = '/book/workspaceconfirm-' + id +'/'+date;
+					}	
+				}
+			}
+		});
+			
 		
 	});
 });

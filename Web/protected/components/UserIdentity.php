@@ -36,18 +36,10 @@ class UserIdentity extends CUserIdentity{
     				$this->errorCode = self::ERROR_NO_BIND;
     			}
     		} else {
-    			$account = new Account();
-    			$account->source = 1;
-    			$account->account = $wechat['unionid'];
-    			$account->subSource = $openid;
-    			
-    			$account->insert();
-    			
-    			$wechat['id'] = $account->id;
-    			Yii::app()->session['wechat'];
-    			
     			$this->errorCode = self::ERROR_NO_BIND;
     		}
+    		$wechat['openid'] = $openid;
+    		Yii::app()->session['wechat'] = $wechat;
     	}catch(CException $e){
     		Yii::log($e->getMessage(), CLogger::LEVEL_ERROR);
     		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
@@ -55,7 +47,7 @@ class UserIdentity extends CUserIdentity{
     	return !$this->errorCode;
     }
     
-    public function authMobile($mobile = '', $code = '') {
+    public function authMobile($mobile = '', $code = '', $bind = 0) {
     	try{
     		$_code = Yii::app()->session['login_code'.$mobile];
     		if ($_code && $_code == $code) {
@@ -66,6 +58,8 @@ class UserIdentity extends CUserIdentity{
     				$this->id = intval($user->id);
     				$this->username = $user['nickName'];
     				$this->setPersistentStates($user->attributes);
+    				
+    				$this->bindWechat($bind, $user);
     			}else{
     				$this->errorCode = self::ERROR_MOBILE_INVALID;
     			}
@@ -79,7 +73,7 @@ class UserIdentity extends CUserIdentity{
     	return !$this->errorCode;
     }
     
-    public function authMail($email = '', $password = '') {
+    public function authMail($email = '', $password = '', $bind = 0) {
     	try{
     		$user = User::model()->findByAttributes(array('email' => $email));
     		if(!empty($user)){
@@ -88,6 +82,8 @@ class UserIdentity extends CUserIdentity{
     				$this->id = intval($user->id);
     				$this->username = $user['nickName'];
     				$this->setPersistentStates($user->attributes);
+    				
+    				$this->bindWechat($bind, $user);
     			} else {
     				$this->errorCode = self::ERROR_PASSWORD_INVALID;
     			}
@@ -99,6 +95,21 @@ class UserIdentity extends CUserIdentity{
     		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
     	}
     	return !$this->errorCode;
+    }
+    
+    private function bindWechat($bind = 0, $user = array()) {
+    	$wechat = Yii::app()->session['wechat'];
+    	if($bind == 1 && $wechat) {
+    		$account = Account::model()->findByAttributes(array('account' => $wechat['unionid'], 'source' => 1));
+    		if(!$account) {
+    			$account = new Account();
+    			$account->source = 1;
+    			$account->account = $wechat['unionid'];
+    			$account->subSource = $wechat['openid'];
+
+    			$account->insert();
+    		}
+    	}
     }
     
     public function getId(){
