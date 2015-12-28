@@ -31,7 +31,7 @@
 	</div>
 	<div class="footer">
 		<a href="/registered/chooseEnvironment" class="registered"><?php echo Yii::t('registered','BECOME A NAKEDHUB MEMBER') ?></a>
-		<a href="/user/login" class="login"><?php echo Yii::t('registered',"I'M ALREADY A NAKEHUB MEMBER") ?></a>
+		<a href="login" class="login"><?php echo Yii::t('registered',"I'M ALREADY A NAKEHUB MEMBER") ?></a>
 	</div>
 <?php
     $cs = Yii::app()->clientScript;
