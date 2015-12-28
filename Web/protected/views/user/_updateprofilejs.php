@@ -35,8 +35,8 @@ $(function(){
 			twitter = $('.twitter').val(),
 			linkedin = $('.linkIn').val(),
 			instagram = $('.instagram').val();
-		if(!name){
-			CHelper.toggleTip('show','姓名不能为空','warn',2000);
+		if(!name || !title){
+			CHelper.toggleTip('show','Please input your name or title','warn',2000);
 		} else {
 			CHelper.asynRequest('/user/updateprofile',{
 				nickName:name,

@@ -8,8 +8,8 @@
 		</div>
 	</div>
 	<div class="inputSection">
-		<input type="text" placeholder="name" class="name" value='<?php echo $user['nickName']?>'>
-		<input type="text" placeholder="title" class="title" value='<?php echo $user['title']?>'>
+		<input type="text" placeholder="name" class="name" value='<?php echo $user['nickName']?>' >
+		<input type="text" placeholder="title" class="title" value='<?php echo $user['title']?>' >
 		<input type="text" placeholder="website" class="website lastinput" value='<?php echo $user['website']?>'>
 		<input type='hidden' class='backgroundurl' value='<?php echo $user['background']?>'>
 	</div>

@@ -29,7 +29,7 @@ $(function(){
 			facebook = $('.facebook').val(),
 			linkedin = $('.linkIn').val();
 		if(!name){
-			CHelper.toggleTip('show','名字不能为空','warn',1000);
+			CHelper.toggleTip('show','Please input company name','warn',1000);
 		} else {
 			CHelper.asynRequest('/company/updateprofile',{
 				id:id,
