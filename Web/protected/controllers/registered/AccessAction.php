@@ -12,7 +12,19 @@ class AccessAction extends CAction{
 			$tuser->save();
 			$this->controller->redirect('/user/updateProfile');
 		}else{
-			$this->controller->redirect(Assist::getDefaultURL());
+			$tem = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+			$status = $tem->status;
+			switch ($status) {
+				case 1:
+					$this->controller->redirect('/user/updateProfile');
+					break;
+				case 2:
+					$this->controller->redirect('/company/updateProfile');
+				default:
+					$this->controller->redirect(Assist::getDefaultURL());
+					break;
+			}
+			
 		}
 	}
 }
