@@ -34,7 +34,7 @@
 		<input type="email" placeholder="Facebook" class="facebook" value='<?php echo $company['facebookid']?>'> 
 		<input type="email" placeholder="LinkIn" class="linkIn" value='<?php echo $company['linkedinid']?>'>
 	</div>
-	<h2 class="footer">NEXT</h2>
+	<h2 class="footer">SAVE</h2>
 	<div class="servicelist hide" id="wrapper">
 		<div class="header">
 			<h3>Services</h3>
