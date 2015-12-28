@@ -6,7 +6,7 @@ class CommitConfirmAction extends CAction{
 			$hubId = Yii::app()->request->getParam('hubId');
 			$userId = Yii::app()->request->getParam('userId');
 			$data = array(
-				'startTime' => $date.' 00:00:00',
+				'startTime' => $date.' 10:00:00',
 				'hubId' => $hubId,
 				'userId' => $userId,
 				'type' => 1
