@@ -23,7 +23,7 @@
 	    <?php for($i = count($data) - 1; $i >= 0; $i--): ?>
 	    	<?php $item = $data[$i]; ?>
 	    	<?php if($item['senderID'] == Yii::app()->user->id): ?>
-				<div class="my">
+				<div class="item my">
 					<div class="imgWrapper">
 						<img src="<?php Yii::app()->user->getState('portrait') ?>" onerror="this.src='/images/portrait-default.png'" alt="">
 						<p class="date"><?php echo date('y/m/d', $item['ctime']) ?></p>
@@ -34,7 +34,7 @@
 					</div>
 				</div>
 	    	<?php else: ?>
-				<div class="other">
+				<div class="item other">
 					<div class="imgWrapper">
 						<img src="<?php echo $user['portrait'] ?>" onerror="this.src='/images/portrait-default.png'" alt="">
 						<p class="date"><?php echo date('y/m/d', $item['ctime']) ?></p>
@@ -57,6 +57,10 @@
 </div>
 
 <?php echo $this->renderPartial('_template') ?>
+<script type="text/javascript">
+	var friendId = '<?php echo $friendId ?>',
+	    myportrait = '<?php Yii::app()->user->getState("portrait") ?>';
+</script>
 <?php
 	$cs = Yii::app()->clientScript;
 	$js = $this->renderPartial('_showjs', null ,true);
