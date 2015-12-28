@@ -28,8 +28,8 @@ class UserIdentity extends CUserIdentity{
     		$account = Account::model()->findByAttributes(array('account' => $unionid, 'source' => 1));
     		if(!empty($account)) {
     			if(!empty($account->user)) {
-    				$this->id = $account->user['id'];
-    				$this->username = $account->user['nickName'];
+    				$this->id = $account->userId;
+    				$this->username = User::model()->findByAttributes(array('id'=>$account->userId))['nickName'];
     				
     				$this->setPersistentStates($account->user->attributes);
     			} else {
