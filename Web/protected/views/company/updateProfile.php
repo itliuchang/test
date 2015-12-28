@@ -9,6 +9,7 @@
 	</div>
 	<div class="inputSection">
 		<input type='hidden' name='id' value='<?php echo $company['id']?>'>
+		<input type='hidden' class='status' value='<?php echo $status?>'>
 		<input type='hidden' class='backgroundurl' value='<?php echo $company['background']?>'>
 		<input type="text" placeholder="company name" class="name" value='<?php echo $company['name']?>'>
 		<input type="email" placeholder="company email" class="email" value='<?php echo $company['email']?>'>

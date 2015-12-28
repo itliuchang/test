@@ -27,9 +27,10 @@ $(function(){
 			logo = $('.portrait').attr('src'),
 			introduction = CHelper.filterXSS($('.introduction').val()),
 			facebook = $('.facebook').val(),
-			linkedin = $('.linkIn').val();
+			linkedin = $('.linkIn').val(),
+			status = $('.status').val();
 		if(!name){
-			CHelper.toggleTip('show','名字不能为空','warn',1000);
+			CHelper.toggleTip('show','Please input company name','warn',1000);
 		} else {
 			CHelper.asynRequest('/company/updateprofile',{
 				id:id,
@@ -54,12 +55,13 @@ $(function(){
 						CHelper.toggleTip('show','名字重复，请选择别的名字','warn',2000);
 				},
 				success:function(response){
-					location.href = '/post/newlist';
+					if(status == 2){
+						location.href = '/post/newlist';
+					} else {
+						location.href = '/more';
+					}
 				}
 			});
 		}
-		
 	});
-
-	
 });

@@ -120,53 +120,61 @@ $(function(){
 		if(starts=='无' || time=='' || date==''){
 			CHelper.toggleTip('show', '你还没有选择时间', 'warn', 1000);
 		}else {
-			var num = start;
-			if(start!=''){
-				var length = time/0.5;
-				var array=[];
-				if(length!=0){
-					for(var n=0;n<length;n++){
-						array.push(num++);
-					}
-				} else {
-					array=[num]
-				}
-				var x=eval($('.option input[name="other"]').attr("data-other"));
-				var result='';
-				for(var b in array){
-					for(var a in x){
-						if(x[a]===array[b]){
-							result='false'
-							break;
-						} 
-					}
-				}
-				if(result=='false'){
-					CHelper.toggleTip('show', '时间选择错误', 'error',1800);
-				} else{
-					CHelper.asynRequest('/book/commitroomreservation',{
-						"id":id,
-						"starts":starts,
-						"hour":time,
-						"date":date,
-						"hubId":hubId
-					},{
-						before:function(xhr){
-							CHelper.toggleTip('show', '创建预约中..', 'loader');
-						},
-						error:function(msg){
-							CHelper.toggleTip('show', msg , 'error', 1000);
-						},
-						success:function(){
-							location.href = '/book/roomlist';
+			CHelper.asynRequest('/book/roomshow-'+id,{
+				"date":date,
+			},{
+				error:function(){
+					CHelper.toggleTip('show','error','warn',1000);
+				},
+				success:function(response){
+					var num = start;
+					if(start!=''){
+						var length = time/0.5;
+						var array=[];
+						if(length!=0){
+							for(var n=0;n<length;n++){
+								array.push(num++);
+							}
+						} else {
+							array=[num]
 						}
-					});
-					
+						var x=eval(response['other']);
+						var result='';
+						for(var b in array){
+							for(var a in x){
+								if(x[a]===array[b]){
+									result='false'
+									break;
+								} 
+							}
+						}
+						if(result=='false'){
+							CHelper.toggleTip('show', '时间和别人有冲突', 'error',1800);
+							x.forEach(function(v){
+								$('.option .piece').eq(v).removeClass('myselected');
+							})
+						} else {
+							CHelper.asynRequest('/book/commitroomreservation',{
+									"id":id,
+									"starts":starts,
+									"hour":time,
+									"date":date,
+									"hubId":hubId
+								},{
+									before:function(xhr){
+										CHelper.toggleTip('show', '创建预约中..', 'loader');
+									},
+									error:function(msg){
+										CHelper.toggleTip('show', msg , 'error', 1000);
+									},
+									success:function(){
+										location.href = '/book/roomlist';
+									}
+								});
+						}							
+					}
 				}
-			}
+			});			
 		}
 	});
-	
-	
-	
 });
