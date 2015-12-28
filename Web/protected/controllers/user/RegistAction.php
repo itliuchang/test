@@ -34,9 +34,7 @@ class RegistAction extends CAction{
 					EasemobHelper::initIM($user->id, array('username' => $user->id, 'password' => 'nakedim', 'nickname' => $name));
 					
 					$user->isBindIM = 1;
-					Yii::app()->user->id = $user->id;
 					$user->save();
-					
 					Yii::app()->session['user'] = $user;
 					//$identity = new UserIdentity();
 					//$identity->registAuth($user);

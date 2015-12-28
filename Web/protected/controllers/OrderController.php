@@ -2,6 +2,11 @@
 class OrderController extends Controller{
 	public function actionIndex(){
 		if(!Yii::app()->request->isAjaxRequest){
+			if(Yii::app()->user->isGuest){
+				$userId = Yii::app()->session['user']['id']);
+			}else{
+				$userId = Yii::app()->user->id;
+			}
 		try{
 			$productType = Yii::app()->user->productType;
 			$productName = Yii::app()->user->productName;
@@ -16,7 +21,7 @@ class OrderController extends Controller{
         $date = strtotime($user->deadDate)<strtotime(date('Ymd'))?date('U'):strtotime($user->deadDate);
 		$wechat = Yii::app()->params['partner']['wechat'];
 		$order = new COrder;
-		$orderId = $order->create(array('productId'=>$productType,'userId'=>Yii::app()->user->id,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
+		$orderId = $order->create(array('productId'=>$productType,'userId'=>$userId,'price'=>$productPrice,'orderTime'=>date('YmdHis')));
 		$orderId = $orderId['data']['orderId'];
 		$times = Yii::app()->db->createCommand()->setText('select times from product where status!=0 and id='.$productType)->queryRow();
         for($i = 0;$i<$productNum;$i++){
