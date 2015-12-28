@@ -27,12 +27,12 @@ class UserIdentity extends CUserIdentity{
     		$unionid = $wechat['unionid'];
     		$account = Account::model()->findByAttributes(array('account' => $unionid, 'source' => 1));
     		if(!empty($account)) {
-    			if(!empty($account->user)) {
+    			if(!empty($account->userId)) {
     				$this->id = $account->userId;
                     $item = User::model()->findByAttributes(array('id'=>$account->userId));
     				$this->username = $item['nickName'];
     				
-    				$this->setPersistentStates($account->user->attributes);
+    				$this->setPersistentStates($item->attributes);
     			} else {
     				$this->errorCode = self::ERROR_NO_BIND;
     			}
