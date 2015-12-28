@@ -69,6 +69,85 @@
     });
 
     $.extend({
+        infinitRefresh: function(options){
+            var defaults = {
+                container: '.container',
+                item: '.item',
+                distance: 0,
+                callbacks: {},
+                perPage: 10,
+                url: null,
+                data:{},
+                delay: 800
+            };
+            options = $.extend({}, defaults, options || {});
+
+            function sendAjax(){
+                var start = $(options.container + '>' + options.item).length,
+                    url = sprintf(options.url, {start: start, size: options.perPage});
+                CHelper.asynRequest(url, {parameter: {type: 'GET', data: options.data}}, {
+                    before: function(xhr){
+                        if(typeof options.callbacks.before == 'function'){
+                            options.callbacks.before(xhr);
+                        }else{
+                            // CHelper.toggleTip('show', 'loading', 'loading',1000);
+                        }
+                    },
+                    error: function(msg){
+                        if(typeof options.callbacks.error == 'function'){
+                            options.callbacks.error(msg);
+                        }else{
+                            CHelper.toggleTip('show', msg, 'error');
+                        }
+                    },
+                    complete: function(xhr, status){
+                        if(typeof options.callbacks.complete == 'function'){
+                            options.callbacks.complete(xhr, status);
+                        }else{
+                            // CHelper.toggleTip('hide');
+                        }
+                    },
+                    refuse: function(response){
+                        if(typeof options.callbacks.refuse == 'function'){
+                            options.callbacks.refuse(response);
+                        }else{
+                            CHelper.toggleTip('show', 'status error: ' + response.code, 'warn', 1200);
+                        }
+                    },
+                    failure: function(response){
+                        if(typeof options.callbacks.failure == 'function'){
+                            options.callbacks.failure(response);
+                        }else{
+                            CHelper.toggleTip('show', 'request failure', 'error', 1200);
+                        }
+                    },
+                    success: function(response){
+                        var list = response.data.list || response.data.result; 
+                        if(!response.data || list.length < options.perPage){
+                            $(window).off('scroll');
+                        }
+                        if(typeof options.callbacks.success == 'function'){
+                            options.callbacks.success(response);
+                        }
+                    },
+                    successReturnAll: true
+                });
+            }
+
+            var len = $(options.container + '>' + options.item).length;
+            if(len >= options.perPage && !!options.url){
+                $(window).scroll(function(){
+                    if($(document).scrollTop() <= options.distance){
+                       setTimeout(function(){
+                         if($(document).scrollTop() <= options.distance){
+                            sendAjax();
+                         }
+                       }, options.delay);
+                    }
+                });
+            }
+        },
+
         infinitScroll: function(options){
             var defaults = {
                 container: '.container',
@@ -77,7 +156,7 @@
                 callbacks: {},
                 perPage: 10,
                 url: null,
-                data:{},
+                data:{}
             };
             options = $.extend({}, defaults, options || {});
             
