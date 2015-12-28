@@ -41,7 +41,11 @@
 		<input type="email" placeholder="LinkIn " class="linkIn" value='<?php echo $user['linkedinid']?>'>
 		<input type="email" placeholder="Instagram " class="instagram lastinput" value='<?php echo $user['instagramid']?>'>
 	</div>
-	<h2 class="footer">NEXT</h2>
+	<?php if($user['status'] == 1):?>
+		<h2 class="footer">NEXT</h2>
+	<?php else:?>
+		<h2 class="footer save">SAVE</h2>
+	<?php endif;?>
 </div>
 <script type="text/javascript">
 	var domain = '<?php echo Assist::getOSSToken()['domain'] ?>',

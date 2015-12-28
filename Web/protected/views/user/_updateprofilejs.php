@@ -1,7 +1,5 @@
 $(function(){
-	if($('.name').val()){
-		$('.footer').text('SAVE');
-	}
+	
 	CHelper.uploadOSS(token,{'domain':domain,'browse_button':'selectbackground', 'container':'background_container'},{
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
@@ -61,7 +59,8 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',1000);
 				},
 				success:function(response){
-					if($('.footer').text()=='SAVE'){
+					if($('.footer').hasClass('save')){
+						CHelper.toggleTip('show','保存成功','success',1000);
 						location.href='/more';
 					} else {
 						location.href = '/company/updateprofile';

@@ -28,7 +28,10 @@ class UpdateProfileAction extends CAction{
 				$company->introduction = Assist::removeXSS(Yii::app()->request->getParam('introduction'));
 				$company->facebookid = Yii::app()->request->getParam('facebookid');
 				$company->linkedinid = Yii::app()->request->getParam('linkedinid');
-				$company->save();				
+				$company->save();
+				$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+				$user->status = 3;
+				$user->save();				
 				echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS'));
 			} else {
 				$this->controller->render('updateProfile');
@@ -36,8 +39,10 @@ class UpdateProfileAction extends CAction{
 		} else {
 			$id = Yii::app()->request->getParam('id');
 			$company = Company::model()->findByAttributes(array('id' => $id));
+			$user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 			$this->controller->render('updateProfile', array(
-					'company' => $company
+					'company' => $company,
+					'status' => $user['status']
 			));
 		}
 			
