@@ -15,8 +15,7 @@ $(function(){
 			CHelper.toggleTip('hide');
 			$('#selectlogo').attr('src', up.settings.url+'/img/'+up.id)
 		}
-	})
-
+	});
 	$('.footer').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
 		var id = $('input[name="id"]').val(),
