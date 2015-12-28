@@ -3,7 +3,7 @@ class OrderController extends Controller{
 	public function actionIndex(){
 		if(!Yii::app()->request->isAjaxRequest){
 			if(Yii::app()->user->isGuest){
-				$userId = Yii::app()->session['user']['id']);
+				$userId = Yii::app()->session['user']['id'];
 			}else{
 				$userId = Yii::app()->user->id;
 			}
