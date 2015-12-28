@@ -8,10 +8,11 @@
 		</div>
 	</div>
 	<div class="inputSection">
-		<input type="text" placeholder="name" class="name" value='<?php echo $user['nickName']?>'>
-		<input type="text" placeholder="title" class="title" value='<?php echo $user['title']?>'>
+		<input type="text" placeholder="name" class="name" value='<?php echo $user['nickName']?>' >
+		<input type="text" placeholder="title" class="title" value='<?php echo $user['title']?>' >
 		<input type="text" placeholder="website" class="website lastinput" value='<?php echo $user['website']?>'>
 		<input type='hidden' class='backgroundurl' value='<?php echo $user['background']?>'>
+		<input type='hidden' class='status' value='<?php echo $status?>'>
 	</div>
 	<div class="inputSection">
 		<textarea placeholder="about me (140 characters)" maxlength=140 rows=4 class='description'><?php echo $user['description']?></textarea>
@@ -41,7 +42,11 @@
 		<input type="email" placeholder="LinkIn " class="linkIn" value='<?php echo $user['linkedinid']?>'>
 		<input type="email" placeholder="Instagram " class="instagram lastinput" value='<?php echo $user['instagramid']?>'>
 	</div>
-	<h2 class="footer">NEXT</h2>
+	<?php if($user['status'] == 1):?>
+		<h2 class="footer">NEXT</h2>
+	<?php else:?>
+		<h2 class="footer save">SAVE</h2>
+	<?php endif;?>
 </div>
 <script type="text/javascript">
 	var domain = '<?php echo Assist::getOSSToken()['domain'] ?>',

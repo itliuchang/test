@@ -12,12 +12,12 @@ class CommitConfirmAction extends CAction{
 				'type' => 1
 			);
 			$proxy = new CReservation();
-			$result = $proxy->createReservation($data);
-			if($result['code']==200){
-				echo CJSON::encode($result);
+			$num = $proxy->getNumber($date,$hubId);
+			if($num['count']['num']<50){
+				$result = $proxy->createReservation($data);
+				echo CJSON::encode(array('code'=>200,'message'=>'success'));
 			} else {
-				throw new CHttpException('401','error');
-				
+				echo CJSON::encode(array('code'=>300,'message'=>'no num'));
 			}
 		}
 	}

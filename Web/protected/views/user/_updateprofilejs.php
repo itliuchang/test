@@ -1,7 +1,5 @@
 $(function(){
-	if($('.name').val()){
-		$('.footer').text('SAVE');
-	}
+	
 	CHelper.uploadOSS(token,{'domain':domain,'browse_button':'selectbackground', 'container':'background_container'},{
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
@@ -34,9 +32,10 @@ $(function(){
 			facebook = $('.facebook').val(),
 			twitter = $('.twitter').val(),
 			linkedin = $('.linkIn').val(),
-			instagram = $('.instagram').val();
-		if(!name){
-			CHelper.toggleTip('show','姓名不能为空','warn',2000);
+			instagram = $('.instagram').val(),
+			status = $('.status').val();
+		if(!name || !title){
+			CHelper.toggleTip('show','Please input your name or title','warn',2000);
 		} else {
 			CHelper.asynRequest('/user/updateprofile',{
 				nickName:name,
@@ -53,6 +52,7 @@ $(function(){
 				twitterid:twitter,
 				linkedinid:linkedin,
 				instagramid:instagram,
+				status:status,
 			},{
 				before:function(){
 					CHelper.toggleTip('show','提交中...');
@@ -61,7 +61,8 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',1000);
 				},
 				success:function(response){
-					if($('.footer').text()=='SAVE'){
+					if($('.footer').hasClass('save')){
+						CHelper.toggleTip('show','保存成功','success',1000);
 						location.href='/more';
 					} else {
 						location.href = '/company/updateprofile';

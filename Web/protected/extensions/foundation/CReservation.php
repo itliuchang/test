@@ -62,15 +62,18 @@ class CReservation{
  		return $data;
 	}
 
-	public function getNumber($date){
-		$date =date('YmdHis',strtotime($date));
+	public function getNumber($date,$hubId=''){
+		$date =date('YmdHis',strtotime($date.' 10:00:00'));
 		$hub = new Hub();
 		$hublist = $hub->getHUb();
-		$result = array();
-		foreach ($hublist as $key) {
-			$result []= Yii::app()->db->createCommand()->select('count(*) as num')->from('reservation')->where('status !=0 and type=1 and startTime='.$date .' and hubId='.$key['id'])->queryAll();
-		}
-		
+		if($hubId){
+			$result = Yii::app()->db->createCommand()->select('count(*) as num')->from('reservation')->where('status !=0 and type=1 and startTime='.$date .' and hubId='.$hubId)->queryRow();
+		} else {
+			$result = array();
+			foreach ($hublist as $key) {
+				$result []= Yii::app()->db->createCommand()->select('count(*) as num')->from('reservation')->where('status !=0 and type=1 and startTime='.$date .' and hubId='.$key['id'])->queryAll();
+			}
+		}		
 		if($result){
 			$data = array(
 				'code'=>200,
@@ -81,7 +84,7 @@ class CReservation{
 			$data = array(
 				'code'=>200,
 				'message'=>'SUCCESS',
-				'count' => ''
+				'count' => 0
 			);
 		}
 		return $data;

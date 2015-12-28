@@ -9,6 +9,7 @@
 	</div>
 	<div class="inputSection">
 		<input type='hidden' name='id' value='<?php echo $company['id']?>'>
+		<input type='hidden' class='status' value='<?php echo $status?>'>
 		<input type='hidden' class='backgroundurl' value='<?php echo $company['background']?>'>
 		<input type="text" placeholder="company name" class="name" value='<?php echo $company['name']?>'>
 		<input type="email" placeholder="company email" class="email" value='<?php echo $company['email']?>'>
@@ -33,7 +34,7 @@
 		<input type="email" placeholder="Facebook" class="facebook" value='<?php echo $company['facebookid']?>'> 
 		<input type="email" placeholder="LinkIn" class="linkIn" value='<?php echo $company['linkedinid']?>'>
 	</div>
-	<h2 class="footer">NEXT</h2>
+	<h2 class="footer">SAVE</h2>
 	<div class="servicelist hide" id="wrapper">
 		<div class="header">
 			<h3>Services</h3>
