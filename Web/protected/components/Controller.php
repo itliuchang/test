@@ -38,12 +38,19 @@ class Controller extends CController{
 	
 	public function filters() {
 		return array(
-			  'wechat'
+			  // 'wechat'
 		);
 	}
 	
 	public function filterWechat($filterChain) {
 		if(Assist::isWeixin()){
+			// if(!Yii::app()->session['wechat']) {
+			// 	if(!strpos(Yii::app()->request->getPathInfo(), 'wechatconnect')){
+			// 		$this->redirect('/wechat/wechatconnect');
+			// 		return false;
+			// 	}
+			// }
+			// $filterChain->run();
 			return true;
 		} else {
 			// echo 'ERROR';
