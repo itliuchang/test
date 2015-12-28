@@ -2,8 +2,8 @@
 class MyReservationsAction extends CAction{
 	public function run(){
 		$reservation =new CReservation;
-		$upcoming = $reservation->getupcomingRes(1000);
-		$previous = $reservation->getpreRes(1000);
+		$upcoming = $reservation->getupcomingRes(Yii::app()->user->id);
+		$previous = $reservation->getpreRes(Yii::app()->user->id);
 		// print_r($upcoming);die;
 		if ($upcoming['code']==200&&$previous['code']==200) {
 			$this->controller->render('myreservations',array('upcominglist'=>$upcoming['data'],'previouslist'=>$previous['data']));
