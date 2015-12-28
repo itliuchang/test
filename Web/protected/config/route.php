@@ -5,7 +5,7 @@ return array(
     'showScriptName' => false,
     'urlSuffix' => '.html',
     'rules' => array(
-        'login' => 'wechat/login',
+        'login' => 'user/login',
         'logout' => 'user/logout',
         'wechat/login' => 'wechat/wechatconnect',
         'wechat/login/callback' =>'wechat/wechatconnectcallback',

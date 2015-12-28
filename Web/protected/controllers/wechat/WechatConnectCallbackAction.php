@@ -33,7 +33,8 @@ class WechatConnectCallbackAction extends CAction{
                             		Yii::app()->user->login($_identity, $duration);
                             		$this->controller->redirect(Yii::app()->user->getReturnUrl(Assist::getDefaultURL()));
                             	} elseif ($_identity->errorCode === UserIdentity::ERROR_NO_BIND) {
-                            		$this->controller->render('login');
+                            		$this->controller->render('../registered/index');
+
                             	}
                             } else {
                             	throw new CException(Yii::t('yii','密钥错误或丢失。'));
