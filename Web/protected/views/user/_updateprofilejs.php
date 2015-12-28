@@ -32,7 +32,8 @@ $(function(){
 			facebook = $('.facebook').val(),
 			twitter = $('.twitter').val(),
 			linkedin = $('.linkIn').val(),
-			instagram = $('.instagram').val();
+			instagram = $('.instagram').val(),
+			status = $('.status').val();
 		if(!name || !title){
 			CHelper.toggleTip('show','Please input your name or title','warn',2000);
 		} else {
@@ -51,6 +52,7 @@ $(function(){
 				twitterid:twitter,
 				linkedinid:linkedin,
 				instagramid:instagram,
+				status:status,
 			},{
 				before:function(){
 					CHelper.toggleTip('show','提交中...');

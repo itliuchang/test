@@ -20,7 +20,10 @@ class UpdateProfileAction extends CAction{
 			$user->twitterid = Yii::app()->request->getParam('twitterid');
 			$user->linkedinid = Yii::app()->request->getParam('linkedinid');
 			$user->instagramid = Yii::app()->request->getParam('instagramid');
-			$user->status = 2;
+			$status = Yii::app()->request->getParam('status');
+			if($status == 1){
+				$user->status = 2;
+			}
 			$user->save();
 			echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS'));
 		} else {

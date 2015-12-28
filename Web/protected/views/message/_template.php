@@ -34,3 +34,31 @@
         </div>
     {{/each}}
 </script>
+
+<script id="showTpl" type="text/html">
+    {{each data}}
+       {{if $value.senderID == uid}}
+            <div class="item my">
+                <div class="imgWrapper">
+                    <img src="{{myportrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
+                    <p class="date">{{$value.ctime | dataFormat:'yy/MM/dd'}}</p>
+                </div>
+                <div class="content">
+                    <div class="righto"></div>
+                    <p>{{$value.body | filterXSS}}</p>
+                </div>
+            </div>
+       {{else}}
+            <div class="item other">
+                <div class="imgWrapper">
+                    <img src="{{user.portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
+                    <p class="date">{{$value.ctime | dataFormat:'yy/MM/dd'}}</p>
+                </div>
+                <div class="content">
+                    <div class="lefto"></div>
+                    <p>{{$value.body | filterXSS}}</p>
+                </div>
+            </div>
+       {{/if}}
+    {{/each}}
+</script>

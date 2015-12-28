@@ -98,8 +98,8 @@ class EasemobHelper extends Easemob{
     public static function getAll($page = 1, $size = 15){
         $fields = ' mr.*, u1.nickName as u1name, u1.portrait as u1portrait, u2.nickName as u2name, u2.portrait as u2portrait';
         $where = ' from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id where id1=:uid or id2=:uid order by utime desc';
-        $count = MessageRelation::model()->countBySql('select count(*) ' . $where, array(':uid' => Yii::app()->user->id));
-        $total = ceil($count / $size);
+        // $count = MessageRelation::model()->countBySql('select count(*) ' . $where, array(':uid' => Yii::app()->user->id));
+        // $total = ceil($count / $size);
         $start = ($page - 1) * $size;
         $limit = " limit {$start},{$size}";
 

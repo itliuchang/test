@@ -46,7 +46,7 @@ $(function(){
 					CHelper.toggleTip('show','提交中...');
 				},
 				error:function(msg,response){
-					console.log(response)
+					// console.log(response)
 					CHelper.toggleTip('show','ERROR','warn',1000);
 				},
 				failure:function(response){
@@ -54,7 +54,8 @@ $(function(){
 						CHelper.toggleTip('show','名字重复，请选择别的名字','warn',2000);
 				},
 				success:function(response){
-					if(status == 2){
+					// console.log(response['status'])
+					if(response['status'] == 2){
 						location.href = '/post/newlist';
 					} else {
 						location.href = '/more';
