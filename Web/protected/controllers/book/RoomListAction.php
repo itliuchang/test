@@ -1,6 +1,7 @@
 <?php
 class RoomListAction extends CAction{
 	public function run(){
+		Yii::app()->user->id=1170;
 		$now = date('Y-m-d',time());
 		$date = Yii::app()->request->getParam('date');
 		$date = $date==''?$now:$date;

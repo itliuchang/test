@@ -1,6 +1,6 @@
 <div id="updateProfile">
 	<div class="top">
-		<div class="background" id='background_container' style="background:url(<?php echo $user['background']?>)">
+		<div class="background" id='background_container' style="background-image:url(<?php echo $user['background']?>)">
 			<div class="addBackground" id='selectbackground'></div>
 		</div>
 		<div class="wrapperPortrait" id='portrait_container'>

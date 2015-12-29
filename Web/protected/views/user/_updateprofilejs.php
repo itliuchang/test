@@ -4,16 +4,16 @@ $(function(){
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
 			
-			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!1';
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!chang';
 			$('.backgroundurl').val(link);
-			$('.background').css('background', 'url('+link+')')
+			$('.background').attr('style','background-image:url('+link+')');
 		}
 	});
 	CHelper.uploadOSS(token,{'domain':domain,'browse_button':'selectportrait', 'container':'portrait_container'},{
 		'FileUploaded':function(up,file){
 			
 			CHelper.toggleTip('hide');
-			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!1';
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!zheng';
 			$('#selectportrait').attr('src', link);
 		}
 	})

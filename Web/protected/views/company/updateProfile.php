@@ -1,6 +1,6 @@
 <div id="companyUpdateProfile">
 	<div class="top">
-		<div class="background" id='background_container' style="background:url(<?php echo $company['background']?>)">
+		<div class="background" id='background_container' style="background-img:url(<?php echo $company['background']?>);">
 			<div class="addBackground" id="selectbackground"></div>
 		</div>
 		<div class="wrapperPortrait" id='logo_container'>
