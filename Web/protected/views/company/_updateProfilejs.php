@@ -18,7 +18,7 @@ $(function(){
 		}
 	});
 		myscroll=new iScroll("wrapper");
-	$('.foote').click(function(){
+	$('.addService .button').click(function(){
 		$('.servicelist').removeClass('hide');
 		myscroll.refresh();
 	});

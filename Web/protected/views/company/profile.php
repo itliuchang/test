@@ -1,7 +1,7 @@
 <div id="companyProfile">
 <input type='hidden' name='id' value='<?php echo $company['id']?>'>
 	<div class="top">
-		<div class="background" style="background:url(<?php echo $company['background']?>)">
+		<div class="background" style="background-image:url(<?php echo $company['background']?>)">
 			<?php if($company['ownerId']==Yii::app()->user->id): ?>
 			<div class="update"></div>
 			<?php endif; ?>

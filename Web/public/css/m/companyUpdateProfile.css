@@ -173,6 +173,7 @@
 }
 #companyUpdateProfile .servicelist{
 	position: fixed;
+	padding: 0;
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -183,15 +184,17 @@
 	height: 60px;
 	width: 100%;
 	background-color: #e0e0e0;
+	padding:0 20px;
 }
-#companyUpdateProfile .servicelist .header .h3{
+#companyUpdateProfile .servicelist .header .h2{
 	font-size: 16px;
 	font-weight: normal;
 }
 #companyUpdateProfile .servicelist .outer{
-	padding: 0 20px;
+	padding: 0;
 }
 #companyUpdateProfile .servicelist .outer>li{
+	padding: 0 20px;
 	border-bottom: 2px solid #000;
 }
 #companyUpdateProfile .servicelist .outer>li>p{
@@ -203,4 +206,31 @@
 	height: 30px;
 	line-height: 30px;
 	border-top: 1px solid #000;
+}
+#companyUpdateProfile .addService {
+	position: relative;
+}
+
+#companyUpdateProfile .addService .button{
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	line-height: 16px;
+	text-align: center;
+	background-color: #fb9b41;
+	color: #fff;
+	font-size: 16px;
+}
+
+#companyUpdateProfile .servicelist .header .cancel,
+#companyUpdateProfile .servicelist .header  .ok{
+	float: right;
+	margin-right: 20px;
+	width: 30px;
+	height: 20px;
+	font-size: 14px;
 }

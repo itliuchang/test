@@ -20,7 +20,7 @@
 		<textarea placeholder="What we do" maxlength=140 rows=4 class='introduction'><?php echo $company['introduction']?></textarea>
 	</div>
 	<div class="inputSection">
-		<h3 class="addService">Service offerings</h3>
+		<h3 class="addService">Service offerings<div class="button">+</div></h3>
 		<div class="serviceWrapper">
 			<ul class="clearfix">
 				<li data-id='4'><span>A</span><span class="x">X</span></li>
@@ -36,12 +36,15 @@
 	</div>
 	<h2 class="footer">SAVE</h2>
 	<div class="servicelist hide" id="wrapper">
-		<div class="header">
-			<h3>Services</h3>
-			<div class="cancel">cancel</div>
-			<div class="ok">ok</div>
-		</div>
+		
 		<ul class="outer">
+			<div class="header">
+				<h2>Service
+					<div class="cancel">cancel</div>
+					<div class="ok">ok</div>
+				</h2>
+				
+			</div>
 		    <li>
 		    	<p>Photography</p>
 		    	<ul class="inner hide">
