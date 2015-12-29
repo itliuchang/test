@@ -23,9 +23,11 @@
 		<h3 class="addService">Service offerings<div class="button">+</div></h3>
 		<div class="serviceWrapper">
 			<ul class="clearfix">
+			<?php if($myservice):?>
 				<?php foreach ($myservice as $list):?>
 				<li data-id='<?php echo $list['id']?>'><span><?php echo $list['name']?></span><span class="x">X</span></li>
 			   <?php endforeach;?>
+			<?php endif;?>
 			</ul>
 		</div>
 	</div>
