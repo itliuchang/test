@@ -108,7 +108,7 @@ class UserIdentity extends CUserIdentity{
     			$account->source = 1;
     			$account->account = $wechat['unionid'];
     			$account->subSource = $wechat['openid'];
-
+                $account->userId = $user->id;
     			$account->insert();
     		}
     	}
