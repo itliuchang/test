@@ -1,6 +1,6 @@
 <div id="companyUpdateProfile">
 	<div class="top">
-		<div class="background" id='background_container' style="background-img:url(<?php echo $company['background']?>);">
+		<div class="background" id='background_container' style="background-image:url(<?php echo $company['background']?>);">
 			<div class="addBackground" id="selectbackground"></div>
 		</div>
 		<div class="wrapperPortrait" id='logo_container'>
@@ -45,12 +45,12 @@
 				</h2>
 			</div>
 		    <li>
-		    	<p>Photography</p>
+		    	<p class="open">Photography</p>
 		    	<ul class="inner hide">
-		    	    <li>A</li>
-		    	    <li>B</li>
-		    	    <li>C</li>
-		    	    <li>D</li>
+		    		<li><p>A</p><</li>
+		    		<li><p>B</p></li>
+		    		<li><p>C</p></li>
+		    		<li><p>D</p></li>
 		    	</ul>
 		    </li>
 		    <li>
