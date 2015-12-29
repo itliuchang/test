@@ -6,10 +6,10 @@ class IndexAction extends CAction{
 			// if(!Yii::app()->session['wechat']) {
 				$this->controller->redirect('/wechat/wechatconnect');
 			// }else{
-				
+
 			// }
 		}else{
-			$this->controller->redirect(Assist::getDefaultURL());
+			$this->controller->redirect(Assist::getAccessURL());
 		}
 		
 	}

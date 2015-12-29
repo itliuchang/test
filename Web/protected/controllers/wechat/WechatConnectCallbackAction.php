@@ -31,7 +31,8 @@ class WechatConnectCallbackAction extends CAction{
                             	if($_identity->errorCode === UserIdentity::ERROR_NONE){
                             		$duration = 86400;
                             		Yii::app()->user->login($_identity, $duration);
-                            		$this->controller->redirect(Yii::app()->user->getReturnUrl(Assist::getDefaultURL()));
+                                    $this->controller->redirect(Assist::getAccessURL());
+                            		// $this->controller->redirect(Yii::app()->user->getReturnUrl(Assist::getDefaultURL()));
                             	} elseif ($_identity->errorCode === UserIdentity::ERROR_NO_BIND) {
                             		$this->controller->render('index');
 

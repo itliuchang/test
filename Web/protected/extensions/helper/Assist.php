@@ -200,6 +200,9 @@ class Assist{
     public static function getDefaultURL(){
         return '/post/newlist';
     }
+    public static function getAccessURL(){
+        return '/registered/access';
+    }
     public static function getTypePrice($type){
         switch ($type) {
             case 1:
