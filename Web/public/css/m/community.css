@@ -96,8 +96,8 @@ body.whitecolor{
 #community .memberlist .option .content{
 	border-bottom: 1px solid #e8e8e8;
 	height: 80px;
-	padding-bottom: 20px;
 	padding-left: 10px;
+	padding-top: 3px;
 }
 #community .memberlist .option .content p{
 	font-size: 12px;
