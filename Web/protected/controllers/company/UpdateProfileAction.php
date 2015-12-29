@@ -41,6 +41,7 @@ class UpdateProfileAction extends CAction{
 				$company->name = $name;
 				$company->ownerId = Yii::app()->user->id;  // FIXME 
 				$company->email = Yii::app()->request->getParam('email');
+				$company->phone = Yii::app()->request->getParam('phone');
 				$company->website = Yii::app()->request->getParam('website');
 				$company->logo = Yii::app()->request->getParam('logo');
 				$company->location = User::model()->findByAttributes(array('id'=>Yii::app()->user->id))['location'];

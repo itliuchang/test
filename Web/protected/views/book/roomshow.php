@@ -16,7 +16,7 @@
 			<label>Starts</label>
 			<select class="starts">
 				<option value='none'>无</option>
-				<option value='0'>9:00</option>
+				<!-- <option value='0'>9:00</option>
 				<option value='2'>10:00</option>
 				<option value='4'>11:00</option>
 				<option value='6'>12:00</option>
@@ -29,7 +29,7 @@
 				<option value='20'>19:00</option>
 				<option value='22'>20:00</option>
 				<option value='24'>21:00</option>
-				<option value='26'>22:00</option>
+				<option value='26'>22:00</option> -->
 			</select>
 		</div>
 		<div class="hour">

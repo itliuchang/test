@@ -57,6 +57,7 @@ $(function(){
 		e.gesture.srcEvent.preventDefault();
 		var id = $('input[name="id"]').val(),
 			name = CHelper.filterXSS($('.name').val()),
+			phone = $('.phone').val(),
 			email = $('.email').val(),
 			website = $('.website').val(),
 			background = $('.backgroundurl').val(),
@@ -75,6 +76,7 @@ $(function(){
 			CHelper.asynRequest('/company/updateprofile',{
 				id:id,
 				name:name,
+				phone:phone,
 				email:email,
 				website:website,
 				background:background,

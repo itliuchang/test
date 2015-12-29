@@ -1,4 +1,9 @@
 $(function(){
+	var tmp='';
+	for(var i=0;i<14;i++){
+		tmp += '<option value='+i*2+'>'+(9+i)+':00</option><option value="'+(i*2+1)+'">'+(9+i)+':30'; 
+	}
+	$('.starts').append(tmp);
 	var option = eval($('.option input[name="other"]').attr("data-other"))
 	$('.starts option').each(function(){
 		for(var m in option){
@@ -73,7 +78,7 @@ $(function(){
 			if(last!='')
 			last.forEach(function(v){
 				$('.option .piece').eq(v).removeClass('myselected')
-			})
+			});
 			var num = start,
 			time = $(this).val()
 			if(start!=''){
@@ -85,7 +90,7 @@ $(function(){
 					}
 				} else {
 					array=[num]
-				}
+				}console.log(array);
 				var x=eval($('.option input[name="other"]').attr("data-other"));
 				var result='';
 				for(var b in array){
@@ -118,7 +123,7 @@ $(function(){
 			date = $('.date').val(),
 			start = $('.starts').val();
 		if(starts=='无' || time=='' || date==''){
-			CHelper.toggleTip('show', '你还没有选择时间', 'warn', 1000);
+			CHelper.toggleTip('show', '你还没有选择时间', 'warn', 1800);
 		}else {
 			CHelper.asynRequest('/book/roomshow-'+id,{
 				"date":date,
@@ -168,7 +173,10 @@ $(function(){
 										CHelper.toggleTip('show', msg , 'error', 1000);
 									},
 									success:function(){
-										location.href = '/book/roomlist';
+										CHelper.toggleTip('show','预约成功,2s后跳转','success',2000);
+										setInterval(function(){
+											location.href = '/more';
+										},2000);
 									}
 								});
 						}							
