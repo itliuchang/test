@@ -36,20 +36,20 @@
 #community .companylist .option{
 	position: relative;
 	background-color: #fff;
-	height: 60px;
+	height: 110px;
 	width: 100%;
-	padding-left: 65px;
+	padding-left: 115px;
 }
 #community .companylist .option img{
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	position: absolute;
 	left: 5px;
 	top: 5px;
 }
 #community .companylist .option .content{
 	padding-top: 15px;
-	height: 60px;
+	height: 110px;
 	border-bottom: 1px solid #ededed;
 }
 #community .companylist .option .content h3{
