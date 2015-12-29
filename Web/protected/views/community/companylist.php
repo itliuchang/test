@@ -9,7 +9,7 @@
 			<img src="<?php echo $value['logo'] ?>" alt="">
 			<div class="content">
 				<h3><?php echo $value['name'] ?></h3>
-				<p><?php echo $value['location'] ?></p>
+				<p><?php echo $value['locationName'] ?></p>
 			</div>
 		</div>
 		<?php endforeach; ?>
