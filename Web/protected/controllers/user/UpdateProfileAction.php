@@ -24,8 +24,9 @@ class UpdateProfileAction extends CAction{
 			if($status == 1){
 				$user->status = 2;
 			}
-			$user->save();
-			echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS'));
+			if($user->save()){
+				echo CJSON::encode(array('code'=>200, 'message'=> $user->status));
+			}
 		} else {
 			$id = Yii::app()->user->id;
 			$user = User::model()->findByAttributes(array('id' => $id));

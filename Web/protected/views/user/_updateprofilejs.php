@@ -62,11 +62,14 @@ $(function(){
 				},
 				success:function(response){
 					if($('.footer').hasClass('save')){
-						CHelper.toggleTip('show','保存成功','success',1000);
+						CHelper.toggleTip('show',response.message,'success',1000);
 						location.href='/more';
 					} else {
 						location.href = '/company/updateprofile';
 					}
+				},
+				failure:function(response){
+					CHelper.toggleTip('show',response.message,'fail',1000);
 				}
 			});
 		}
