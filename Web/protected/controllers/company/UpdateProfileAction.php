@@ -12,12 +12,14 @@ class UpdateProfileAction extends CAction{
 						echo CJSON::encode(array('code'=>400, 'message'=> 'HAVING'));die;
 					} else {
 						$company = new Company;
-						$company->createTime = date('Y-m-d H:i:s');
+						$now = date('Y-m-d H:i:s');
+						$company->createTime = $now;
 						$company->save();
+						$companyid = Company::model()->findByAttributes(array('createTime'=>$now));
 						for($i = 0;$i<count($service);$i++){
 							$proxy = new Service_company;
 							$proxy->serviceId = $service[$i];
-							$proxy->companyId = $company['id'];
+							$proxy->companyId = $companyid['id'];
 							$proxy->save();
 						}
 					}
