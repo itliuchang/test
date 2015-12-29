@@ -1,5 +1,8 @@
 $(function(){
-
+	$('.serviceWrapper >ul >li').each(function(){
+		var id = $(this).attr('data-id');
+		$(".servicelist .inner>li[data-id="+id+"]").toggleClass('selected');
+	});
 	$('.servicelist>.outer>li>p').hammer().on('tap',function(){
 		$(this).toggleClass('open');
 	});

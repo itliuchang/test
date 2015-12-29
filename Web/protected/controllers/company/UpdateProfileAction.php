@@ -62,11 +62,24 @@ class UpdateProfileAction extends CAction{
 			}
 		} else {
 			$id = Yii::app()->request->getParam('id');
+
 			$company = Company::model()->findByAttributes(array('id' => $id));
-			$user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
+			$myservice = Service_company::model()->findAllByAttributes(array('companyId' => $company['id'],'status'=>1));
+			$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+			foreach($myservice as $list){
+				$array[] = Service::model()->findByAttributes(array('id'=>$list['serviceId']));
+			}
+			$firservice = Service::model()->findAll("parentId is null");
+			foreach ($firservice as $key) {
+				$a[$key['name']] = Service::model()->findAllByAttributes(array('parentId'=>$key['id']));
+				// array_push($a,$key['name']);
+			}
+			// var_dump($a);die;
 			$this->controller->render('updateProfile', array(
 					'company' => $company,
-					'status' => $user['status']
+					'status' => $user['status'],
+					'myservice' => $array,
+					'totalservice' => $a
 			));
 		}
 			

@@ -23,10 +23,9 @@
 		<h3 class="addService">Service offerings<div class="button">+</div></h3>
 		<div class="serviceWrapper">
 			<ul class="clearfix">
-				<li data-id='4'><span>A</span><span class="x">X</span></li>
-			    <li data-id='5'><span>B</span><span class="x">X</span></li>
-			    <li data-id='6'><span>C</span><span class="x">X</span></li>
-			    <li data-id='7'><span>design</span><span class="x">X</span></li>
+				<?php foreach ($myservice as $list):?>
+				<li data-id='<?php echo $list['id']?>'><span><?php echo $list['name']?></span><span class="x">X</span></li>
+			   <?php endforeach;?>
 			</ul>
 		</div>
 	</div>
@@ -44,60 +43,17 @@
 					<div class="ok">ok</div>
 				</h2>
 			</div>
+			 <?php foreach($totalservice as $key=> $value):?>
 		    <li>
-		    	<p>Photography</p>
+		   
+		    	<p><?php echo  $key?></p>
 		    	<ul class="inner hide">
-		    		<li data-id=2>A</li>
-		    		<li data-id=3>A</li>
-		    		<li data-id=4>A</li>
-		    		<li data-id=5>A</li>
+		    	<?php foreach( $value as $list): ?>
+		    		<li data-id=<?php echo $list['id']?>><?php echo $list['name']?></li>
+		    	<?php endforeach;?>
 		    	</ul>
 		    </li>
-		    <li>
-		    	<p>Web</p>
-		    </li>
-		    <li>
-		    	<p>Web Design</p>
-		    </li>
-		    <li>
-		    	<p>Illustrations</p>
-		    </li>
-		    <li>
-		    	<p>Photography</p>
-		    	<ul class="inner hide">
-		    	    <li>A</li>
-		    	    <li>B</li>
-		    	    <li>C</li>
-		    	    <li>D</li>
-		    	</ul>
-		    </li>
-		    <li>
-		    	<p>Web</p>
-		    </li>
-		    <li>
-		    	<p>Web Design</p>
-		    </li>
-		    <li>
-		    	<p>Illustrations</p>
-		    </li>
-		    <li>
-		    	<p>Photography</p>
-		    	<ul class="inner hide">
-		    	    <li>A</li>
-		    	    <li>B</li>
-		    	    <li>C</li>
-		    	    <li>D</li>
-		    	</ul>
-		    </li>
-		    <li>
-		    	<p>Web</p>
-		    </li>
-		    <li>
-		    	<p>Web Design</p>
-		    </li>
-		    <li>
-		    	<p>Illustrations</p>
-		    </li>
+		    <?php endforeach;?>
 		</ul>
 	</div>
 </div>
