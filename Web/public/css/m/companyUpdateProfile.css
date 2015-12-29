@@ -186,10 +186,6 @@
 	background-color: #e0e0e0;
 	padding:0 20px;
 }
-#companyUpdateProfile .servicelist .header .h2{
-	font-size: 16px;
-	font-weight: normal;
-}
 #companyUpdateProfile .servicelist .outer{
 	padding: 0;
 }
@@ -225,12 +221,24 @@
 	color: #fff;
 	font-size: 16px;
 }
-
+#companyUpdateProfile .servicelist .header{
+	padding-top: 10px;
+}
+#companyUpdateProfile .servicelist .header>h2{
+	font-size: 20px;
+}
 #companyUpdateProfile .servicelist .header .cancel,
 #companyUpdateProfile .servicelist .header  .ok{
 	float: right;
-	margin-right: 20px;
-	width: 30px;
-	height: 20px;
+	margin-right: 10px;
+	color: #fff;
+	padding: 10px;
 	font-size: 14px;
+	border-radius: 5px;
+}
+#companyUpdateProfile .servicelist .header .cancel{
+	background-color: #9B9B9B;
+}
+#companyUpdateProfile .servicelist .header  .ok{
+	background-color: #4A90E2;
 }

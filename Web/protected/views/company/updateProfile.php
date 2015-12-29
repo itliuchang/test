@@ -43,7 +43,6 @@
 					<div class="cancel">cancel</div>
 					<div class="ok">ok</div>
 				</h2>
-				
 			</div>
 		    <li>
 		    	<p>Photography</p>
