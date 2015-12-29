@@ -25,7 +25,7 @@ class UserIdentity extends CUserIdentity{
     public function authWechat($wechat = '', $openid = ''){
     	try{
     		$unionid = $wechat['unionid'];
-    		$account = Account::model()->findByAttributes(array('account' => $unionid, 'source' => 1));
+    		$account = Account::model()->findByAttributes(array('account' => $unionid, 'source' => 1,'status'=>1));
     		if(!empty($account)) {
     			if(!empty($account->userId)) {
     				$this->id = $account->userId;
