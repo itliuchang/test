@@ -51,7 +51,7 @@ $(function(){
 					CHelper.toggleTip('show','你本月已没有次数','warn','2000');
 				} else {
 					if(seatsleft<=0){
-						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1000);
+						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1800);
 					} else {
 						date = date.replace(/-/g,'$');		
 						location.href = '/book/workspaceconfirm-' + id +'/'+date;

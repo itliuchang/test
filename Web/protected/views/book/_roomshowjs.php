@@ -123,7 +123,7 @@ $(function(){
 			date = $('.date').val(),
 			start = $('.starts').val();
 		if(starts=='无' || time=='' || date==''){
-			CHelper.toggleTip('show', '你还没有选择时间', 'warn', 1000);
+			CHelper.toggleTip('show', '你还没有选择时间', 'warn', 1800);
 		}else {
 			CHelper.asynRequest('/book/roomshow-'+id,{
 				"date":date,

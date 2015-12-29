@@ -10,7 +10,7 @@ $(function(){
 				"userId":userId
 			},{
 				failure:function(){
-					CHelper.toggleTip('show','已没有剩余座位','warn',1000);
+					CHelper.toggleTip('show','已没有剩余座位','warn',1800);
 				},
 				error:function(){
 					CHelper.toggleTip('show','出现错误','warn',1000);
