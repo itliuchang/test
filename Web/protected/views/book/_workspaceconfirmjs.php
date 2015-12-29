@@ -16,8 +16,11 @@ $(function(){
 					CHelper.toggleTip('show','出现错误','warn',1000);
 				},
 				success:function(){
-					CHelper.toggleTip('show','预约成功','success',1000);
-					location.href = '/post/newlist';					
+					CHelper.toggleTip('show','预约成功,2s后跳转','success',2000);
+					setInterval(function(){
+						location.href = '/post/newlist';
+					});
+										
 				}
 			});
 	})
