@@ -41,9 +41,10 @@
 	width: 50%;
 	border: 1px solid #ececec;
 }
-#roomshow .time input{
+#roomshow .time select{
 	width: 100%;
-	height: 38px;
+	height: 20px;
+	margin-top: 10px;
 	border: none;
 	-webkit-appearance:none;
 }
