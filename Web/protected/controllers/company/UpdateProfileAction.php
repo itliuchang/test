@@ -13,6 +13,7 @@ class UpdateProfileAction extends CAction{
 					} else {
 						$company = new Company;
 						$company->createTime = date('Y-m-d H:i:s');
+						$company->save();
 						for($i = 0;$i<count($service);$i++){
 							$proxy = new Service_company;
 							$proxy->serviceId = $service[$i];

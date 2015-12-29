@@ -175,7 +175,7 @@
                     max_file_size:'5mb',
                     mime_types:[{
                         title:'图片类型',
-                        extensions:'jpg,gif,png'
+                        extensions:'jpg,png'
                     }]
                 },
                 url : options.url,
