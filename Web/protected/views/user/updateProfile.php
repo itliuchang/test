@@ -12,7 +12,7 @@
 		<input type="text" placeholder="title" class="title" value='<?php echo $user['title']?>' >
 		<input type="text" placeholder="website" class="website lastinput" value='<?php echo $user['website']?>'>
 		<input type='hidden' class='backgroundurl' value='<?php echo $user['background']?>'>
-		<input type='hidden' class='status' value='<?php echo $status?>'>
+		<input type='hidden' class='status' value='<?php echo $user['status']?>'>
 	</div>
 	<div class="inputSection">
 		<textarea placeholder="about me (140 characters)" maxlength=140 rows=4 class='description'><?php echo $user['description']?></textarea>
