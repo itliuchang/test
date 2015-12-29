@@ -102,7 +102,7 @@ class UserIdentity extends CUserIdentity{
     private function bindWechat($bind = 0, $user = array()) {
     	$wechat = Yii::app()->session['wechat'];
     	if($bind == 1 && $wechat) {
-    		$account = Account::model()->findByAttributes(array('account' => $wechat['unionid'], 'source' => 1));
+    		$account = Account::model()->findByAttributes(array('account' => $wechat['unionid'], 'source' => 1,'status'=>1));
     		if(!$account) {
     			$account = new Account();
     			$account->source = 1;
