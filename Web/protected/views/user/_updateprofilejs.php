@@ -4,7 +4,7 @@ $(function(){
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
 			
-			link = up.settings.url+'/img/'+up.id
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!1';
 			$('.backgroundurl').val(link);
 			$('.background').css('background', 'url('+link+')')
 		}
@@ -13,7 +13,8 @@ $(function(){
 		'FileUploaded':function(up,file){
 			
 			CHelper.toggleTip('hide');
-			$('#selectportrait').attr('src', up.settings.url+'/img/'+up.id);
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!1';
+			$('#selectportrait').attr('src', link);
 		}
 	})
 

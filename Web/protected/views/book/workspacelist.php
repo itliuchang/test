@@ -12,9 +12,8 @@
 		</div>
 		<div class="content">
 			<h3 class="name"><?php echo $value['name']?></h3>
-			<div class='seats'>座位50</div>
 			<div class='seatsLeft'></div>
-			<p class="address"><?php echo $value['location']?></p>
+			<p>available</p>
 		</div>
 		<div class="footer">BOOK WORKSPACE</div>
 	</div>

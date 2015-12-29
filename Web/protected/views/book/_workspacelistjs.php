@@ -11,7 +11,7 @@ $(function(){
 			var seatsLeft;
 			for(var i = 0;i < $('.option').length;i++){
 				seatsleft =50-response['count'][i][0]['num'];
-				$('.option:eq('+i+') .seatsLeft').html('剩余座位'+seatsleft);
+				$('.option:eq('+i+') .seatsLeft').html(seatsleft);
 				$('.option:eq('+i+') input[name="seatsLeft"]').val(seatsleft);
 			}
 		}
@@ -30,7 +30,7 @@ $(function(){
 				var seatsLeft;
 				for(var i = 0;i < $('.option').length;i++){
 					seatsleft =50-response['count'][i][0]['num'];
-					$('.option:eq('+i+') .seatsLeft').html('剩余座位'+seatsleft);
+					$('.option:eq('+i+') .seatsLeft').html(seatsleft);
 					$('.option:eq('+i+') input[name="seatsLeft"]').val(seatsleft);
 				}
 			}

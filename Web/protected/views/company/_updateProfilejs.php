@@ -4,16 +4,17 @@ $(function(){
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
 			
-			link = up.settings.url+'/img/'+up.id
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!1'
 			$('.backgroundurl').val(link);
-			$('.background').css('background', 'url('+link+')')
+			$('.background').css('background', 'url('+link+')');
 		}
 	});
 	CHelper.uploadOSS(token,{'domain':domain,'browse_button':'selectlogo', 'container':'logo_container'},{
 		'FileUploaded':function(up,file){
 			
 			CHelper.toggleTip('hide');
-			$('#selectlogo').attr('src', up.settings.url+'/img/'+up.id)
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!1';
+			$('#selectlogo').attr('src', link);
 		}
 	});
 		myscroll=new iScroll("wrapper");
@@ -43,6 +44,10 @@ $(function(){
 		if(!name){
 			CHelper.toggleTip('show','Please input company name','warn',1000);
 		} else {
+			var arr = Array();
+			$('.serviceWrapper li').each(function(index){
+				arr.push($(this).attr('data-id'));
+			})
 			CHelper.asynRequest('/company/updateprofile',{
 				id:id,
 				name:name,
@@ -51,6 +56,7 @@ $(function(){
 				background:background,
 				logo:logo,
 				introduction:introduction,
+				service:arr,
 				facebookid:facebook,
 				linkedinid:linkedin,
 			},{
