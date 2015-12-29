@@ -29,10 +29,18 @@ class UpdateProfileAction extends CAction{
 				$company->facebookid = Yii::app()->request->getParam('facebookid');
 				$company->linkedinid = Yii::app()->request->getParam('linkedinid');
 				$company->save();
+				$service = Yii::app()->request->getParam('service');
+				$proxy = new Service_company;
+				foreach($service as $list){
+					$proxy->serviceId = $list;
+					$proxy->companyId = $company->id;
+					$proxy->save();
+				}
 				$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 				$status = $user['status'];
 				$user->status = 3;
-				$user->save();				
+				$user->company = $company->id;
+				$user->save();			
 				echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS','data'=>array('status'=>$status)));
 			} else {
 				$this->controller->render('updateProfile');

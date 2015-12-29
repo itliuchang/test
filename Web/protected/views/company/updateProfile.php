@@ -23,10 +23,10 @@
 		<h3 class="addService">Service offerings</h3>
 		<div class="serviceWrapper">
 			<ul class="clearfix">
-				<li><span>Design</span><span class="x">X</span></li>
-			    <li><span>design</span><span class="x">X</span></li>
-			    <li><span>design</span><span class="x">X</span></li>
-			    <li><span>design</span><span class="x">X</span></li>
+				<li data-id='4'><span>A</span><span class="x">X</span></li>
+			    <li data-id='5'><span>B</span><span class="x">X</span></li>
+			    <li data-id='6'><span>C</span><span class="x">X</span></li>
+			    <li data-id='7'><span>design</span><span class="x">X</span></li>
 			</ul>
 		</div>
 	</div>
