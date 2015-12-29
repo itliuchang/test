@@ -63,6 +63,9 @@
 </script>
 <?php
 	$cs = Yii::app()->clientScript;
+	$cs->registerScriptFile("/js/lib/webim/strophe.js", CClientScript::POS_END);
+	$cs->registerScriptFile("/js/lib/webim/json2.js", CClientScript::POS_END);
+	$cs->registerScriptFile("/js/lib/webim/easemob.im-1.0.7.js", CClientScript::POS_END);
 	$js = $this->renderPartial('_showjs', null ,true);
 	$cs->registerScript('msg_show', $js, CClientScript::POS_END);
 ?>
