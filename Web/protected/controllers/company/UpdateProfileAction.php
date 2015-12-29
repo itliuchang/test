@@ -3,9 +3,9 @@ class UpdateProfileAction extends CAction{
 	public function run($id=''){
 		if(!$id){
 			if(Yii::app()->request->isAjaxRequest){
-				
 				$id = Yii::app()->request->getParam('id');
-				$name = Yii::app()->request->getParam('name');		
+				$name = Yii::app()->request->getParam('name');
+				$service = Yii::app()->request->getParam('service');		
 				if(!$id){
 					$result = Company::model()->findByAttributes(array('name'=>$name));
 					if($result){
@@ -13,10 +13,27 @@ class UpdateProfileAction extends CAction{
 					} else {
 						$company = new Company;
 						$company->createTime = date('Y-m-d H:i:s');
+						for($i = 0;$i<count($service);$i++){
+							$proxy = new Service_company;
+							$proxy->serviceId = $service[$i];
+							$proxy->companyId = $company['id'];
+							$proxy->save();
+						}
 					}
 				} else {
 					$company = Company::model()->findByAttributes(array('id'=>$id));
 					$company->updateTime = date('Y-m-d H:i:s');
+					$proxy = Service_company::model()->findAllByAttributes(array('companyId'=>$id));
+					foreach($proxy as $list){
+						$list->status = 0;
+						$list->save();
+					}
+					for($i = 0;$i<count($service);$i++){
+						$dp = new Service_company;
+						$dp->serviceId = $service[$i];
+						$dp->companyId = $company['id'];
+						$dp->save();
+					}
 				}
 				$company->name = $name;
 				$company->ownerId = Yii::app()->user->id;  // FIXME 
@@ -29,13 +46,7 @@ class UpdateProfileAction extends CAction{
 				$company->facebookid = Yii::app()->request->getParam('facebookid');
 				$company->linkedinid = Yii::app()->request->getParam('linkedinid');
 				$company->save();
-				$service = Yii::app()->request->getParam('service');
-				$proxy = new Service_company;
-				foreach($service as $list){
-					$proxy->serviceId = $list;
-					$proxy->companyId = $company->id;
-					$proxy->save();
-				}
+								
 				$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 				$status = $user['status'];
 				$user->status = 3;
