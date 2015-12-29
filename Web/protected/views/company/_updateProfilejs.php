@@ -1,5 +1,27 @@
 $(function(){
-	
+
+	$('.servicelist>.outer>li>p').hammer().on('tap',function(){
+		$(this).toggleClass('open');
+	});
+	$('.servicelist>.outer>li>.inner>li').hammer().on('tap',function(){
+		$(this).toggleClass('selected');
+	});
+	$('.servicelist .cancel').hammer().on('tap',function(){
+		$('.servicelist').toggleClass('hide');
+	});
+	$('.servicelist .ok').hammer().on('tap',function(){
+		$ul = $('.serviceWrapper>ul');
+		$ul.empty();
+		$('.selected').each(function(){
+			$ul.append("<li data-id='"+$(this).attr('data-id')+"'><span>"+$(this).text()+"</span><span class='x'>X</span></li>");
+		});
+		$('.servicelist').toggleClass('hide');
+		$('.x').hammer().off().on('tap',function(){
+		var id = $(this).parent('li').attr('data-id');
+		$(".servicelist .outer>li .inner li[data-id="+id+"]").removeClass('selected');
+		$(this).parent('li').remove();
+	});
+	});
 	CHelper.uploadOSS(token,{'domain':domain,'browse_button':'selectbackground', 'container':'background_container'},{
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
@@ -27,6 +49,8 @@ $(function(){
 		myscroll.refresh();
 	});
 	$('.x').hammer().on('tap',function(){
+		var id = $(this).parent('li').attr('data-id');
+		$(".servicelist .outer>li .inner li[data-id="+id+"]").removeClass('selected');
 		$(this).parent('li').remove();
 	});
 	$('.footer').hammer().on('tap press',function(e){

@@ -45,12 +45,12 @@
 				</h2>
 			</div>
 		    <li>
-		    	<p class="open">Photography</p>
+		    	<p>Photography</p>
 		    	<ul class="inner hide">
-		    		<li><p>A</p><</li>
-		    		<li><p>B</p></li>
-		    		<li><p>C</p></li>
-		    		<li><p>D</p></li>
+		    		<li data-id=2>A</li>
+		    		<li data-id=3>A</li>
+		    		<li data-id=4>A</li>
+		    		<li data-id=5>A</li>
 		    	</ul>
 		    </li>
 		    <li>
