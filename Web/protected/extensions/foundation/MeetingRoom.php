@@ -107,7 +107,7 @@ Class MeetingRoom{
 				$end = strtotime($list['endTime']);
 				$length = ($end-$start)/3600;
 				for($i = 0;$i<$length*2;$i++){
-					array_push($arr,(date('H',$start)-9)*2+$i);
+					array_push($arr,((date('H',$start)-9)+date('i',$start)/60)*2+$i);
 				}
 			}
 			return $arr;
@@ -129,7 +129,7 @@ Class MeetingRoom{
 				$end = strtotime($list['endTime']);
 				$length = ($end-$start)/3600;
 				for($i = 0; $i < $length*2; $i++){
-					array_push($arr,(date('H',$start)-9)*2+$i);
+					array_push($arr,((date('H',$start)-9)+date('i',$start)/60)*2+$i);
 				}
 			}
 			return $arr;
