@@ -12,7 +12,7 @@
 	</ul>
 	<ul class="option">
 		<li class="about"><a>About</a></li>
-		<li class="logout"><a href='logout'>Log out</a></li>
+		<li class="logout"><a href='/logout'>Log out</a></li>
 	</ul>
 </div>
 <div class="container-fluid tbar" id="footer">

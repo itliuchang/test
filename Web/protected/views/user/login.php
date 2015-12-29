@@ -12,7 +12,7 @@
 	</div>
 	<div class="inputOption hide EmailContent">
 		<input type="email" value="" placeholder="Enter Email" class="email">
-		<input type="text" placeholder="Enter a password" class="password">
+		<input type="password" placeholder="Enter a password" class="password">
 	</div>
 	<div class="agree"><div class="icon hasAgree"></div><p>I agree automatic landing</p></div>
 	<a class="footer" href="#">LOG IN</a>
