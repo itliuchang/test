@@ -17,7 +17,7 @@
 	</div>
 </div>
 <div class="container-fluid tbar" id="footer">
-    <?php $this->widget('FTBarWidget',array('currentTab' => '/community/companylist')) ?>
+    <?php $this->widget('FTBarWidget',array('currentTab' => '/community/serviceslist')) ?>
 </div>
 <?php
     $cs = Yii::app()->clientScript;

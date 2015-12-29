@@ -64,6 +64,7 @@
 #community .companylist .option .content p{
 	font-size: 12px;
 	margin-top: 8px!important;
+	color: #9b9796;
 }
 body.whitecolor{
 	background-color: #fff;
@@ -102,6 +103,7 @@ body.whitecolor{
 }
 #community .memberlist .option .content p{
 	font-size: 12px;
+	color: #9b9796;
 }
 #community .memberlist .option img{
 	width: 80px;
