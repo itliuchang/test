@@ -49,7 +49,9 @@ $(function(){
 				// console.log(response)
 				if(response['num']<=0){
 					CHelper.toggleTip('show','你本月已没有次数','warn','2000');
-				} else {
+				} else if(response['count']>0){
+					CHelper.toggleTip('show','同一天只能预约一次','warn',2000);
+				}else {
 					if(seatsleft<=0){
 						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1800);
 					} else {

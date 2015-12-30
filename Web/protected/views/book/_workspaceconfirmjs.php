@@ -18,7 +18,7 @@ $(function(){
 				success:function(){
 					CHelper.toggleTip('show','预约成功,2s后跳转','success',2000);
 					setInterval(function(){
-						location.href = '/post/newlist';
+						location.href = '/more';
 					},2000);
 										
 				}

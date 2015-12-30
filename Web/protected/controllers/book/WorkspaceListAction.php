@@ -10,15 +10,16 @@ class WorkspaceListAction extends CAction{
 		if(Yii::app()->request->isAjaxRequest){
 			$id = Yii::app()->request->getParam('id');
 			if($id){
-				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>1186));
+				$now = date('Ymd',time());
+				$record = Reservations::model()->findAll('startTime ='.$now.'100000' .' and userId='.Yii::app()->user->id);
+				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
 				if($orderid){
-					$now = date('Ymd',time());
 					foreach ($orderid as $list){
 						$order = OrderProduct::model()->find('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now);
 						if($order){break;}
 					}
 					if($order){
-						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>$order['totalTimes']-$order['usedTimes'])));
+						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>$order['totalTimes']-$order['usedTimes'],'count'=>count($record))));
 					} else {
 						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
 					}
