@@ -1,6 +1,6 @@
 <?php
 class UpdateProfileAction extends CAction{
-	public function run($id=''){
+	public function run($id=null){
 		if(!$id){
 			if(Yii::app()->request->isAjaxRequest){
 				$id = Yii::app()->request->getParam('id');
