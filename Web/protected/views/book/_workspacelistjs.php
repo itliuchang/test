@@ -4,7 +4,7 @@ $(function(){
 			"date":date
 	},{
 		error:function(msg){
-			CHelper.toggleTip('show','请重新选择时间','warn',3000);
+			CHelper.toggleTip('show','请重新选择时间','warn',1800);
 		},
 		success:function(response){
 			// console.log(response['count'][0][0]['num'])
