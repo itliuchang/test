@@ -3,7 +3,7 @@ class CCommunity{
 	public function getServiceList(){
 		$firstService = Yii::app()->db->createCommand()->setText('select * from service where parentId is null and status !=0 ')->queryAll();
 		foreach($firstService as &$value){
-			$tmp=Yii::app()->db->createCommand()->setText('SELECT COUNT(a.id) as num,a.id from service a left join service_company b on a.id=b.serviceId where b.status=1 and a.parentId='.$value['id'])->queryRow();
+			$tmp=Yii::app()->db->createCommand()->setText('select count( distinct a.companyId ) as num from service_company a left join service b on a.serviceId=b.id where a.status=1 and b.parentId='.$value['id'])->queryRow();
 			$value['num'] = $tmp['num'];
 		}
 		return array(
