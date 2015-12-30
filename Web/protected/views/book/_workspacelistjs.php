@@ -29,7 +29,7 @@ $(function(){
 				// console.log(response['count'][0][0]['num'])
 				var seatsLeft;
 				for(var i = 0;i < $('.option').length;i++){
-					seatsleft =50-response['count'][i][0]['num'];
+					seatsleft =50-response['count'][i][0];
 					$('.option:eq('+i+') .seatsLeft').html(seatsleft);
 					$('.option:eq('+i+') input[name="seatsLeft"]').val(seatsleft);
 				}
