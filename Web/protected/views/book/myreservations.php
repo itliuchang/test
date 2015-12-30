@@ -9,7 +9,7 @@
 		<?php foreach($upcominglist as $value): ?>
 		<?php if($value['type']==2): ?>
 		<div class="option" data-id=<?php echo $value['id'] ?>>
-			<p class="title"><span><?php echo date('l',strtotime($value['createTime'])) ?></span><span><?php echo date('m-d',$value['createTime']) ?></span></p>
+			<p class="title"><span><?php echo date('l',strtotime($value['createTime'])) ?></span><span><?php echo date('m-d',strtotime($value['createTime'])) ?></span></p>
 			<div class="content">
 				<div class="left">
 					<h3>STARTS IN</h3>
@@ -47,7 +47,7 @@
 		<?php foreach($previouslist as $value): ?>
 		<?php if($value['type']==2): ?>
 		<div class="option">
-			<p class="title"><span><?php echo date('l',strtotime($value['createTime'])) ?></span><span><?php echo date('m-d',$value['createTime']) ?></span></p>
+			<p class="title"><span><?php echo date('l',strtotime($value['createTime'])) ?></span><span><?php echo date('m-d',strtotime($value['createTime'])) ?></span></p>
 			<div class="content">
 				<div class="left">
 					<h3>STARTS IN</h3>
