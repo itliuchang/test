@@ -3,12 +3,17 @@
 }
 #chooseEnvironment .pic{
 	width: 100%;
-	height: 200px;
+	height: 280px;
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
+@media screen and (max-width: 320px){
+	#chooseEnvironment .pic{
+		height: 220px;
+	}
+}
 #chooseEnvironment .pic1{
-	background-image: url(/images/banner/1.jpg);
+	background-image: url(/images/banner/5.jpg);
 }
 #chooseEnvironment .underLine{
 	width: 20px;
