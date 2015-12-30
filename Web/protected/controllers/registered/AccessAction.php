@@ -15,6 +15,9 @@ class AccessAction extends CAction{
 			$tem = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 			$status = $tem->status;
 			switch ($status) {
+				case 0:
+					$this->controller->redirect('/registered/productlist');
+					break;
 				case 1:
 					$this->controller->redirect('/user/updateProfile');
 					break;
