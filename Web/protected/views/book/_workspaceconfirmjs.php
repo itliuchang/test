@@ -2,7 +2,7 @@ $(function(){
 	$('.confirm').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
 		var date = $('.date').text(),
-			hubId = $('input[name="id"]').val(),
+			hubId = $('input[name="id"]').val();
 		CHelper.asynRequest('/book/commitconfirm',{
 				"date":date,
 				"hubId":hubId,
