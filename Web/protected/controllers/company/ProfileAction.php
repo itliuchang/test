@@ -10,6 +10,7 @@ class ProfileAction extends CAction{
 				}
 				
 			}
+			$hub = Hub::model()->findByAttributes(array('id'=>$company['location']));
 		}else{
 			$company = Company::model()->findByAttributes(array('ownerId' => Yii::app()->user->id));
 			$service = Service_company::model()->findAllByAttributes(array('companyId'=>$company['id'],'status'=>1));
@@ -22,7 +23,8 @@ class ProfileAction extends CAction{
 		}
 		$this->controller->render('profile', array(
 			'company' => $company,
-			'service' =>$servicelist
+			'service' =>$servicelist,
+			'location' => $hub['location']
 		));
 	}
 }
