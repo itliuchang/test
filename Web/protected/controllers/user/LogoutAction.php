@@ -7,8 +7,8 @@ class LogoutAction extends CAction{
 			if(Yii::app()->session['wechat']&&!empty($wechat)){
 				$wechat->status=0;
 				$wechat->save();
-				Yii::app()->session['wechat']=null;
 			}
+			Yii::app()->session['wechat']=null;
 			$_identity = new UserIdentity();
 			$_identity->logout();
 			$this->controller->redirect('/registered/');
