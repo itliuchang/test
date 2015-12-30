@@ -13,6 +13,7 @@ $(function(){
 		e.gesture.srcEvent.preventDefault();
 		$('#deleteModal').modal('hide');
 		var resId = $(this).parents('#deleteModal').attr('data-id');
+		CHelper.toggleTip('show',resId);
 		CHelper.asynRequest('/book/cancel',{id:resId,parameter:{type:'GET'}},{
 			before:function(){
 				CHelper.toggleTip('show','进行中..','success',1000);
