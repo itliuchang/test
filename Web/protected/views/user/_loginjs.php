@@ -73,7 +73,7 @@ $(function(){
 			}else{
 				CHelper.asynRequest('/login',{email:$('.EmailContent input').first().val(),password:$('.EmailContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){
-						location.href='/post/newlist';
+						location.href='/registered/access';
 					},
 					failure:function(d){
 						CHelper.toggleTip('show',d.message,'error',1000);
