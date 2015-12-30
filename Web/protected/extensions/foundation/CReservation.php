@@ -67,18 +67,18 @@ class CReservation{
 		$hub = new Hub();
 		$hublist = $hub->getHUb();
 		if($hubId){
-			$result = Reservations::model()->find('status !=0 and type=1 and startTime='.$date .' and hubId='.$hubId);
+			$result = Reservations::model()->count('status !=0 and type=1 and startTime='.$date .' and hubId='.$hubId);
 		} else {
 			$result = array();
 			foreach ($hublist as $key) {
-				$result []= Reservations::model()->findAll('status !=0 and type=1 and startTime='.$date .' and hubId='.$key['id']);
+				$result []= Reservations::model()->count('status !=0 and type=1 and startTime='.$date .' and hubId='.$key['id']);
 			}
 		}		
 		if($result){
 			$data = array(
 				'code'=>200,
 				'message'=>'SUCCESS',
-				'count' => count($result)
+				'count' => $result
 			);
 		} else {
 			$data = array(
