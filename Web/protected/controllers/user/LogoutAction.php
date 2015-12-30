@@ -11,7 +11,6 @@ class LogoutAction extends CAction{
 			Yii::app()->session['wechat']=null;
 			$_identity = new UserIdentity();
 			$_identity->logout();
-			Yii::log(Yii::app()->user->isGuest, CLogger::LEVEL_TRACE|LEVEL_WARNING|LEVEL_ERROR|LEVEL_INFO|LEVEL_PROFILE,'info');
 			$this->controller->redirect('/registered/');
 		}
 	}
