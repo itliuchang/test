@@ -5,8 +5,7 @@ $(function(){
 			hubId = $('input[name="id"]').val();
 		CHelper.asynRequest('/book/commitconfirm',{
 				"date":date,
-				"hubId":hubId,
-				"userId":userId
+				"hubId":hubId
 			},{
 				failure:function(){
 					CHelper.toggleTip('show','已没有剩余座位','warn',1800);
