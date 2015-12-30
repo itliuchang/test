@@ -9,9 +9,11 @@ class WorkspaceListAction extends CAction{
 
 		if(Yii::app()->request->isAjaxRequest){
 			$id = Yii::app()->request->getParam('id');
+			$hub = Yii::app()->request->getParam('hub');
+			$date = Yii::app()->request->getParam('date');
 			if($id){
 				$now = date('Ymd',time());
-				$record = Reservations::model()->findAll('startTime ='.$now.'100000' .' and userId='.Yii::app()->user->id);
+				$record = Reservations::model()->findAll('startTime ='.date('Ymd',strtotime($date)).'100000' .' and userId='.Yii::app()->user->id.' and hubId='.$hub);
 				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
 				if($orderid){
 					foreach ($orderid as $list){
