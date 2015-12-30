@@ -26,7 +26,7 @@
 		</div>
 		<?php elseif($value['type']==1): ?>
 			<div class="option" data-id=<?php echo $value['id'] ?>>
-			<p class="title"><span><?php echo date('l',strtotime($value['startTime'])) ?></span><span><?php echo date('m-d',$value['endTime']) ?></span></p>
+			<p class="title"><span><?php echo date('l',strtotime($value['startTime'])) ?></span><span><?php echo date('m-d',strtotime($value['createTime'])) ?></span></p>
 			<div class="content">
 				<div class="left">
 					<h3>STARTS IN</h3>
@@ -63,7 +63,7 @@
 		</div>
 		<?php elseif($value['type']==1): ?>
 			<div class="option">
-			<p class="title"><span><?php echo date('l',strtotime($value['startTime'])) ?></span><span><?php echo date('m-d',$value['endTime']) ?></span></p>
+			<p class="title"><span><?php echo date('l',strtotime($value['startTime'])) ?></span><span><?php echo date('m-d',strtotime($value['createTime'])) ?></span></p>
 			<div class="content">
 				<div class="left">
 					<h3>STARTS IN</h3>
