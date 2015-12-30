@@ -2,7 +2,7 @@
 	<select class="location">
 		<option>New York</option>
 	</select>
-	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>">
+	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>" max="<?php echo (date('Y')+1).'-'.date('m-d')?>">
 	<?php foreach($data as $value):?>
 	<div class="option">
 	<input type='hidden' name='id' value='<?php echo $value['id']?>'>
