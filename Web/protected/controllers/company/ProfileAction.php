@@ -20,6 +20,7 @@ class ProfileAction extends CAction{
 				}
 				
 			}
+			$hub = Hub::model()->findByAttributes(array('id'=>$company['location']));
 		}
 		$this->controller->render('profile', array(
 			'company' => $company,
