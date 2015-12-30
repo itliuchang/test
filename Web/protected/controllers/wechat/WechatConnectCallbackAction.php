@@ -34,6 +34,7 @@ class WechatConnectCallbackAction extends CAction{
                                     $this->controller->redirect(Assist::getAccessURL());
                             		// $this->controller->redirect(Yii::app()->user->getReturnUrl(Assist::getDefaultURL()));
                             	} elseif ($_identity->errorCode === UserIdentity::ERROR_NO_BIND) {
+                                    Yii::app()->session['wechat']=null;
                             		$this->controller->render('index');
 
                             	}

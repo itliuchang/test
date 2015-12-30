@@ -3,8 +3,8 @@ class IndexAction extends CAction{
 	public function run(){
 		if(Yii::app()->user->isGuest){
 			$this->controller->bodyCss='access';
-			if(!empty(Yii::app()->session['wechat'])){
-				$this->controller->render('index');
+			if(!empty(Yii::app()->session['user'])){
+				$this->controller->redirect('/registered/productlist');
 			}else{
 				$this->controller->redirect('/wechat/wechatconnect');
 			}
