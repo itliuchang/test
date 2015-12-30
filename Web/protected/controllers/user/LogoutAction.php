@@ -3,8 +3,8 @@ class LogoutAction extends CAction{
 	
 	public function run(){
 		if(!Yii::app()->user->isGuest){
-			if(Yii::app()->session['wechat']){
-				$wechat = Account::model()->findByAttributes(array('account'=>Yii::app()->session['wechat']['unionid'],'status'=>1));
+			$wechat = Account::model()->findByAttributes(array('account'=>Yii::app()->session['wechat']['unionid'],'status'=>1));
+			if(Yii::app()->session['wechat']&&!empty($wechat)){
 				$wechat->status=0;
 				$wechat->save();
 				Yii::app()->session['wechat']=null;
