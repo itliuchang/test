@@ -190,9 +190,11 @@
 	padding: 0;
 }
 #companyUpdateProfile .servicelist .outer>li{
+	padding: 0;
+}#companyUpdateProfile .servicelist .outer>li .pWrapper{
 	padding: 0 20px;
 }
-#companyUpdateProfile .servicelist .outer>li>p{
+#companyUpdateProfile .servicelist .outer>li p{
 	height: 50px;
 	line-height: 50px;
 	font-size: 16px;
@@ -201,7 +203,6 @@
 #companyUpdateProfile .servicelist .outer>li .inner>li{
 	height: 30px;
 	line-height: 30px;
-	border-top: 1px solid #000;
 }
 #companyUpdateProfile .addService {
 	position: relative;
@@ -210,7 +211,7 @@
 #companyUpdateProfile .addService .button{
 	display: inline-block;
 	position: absolute;
-	top: 0;
+	top: -5px;
 	right: 0;
 	width: 20px;
 	height: 20px;
@@ -231,10 +232,12 @@
 #companyUpdateProfile .servicelist .header  .ok{
 	float: right;
 	margin-right: 10px;
+	width: 60px;
 	color: #fff;
 	padding: 10px;
 	font-size: 14px;
 	border-radius: 5px;
+	text-align: center;
 }
 #companyUpdateProfile .servicelist .header .cancel{
 	background-color: #9B9B9B;
@@ -242,14 +245,14 @@
 #companyUpdateProfile .servicelist .header  .ok{
 	background-color: #4A90E2;
 }
-#companyUpdateProfile .servicelist .outer>li>p{
-	padding: 0 20px;
+#companyUpdateProfile .servicelist .outer>li p{
+	padding: 0px;
 	background-image: url(/images/right.png);
 	background-repeat: no-repeat;
-	background-position: 95% center ;
+	background-position: right center ;
 	background-size: 6px 10px;
 }
-#companyUpdateProfile .servicelist .outer>li>p.open{
+#companyUpdateProfile .servicelist .outer>li p.open{
 	background-image: url(/images/down.png);
 	background-size: 10px 6px;
 }

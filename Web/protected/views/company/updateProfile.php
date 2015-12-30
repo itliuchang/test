@@ -48,8 +48,7 @@
 			<!-- <?php if($totalservice):?> -->
 			 <?php foreach($totalservice as $key=> $value):?>
 		    <li>
-		   
-		    	<p><?php echo  $key?></p>
+		   		<div class="pWrapper"><p><?php echo  $key?></p></div>
 		    	<ul class="inner hide">
 		    	<?php foreach( $value as $list): ?>
 		    		<li data-id=<?php echo $list['id']?>><?php echo $list['name']?></li>

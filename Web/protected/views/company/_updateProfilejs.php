@@ -3,7 +3,7 @@ $(function(){
 		var id = $(this).attr('data-id');
 		$(".servicelist .inner>li[data-id="+id+"]").toggleClass('selected');
 	});
-	$('.servicelist>.outer>li>p').hammer().on('tap',function(){
+	$('.servicelist>.outer>li p').hammer().on('tap',function(){
 		$(this).toggleClass('open');
 	});
 	$('.servicelist>.outer>li>.inner>li').hammer().on('tap',function(){
@@ -47,8 +47,8 @@ $(function(){
 		$('.servicelist').removeClass('hide');
 		myscroll.refresh();
 	});
-	$('.outer>li>p').click(function(){
-		$(this).next('.inner').toggleClass('hide');
+	$('.outer>li p').click(function(){
+		$(this).parent('div').next('.inner').toggleClass('hide');
 		myscroll.refresh();
 	});
 	$('.x').hammer().on('tap',function(){
