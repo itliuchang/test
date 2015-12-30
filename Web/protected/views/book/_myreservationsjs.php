@@ -14,7 +14,7 @@ $(function(){
 		$('#deleteModal').modal('hide');
 		var resId = $(this).parents('#deleteModal').attr('data-id');
 		CHelper.toggleTip('show',resId);
-		CHelper.toggleTip('show','fs');
+		
 		
 	});
 });
