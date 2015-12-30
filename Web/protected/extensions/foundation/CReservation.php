@@ -67,18 +67,18 @@ class CReservation{
 		$hub = new Hub();
 		$hublist = $hub->getHUb();
 		if($hubId){
-			$result = Yii::app()->db->createCommand()->select('count(*) as num')->from('reservation')->where('status !=0 and type=1 and startTime='.$date .' and hubId='.$hubId)->queryRow();
+			$result = Reservations::model()->find('status !=0 and type=1 and startTime='.$date .' and hubId='.$hubId);
 		} else {
 			$result = array();
 			foreach ($hublist as $key) {
-				$result []= Yii::app()->db->createCommand()->select('count(*) as num')->from('reservation')->where('status !=0 and type=1 and startTime='.$date .' and hubId='.$key['id'])->queryAll();
+				$result []= Reservations::model()->findAll('status !=0 and type=1 and startTime='.$date .' and hubId='.$key['id']);
 			}
 		}		
 		if($result){
 			$data = array(
 				'code'=>200,
 				'message'=>'SUCCESS',
-				'count' => $result
+				'count' => count($result)
 			);
 		} else {
 			$data = array(
