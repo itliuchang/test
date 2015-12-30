@@ -10,14 +10,17 @@ class WorkspaceListAction extends CAction{
 		if(Yii::app()->request->isAjaxRequest){
 			$id = Yii::app()->request->getParam('id');
 			if($id){
-				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
+				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>1186));
 				if($orderid){
 					$now = date('Ymd',time());
 					foreach ($orderid as $list){
-						$result = Yii::app()->db->createCommand()->select('*')->from('order_product')->where('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now)->queryRow();
+						$order = OrderProduct::model()->find('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now);
+						if($order){break;}
 					}
-					if($result){
-						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>$result['totalTimes']-$result['usedTimes'])));
+					if($order){
+						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>$order['totalTimes']-$order['usedTimes'])));
+					} else {
+						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
 					}
 				} else {
 					echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
