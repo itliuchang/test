@@ -2,7 +2,7 @@
 class WechatConnectCallbackAction extends CAction{
     public function run(){
         if(Yii::app()->user->isGuest){
-            if(Assist::isWeixin()&&empty(Yii::app()->session['wechat'])){
+            if(Assist::isWeixin())){
                 $code = Yii::app()->request->getParam('code');
                 $state = Yii::app()->request->getParam('state');
                 if(empty($code)){
