@@ -41,7 +41,7 @@ $(function(){
 		var id = $(this).parent('.option').children('input[name="id"]').val(),
 			date = $('#date').val(),
 			seatsleft = $('input[name="seatsLeft"]').val();
-		CHelper.asynRequest('/book/workspacelist', {"id":'999'} ,{
+		CHelper.asynRequest('/book/workspacelist', {"id":'999',"hub":id,"date":date} ,{
 			error:function(msg){
 				CHelper.toggleTip('show',msg,'warn',1000);
 			},
@@ -50,7 +50,7 @@ $(function(){
 				if(response['num']<=0){
 					CHelper.toggleTip('show','你本月已没有次数','warn','2000');
 				} else if(response['count']>0){
-					CHelper.toggleTip('show','同一天只能预约一次','warn',2000);
+					CHelper.toggleTip('show','同一天同一HUB只能预约一次','warn',2000);
 				}else {
 					if(seatsleft<=0){
 						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1800);
