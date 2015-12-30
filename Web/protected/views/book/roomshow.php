@@ -11,7 +11,7 @@
 				<p><span class="floor"><?php echo $data['floor']?></span>FL<span class="peoples"><?php echo $data['seats']?></span></p>
 			</div>
 		</div>
-		<input type="date" class="date" value="<?php echo $date?>" min="<?php echo date('Y-m-d') ?>">
+		<input type="date" class="date" value="<?php echo $date?>" min="<?php echo date('Y-m-d') ?>" max="<?php echo (date('Y')+2).'-'.date('m-d')?>">
 		<div class="time">
 			<label>Starts</label>
 			<select class="starts">

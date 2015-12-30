@@ -11,6 +11,7 @@ class RoomShowAction extends CAction{
 		$other = $result['data']['other'];
 		
 		if(Yii::app()->request->isAjaxRequest){
+
 			$data = array(
 				'code' => 200,
 				'data'=>array(

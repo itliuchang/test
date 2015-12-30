@@ -36,7 +36,7 @@ $(function(){
 		$('.starts')
 	});
 
-	var selectime = ''
+	var selectime = '';
 	$('.date').change(function(){
 		var date = $(this).val();
 		selectime = new Date(date).getTime();
@@ -48,13 +48,28 @@ $(function(){
 					console.log(xhr)
 				},
 				success:function(response){
-					 $('.piece').removeClass('myselected').removeClass('selected fix');
-					 for(var i = 0;i < $('.option').length;i++){
+					// other = response['other']
+					var option = eval($('.option input[name="other"]').attr("data-other"));
+					$('.starts option').each(function(){
+						for(var m in option){
+							if($(this).val()==option[m])
+								$(this).attr({disabled: false});
+						}
+
+						for(var n in response['other']){
+							if($(this).val()==response['other'][n])
+								$(this).attr({disabled:'disabled'});
+						}
+					})
+					$('.option input[name="other"]').attr("data-other",response['other'])
+					$('.option input[name="my"]').attr("data-my",response['my'])
+					$('.piece').removeClass('myselected').removeClass('selected fix');
+					for(var i = 0;i < $('.option').length;i++){
 						my = eval(response['my']);
 						if(my=='')
 						continue;
 						my.forEach(function(v){
-							$('.option:eq('+i+') .piece').eq(v).addClass('myselected');
+							$('.option:eq('+i+') .piece').eq(v).addClass('myselected fix');
 						});
 					}
 		
@@ -90,7 +105,7 @@ $(function(){
 					}
 				} else {
 					array=[num]
-				}console.log(array);
+				}console.log(other);
 				var x=eval($('.option input[name="other"]').attr("data-other"));
 				var result='';
 				for(var b in array){
