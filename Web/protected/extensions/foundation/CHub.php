@@ -13,7 +13,7 @@ class CHub{
 	}
 
 	public function getHubInfo($id){
-		$result = Hub::model()->findByAttributes(array('status'=>1));
+		$result = Hub::model()->findByAttributes(array('status'=>1,'id'=>$id));
 		if($result){
 			$data = array(
 				'code' => 200,
