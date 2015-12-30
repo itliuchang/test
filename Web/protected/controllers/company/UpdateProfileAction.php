@@ -58,7 +58,14 @@ class UpdateProfileAction extends CAction{
 				$user->save();			
 				echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS','data'=>array('status'=>$status)));
 			} else {
-				$this->controller->render('updateProfile');
+				$firservice = Service::model()->findAll("parentId is null");
+				foreach ($firservice as $key) {
+					$a[$key['name']] = Service::model()->findAllByAttributes(array('parentId'=>$key['id']));
+					// array_push($a,$key['name']);
+				}
+				$this->controller->render('updateProfile',array(
+					'totalservice' => $a
+				));
 			}
 		} else {
 			$id = Yii::app()->request->getParam('id');

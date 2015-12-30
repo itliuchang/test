@@ -45,7 +45,7 @@
 					<div class="ok">ok</div>
 				</h2>
 			</div>
-			<?php if($totalservice):?>
+			<!-- <?php if($totalservice):?> -->
 			 <?php foreach($totalservice as $key=> $value):?>
 		    <li>
 		   
@@ -57,7 +57,7 @@
 		    	</ul>
 		    </li>
 		    <?php endforeach;?>
-			<?php endif;?>
+			<!-- <?php endif;?> -->
 		</ul>
 	</div>
 </div>
