@@ -21,7 +21,10 @@ $(function(){
 				$(".upcoming .option[data-id="+resId+"]").remove();
 				CHelper.toggleTip('show','cancel success','success',1000);
 			},
-			fail:function(m){
+			failure:function(m){
+				CHelper.toggleTip('show',m.message,'fail',1000);
+			},
+			error:function(e){
 				CHelper.toggleTip('show',m.message,'fail',1000);
 			}
 		});
