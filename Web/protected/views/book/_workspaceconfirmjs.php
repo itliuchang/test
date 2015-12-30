@@ -3,7 +3,6 @@ $(function(){
 		e.gesture.srcEvent.preventDefault();
 		var date = $('.date').text(),
 			hubId = $('input[name="id"]').val(),
-			userId = $('input[name="userId"]').val();
 		CHelper.asynRequest('/book/commitconfirm',{
 				"date":date,
 				"hubId":hubId,

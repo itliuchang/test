@@ -4,7 +4,7 @@ class CommitConfirmAction extends CAction{
 		if(Yii::app()->request->isAjaxRequest){
 			$date = Yii::app()->request->getParam('date');
 			$hubId = Yii::app()->request->getParam('hubId');
-			$userId = Yii::app()->request->getParam('userId');
+			$userId = Yii::app()->user->id;
 			$data = array(
 				'startTime' => $date.' 10:00:00',
 				'hubId' => $hubId,

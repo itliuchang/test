@@ -45,6 +45,7 @@ class CReservation{
 				$now = date('Ymd',time());
 				foreach ($orderid as $list){
 					$dp = OrderProduct::model()->find('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now);
+					if($dp){break;}
 				}
 				$dp->usedTimes++;
 				$dp->save();
