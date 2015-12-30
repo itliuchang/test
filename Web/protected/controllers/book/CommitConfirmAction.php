@@ -8,7 +8,7 @@ class CommitConfirmAction extends CAction{
 			$data = array(
 				'startTime' => $date.' 10:00:00',
 				'hubId' => $hubId,
-				'userId' => 1186,
+				'userId' => $userId,
 				'type' => 1
 			);
 			$proxy = new CReservation();
