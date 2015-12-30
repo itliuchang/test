@@ -10,7 +10,7 @@
 			<img class="portrait" src='<?php echo $company['logo']?>'>
 			<div class="messageWrapper">
 				<h3 class="companyName"><?php echo $company['name']?></h3>
-				<p class="location"><?php echo $company['location']?></p>
+				<p class="location"><?php echo $location?></p>
 			</div>
 		</div>
 	</div>
