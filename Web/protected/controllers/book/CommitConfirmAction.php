@@ -13,7 +13,7 @@ class CommitConfirmAction extends CAction{
 			);
 			$proxy = new CReservation();
 			$num = $proxy->getNumber($date,$hubId);
-			if($num['count']['num']<50){
+			if($num['count']<50 && $num['count']>0){
 				$result = $proxy->createReservation($data);
 				echo CJSON::encode(array('code'=>200,'message'=>'success'));
 			} else {
