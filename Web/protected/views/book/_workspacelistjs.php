@@ -7,10 +7,10 @@ $(function(){
 			CHelper.toggleTip('show','请重新选择时间','warn',1800);
 		},
 		success:function(response){
-			// console.log(response['count'][0][0]['num'])
+			// console.log(response)
 			var seatsLeft;
 			for(var i = 0;i < $('.option').length;i++){
-				seatsleft =50-response['count'][i][0]['num'];
+				seatsleft =50-response['count'][i][0];
 				$('.option:eq('+i+') .seatsLeft').html(seatsleft);
 				$('.option:eq('+i+') input[name="seatsLeft"]').val(seatsleft);
 			}
