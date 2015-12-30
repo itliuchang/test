@@ -2,7 +2,7 @@
 class MyReservationsAction extends CAction{
 	public function run(){
 		$reservation =new CReservation;
-		Yii::app()->user->id = 1187;
+		// Yii::app()->user->id = 1187;
 		$upcoming = $reservation->getupcomingRes(Yii::app()->user->id);
 		$previous = $reservation->getpreRes(Yii::app()->user->id);
 		// print_r($upcoming);die;

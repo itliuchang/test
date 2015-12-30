@@ -2,6 +2,7 @@
 class CancelAction extends CAction{
 	public function run(){
 		if(Yii::app()->request->isAjaxRequest){
+			echo 'fsd';die;
 			$id = Yii::app()->request->getParam('id');
 			$reservation = new CReservation;
 			$result = $reservation->cancel($id);
