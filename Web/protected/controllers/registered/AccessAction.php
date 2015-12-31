@@ -14,6 +14,7 @@ class AccessAction extends CAction{
 		}else{
 			$tem = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 			$status = $tem->status;
+			// Yii::log($status, CLogger::LEVEL_ERROR,'status');
 			switch ($status) {
 				case 1:
 					$this->controller->redirect('/user/updateProfile');

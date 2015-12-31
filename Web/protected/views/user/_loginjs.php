@@ -56,7 +56,7 @@ $(function(){
 			}else{
 				CHelper.asynRequest('/login',{mobile:$('.phoneContent input').first().val(),code:$('.phoneContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){
-						location.href='/post/newlist';
+						location.href='/registered/access';;
 					},
 					failure:function(d){
 						CHelper.toggleTip('show',d.message,'error',1000);
