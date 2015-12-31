@@ -7,6 +7,6 @@
 	</div>
 	<div class="footer">
 		<a href="/registered/productlist" class="open">Open</a>
-		<a href="#" class="private">Private</a>
+		<a href="/registered/private" class="private">Private</a>
 	</div>
 </div>
