@@ -38,11 +38,12 @@ $(function(){
 
 	var selectime = '';
 	$('.date').change(function(){
-		var date = $(this).val();
+		var datei = $(this).val();
 		selectime = new Date(date).getTime();
-		var id = $('input[name="id"]').val();
+		var id = $('input[name="id"]').val(),
+			date = '';
 		CHelper.asynRequest('/book/roomshow-'+id,{
-				"date":date,
+				"date":datei,
 			},{
 				error:function(xhr,msg){
 					console.log(xhr)
@@ -85,18 +86,18 @@ $(function(){
 		});
 	});
 
-	var last=''
-
+	var last='',
+		start='',
+		time='';
 	$('.starts').change(function(){
-		var start=$(this).val();		
-		$('.times').change(function(){			
-			if(last!='')
+		start=$(this).val();		
+		if(last!='')
 			last.forEach(function(v){
 				$('.option .piece').eq(v).removeClass('myselected')
 			});
-			var num = start,
-			time = $(this).val()
-			if(start!=''){
+			var num = start;
+			// time = $(this).val()
+			if(time!=''){
 				var length = time/0.5;
 				var array=[];
 				if(length!=0){
@@ -105,7 +106,7 @@ $(function(){
 					}
 				} else {
 					array=[num]
-				}console.log(other);
+				}
 				var x=eval($('.option input[name="other"]').attr("data-other"));
 				var result='';
 				for(var b in array){
@@ -126,8 +127,45 @@ $(function(){
 					last=array
 				}
 			}
-		})
 	});
+	$('.times').change(function(){			
+			if(last!='')
+			last.forEach(function(v){
+				$('.option .piece').eq(v).removeClass('myselected')
+			});
+			var num = start;
+			time = $(this).val();
+			if(start!=''){
+				var length = time/0.5;
+				var array=[];
+				if(length!=0){
+					for(var n=0;n<length;n++){
+						array.push(num++);
+					}
+				} else {
+					array=[num]
+				}
+				var x=eval($('.option input[name="other"]').attr("data-other"));
+				var result='';
+				for(var b in array){
+					for(var a in x){
+						if(x[a]===array[b]){
+							result='false'
+							break;
+						} 
+
+					}
+				}
+				if(result=='false'){
+					CHelper.toggleTip('show', '和别人的时间有冲突，请重选', 'error',1800);
+				} else{
+					array.forEach(function(v){
+						$('.option .piece').eq(v).addClass('myselected');
+					})
+					last=array
+				}
+			}
+		});
 	
 	$('.submit').hammer().on('tap',function(e){
 		e.gesture.srcEvent.preventDefault();
@@ -142,6 +180,7 @@ $(function(){
 		}else {
 			CHelper.asynRequest('/book/roomshow-'+id,{
 				"date":date,
+				"hub":hubId
 			},{
 				error:function(){
 					CHelper.toggleTip('show','error','warn',1000);

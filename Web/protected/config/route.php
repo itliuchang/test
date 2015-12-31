@@ -12,8 +12,12 @@ return array(
         'wechat/quiet/login' => 'wechat/wechatQuietConnect',
         'wechat/quiet/login/callback' =>'wechat/wechatQuietConnectCallback',
         
+        'book/roomshow-<id:\d+>/<date:\w\S+>' => 'book/roomshow',
+        // 'book/roomshow-<id:\d+>/<date:\w\S+>' => 'book/roomshow',
         'book/roomshow-<id:\d+>' => 'book/roomshow',
         'book/workspaceconfirm-<id:\d+>/<date:\w\S+>' => 'book/workspaceconfirm',
+        'book/roomlist-<id:\d+>' => 'book/roomlist',
+
         'company/updateprofile-<id:\d+>' => 'company/updateprofile',
         'company/profile-<id:\d+>' => 'company/profile',
         'company/profile' => 'company/profile',
