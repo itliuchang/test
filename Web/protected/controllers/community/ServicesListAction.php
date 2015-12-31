@@ -1,7 +1,7 @@
 <?php
 class ServicesListAction extends CAction{
-	$this->controller->pageTitle ="Community";
 	public function run(){
+		$this->controller->pageTitle ="Community";
 		$servicelist = new CCommunity;
 		$result = $servicelist->getServiceList();
 		if($result['code']==200){

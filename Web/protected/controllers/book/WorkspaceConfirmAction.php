@@ -1,7 +1,7 @@
 <?php
 class WorkspaceConfirmAction extends CAction{
-	$this->controller->pageTitle ="Workspaces";
 	public function run($id,$date){
+		$this->controller->pageTitle ="Workspaces";
 		$date = str_replace('$','-',$date);
 		$proxy = new CHub();
 		$result = $proxy->getHubInfo($id);

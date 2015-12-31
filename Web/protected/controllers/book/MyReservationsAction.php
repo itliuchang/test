@@ -1,7 +1,7 @@
 <?php
 class MyReservationsAction extends CAction{
-	$this->controller->pageTitle ="My Reservations";
 	public function run(){
+		$this->controller->pageTitle ="My Reservations";
 		$reservation =new CReservation;
 		// Yii::app()->user->id = 1187;
 		$upcoming = $reservation->getupcomingRes(Yii::app()->user->id);
