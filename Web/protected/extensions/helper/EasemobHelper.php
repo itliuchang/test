@@ -25,6 +25,7 @@ class EasemobHelper extends Easemob{
     public static function initIM($uid, $data){
         //注册环信
         usleep(200*1000); //暂停200毫秒，防接口次数调用超出
+        $data['password'] = 'nakedim';
         self::getInstance()->accreditRegister($data);
         //创建系统消息的帐号
         $mr = new MessageRelation;
