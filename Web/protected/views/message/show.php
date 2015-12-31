@@ -51,7 +51,7 @@
 	<?php if($user['id'] != 0): ?>
 		<div class="footer">
 			<textarea placeholder="Reply" rows="1"></textarea>
-			<a href="javascript:void(0)">SEND</a>
+			<a class="sendbtn" href="javascript:void(0)">SEND</a>
 		</div>
 	<?php endif; ?>
 </div>
@@ -59,7 +59,9 @@
 <?php echo $this->renderPartial('_template') ?>
 <script type="text/javascript">
 	var friendId = '<?php echo $friendId ?>',
-	    myportrait = '<?php Yii::app()->user->getState("portrait") ?>';
+	    myportrait = '<?php Yii::app()->user->getState("portrait") ?>',
+	    fportrait = '<?php echo $fportrait ?>',
+	    appkeyIm = '<?php echo Yii::app()->params["partner"]["emchat"]["appkey"] ?>';
 </script>
 <?php
 	$cs = Yii::app()->clientScript;
