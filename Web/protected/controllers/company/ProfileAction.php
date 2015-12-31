@@ -1,7 +1,6 @@
 <?php
 class ProfileAction extends CAction{
 	public function run($id=null){
-		$this->controller->pageTitle ="Company Profile";
 		if($id){
 			$company = Company::model()->findByAttributes(array('id' => $id));
 			$service = Service_company::model()->findAllByAttributes(array('companyId'=>$id,'status'=>1));

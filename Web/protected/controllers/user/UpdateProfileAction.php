@@ -1,7 +1,6 @@
 <?php
 class UpdateProfileAction extends CAction{
 	public function run(){
-		$this->controller->pageTitle ="Profile";
 		if(Yii::app()->request->isAjaxRequest){
 			$id = Yii::app()->user->id;
 			$user = User::model()->findByAttributes(array('id'=>$id));

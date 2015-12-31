@@ -1,6 +1,5 @@
 <?php
 class RoomListAction extends CAction{
-	$this->controller->pageTitle ="Rooms";
 	public function run($id=''){
 		$id = $id==''?1:$id;
 		$now = date('Y-m-d',time());

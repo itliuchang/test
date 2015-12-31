@@ -1,7 +1,6 @@
 <?php
 class UpdateProfileAction extends CAction{
 	public function run($id=null){
-		$this->controller->pageTitle ="Company Profile";
 		if(!$id){
 			if(Yii::app()->request->isAjaxRequest){
 				$id = Yii::app()->request->getParam('id');
