@@ -9,6 +9,10 @@ require_once('useragent.class.php');
 require_once('emoji.php');
 
 class Assist{
+    public static function timestampToMonthTimestamp($time){
+        return date('t',$time)*86400;
+    }
+
     public static function getQiniuDomain($imgUrl, $extend = ''){
         if(preg_match('/^https?:/i', $imgUrl)){
             $res = $imgUrl;

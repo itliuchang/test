@@ -25,8 +25,8 @@ class OrderController extends Controller{
 		$orderId = $orderId['data']['orderId'];
 		$times = Yii::app()->db->createCommand()->setText('select times from product where status!=0 and id='.$productType)->queryRow();
         for($i = 0;$i<$productNum;$i++){
-			$rtuorder = $order->createProduct(array('orderId'=>$orderId,'totalTimes'=>$times['times'],'usedTimes'=>0  ,'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+2505600)));
-			$date = $date+2592000;
+			$rtuorder = $order->createProduct(array('orderId'=>$orderId,'totalTimes'=>$times['times'],'usedTimes'=>0  ,'startDate'=>date('Ymd',$date),'endDate'=>date('Ymd',$date+Assist::timestampToMonthTimestamp($date))));
+			$date = $date+Assist::timestampToMonthTimestamp($date)+86400;
 		}
         $input = new WxPayUnifiedOrder();
         $input->SetBody($productName);
