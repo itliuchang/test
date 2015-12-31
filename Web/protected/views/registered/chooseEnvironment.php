@@ -17,6 +17,6 @@
 	</div>
 	<div class="footer">
 		<a href="/registered/productlist" class="open">OPEN DESK</a>
-		<a href="#" class="private">DESIGNATED POD</a>
+		<a href="/registered/private" class="private">DESIGNATED POD</a>
 	</div>
 </div>

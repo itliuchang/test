@@ -30,8 +30,11 @@ class UpdateProfileAction extends CAction{
 		} else {
 			$id = Yii::app()->user->id;
 			$user = User::model()->findByAttributes(array('id' => $id));
+			$proxy = new CHub;
+			$hub = $proxy->getHubList();
 			$this->controller->render('updateProfile', array(
-				'user' => $user
+				'user' => $user,
+				'hub' => $hub['data']
 			));
 		}
 	}

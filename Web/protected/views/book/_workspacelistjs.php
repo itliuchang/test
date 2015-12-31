@@ -4,7 +4,7 @@ $(function(){
 			"date":date
 	},{
 		error:function(msg){
-			CHelper.toggleTip('show','请重新选择时间','warn',1800);
+			CHelper.toggleTip('show','Please select time again','warn',1800);
 		},
 		success:function(response){
 			// console.log(response)
@@ -51,7 +51,7 @@ $(function(){
 				if(response['num']<=0){
 					CHelper.toggleTip('show','You have no times','warn','2000');
 				} else if(response['count']>0){
-					CHelper.toggleTip('show','On the same day can only choose once the same place','warn',2000);
+					CHelper.toggleTip('show','On the same day can only choose once','warn',2000);
 				}else {
 					if(seatsleft<=0){
 						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1800);
