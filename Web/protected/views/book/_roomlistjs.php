@@ -38,7 +38,9 @@ $(function(){
 				error:function(xhr,msg){
 					console.log(xhr)
 				},
-				success:function(response){
+				success:function(response){					
+					$('.option input[name="other"]').attr("data-other",response['other'])
+					$('.option input[name="my"]').attr("data-my",response['my'])
 					 $('.piece').removeClass('myselected').removeClass('selected');
 					 for(var i = 0;i < $('.option').length;i++){
 						my = eval(response[i]['my']);
