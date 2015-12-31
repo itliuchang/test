@@ -69,6 +69,9 @@ class WxJSPayNotifyHelper extends WxPayNotify{
             $userId = $orderitem->userId;
             $user = User::model()->findByAttributes(array('id'=>$userId));
             Yii::log($data['attach'], CLogger::LEVEL_ERROR, 'payment.notify');
+            if($user->status==0){
+                $user->status=1;
+            }
             $user->deadDate = $data['attach'];
             if($user->save()){
                 return true;
