@@ -10,7 +10,8 @@ $(function(){
 			// console.log(response)
 			var seatsLeft;
 			for(var i = 0;i < $('.option').length;i++){
-				seatsleft =50-response['count'][i][0];
+				var seats = $('.option:eq('+i+') input[name="seatsLeft"]').val();
+				var seatsleft =seats-response['count'][i][0];
 				$('.option:eq('+i+') .seatsLeft').html(seatsleft);
 				$('.option:eq('+i+') input[name="seatsLeft"]').val(seatsleft);
 			}

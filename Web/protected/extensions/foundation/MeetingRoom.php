@@ -54,7 +54,11 @@ Class MeetingRoom{
 					'data' => $value
 				);
 		}else{
-			return '';
+			return array(
+					'code' => '200',
+					'mes' => '',
+					'data' =>''
+				);
 		}
 	}
 

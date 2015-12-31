@@ -1,7 +1,7 @@
 <div id="roomshow">
 	<div class="option">
 	<input type='hidden' name='id' value='<?php echo $data['id']?>'>
-	<input type='hidden' name='hubid' value='<?php echo '1'?>'>
+	<input type='hidden' name='hubid' value='<?php echo $hub?>'>
 	<input type='hidden' name='my' data-my='<?php echo $my?>'>
 	<input type='hidden' name='other' data-other='<?php echo $other?>'>
 		<div class="imgWrapper">

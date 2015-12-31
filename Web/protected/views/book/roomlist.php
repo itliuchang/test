@@ -1,9 +1,12 @@
 <div id="roomlist">
 	<select class="location">
-		<option>fuxing</option>
+	<?php foreach($hub as $list):?>
+		<option value='<?php echo $list['id']?>' <?php echo $list['id']==$hubid?'selected=selected':''?>><?php echo $list['name']?></option>
+	<?php endforeach;?>
 	</select>
 	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>" max="<?php echo (date('Y')+2).'-'.date('m-d')?>">
 	<h3>NEAREST AVAILABLE:</h3>
+	<?php if($data):?>
 	<?php foreach($data as $value): ?>
 	<div class="option">
 		<input type="hidden" name='id'  value='<?php echo $value['info']['id']?>'>
@@ -94,11 +97,10 @@
 			<div class="col-xs-4 mybook"><span></span>My Booking</div>
 			<div class="col-xs-4 available"><span></span>Available</div>
 			<div class="col-xs-4 unavailable"><span></span>Unavailable</div>
-		</div>
-		
+		</div>		
 	</div>
-	
 	<?php endforeach; ?>
+	<?php endif;?>
 </div>
 
 <?php

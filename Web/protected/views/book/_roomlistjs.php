@@ -1,5 +1,8 @@
 $(function(){
-
+	$('.location').change(function(){
+		var id = $('.location').val();
+		location.href = '/book/roomlist-'+id;
+	});
 	for(var i = 0;i < $('.option').length;i++){
 		my = eval($('.option:eq('+i+') input[name="my"]').attr("data-my"));
 		if(my=='')
@@ -20,9 +23,11 @@ $(function(){
 		
 	$('.option').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
-		var id = $(this).children('input[name="id"]').val();
-
-		location.href='/book/roomshow-'+id;
+		var id = $(this).children('input[name="id"]').val(),
+			hub = $('.location').val(),
+			date = $('#date').val();
+			date = date.replace(/-/g,'$');
+		location.href='/book/roomshow-'+id+'/'+date+'/'+hub;
 	});	
 
 	$('#date').change(function() {

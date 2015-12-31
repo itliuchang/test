@@ -1,12 +1,12 @@
 <div id="workspacelist">
-	<select class="location">
+	<!-- <select class="location">
 		<option>New York</option>
-	</select>
+	</select> -->
 	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>" max="<?php echo (date('Y')+1).'-'.date('m-d')?>">
 	<?php foreach($data as $value):?>
 	<div class="option">
 	<input type='hidden' name='id' value='<?php echo $value['id']?>'>
-	<input type="hidden" name='seatsLeft' value='0'>
+	<input type="hidden" name='seatsLeft' value='<?php echo $value['seats']?>'>
 		<div class="imgWrapper">
 			<img src="<?php echo $value['picture']?>" alt="">
 		</div>
