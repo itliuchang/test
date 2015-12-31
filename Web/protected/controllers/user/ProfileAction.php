@@ -1,6 +1,7 @@
 <?php
 class ProfileAction extends CAction{
 	public function run($id=null){
+		$this->controller->pageTitle ="Profile";
 		if($id) {
 			$user = User::model()->with('companyid')->findByAttributes(array('id' => $id));
 		} else {

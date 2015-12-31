@@ -15,7 +15,6 @@
 	</div> -->
 	<div class="inputOption">
 		<label class="bigTitle">LOG IN INFORMATION</label>
-		<label class="smallTitle">Email</label>
 		<input type="email" placeholder="Email" class="email">
 		<input type="password" placeholder="Create a password" class="password">
 		<input type="password" placeholder="Repeat password" class="password">

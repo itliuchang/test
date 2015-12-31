@@ -1,6 +1,5 @@
 #companyUpdateProfile{
 	background-color: #ececec;
-	padding-bottom: 80px;
 }
 #companyUpdateProfile .top{
 	width: 100%;
@@ -85,7 +84,7 @@
 }
 #companyUpdateProfile .birthday::-webkit-inner-spin-button { visibility: hidden; }
 #companyUpdateProfile .link{
-	margin-bottom: 80px;
+	margin-bottom: 20px;
 }
 #companyUpdateProfile .link input{
 	padding-left: 40px;
@@ -113,8 +112,6 @@
 	background-size: 17px;
 }
 #companyUpdateProfile .footer{
-	position: fixed;
-	bottom: 0;
 	width: 100%;
 	height: 50px;
 	background-color: #fb9b41;

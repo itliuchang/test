@@ -1,6 +1,6 @@
 <div id="productlist">
 	<h2 class="title">
-		CHOOSE MEMBERSHIP TYPE
+		CHOOSE MEMBERSHIP
 	</h2>
 	<div class="item selected">
 		<input type="text" value="1" class="productType" hidden>
@@ -13,9 +13,9 @@
 		</div>
 		<div class="content">
 			<span class="type">STARTER</span>
-			<p class="priceWrapper"><span class="icon">&yen;</span><span class="price">300</span>/month</p>
-			<p><span class="key">Workspace：</span>1 days/mo included</p>
-			<p><span class="key">Conference：</span>unlimited</p>
+			<p class="priceWrapper"><span class="icon">&yen;</span><span class="price">300</span></p>
+			<p><span class="key">Workspace：</span>1 days/month included</p>
+			<p><span class="key">Online Community：</span>unlimited</p>
 		</div>
 	</div>
 	<div class="item">
@@ -29,9 +29,9 @@
 		</div>
 		<div class="content">
 			<span class="type">STARTER PLUS</span>
-			<p class="priceWrapper"><span class="icon">&yen;</span><span class="price">1000</span>/month</p>
-			<p><span class="key">Workspace：</span>5 days/mo included</p>
-			<p><span class="key">Conference：</span>unlimited</p>
+			<p class="priceWrapper"><span class="icon">&yen;</span><span class="price">1000</span></p>
+			<p><span class="key">Workspace：</span>5 days/month included</p>
+			<p><span class="key">Online Community：</span>unlimited</p>
 		</div>
 	</div>
 	<div class="item">
@@ -45,9 +45,9 @@
 		</div>
 		<div class="content">
 			<span class="type">UNLIMITED</span>
-			<p class="priceWrapper"><span class="icon">&yen;</span><span class="price">2100</span>/month</p>
+			<p class="priceWrapper"><span class="icon">&yen;</span><span class="price">2100</span></p>     
 			<p><span class="key">Workspace：</span>unlimited</p>
-			<p><span class="key">Conference：</span>unlimited</p>         
+			<p><span class="key">Online Community：</span>unlimited</p>         
 		</div>
 	</div>
 	<a class="footer">NEXT</a>

@@ -1,5 +1,5 @@
 <div id="orderDetail">
-	<h2 class="title">MEMBERSHIP SUMMARY</h2>
+	<h2 class="title">ORDER SUMMARY</h2>
 	<div class="content">
 		<?php for($i=0,$date=date("U");$i<$num;$i++): ?>
 		<div class="month">
@@ -14,7 +14,7 @@
 			<h3 class="price">&yen;<?php echo $num*$price ?></h3>
 		</div>
 	</div>
-	<div class="agree"><div class="icon hasAgree"></div><p>I have read and understood the <a href="#">Terms & Conditions</a> of naked Hub and hereby agree to fully abide by them</p></div>
+	<div class="agree"><div class="icon hasAgree"></div><p>I have read and understood the <a href="#">Terms & Conditions</a> of naked Hub and hereby agree to abide by them.</p></div>
 	<div class="footer">Wechat Pay</div>
 </div>
 <script type="text/javascript">
