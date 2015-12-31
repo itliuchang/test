@@ -29,7 +29,7 @@ class CCommunity{
 			);
 	}
 	public function getCompanyListByService($id=null){
-		$result = Yii::app()->db->CreateCommand()->setText('select  distinct a.*,h.name as locationName from company a left join service_company  b on a.id=b.companyId left join hub h on a.hubId=h.id where a.id  in (select  c.companyId from service_company c left join service d  on c.serviceId=d.id  where b.status!=0 and d.parentId='.$id.')')->queryAll();
+		$result = Yii::app()->db->CreateCommand()->setText('select  distinct a.*,h.name as locationName from company a left join service_company  b on a.id=b.companyId left join hub h on a.hubId=h.id where a.id  in (select  c.companyId from service_company c left join service d  on c.serviceId=d.id  where c.status!=0 and d.parentId='.$id.')')->queryAll();
 		return array(
 				'code' => 200,
 				'mes' => 'success',
