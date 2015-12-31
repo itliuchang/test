@@ -24,9 +24,9 @@
 		</div>
 		<label>gender</label>
 		<select class="sex">
+			<option value='0'>Please choose</option>
 			<option value='1'>male</option>
 			<option value='2'>female</option>
-			<option value='0'>Prefer not to say</option>
 		</select>
 	</div>
 	<div class="inputSection">

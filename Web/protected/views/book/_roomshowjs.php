@@ -118,7 +118,7 @@ $(function(){
 					}
 				}
 				if(result=='false'){
-					CHelper.toggleTip('show', '和别人的时间有冲突，请重选', 'error',1800);
+					CHelper.toggleTip('show', 'Time choice conflict with others', 'error',1800);
 				} else{
 					array.forEach(function(v){
 						$('.option .piece').eq(v).addClass('myselected');
@@ -156,7 +156,7 @@ $(function(){
 					}
 				}
 				if(result=='false'){
-					CHelper.toggleTip('show', '和别人的时间有冲突，请重选', 'error',1800);
+					CHelper.toggleTip('show', 'Time choice conflict with others', 'error',1800);
 				} else{
 					array.forEach(function(v){
 						$('.option .piece').eq(v).addClass('myselected');
@@ -175,7 +175,7 @@ $(function(){
 			date = $('.date').val(),
 			start = $('.starts').val();
 		if(starts=='无' || time=='' || date==''){
-			CHelper.toggleTip('show', '你还没有选择时间', 'warn', 1800);
+			CHelper.toggleTip('show', 'You should choose time', 'warn', 1800);
 		}else {
 			CHelper.asynRequest('/book/roomshow-'+id,{
 				"date":date,
@@ -207,7 +207,7 @@ $(function(){
 							}
 						}
 						if(result=='false'){
-							CHelper.toggleTip('show', '时间和别人有冲突', 'error',1800);
+							CHelper.toggleTip('show', 'Time choice conflict with others', 'error',1800);
 							x.forEach(function(v){
 								$('.option .piece').eq(v).removeClass('myselected');
 							})
@@ -220,13 +220,13 @@ $(function(){
 									"hubId":hubId
 								},{
 									before:function(xhr){
-										CHelper.toggleTip('show', '创建预约中..', 'loader');
+										CHelper.toggleTip('show', 'Creating...', 'loader');
 									},
 									error:function(msg){
 										CHelper.toggleTip('show', msg , 'error', 1000);
 									},
 									success:function(){
-										CHelper.toggleTip('show','预约成功,2s后跳转','success',2000);
+										CHelper.toggleTip('show','SUCCESS','success',2000);
 										setInterval(function(){
 											location.href = '/more';
 										},2000);

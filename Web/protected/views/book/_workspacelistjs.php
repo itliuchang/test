@@ -49,9 +49,9 @@ $(function(){
 			success:function(response){
 				// console.log(response)
 				if(response['num']<=0){
-					CHelper.toggleTip('show','你本月已没有次数','warn','2000');
+					CHelper.toggleTip('show','You have no times','warn','2000');
 				} else if(response['count']>0){
-					CHelper.toggleTip('show','同一天同一HUB只能预约一次','warn',2000);
+					CHelper.toggleTip('show','On the same day can only choose once the same place','warn',2000);
 				}else {
 					if(seatsleft<=0){
 						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1800);
