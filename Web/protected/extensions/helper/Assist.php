@@ -10,7 +10,7 @@ require_once('emoji.php');
 
 class Assist{
     public static function timestampToMonthTimestamp($time){
-        return date('t',$time)*86400+86400;
+        return date('t',$time)*86400;
     }
 
     public static function getQiniuDomain($imgUrl, $extend = ''){
