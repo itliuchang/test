@@ -8,3 +8,8 @@
 	</div>
 	<a href="#" class="submit">SUBMIT</a>
 </div>
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_changepasswordjs', null ,true);
+    $cs->registerScript('changepassword', $js, CClientScript::POS_END);
+?>

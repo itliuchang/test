@@ -5,9 +5,10 @@
 	<?php endforeach;?>
 	</select>
 	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>" max="<?php echo (date('Y')+2).'-'.date('m-d')?>">
-	<h3>NEAREST AVAILABLE:</h3>
+	
 	<?php if($data):?>
 	<?php foreach($data as $value): ?>
+	<h3><?php echo $value['info']['name'] ?>:</h3>
 	<div class="option">
 		<input type="hidden" name='id'  value='<?php echo $value['info']['id']?>'>
 		<input type='hidden' name='my' data-my='<?php echo $value['my']?>'>
@@ -15,7 +16,7 @@
 		<div class="imgWrapper">
 			<img src="<?php echo $value['info']['picture'] ?>" alt="">
 			<div class="detail">
-				<h3><?php echo $value['info']['name'] ?></h3>
+				<h3></h3>
 				<p><span class="floor"><?php echo $value['info']['floor'] ?></span>FL<span class="peoples"><?php echo $value['info']['seats'] ?></span></p>
 			</div>
 		</div>

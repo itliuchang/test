@@ -3,7 +3,7 @@ class ChangePasswordAction extends CAction{
 	public function run(){
 		if(Yii::app()->request->isAjaxRequest){
 			$id = Yii::app()->user->id;
-			$id = 1186;
+			$id = 1199;
 			$user = User::model()->findByAttributes(array('id'=>$id));
 			
 			$oldPassword = Yii::app()->request->getParam('oldPassword');

@@ -1,22 +1,22 @@
 <div id="private">
 	<h2>BASIC INFO</h2>
 	<div class="inputOption">
-		<input type="text" placeholder="Full Name" class="name">
-		<input type="text" placeholder="Phone" class="phone">
-		<input type="text" placeholder="Email" class="email" >
-		<input type="text" placeholder="Retype email" class="remail" >
+		<input type="text" placeholder="Full Name" class="name" required='required'>
+		<input type="text" placeholder="Phone" class="phone" required='required'>
+		<input type="email" placeholder="Email" class="email" required='required'>
+		<input type="email" placeholder="Retype email" class="remail" required='required'>
 	</div>
 	
 	<div class="inputOption">
 		<label class='smalltitle'>I AM A...</label>
-		<input type="number" placeholder="Number of people" class="remail" >
-		<select class='membertype'>
+		<input type="number" placeholder="Number of people" class="number" required='required'>
+		<select class='membertype' required='required'>
 			<option value=''>请选择</option>
 			<?php foreach($type as $list):?>
 			<option value='<?php echo $list['id']?>'><?php echo $list['name']?></option>
 			<?php endforeach;?>
 		</select>
-		<select class='hub'>
+		<select class='hub' required='required'>
 			<option value=''>请选择</option>
 			<?php foreach($data as $list):?>
 				<option value='<?php echo $list['id']?>'><?php echo $list['location']?></option>
@@ -30,5 +30,6 @@
 </div>
 <?php
     $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_privatejs', null ,true);
     $cs->registerScript('regist', $js, CClientScript::POS_END);
 ?>
