@@ -36,14 +36,13 @@ $(function(){
 		$('.starts')
 	});
 
-	var selectime = '';
 	$('.date').change(function(){
-		var datei = $(this).val();
-		selectime = new Date(date).getTime();
-		var id = $('input[name="id"]').val(),
-			date = '';
+		var date = $(this).val(),
+			id = $('input[name="id"]').val(),
+			hub = $('input[name="hubid"]').val();
 		CHelper.asynRequest('/book/roomshow-'+id,{
-				"date":datei,
+				"date":date,
+				"hub":hub
 			},{
 				error:function(xhr,msg){
 					console.log(xhr)
