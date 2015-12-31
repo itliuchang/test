@@ -46,6 +46,7 @@ class WechatConnectCallbackAction extends CAction{
                             throw new CException(Yii::t('yii', '获取有效凭证失败'));
                         }
                     }catch(Exception $e){
+                        $this->controller->render('index');
                         // throw new CException(Yii::t('yii', $e->getMessage() ?: '内部服务错误'));
                     }
                 }
