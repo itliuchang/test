@@ -77,7 +77,7 @@ class UserIdentity extends CUserIdentity{
     
     public function authMail($email = '', $password = '', $bind = 0) {
     	try{
-    		$user = User::model()->find('status !=0 and email ='.$email);
+    		$user = User::model()->find('status !=0 and email ='."'".$email."'");
     		if(!empty($user)){
     			$this->errorCode = self::ERROR_NONE;
     			if($user->validatePassword($password)){
