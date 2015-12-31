@@ -6,7 +6,8 @@ class RegisteredController extends Controller{
 				'basicinfo' => 'application.controllers.registered.BasicInfoAction',
 				'productlist' => 'application.controllers.registered.ProductlistAction',
 				'chooseenvironment' => 'application.controllers.registered.ChooseEnvironmentAction',
-				'access' => 'application.controllers.registered.AccessAction'
+				'access' => 'application.controllers.registered.AccessAction',
+				'private' => 'application.controllers.registered.PrivateAction'
 			);
 	}
 }

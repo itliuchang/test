@@ -17,7 +17,9 @@ class ShowAction extends CAction{
                 'list' => array_reverse($data['data']), 'user' => $data['user']
             )));
         }else{
+            $friend = User::model()->findByPk($fid);
             $data['friendId'] = $fid;
+            $data['fportrait'] = $friend? $friend->portrait : '';
             $this->controller->render('show', $data);
         }
 	}
