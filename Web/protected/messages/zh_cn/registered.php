@@ -18,7 +18,7 @@
  */
 return array (
   "COMMUNITY" => "社区",
-  "naked Hub is a tribe of individuals who crave fulfilling work as part of a healthy life." => "已经是裸心社会员",
+  "naked Hub is a tribe of individuals who crave fulfilling work as part of a healthy life." => "裸心社是工作与乐玩相融合的社区式工作空间。这是一个多元的创意空间，让创意人和创业梦想家碰撞灵感，“合坐”一张桌，“合作”一个项目，“合做”一个梦。",
   "SPACES" => "空间",
   "Work in a naked space: beautiful design that brings nature indoors.Get all the facilities you need, with the extras that make coming to work fun." =>"在设计优美的裸心空间里工作，在室内也能亲近自然。工作需要的设施都为你准备好了，而且还有很多惊喜让你乐在其中。",
   "PERKS" => "会员优待",
