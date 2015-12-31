@@ -1,6 +1,5 @@
 <?php
 class OrderController extends Controller{
-	$this->pageTitle ="Order";
 	public function actionIndex(){
 		if(!Yii::app()->request->isAjaxRequest){
 			if(Yii::app()->user->isGuest){
