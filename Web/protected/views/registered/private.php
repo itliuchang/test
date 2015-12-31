@@ -11,13 +11,13 @@
 		<label class='smalltitle'>I AM A...</label>
 		<input type="number" placeholder="Number of people" class="number" required='required'>
 		<select class='membertype' required='required'>
-			<option value=''>请选择</option>
+			<option value=''>Please choose</option>
 			<?php foreach($type as $list):?>
 			<option value='<?php echo $list['id']?>'><?php echo $list['name']?></option>
 			<?php endforeach;?>
 		</select>
 		<select class='hub' required='required'>
-			<option value=''>请选择</option>
+			<option value=''>Please choose</option>
 			<?php foreach($data as $list):?>
 				<option value='<?php echo $list['id']?>'><?php echo $list['location']?></option>
 			<?php endforeach;?>

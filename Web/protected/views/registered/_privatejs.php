@@ -27,7 +27,7 @@ $(function(){
 				success:function(response){
 					CHelper.toggleTip('show','SUCCESS','success',1200);
 					setInterval(function(){
-						location.href = '/user/login';
+						location.href = '/wechat/index';
 					},1200);
 					
 				}
