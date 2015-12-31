@@ -5,7 +5,7 @@
 		<div class="month">
 			<p class="memberType">Membership</p>
 			<h2><?php echo $name ?></h2>
-			<p class="date"><?php echo date("Y/m/d",$date) ?>-<?php echo date("Y/m/d",$date+Assist::timestampToMonthTimestamp($date));$date = $date + Assist::timestampToMonthTimestamp($date)+86400;  ?></p>
+			<p class="date"><?php echo date("Y/m/d",$date) ?>-<?php echo date("Y/m/d",$date+Assist::timestampToMonthTimestamp($date)-86400);$date = $date + Assist::timestampToMonthTimestamp($date);  ?></p>
 			<div class="price"><h3>&yen;<?php echo $price ?></h3>/month</div>
 		</div>
 		<?php endfor; ?>
