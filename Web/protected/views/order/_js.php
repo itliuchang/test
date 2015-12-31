@@ -6,7 +6,7 @@ $(function(){
 		if($('.agree .icon').hasClass('hasAgree')){
 			callpay();
 		}else{
-			CHelper.toggleTip('show','同意协议才能支付','fail',1000);
+			CHelper.toggleTip('show','Consent agreement to pay','fail',1000);
 		}
 	});
 });

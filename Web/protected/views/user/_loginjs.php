@@ -10,7 +10,7 @@ $(function(){
 	$('.act').hammer().on('tap',timing);
 	function timing(){
 		if(!$('.phoneContent input').first().val()){
-			CHelper.toggleTip('show','请输入手机号码','error',1000);
+			CHelper.toggleTip('show','Please Input Mobile Phone','error',1000);
 		}else{
 		$(this).hammer().off();
 		var that = $(this);
@@ -35,7 +35,7 @@ $(function(){
 				CHelper.toggleTip('show',d.message,'error',1000);
 			},
 			error:function(){
-				CHelper.toggleTip('show','发送失败请稍候尝试','error',1000);
+				CHelper.toggleTip('show','fail','error',1000);
 			}
 		});
 	}
@@ -48,11 +48,11 @@ $(function(){
 	
 		var nowClass = $('.now').hasClass('phone')? 'phoneContent' : 'EmailContent';
 		if(!$('.'+nowClass+' input').first().val()||!$('.'+nowClass+' input').last().val()){
-			CHelper.toggleTip('show','您有未填的选项','error',1000);
+			CHelper.toggleTip('show','Some Input No Value','error',1000);
 		}else if(nowClass == 'phoneContent'){
 			var re = /^1\d{10}$/;
 			if(!re.test($('.phoneContent input').first().val())){
-				CHelper.toggleTip('show','电话号码格式有误','error',1000);
+				CHelper.toggleTip('show','Number Is Wrong','error',1000);
 			}else{
 				CHelper.asynRequest('/login',{mobile:$('.phoneContent input').first().val(),code:$('.phoneContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){
@@ -69,7 +69,7 @@ $(function(){
 		}else if(nowClass == 'EmailContent'){
 			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
 			if(!re.test($('.EmailContent input').first().val())){
-				CHelper.toggleTip('show','Email格式有误','error',1000);
+				CHelper.toggleTip('show','Email Is Wrong','error',1000);
 			}else{
 				CHelper.asynRequest('/login',{email:$('.EmailContent input').first().val(),password:$('.EmailContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){

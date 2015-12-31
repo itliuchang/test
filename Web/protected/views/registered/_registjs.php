@@ -2,7 +2,7 @@ $(function(){
 	$('.act').hammer().on('tap',timing);
 	function timing(){
 		if(!$('.phone').val()){
-			CHelper.toggleTip('show','请输入手机号码','error',1000);
+			CHelper.toggleTip('show','Please Input Mobile Phone','error',1000);
 		}else{
 		$(this).hammer().off();
 		var that = $(this);
@@ -29,7 +29,7 @@ $(function(){
 				$code.addClass('act').text('CODE');
 			},
 			error:function(){
-				CHelper.toggleTip('show','发送失败请稍候尝试','error',1000);
+				CHelper.toggleTip('show','fail','error',1000);
 			}
 		});
 	}
@@ -91,7 +91,7 @@ $(function(){
 	
 		CHelper.asynRequest('/user/regist', data,{
 			before:function(){
-				CHelper.toggleTip('show','处理中..','success');
+				CHelper.toggleTip('show','ing..','success');
 			},
 			success:function(){
 				location.href='/payment/wxpay/jsapi/';

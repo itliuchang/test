@@ -32,7 +32,7 @@ $(function(){
 				'num' : num,
 			},{
 				before:function(){
-				CHelper.toggleTip('show','处理中..','success');
+				CHelper.toggleTip('show','ing..','success');
 				},
 				success:function(){
 					location.href='/registered/basicInfo';

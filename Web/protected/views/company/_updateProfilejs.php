@@ -90,7 +90,7 @@ $(function(){
 				linkedinid:linkedin,
 			},{
 				before:function(){
-					CHelper.toggleTip('show','提交中...');
+					CHelper.toggleTip('show','Creating...');
 				},
 				error:function(msg,response){
 					// console.log(response)
@@ -98,7 +98,7 @@ $(function(){
 				},
 				failure:function(response){
 					if(response.code==400)
-						CHelper.toggleTip('show','名字重复，请选择别的名字','warn',2000);
+						CHelper.toggleTip('show','Name Repeat','warn',2000);
 				},
 				success:function(response){
 					// console.log(response['status'])

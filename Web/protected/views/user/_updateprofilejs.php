@@ -56,7 +56,7 @@ $(function(){
 				status:status,
 			},{
 				before:function(){
-					CHelper.toggleTip('show','提交中...');
+					CHelper.toggleTip('show','commiting...');
 				},
 				error:function(msg){
 					CHelper.toggleTip('show','ERROR','warn',1000);
