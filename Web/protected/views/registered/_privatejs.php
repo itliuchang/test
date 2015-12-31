@@ -25,7 +25,11 @@ $(function(){
 					CHelper.toggleTip('show',msg,'error',1000);
 				},
 				success:function(response){
-					location.href = '/user/login';
+					CHelper.toggleTip('show','SUCCESS','success',1200);
+					setInterval(function(){
+						location.href = '/user/login';
+					},1200);
+					
 				}
 			});
 		}

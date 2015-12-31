@@ -28,6 +28,14 @@
 			<option value='1'>male</option>
 			<option value='2'>female</option>
 		</select>
+		<div class="hub">
+		<label>Location</label>
+		<select class='location'>
+		<?php foreach($hub as $list):?>
+			<option value='<?php echo $list['id']?>' <?php echo $list['id']==$user['location']?'selected=selected':''?>><?php echo $list['location']?></option>
+		<?php endforeach;?>
+		</select>
+		</div>
 	</div>
 	<div class="inputSection">
 		<textarea placeholder="Enter your skills(PS:design,develop)" maxlength=140 rows=4 class='skills'><?php echo $user['skills']?></textarea>

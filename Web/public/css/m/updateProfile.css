@@ -139,3 +139,11 @@
 }
 #updateProfile .sex option{
 }
+#updateProfile .hub{
+	margin-top: 10px;
+	border-top: 1px solid #e3e3e3;
+	padding-top: 10px;
+}
+#updateProfile .hub .location{
+	margin-left: 10px;
+}
