@@ -17,8 +17,14 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  "BECOME A NAKEDHUB MEMBER" => "成为裸心社会员",
-  "I'M ALREADY A NAKEHUB MEMBER" => "已经是裸心社会员",
-  "THE COMMUNITY" => "社区",
-  "NakeHub members are incredibly diverse,ranging from the startup,freelancer,and artist to the small business and large multinational.Got a question ?Ask the community." =>"NakeHub成员是令人难以置信的多样化，从启动，自由职业者和艺术家的小型企业和大型跨国企业有一个问题？问社区。"
+  "COMMUNITY" => "社区",
+  "naked Hub is a tribe of individuals who crave fulfilling work as part of a healthy life." => "已经是裸心社会员",
+  "SPACES" => "空间",
+  "Work in a naked space: beautiful design that brings nature indoors.Get all the facilities you need, with the extras that make coming to work fun." =>"在设计优美的裸心空间里工作，在室内也能亲近自然。工作需要的设施都为你准备好了，而且还有很多惊喜让你乐在其中。",
+  "PERKS" => "会员优待",
+  "Beyond the community and space,we sprinkle in some extra treats that make working naked fun." => "除了工作社区与工作空间，裸心社还有额外的小惊喜，让你对工作充满期待。",
+  "FUN" => "会员福利",
+  "naked Hub is a fresh take on work and play.Home to a diverse community of creatives, entrepreneurs and dreamers, these co-working hubs are a place to come together to learn, meet and collaborate with your peers." => "享受团队协作，却免受考勤限制。",
+  "JOIN THE COMMUNITY" => "加入我们",
+  "LOGIN" => "登录",
 );
