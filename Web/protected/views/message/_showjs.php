@@ -82,7 +82,8 @@ $(function(){
         if(!content){
             CHelper.toggleTip('show', '消息是空的', 'warn', 800);
         }else{
-            content = Easemob.im.Helper.parseTextMessage(content.replace(/\n/g, '<br>'));
+            // content = Easemob.im.Helper.parseTextMessage(content.replace(/\n/g, '<br>'));
+            content = content.replace(/\n/g, '<br>');
             var html = template('showTpl', {
                 data: [{senderID: systemVar.uid, ctime: (new Date).getTime(), body: content}],
                 uid: systemVar.uid,
