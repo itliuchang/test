@@ -177,7 +177,7 @@ class EasemobHelper extends Easemob{
 
     //添加好友
     public static function addAFriend($fid){
-        if($fid){
+        if($fid == 0){
            $mr = MessageRelation::model()->findBySql('select * from messageRelation where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
            $senderID = Yii::app()->user->id;
            $RecID = 0;
