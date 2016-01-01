@@ -22,15 +22,15 @@ $(function(){
         conn.init({
             https: true,
             url: 'wss://im-api.easemob.com/ws/',
-            onOpened: function(conn) {
-                // console.info('成功登录', conn);
+            onOpened: function(_conn){
+                // console.info('成功登录', _conn);
                 conn.setPresence();
                 if(conn.isOpened()){
                     conn.heartBeat(conn);
                 }
             },
             onTextMessage: function(message){
-                console.info('接收消息', message);
+                // console.info('接收消息', message);
                 var html = template('showTpl', {
                     data: [{senderID: friendId, ctime: (new Date).getTime(), body: message.data}],
                     uid: systemVar.uid,
