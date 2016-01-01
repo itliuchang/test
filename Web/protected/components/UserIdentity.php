@@ -53,7 +53,7 @@ class UserIdentity extends CUserIdentity{
     	try{
     		$_code = Yii::app()->session['login_code'.$mobile];
     		if ($_code && $_code == $code) {
-    			$user = User::model()->find('status !=0 and mobile ='.$mobile);
+    			$user = User::model()->find('status!=0 and mobile=:mobile', array(':mobile' => $mobile));
     			if(!empty($user)){
     				$this->errorCode = self::ERROR_NONE;
     				
@@ -77,7 +77,7 @@ class UserIdentity extends CUserIdentity{
     
     public function authMail($email = '', $password = '', $bind = 0) {
     	try{
-    		$user = User::model()->find('status !=0 and email ='."'".$email."'");
+    		$user = User::model()->find('status!=0 and email=:email', array(':email' => $email));
     		if(!empty($user)){
     			$this->errorCode = self::ERROR_NONE;
     			if($user->validatePassword($password)){

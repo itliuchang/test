@@ -32,9 +32,9 @@ return array(
 
 
         'message(/<page:\d+>(/<size:\d+>)?)?' => 'message',
-        'message/<fid:\w+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',
-        'message/friend/<fid:\w+>/add' => 'message/addfriend',
-        'message/<fid:\w+>/send' => 'message/sendmsg',
+        'message/<fid:\d+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',
+        'message/friend/<fid:\d+>/add' => 'message/addfriend',
+        'message/<fid:\d+>/send' => 'message/sendmsg',
 
         '<controller:\w+>/<id:\d+>'=>'<controller>/view',
         '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
