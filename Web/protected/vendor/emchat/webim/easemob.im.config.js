@@ -15,6 +15,7 @@ Easemob.im.config = {
     /*
         连接时提供appkey
     */
-    appkey: "easemob-demo#chatdemoui",
+    // appkey: "easemob-demo#chatdemoui",
+    appkey: "naked#hubapp",
     https : true
 }

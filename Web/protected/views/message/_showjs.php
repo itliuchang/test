@@ -39,6 +39,33 @@ $(function(){
                 });
                 $('#messageshow .wrapper').append(html);
             },
+            onEmotionMessage: function(message){
+                console.info(message);
+            },
+            onPictureMessage: function(message){
+                console.info(message);
+            },
+            onAudioMessage: function(message){
+                console.info(message);
+            },
+            onLocationMessage: function(message){
+                console.info(message);
+            },
+            onFileMessage: function(message){
+                console.info(message);
+            },
+            onVideoMessage: function(message){
+                console.info(message);
+            },
+            onPresence: function(message){
+                console.info(message);
+            },
+            onRoster: function(message){
+                console.info(message);
+            },
+            onInviteMessage: function(message){
+                console.info(message);
+            },
             onClosed: function(){
                 conn.clear();
                 conn.onClosed();
