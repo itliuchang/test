@@ -127,6 +127,8 @@ class EasemobHelper extends Easemob{
     //分页获取当前用户与某好友的聊天消息列表,使用start而非使用常规分页是为了避免当在聊天窗口有新的聊天记录时获取消息列表错位的问题
     public static function getAllMessage($fid, $start = 0, $size = 15){
         //这里倒序查数据库,在页面中中倒序输出这里的结果,这样上拉聊天记录时消息显示顺序就正确了: 按时间正序排序了
+        $start = (int)$start;
+        $size = (int)$size;
         if($fid == 0){//系统通知与消息
             $sysaccount = Yii::app()->params['partner']['emchat']['sysAccount'];
             $user = array('id' => 0, 'nickName' => $sysaccount['nickName'] ?: $sysaccount['name'], 'portrait' => $sysaccount['portrait']);
