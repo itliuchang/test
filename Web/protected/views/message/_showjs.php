@@ -23,7 +23,7 @@ $(function(){
             https: true,
             url: 'wss://im-api.easemob.com/ws/',
             onOpened: function(conn) {
-                console.info('成功登录', conn);
+                // console.info('成功登录', conn);
                 conn.setPresence();
                 if(conn.isOpened()){
                     conn.heartBeat(conn);
@@ -57,13 +57,14 @@ $(function(){
                         CHelper.toggleTip('show', '用户已经在管理后台删除', 'warn', 800);
                     }
                 }else{
+                    // console.info(e)
                     CHelper.toggleTip('show', msg, 'error', 800);
                 }
                 conn.stopHeartBeat(conn);
                 conn = null;
             }
         });
-        conn.open({apiUrl: '', appKey: appkeyIm, user: systemVar.uid, pwd: 'nakedim'});
+        conn.open({apiUrl: '', appKey: appkeyIm, user: '' + systemVar.uid, pwd: 'nakedim'});
         $(window).on('beforeunload unload', function(){
             if(conn){
                 conn.close();
