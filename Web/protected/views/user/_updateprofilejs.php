@@ -64,7 +64,6 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',1000);
 				},
 				success:function(response){
-					location.href='/more';
 					if($('.footer').hasClass('save')){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
