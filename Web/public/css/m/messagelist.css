@@ -20,6 +20,7 @@ body.messagelist{
 	height: 100px;
 	top: 0;
 	z-index: 100;
+	left: -20px;
 }
 #messagelist .option h3{
 	font-size: 14px;
