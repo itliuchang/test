@@ -1,6 +1,6 @@
 <div id="newpostlist">
 	<?php foreach($list as $value): ?>
-	<div class="postWrapper">
+	<div class="postWrapper" data-id="<?php echo $value['id'] ?>">
 		<div class="header">
 			<img src="<?php echo $value['portrait'] ?>" alt="">
 			<h4><?php echo $value['nickName'] ?></h4>
@@ -16,8 +16,8 @@
 		<img src="<?php echo $value['picture'] ?>" alt="" class="face">
 		<?php endif; ?>
 		<div class="footerWrapper">
-			<p><span><?php echo $value['like_num'] ?></span>like<span><?php echo $value['comment_num'] ?></span>comment</p>
-			<div class="operation"><a href="">LIKE</a><a href="">COMMENT</a></div>
+			<p><span class="like_num"><?php echo $value['like_num'] ?></span>like<span><?php echo $value['comment_num'] ?></span>comment</p>
+			<div class="operation"><a class="like"></a><a class="comment">COMMENT</a></div>
 		</div>
 	</div>
 	<?php endforeach; ?>

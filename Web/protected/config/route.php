@@ -23,6 +23,7 @@ return array(
         'company/profile' => 'company/profile',
         'user/profile-<id:\d+>' => 'user/profile',
         'user/profile' => 'user/profile',
+        'user/like-<id:\d+>' => 'user/like',
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',

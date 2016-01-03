@@ -1,6 +1,6 @@
 <script id="postlistTpl" type="text/html">
     {{each data as v k}}
-        <div class="postWrapper">
+        <div class="postWrapper" data-id="{{ v.id }}">
             <div class="header">
                 <img src="{{ v.portrait }}" alt="">
                 <h4>{{ v.nickName }}</h4>
