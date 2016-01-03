@@ -8,11 +8,13 @@
 #newpost p{
 	padding-left: 45px;
 	background-image: url(/images/addBackground.png);
-	height: 50px;
-	width: 120px;
+	height: 140px;
+	width: 240px;
 	background-repeat: no-repeat;
-	background-size: 30px 30px;
+	background-size: 120px ;
 	background-position: 5px top;
+	margin-left: 20px;
+	margin-top: 20px;
 }
 #newpost a{
 	position: fixed;
@@ -30,4 +32,25 @@
 #newpost a:visited{
 	color: #fff;
 	text-decoration: none;
+}
+#newpost .imgWrapper img{
+	height: 140px;
+	width: 200px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+#newpost .imgWrapper{
+	position: relative;
+	display: inline-block;
+	z-index: 10;
+}
+#newpost .imgWrapper .x{
+	background-image:url(/images/cancel.png);
+	position:absolute;
+	background-size: 40px 40px;
+	top:0;
+	right: -15px;
+	z-index: 1000;
+	width:40px;
+	height:40px
 }
