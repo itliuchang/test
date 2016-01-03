@@ -28,7 +28,7 @@ body.newpostlist{
 #newpostlist .postWrapper .header>img{
 	position: absolute;
 	border-radius: 100%;
-	left: 20px;
+	left: 10px;
 	width: 75px;
 	height: 75px;
 }
