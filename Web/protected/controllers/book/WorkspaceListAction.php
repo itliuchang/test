@@ -12,7 +12,7 @@ class WorkspaceListAction extends CAction{
 			$hub = Yii::app()->request->getParam('hub');
 			$date = Yii::app()->request->getParam('date');
 			if($id){
-				$now = date('Ymd',time());
+				$date = date('Ymd',strtotime($date));
 				$record = Reservations::model()->findAll('startTime ='.date('Ymd',strtotime($date)).'100000' .' and userId='.Yii::app()->user->id.' and type=1 and status=1');
 				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
 				if($orderid){
