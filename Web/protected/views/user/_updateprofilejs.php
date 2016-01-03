@@ -26,7 +26,7 @@ $(function(){
 			background = $('.backgroundurl').val(),
 			portrait = $('.portrait').attr('src'),
 			birthday = $('.birthday').val(),
-			location = $('.location').val(),
+			hub = $('.location').val(),
 			gender = $('.sex').val(),
 			description = CHelper.filterXSS($('.description').val()),
 			skills = CHelper.filterXSS($('.skills').val()),
@@ -47,7 +47,7 @@ $(function(){
 				portrait:portrait,
 				birthday:birthday,
 				gender:gender,
-				location:location,
+				hub:hub,
 				description:description,
 				skills:skills,
 				interests:interests,
@@ -64,11 +64,19 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',1000);
 				},
 				success:function(response){
+					location.href='/more';
 					if($('.footer').hasClass('save')){
-						CHelper.toggleTip('show',response.message,'success',1000);
-						location.href='/more';
+						CHelper.toggleTip('show','SUCCESS','success',1200);
+						setInterval(function(){
+							location.href='/more';
+						},1800);
+						
 					} else {
-						location.href = '/company/updateprofile';
+						CHelper.toggleTip('show','SUCCESS','success',1200);
+						setInterval(function(){
+							location.href = '/company/updateprofile';
+						},1800)
+						
 					}
 				},
 				failure:function(response){

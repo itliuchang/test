@@ -8,7 +8,7 @@ class ProfileAction extends CAction{
 		} else {
 			$id = Yii::app()->user->id;
 			$user = User::model()->with('companyid')->findByAttributes(array('id' => $id));
-			$cpmpany = Company::model()->findByAttributes(array('ownerId'=>$user['id']));
+			$company = Company::model()->findByAttributes(array('ownerId'=>$user['id']));
 			$location = Hub::model()->findByAttributes(array('id'=>$company['location']));
 		}
 		
