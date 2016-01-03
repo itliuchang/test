@@ -24,9 +24,9 @@
 		</div>
 		<label>gender</label>
 		<select class="sex">
-			<option value='0'>Please choose</option>
-			<option value='1'>male</option>
-			<option value='2'>female</option>
+			<option value='0' <?php echo $user['gender']==0?'selected=selected':''?>>Please choose</option>
+			<option value='1' <?php echo $user['gender']==1?'selected=selected':''?>>male</option>
+			<option value='2' <?php echo $user['gender']==2?'selected=selected':''?>>female</option>
 		</select>
 		<div class="hub">
 		<label>Location</label>

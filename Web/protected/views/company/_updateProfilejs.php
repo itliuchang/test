@@ -103,9 +103,17 @@ $(function(){
 				success:function(response){
 					// console.log(response['status'])
 					if(response['status'] == 2){
-						location.href = '/post/newlist';
+						CHelper.toggleTip('show','SUCCESS','success',1200);
+						setInterval(function(){
+							location.href = '/post/newlist';
+						},1800)
+						
 					} else {
-						location.href = '/more';
+						CHelper.toggleTip('show','SUCCESS','success',1200);
+						setInterval(function(){
+							location.href = '/more';
+						},1800)
+						
 					}
 				}
 			});
