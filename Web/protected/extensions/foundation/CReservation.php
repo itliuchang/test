@@ -42,7 +42,7 @@ class CReservation{
 		if($data['type']==1){
 			$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
 			if($orderid){
-				$now = date('Ymd',time());
+				$now = date('Ymd',strtotime(substr($data['startTime'],0,10)));
 				foreach ($orderid as $list){
 					$dp = OrderProduct::model()->find('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now);
 					if($dp){break;}
