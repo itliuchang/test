@@ -20,4 +20,9 @@ $(function(){
         url: '/post/newlist/%(page)s/%(size)s',
         data:{}
 	});
+
+        $('.write').hammer().on('tap press',function(e){
+                e.gesture.srcEvent.preventDefault;
+                location.href = '/post/newpost';
+        });
 });
