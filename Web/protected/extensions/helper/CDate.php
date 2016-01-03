@@ -39,7 +39,7 @@ class CDate{
             $from = strtotime($d);
         }
         $from = $from ?: $now;
-        $tday = date('j', $now) - date('j', $from);
+        $tday = date('Ymd', $now) - date('Ymd', $from);
         $time = $now - $from;
 
         if($tday == 0){
@@ -61,10 +61,10 @@ class CDate{
                 if($dday <= 1){
                   return 'yesterday';
                 }else{
-                  return $dday . ' days ago'; //天前
+                  return $dday . ' days'; //天前
                 }
             }else{
-                return date('n-j G:i', $from); //n月j日 G:i
+                return date('n-j', $from); //n月j日 G:i
             }
         }
     }

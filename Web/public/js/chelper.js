@@ -660,7 +660,7 @@
               datetime = datetime.toString().replace(/-/g, '/');
           }
           var date = new Date(datetime) == 'Invalid Date'? new Date : new Date(datetime),
-              tday = (new Date).getDate() - date.getDate(),
+              tday = (new Date).getTime()/86400 - date.getTime()/86400,
               from = Math.round(date.getTime() / 1000),
               now = Math.round((new Date).getTime() / 1000),
               time = now - from;
@@ -675,7 +675,7 @@
                   return 'now'; //刚刚
               }
           }else{
-              var ftime = date.Format("MM-dd hh:mm"), //MM月dd日
+              var ftime = date.Format("MM-dd"), //MM月dd日
                   _now = new Date;
               date.setHours(0);date.setMinutes(0);date.setSeconds(0);date.setMilliseconds(0);
               _now.setHours(0);_now.setMinutes(0);_now.setSeconds(0);_now.setMilliseconds(0);
@@ -687,7 +687,7 @@
                 if(dday <= 1){
                     return 'yesterday';
                 }else{
-                    return dday + ' days ago'; //天前
+                    return dday + ' days'; //天前
                 }
               }else{
                   return ftime;

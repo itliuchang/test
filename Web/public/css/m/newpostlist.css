@@ -13,6 +13,7 @@ body.newpostlist{
 	position: relative;
 	padding-left: 120px;
 	padding-top: 20px;
+	height: 90px;
 }
 #newpostlist .postWrapper .header p.time{
 	position: absolute;
@@ -26,6 +27,7 @@ body.newpostlist{
 }
 #newpostlist .postWrapper .header>img{
 	position: absolute;
+	border-radius: 100%;
 	left: 20px;
 	width: 80px;
 	height: 80px;
@@ -37,7 +39,6 @@ body.newpostlist{
 }
 #newpostlist .postWrapper .face{
 	width: 100%;
-	height: 150px;
 }
 #newpostlist .postWrapper .footerWrapper{
 	padding: 0 20px;
@@ -79,6 +80,7 @@ body.newpostlist{
 	background-position: center;
 	background-repeat: no-repeat;
 	border-radius: 100%;
+	z-index: 1000;
 }
 #newpostlist .commentWrapper{
 	background-color: #fff;
@@ -162,4 +164,12 @@ body.newpostlist{
 	color: #000;
 	font-weight: normal;
 }
-
+#newpostlist .loading{
+	height: 30px;
+	width: 100%;
+	background-image: url(/images/loading2.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 30px 30px;
+	background-color: #fff;
+}

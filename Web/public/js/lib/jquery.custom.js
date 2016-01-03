@@ -166,7 +166,6 @@
                     scrollHeight = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
                 return pageHeight - viewportHeight - scrollHeight < options.distance;
             }
-
             var len = $(options.container + '>' + options.item).length;
             if(len >= options.perPage && !!options.url){
                 $(window).scroll(function(){
@@ -174,7 +173,6 @@
                         var len = $(options.container + '>' + options.item).length,
                             pageNum = Math.ceil(len / options.perPage) + 1,
                             url = sprintf(options.url, {page: pageNum, size: options.perPage});
-
                         CHelper.asynRequest(url, {parameter: {type: 'GET', data: options.data}}, {
                             before: function(xhr){
                                 if(typeof options.callbacks.before == 'function'){
@@ -212,7 +210,7 @@
                                 }
                             },
                             success: function(response){
-                                var list = response.data.list || response.data.result; 
+                                var list = response.data.list || response.data.result;
                                 if(!response.data || list.length < options.perPage){
                                     $(window).off('scroll');
                                 }
