@@ -11,7 +11,7 @@
 	height: 140px;
 	width: 240px;
 	background-repeat: no-repeat;
-	background-size: 120px ;
+	background-size: 60px ;
 	background-position: 5px top;
 	margin-left: 20px;
 	margin-top: 20px;
@@ -26,6 +26,7 @@
 	line-height: 50px;
 	color: #fff;
 	background-color: #f3a64a;
+	font-size: 16px;
 }
 #newpost a:hover,
 #newpost a:link,
