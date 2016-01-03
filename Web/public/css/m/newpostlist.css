@@ -11,7 +11,7 @@ body.newpostlist{
 }
 #newpostlist .postWrapper .header{
 	position: relative;
-	padding-left: 120px;
+	padding-left: 100px;
 	padding-top: 20px;
 	height: 90px;
 }
@@ -29,8 +29,8 @@ body.newpostlist{
 	position: absolute;
 	border-radius: 100%;
 	left: 20px;
-	width: 80px;
-	height: 80px;
+	width: 75px;
+	height: 75px;
 }
 #newpostlist .postWrapper .content{
 	padding: 20px;
