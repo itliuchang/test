@@ -31,6 +31,7 @@
 		<div class="hub">
 		<label>Location</label>
 		<select class='location'>
+		<option value=''>请选择</option>
 		<?php foreach($hub as $list):?>
 			<option value='<?php echo $list['id']?>' <?php echo $list['id']==$user['location']?'selected=selected':''?>><?php echo $list['location']?></option>
 		<?php endforeach;?>

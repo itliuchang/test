@@ -2,7 +2,7 @@ $(function(){
 	CHelper.uploadOSS(token,{'domain':domain,'browse_button':'selectimg', 'container':'img_container'},{
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
-			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!chang';
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id;
 			$('.addimage').addClass('hide');
 			$('#img_container').append('<div class="imgWrapper"><div class="x"></div><img class="postimg" src="'+link+'"></div>');
 			$('.imgWrapper .x').hammer().on('tap press',function(e){

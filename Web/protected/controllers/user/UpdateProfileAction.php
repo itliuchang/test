@@ -12,7 +12,7 @@ class UpdateProfileAction extends CAction{
 			$user->description = Assist::removeXSS(Yii::app()->request->getParam('description'));
 			$user->birthday = Yii::app()->request->getParam('birthday');
 			$user->gender = Yii::app()->request->getParam('gender');
-			$user->location = Yii::app()->request->getParam('location');
+			$user->location = Yii::app()->request->getParam('hub');
 			$user->skills = preg_replace('/，+/', ',',Yii::app()->request->getParam('skills'));
 			$user->interests =  preg_replace('/，+/', ',',Yii::app()->request->getParam('interests'));
 			//$user->wechatid = Yii::app()->request->getParam('wechatid');
