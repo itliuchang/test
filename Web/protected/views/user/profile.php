@@ -85,9 +85,10 @@
 		<h3>I Work At</h3>
 		<div class="underLine"></div>
 		<div class="companyWrapper">
+		<input type='hidden' class='companyid' value='<?php echo $user['companyid']['id']?>'>
 			<img src="<?php echo $user['companyid']['logo']?>" alt="">
 			<h4><?php echo $user['companyid']['name']?></h4>
-			<p><?php echo $user['companyid']['location']?></p>
+			<p><?php echo $companylocation?></p>
 		</div>
 	</div>
 	<div class="partOption">
@@ -108,3 +109,8 @@
 		</div>
 	</div>
 </div>
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_profilejs', null ,true);
+    $cs->registerScript('profile', $js, CClientScript::POS_END);
+?>

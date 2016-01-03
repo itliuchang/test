@@ -17,7 +17,7 @@ class WorkspaceListAction extends CAction{
 				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
 				if($orderid){
 					foreach ($orderid as $list){
-						$order = OrderProduct::model()->find('endDate>='.$now .' and orderId='.$list['id'].' and startDate<='.$now);
+						$order = OrderProduct::model()->find('endDate>='.$date .' and orderId='.$list['id'].' and startDate<='.$date);
 						if($order){break;}
 					}
 					if($order){
