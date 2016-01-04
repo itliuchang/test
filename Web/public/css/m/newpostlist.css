@@ -15,6 +15,13 @@ body.newpostlist{
 	padding-top: 20px;
 	height: 90px;
 }
+#newpostlist .like:after{
+	content: 'LIKE';
+}
+#newpostlist .liked:after{
+	content: 'LIKED';
+	color: #F5AD38;
+}
 #newpostlist .postWrapper .header p.time{
 	position: absolute;
 	top: 20px;

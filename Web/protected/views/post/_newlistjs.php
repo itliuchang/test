@@ -20,7 +20,23 @@ $(function(){
         url: '/post/newlist/%(page)s/%(size)s',
         data:{}
 	});
-
+	function listObserve(){
+		$('.like').hammer().off().on('tap',function(){
+			$(this).off();
+			var postId = $(this).parents('.postWrapper').attr('data-id');
+			CHelper.asynRequest('/user/like-'+postId,{},{
+				success:function(data){
+					var $like = $('.postWrapper[data-id='+data['postId']+']');
+					$like.find('.like').removeClass('like').toggleClass('liked');
+					$like.find('.like_num').text(Number($like.find('.like_num').text())+1);
+				},
+				fail:function(){
+					alert('fail');
+				}
+			});
+		});
+	}
+	listObserve();
         $('.write').hammer().on('tap press',function(e){
                 e.gesture.srcEvent.preventDefault;
                 location.href = '/post/newpost';
