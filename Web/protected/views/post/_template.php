@@ -16,8 +16,14 @@
             <img src="{{ v.picture }}" alt="" class="face">
             {{ /if }}
             <div class="footerWrapper">
-                <p><span>{{ v.like_num }}</span>like<span>{{ v.comment_num }}</span>comment</p>
-                <div class="operation"><a href="">LIKE</a><a href="">COMMENT</a></div>
+                <p><span class="like_num">{{ v.like_num }}</span>like<span>{{ v.comment_num }}</span>comment</p>
+                <div class="operation">
+                {{ if v.islike }}
+                <a class="liked" data-id="{{ v.likeId }}"></a>
+                {{ else }}
+                <a class="like"></a>
+                {{ /if }}
+                <a>COMMENT</a></div>
             </div>
         </div>
     {{/each}}

@@ -12,6 +12,7 @@ $(function(){
         		$('#newpostlist .loading').remove();
         		var html = template('postlistTpl', {data: response.data.list});
         		$('#newpostlist').append(html);
+        		setInterval(listObserve, 5000);
         	},
         	fail:function(){
         		alert('fail');
@@ -38,6 +39,7 @@ $(function(){
 		});
 
 		$('.liked').hammer().off().on('tap',function(){
+			$(this).off();
 			var id = $(this).attr('data-id');
 			CHelper.asynRequest('/user/liked-'+id,{},{
 				success:function(data){
