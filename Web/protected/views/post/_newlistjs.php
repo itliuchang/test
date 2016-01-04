@@ -12,7 +12,7 @@ $(function(){
         		$('#newpostlist .loading').remove();
         		var html = template('postlistTpl', {data: response.data.list});
         		$('#newpostlist').append(html);
-        		setInterval(listObserve, 5000);
+        		listObserve();
         	},
         	fail:function(){
         		alert('fail');
