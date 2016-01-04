@@ -34,7 +34,8 @@ class UserController extends Controller{
             'account' => 'application.controllers.user.AccountAction',
 			'updateprofile' => 'application.controllers.user.UpdateProfileAction',
             'changepassword' => 'application.controllers.user.ChangePasswordAction',
-            'like' => 'application.controllers.user.LikeAction'
+            'like' => 'application.controllers.user.LikeAction',
+            'liked' => 'application.controllers.user.LikedAction'
 				
 		);
 	}

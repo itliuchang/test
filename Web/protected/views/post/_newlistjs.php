@@ -27,8 +27,24 @@ $(function(){
 			CHelper.asynRequest('/user/like-'+postId,{},{
 				success:function(data){
 					var $like = $('.postWrapper[data-id='+data['postId']+']');
-					$like.find('.like').removeClass('like').toggleClass('liked');
+					$like.find('.like').removeClass('like').toggleClass('liked').attr('data-id',data.id);
 					$like.find('.like_num').text(Number($like.find('.like_num').text())+1);
+					listObserve();
+				},
+				fail:function(){
+					alert('fail');
+				}
+			});
+		});
+
+		$('.liked').hammer().off().on('tap',function(){
+			var id = $(this).attr('data-id');
+			CHelper.asynRequest('/user/liked-'+id,{},{
+				success:function(data){
+					var $liked = $('.postWrapper[data-id='+data['postId']+']');
+					$liked.find('.liked').removeClass('liked').toggleClass('like');
+					$liked.find('.like_num').text(Number($liked.find('.like_num').text())-1);
+					listObserve();
 				},
 				fail:function(){
 					alert('fail');

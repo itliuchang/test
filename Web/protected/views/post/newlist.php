@@ -17,7 +17,14 @@
 		<?php endif; ?>
 		<div class="footerWrapper">
 			<p><span class="like_num"><?php echo $value['like_num'] ?></span>like<span><?php echo $value['comment_num'] ?></span>comment</p>
-			<div class="operation"><a class="like"></a><a class="comment">COMMENT</a></div>
+			<div class="operation">
+				<?php if($value['islike']): ?>
+				<a class="liked" data-id="<?php echo $value['likeId'] ?>"></a>
+				<?php else: ?>
+				<a class="like">
+				<?php endif; ?>
+				<a class="comment">COMMENT</a>
+			</div>
 		</div>
 	</div>
 	<?php endforeach; ?>

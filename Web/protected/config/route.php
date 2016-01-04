@@ -24,6 +24,7 @@ return array(
         'user/profile-<id:\d+>' => 'user/profile',
         'user/profile' => 'user/profile',
         'user/like-<id:\d+>' => 'user/like',
+        'user/liked-<id:\d+>' => 'user/liked',
         'payment/wxpay/jsapi/' => 'order/',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
