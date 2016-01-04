@@ -8,7 +8,7 @@
 		<li class="myprofile" ><a href='/user/profile'>My Profile</a></li>
 		<li class="companyProfile"><a href='/company/profile'>Company Profile</a></li>
 		<li class="account"><a href="/user/account">Account</a></li>
-		<li class="password"><a>Change password</a></li>
+		<li class="password"><a href='/user/changepassword'>Change password</a></li>
 	</ul>
 	<ul class="option">
 		<li class="about"><a>About</a></li>
