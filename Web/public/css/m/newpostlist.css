@@ -41,6 +41,7 @@ body.newpostlist{
 	left: 10px;
 	width: 75px;
 	height: 75px;
+	z-index: 1000;
 }
 #newpostlist .postWrapper .content{
 	padding: 20px;
@@ -102,6 +103,12 @@ body.newpostlist{
 	padding-top: 20px;
 	border-bottom: 1px solid #ececec;
 }
+#newpostlist .commentWrapper p.time{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 12px;
+}
 #newpostlist .commentWrapper .comment img{
 	position: absolute;
 	top: 20px;
@@ -117,7 +124,7 @@ body.newpostlist{
 #newpostlist .commentWrapper .comment .right .content{
 	padding: 10px 0;
 }
-#newpostlist .like{
+#newpostlist .likepart{
 	font-size: 14px;
 	font-weight: normal;
 	text-align: center;
@@ -139,6 +146,7 @@ body.newpostlist{
 	position: absolute;
 	left: 20px;
 	top: 20px;
+	border-radius: 100%;
 }
 #newpostlist .likelist .option .right>h3{
 	font-size: 14px;

@@ -32,7 +32,8 @@ return array(
 
         'community/servicescompany-<id:\d+>' => 'community/servicescompany',
 
-        'post/newlist/<page:\d+>/<size:\d+>' => 'post/newlist', 
+        'post/newlist/<page:\d+>/<size:\d+>' => 'post/newlist',
+        'post/postshow-<id:\d+>' => 'post/postshow', 
 
         'message(/<page:\d+>(/<size:\d+>)?)?' => 'message',
         'message/<fid:\d+>/chat(/<start:\d+>(/<size:\d+>)?)?' => 'message/show',

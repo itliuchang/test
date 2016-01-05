@@ -2,7 +2,7 @@
     {{each data as v k}}
         <div class="postWrapper" data-id="{{ v.id }}">
             <div class="header">
-                <img src="{{ v.portrait }}" alt="">
+                <img src="{{ v.portrait }}" alt="" class="user" data-id="{{ v.userId }}">
                 <h4>{{ v.nickName }}</h4>
                 <p class="title">{{ v.title }}</p>
                 <p class="companyName">{{ v.companyName }}</p>
@@ -27,4 +27,17 @@
             </div>
         </div>
     {{/each}}
+</script>
+<script id="postCommentTpl" type=text/html"">
+    <div class="comment">
+        <p class="time">{{ data['newcomment']['createTime'] | dgm }}</p>
+        <img class="user" src="{{ data['user']['portrait'] }}" alt="" data-id="<?php echo $value['userId'] ?>">
+        <div class="right">
+            <div class="title">
+                <h3 class="name">{{ data['user']['nickName'] }}</h3>
+                <p class="location">{{ data['user']['title'] }},{{ data['user']['companyName'] }},{{ data['user']['location'] }}</p>
+            </div>
+            <p class="content">{{ data['newcomment']['content'] }}</p>
+        </div>
+    </div>
 </script>

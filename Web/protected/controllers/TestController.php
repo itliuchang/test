@@ -1,7 +1,7 @@
 <?php
 class TestController extends Controller{
 	public function actionIndex(){
-		$user = new CUser;
-		$user->like(1207,2);die;
+		$user = new CPost;
+		$user->getpost(1);die;
 	}
 }

@@ -22,6 +22,15 @@ $(function(){
         data:{}
 	});
 	function listObserve(){
+		$('.header').hammer().off().on('tap',function(e){
+			e.gesture.srcEvent.preventDefault();
+			location.href="/user/profile-"+$(this).find('.user').attr('data-id');
+		});
+
+		$('p,h4,.face').hammer().off().on('tap',function(){
+			location.href="/post/postshow-"+$(this).parents('.postWrapper').attr('data-id');
+		});
+
 		$('.like').hammer().off().on('tap',function(){
 			$(this).off();
 			var postId = $(this).parents('.postWrapper').attr('data-id');

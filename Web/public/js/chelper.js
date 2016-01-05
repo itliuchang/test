@@ -663,7 +663,7 @@
               datetime = datetime.toString().replace(/-/g, '/');
           }
           var date = new Date(datetime) == 'Invalid Date'? new Date : new Date(datetime),
-              tday = (new Date).getTime()/86400 - date.getTime()/86400,
+              tday = Math.floor((new Date).getTime()/86400000 - date.getTime()/86400000),
               from = Math.round(date.getTime() / 1000),
               now = Math.round((new Date).getTime() / 1000),
               time = now - from;

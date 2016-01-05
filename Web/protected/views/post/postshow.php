@@ -1,84 +1,69 @@
 <div id="newpostlist">
-	<div class="postWrapper">
+	<div class="postWrapper" data-id="<?php echo $data['post']['id'] ?>">
 		<div class="header">
-			<img src="/images/portrait-default.png" alt="">
-			<span class="time"></span>
-			<h4>naked Retreats</h4>
-			<p class="title">title</p>
-			<p class="companyName">companyName</p>
-			<p class="location">location</p>
-			<p class="time">17h</p>
+			<img class="user" src="<?php echo $data['post']['portrait'] ?>" alt="" data-id="<?php echo $data['post']['userId'] ?>">
+			<h4><?php echo $data['post']['nickName'] ?></h4>
+			<p class="title"><?php echo $data['post']['title'] ?></p>
+			<p class="companyName"><?php echo $data['post']['companyName'] ?></p>
+			<p class="location"><?php echo $data['post']['location'] ?></p>
+			<p class="time"><?php echo CDate::dgm($data['post']['createTime']) ?></p>
 		</div>
 		<p class="content">
-			Membership at naked Hub offers individual the benefits of corporate work with 21st century freedom.
+			<?php echo Assist::removeXSS(Assist::removeEmoji($data['post']['content'])) ?>
 		</p>
-		<img src="/images/banner/1.jpg" alt="" class="face">
+		<?php if($data['post']['picture']): ?>
+		<img src="<?php echo $data['post']['picture'] ?>" alt="" class="face">
+		<?php endif; ?>
 		<div class="footerWrapper">
-			<p><span>3</span>like<span>5</span>comment</p>
-			<div class="operation"><a href="">LIKE</a><a href="">COMMENT</a></div>
+			<p><span class="like_num"><?php echo $data['post']['like_num'] ?></span>like<span><?php echo $data['post']['comment_num'] ?></span>comment</p>
+			<div class="operation">
+				<?php if($data['post']['islike']): ?>
+				<a class="liked" data-id="<?php echo $data['post']['likeId'] ?>"></a>
+				<?php else: ?>
+				<a class="like">
+				<?php endif; ?>
+				<a class="comment">COMMENT</a>
+			</div>
 		</div>
 		<div class="commentWrapper">
+			<?php foreach($data['commentlist'] as $value): ?>
 			<div class="comment">
-				<img src="/images/portrait-default.png" alt="">
+				<p class="time"><?php echo CDate::dgm($value['createTime']) ?></p>
+				<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 				<div class="right">
 					<div class="title">
-						<h3 class="name">naked Retreats</h3>
-						<p class="location">location</p>
+						<h3 class="name"><?php echo $value['nickName'] ?></h3>
+						<p class="location"><?php echo $value['title'] ?>,<?php echo $value['companyName'] ?>,<?php echo $value['location'] ?></p>
 					</div>
-					<p class="content">Membership at naked Hub offers</p>
+					<p class="content"><?php echo $value['content'] ?></p>
 				</div>
 			</div>
-			<div class="comment">
-				<img src="/images/portrait-default.png" alt="">
-				<div class="right">
-					<div class="title">
-						<h3 class="name">naked Retreats</h3>
-						<p class="location">location</p>
-					</div>
-					<p class="content">Membership at naked Hub offers</p>
-				</div>
-			</div>
-			<div class="comment">
-				<img src="/images/portrait-default.png" alt="">
-				<div class="right">
-					<div class="title">
-						<h3 class="name">naked Retreats</h3>
-						<p class="location">location</p>
-					</div>
-					<p class="content">Membership at naked Hub offers</p>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
-	<h3 class="like">Likes</h3>
+	<?php if($data['likelist']): ?>
+	<h3 class="likepart">Likes</h3>
+	<?php foreach($data['likelist']  as  $value): ?>
 	<div class="likelist">
 		<div class="option">
-			<img src="/images/portrait-default.png" alt="">
+			<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 			<div class="right">
-				<h3>naked Retreats</h3>
-				<p>title</p>
-				<p>Company name,location</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/portrait-default.png" alt="">
-			<div class="right">
-				<h3>naked Retreats</h3>
-				<p>title</p>
-				<p>Company name,location</p>
-			</div>
-		</div>
-		<div class="option">
-			<img src="/images/portrait-default.png" alt="">
-			<div class="right">
-				<h3>naked Retreats</h3>
-				<p>title</p>
-				<p>Company name,location</p>
+				<h3><?php echo $value['nickName'] ?></h3>
+				<p><?php echo $value['title'] ?></p>
+				<p><?php echo $value['companyName'] ?>,<?php echo $value['locationName'] ?></p>
 			</div>
 		</div>
 	</div>
+	<?php endforeach; ?>
+	<?php endif; ?>
 	<div class="footer">
-		<textarea placeholder="Reply" rows="1"></textarea>
-		<a href="">POST</a>
+		<textarea placeholder="Reply" rows="1" class="commentContent"></textarea>
+		<a class="send">POST</a>
 	</div>
 </div>
+<?php echo $this->renderPartial('_template') ?>
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_postshowjs', null ,true);
+    $cs->registerScript('post', $js, CClientScript::POS_END);
+?>

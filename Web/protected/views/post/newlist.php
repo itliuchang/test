@@ -2,7 +2,7 @@
 	<?php foreach($list as $value): ?>
 	<div class="postWrapper" data-id="<?php echo $value['id'] ?>">
 		<div class="header">
-			<img src="<?php echo $value['portrait'] ?>" alt="">
+			<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 			<h4><?php echo $value['nickName'] ?></h4>
 			<p class="title"><?php echo $value['title'] ?></p>
 			<p class="companyName"><?php echo $value['companyName'] ?></p>
