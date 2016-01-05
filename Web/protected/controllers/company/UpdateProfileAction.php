@@ -5,12 +5,12 @@ class UpdateProfileAction extends CAction{
 			if(Yii::app()->request->isAjaxRequest){
 				$id = Yii::app()->request->getParam('id');
 				$name = Yii::app()->request->getParam('name');
-				$service = Yii::app()->request->getParam('service');		
-				if(!$id){
-					$result = Company::model()->findByAttributes(array('name'=>$name));
-					if($result){
-						echo CJSON::encode(array('code'=>400, 'message'=> 'HAVING'));die;
-					} else {
+				$service = Yii::app()->request->getParam('service');
+				$result = Company::model()->findByAttributes(array('name'=>$name));
+				if($result){
+					echo CJSON::encode(array('code'=>400, 'message'=> 'HAVING'));die;
+				} else {
+					if(!$id){
 						$company = new Company;
 						$now = date('Y-m-d H:i:s');
 						$company->createTime = $now;
@@ -22,22 +22,23 @@ class UpdateProfileAction extends CAction{
 							$proxy->companyId = $companyid['id'];
 							$proxy->save();
 						}
+					} else {
+						$company = Company::model()->findByAttributes(array('id'=>$id));
+						$company->updateTime = date('Y-m-d H:i:s');
+						$proxy = Service_company::model()->findAllByAttributes(array('companyId'=>$id));
+						foreach($proxy as $list){
+							$list->status = 0;
+							$list->save();
+						}
+						for($i = 0;$i<count($service);$i++){
+							$dp = new Service_company;
+							$dp->serviceId = $service[$i];
+							$dp->companyId = $company['id'];
+							$dp->save();
+						}
 					}
-				} else {
-					$company = Company::model()->findByAttributes(array('id'=>$id));
-					$company->updateTime = date('Y-m-d H:i:s');
-					$proxy = Service_company::model()->findAllByAttributes(array('companyId'=>$id));
-					foreach($proxy as $list){
-						$list->status = 0;
-						$list->save();
-					}
-					for($i = 0;$i<count($service);$i++){
-						$dp = new Service_company;
-						$dp->serviceId = $service[$i];
-						$dp->companyId = $company['id'];
-						$dp->save();
-					}
-				}
+				}		
+				
 				$company->name = $name;
 				$company->ownerId = Yii::app()->user->id;  // FIXME 
 				$company->email = Yii::app()->request->getParam('email');

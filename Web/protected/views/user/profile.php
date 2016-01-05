@@ -12,7 +12,7 @@
 				<h3 class="community"><?php echo $user['nickName']?></h3>
 				<p class="membership"><?php echo empty($user['title']) ? 'No title.' : $user['title']?></p>
 			</div>
-			<a href="#" class="message">MESSAGE</a>
+			<a href="/message/<?php echo $user['id']?>/chat.html" class="message">MESSAGE</a>
 		</div>
 	</div>
 	<div class="partOption aboutMe">
