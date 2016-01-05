@@ -21,6 +21,8 @@ $(function(){
         url: '/post/newlist/%(page)s/%(size)s',
         data:{}
 	});
+	$(window).scroll();
+	
 	function listObserve(){
 		$('.header').hammer().off().on('tap',function(e){
 			e.gesture.srcEvent.preventDefault();

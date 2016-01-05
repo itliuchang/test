@@ -167,9 +167,9 @@
                 return pageHeight - viewportHeight - scrollHeight < options.distance;
             }
             var len = $(options.container + '>' + options.item).length;
-            if(len >= options.perPage && !!options.url){
+            if(!!options.url){
                 $(window).scroll(function(){
-                    if(getScrollTop()){
+                    if(getScrollTop()||$(options.container).outerHeight()<100){
                         var len = $(options.container + '>' + options.item).length,
                             pageNum = Math.ceil(len / options.perPage) + 1,
                             url = sprintf(options.url, {page: pageNum, size: options.perPage});
