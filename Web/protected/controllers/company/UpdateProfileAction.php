@@ -37,27 +37,26 @@ class UpdateProfileAction extends CAction{
 							$dp->save();
 						}
 					}
-				}		
-				
-				$company->name = $name;
-				$company->ownerId = Yii::app()->user->id;  // FIXME 
-				$company->email = Yii::app()->request->getParam('email');
-				$company->phone = Yii::app()->request->getParam('phone');
-				$company->website = Yii::app()->request->getParam('website');
-				$company->logo = Yii::app()->request->getParam('logo');
-				$company->location = User::model()->findByAttributes(array('id'=>Yii::app()->user->id))['location'];
-				$company->background = Yii::app()->request->getParam('background');
-				$company->introduction = Assist::removeXSS(Yii::app()->request->getParam('introduction'));
-				$company->facebookid = Yii::app()->request->getParam('facebookid');
-				$company->linkedinid = Yii::app()->request->getParam('linkedinid');
-				$company->save();
-								
-				$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
-				$status = $user['status'];
-				$user->status = 3;
-				$user->company = $company->id;
-				$user->save();			
-				echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS','data'=>array('status'=>$status)));
+					$company->name = $name;
+					$company->ownerId = Yii::app()->user->id;  // FIXME 
+					$company->email = Yii::app()->request->getParam('email');
+					$company->phone = Yii::app()->request->getParam('phone');
+					$company->website = Yii::app()->request->getParam('website');
+					$company->logo = Yii::app()->request->getParam('logo');
+					$company->location = User::model()->findByAttributes(array('id'=>Yii::app()->user->id))['location'];
+					$company->background = Yii::app()->request->getParam('background');
+					$company->introduction = Assist::removeXSS(Yii::app()->request->getParam('introduction'));
+					$company->facebookid = Yii::app()->request->getParam('facebookid');
+					$company->linkedinid = Yii::app()->request->getParam('linkedinid');
+					$company->save();
+									
+					$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+					$status = $user['status'];
+					$user->status = 3;
+					$user->company = $company->id;
+					$user->save();			
+					echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS','data'=>array('status'=>$status)));
+				}						
 			} else {
 				$firservice = Service::model()->findAll("parentId is null");
 				foreach ($firservice as $key) {
