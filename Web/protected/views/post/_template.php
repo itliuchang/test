@@ -23,7 +23,7 @@
                 {{ else }}
                 <a class="like"></a>
                 {{ /if }}
-                <a>COMMENT</a></div>
+                <a class="comment">COMMENT</a></div>
             </div>
         </div>
     {{/each}}

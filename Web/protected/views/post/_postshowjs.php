@@ -1,4 +1,7 @@
 $(function(){
+	if(location.href.indexOf('#1')>0){
+		$('.commentContent').focus();
+	}
 	$('.user').hammer().off().on('tap',function(e){
 		e.gesture.srcEvent.preventDefault();
 		location.href="/user/profile-"+$(this).attr('data-id');

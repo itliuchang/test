@@ -22,7 +22,7 @@ $(function(){
         data:{}
 	});
 	$(window).scroll();
-	
+
 	function listObserve(){
 		$('.header').hammer().off().on('tap',function(e){
 			e.gesture.srcEvent.preventDefault();
@@ -31,6 +31,9 @@ $(function(){
 
 		$('p,h4,.face').hammer().off().on('tap',function(){
 			location.href="/post/postshow-"+$(this).parents('.postWrapper').attr('data-id');
+		});
+		$('.comment').hammer().off().on('tap',function(){
+			location.href="/post/postshow-"+$(this).parents('.postWrapper').attr('data-id')+'#1';
 		});
 
 		$('.like').hammer().off().on('tap',function(){
