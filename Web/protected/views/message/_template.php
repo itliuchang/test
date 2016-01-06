@@ -43,7 +43,7 @@
                     <img src="{{myportrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
                     <p class="date">{{$value.ctime | dataFormat:'yy/MM/dd'}}</p>
                 </div>
-                <div class="content">
+                <div class="content clearfix">
                     <div class="righto"></div>
                     <p>{{$value.body | filterXSS}}</p>
                 </div>

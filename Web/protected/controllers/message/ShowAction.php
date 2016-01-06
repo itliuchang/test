@@ -18,6 +18,10 @@ class ShowAction extends CAction{
             )));
         }else{
             $friend = User::model()->findByPk($fid);
+            $friendDetail = Yii::app()->db->createCommand('select b.name as companyName,a.title,c.name as locationName from user a left join company b on a.company=b.id left join hub c on c.id=a.location where a.status!=0 and a.id='.$fid)->queryRow();
+            $data['friendCompany']=$friendDetail['companyName'];
+            $data['friendTitle'] = $friendDetail['title'];
+            $data['friendLocation'] = $friendDetail['locationName'];
             $data['friendId'] = $fid;
             $data['fportrait'] = $friend? $friend->portrait : '';
             $this->controller->render('show', $data);

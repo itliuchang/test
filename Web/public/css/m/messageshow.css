@@ -13,7 +13,7 @@ body.messageshow{
 	height: 100px;
 	padding-left: 20px;
 	z-index: 1000;
-	padding-top: 35px;
+	padding-top: 25px;
 	background-color: #eee;
 }
 
@@ -58,9 +58,10 @@ body.messageshow{
 
 #messageshow .wrapper{
 	padding-top: 120px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 	padding-bottom: 50px;
+	font-size: 16px;
 }
 #messageshow .wrapper .other{
 	position: relative;
@@ -72,28 +73,29 @@ body.messageshow{
 	top: 5px;
 }
 #messageshow .wrapper .other .imgWrapper img{
-	width: 30px;
-	height: 30px;
-	margin-left: 10px;
+	width: 35px;
+	height: 35px;
 	border-radius: 100%;
 }
 #messageshow .wrapper .other .imgWrapper p{
 	font-size: 12px;
 }
 #messageshow .wrapper .other .content{
-	padding-left: 70px;
+	padding-left: 52px;
 	position: relative;
-	padding-right: 30px;
+	padding-right: 60px;
 }
-#messageshow .wrapper .other .content p{
+#messageshow .wrapper .other .content p,
+#messageshow .wrapper .other .content a{
+	display: inline-block;
 	padding: 10px;
 	background-color: #eee;
 	border-radius: 5px;
 }
 #messageshow .wrapper .other .content .lefto{
 	position: absolute;
-	top: 5px;
-	left:62px;
+	top: 10px;
+	left:43px;
 	width: 0;
     height: 0;
     border-top: 5px solid transparent;
@@ -112,28 +114,33 @@ body.messageshow{
 	top: 5px;
 }
 #messageshow .wrapper .my .imgWrapper img{
-	width: 30px;
-	height: 30px;
+	width: 35px;
+	height: 35px;
 	margin-left: 10px;
 	border-radius: 100%;
 }
 #messageshow .wrapper .my .imgWrapper p{
 	font-size: 12px;
+	text-align: right;
 }
 #messageshow .wrapper .my .content{
-	padding-right: 70px;
+	padding-right: 52px;
 	position: relative;
 	padding-left: 30px;
 }
 #messageshow .wrapper .my .content p{
+	float: right;
 	padding: 10px;
-	background-color: #f3a64a;
+	background-color: #F5A623;
 	border-radius: 5px;
+	display: inline-block;
+	color: #fff;
+	margin-left: 30px;
 }
 #messageshow .wrapper .my .content .righto{
 	position: absolute;
-	top: 5px;
-	right:62px;
+	top: 10px;
+	right:43px;
 	width: 0;
     height: 0;
     border-top: 5px solid transparent;
@@ -141,34 +148,34 @@ body.messageshow{
     border-bottom: 5px solid transparent;
 }
 
-
-
-
 #messageshow .footer{
 	position: fixed;
 	bottom: 0;
-	height: 40px;
 	background-color: #eee;
 	width: 100%;
 	padding: 8px;
+	padding-right: 70px;
 }
 #messageshow .footer textarea{
-	width: 80%;
+	width: 100%;
 	resize:none;
+	font-size: 14px;
 	border-radius: 3px;
-	height: 26px;
 	border: 1px solid #e1e1e1;
 	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 #messageshow .footer a{
 	position: absolute;
-	top: 0px;
-	right: 10px;
+	font-size: 18px;
+	top: 5px;
+	right: 20px;
 	display: inline-block;
 	height: 40px;
 	line-height: 40px;
 	width: 40px;
 	line-height: 40px;
-	color: #000;
-	font-weight: normal;
+	color: #777;
+	font-weight: bold!important;
 }

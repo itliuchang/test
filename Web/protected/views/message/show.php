@@ -14,7 +14,7 @@
 			</a>
 			<div class="content">
 				<h3 class="overflow-line1"><?php echo CHtml::encode($user->nickName) ?></h3>
-				<p class="overflow-line1"><?php echo CHtml::encode($user->company) ?></p>
+				<p class="overflow-line1"><?php echo CHtml::encode($friendTitle) ?>,<?php echo CHtml::encode($friendCompany) ?>,<?php echo CHtml::encode($friendLocation) ?></p>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -26,9 +26,9 @@
 				<div class="item my">
 					<div class="imgWrapper">
 						<img src="<?php Yii::app()->user->getState('portrait') ?>" onerror="this.src='/images/portrait-default.png'" alt="">
-						<p class="date"><?php echo date('y/m/d', $item['ctime']) ?></p>
+						<p class="date"><?php echo date('m/d', $item['ctime']) ?></p>
 					</div>
-					<div class="content">
+					<div class="content clearfix">
 						<div class="righto"></div>
 						<p><?php echo CHtml::encode($item['body']) ?></p>
 					</div>
@@ -37,11 +37,15 @@
 				<div class="item other">
 					<div class="imgWrapper">
 						<img src="<?php echo $user['portrait'] ?>" onerror="this.src='/images/portrait-default.png'" alt="">
-						<p class="date"><?php echo date('y/m/d', $item['ctime']) ?></p>
+						<p class="date"><?php echo date('m/d', $item['ctime']) ?></p>
 					</div>
 					<div class="content">
 						<div class="lefto"></div>
+						<?php if($item['type']==1): ?>
+						<a href="/post/postshow-<?php echo $item['data'] ?>"><?php echo CHtml::encode($item['body']) ?></a>
+						<?php else: ?>
 						<p><?php echo CHtml::encode($item['body']) ?></p>
+						<?php endif; ?>
 					</div>
 				</div>
 	    	<?php endif; ?>
