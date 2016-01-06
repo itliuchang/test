@@ -11,7 +11,7 @@ body.messagelist{
 	width: 100%;
 	height: 100px;
 	padding-left: 10px;
-	padding-top: 35px;
+	padding-top: 25px;
 }
 #messagelist .option a.link{
 	position: absolute;

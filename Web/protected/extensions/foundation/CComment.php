@@ -7,9 +7,19 @@ class CComment{
 		$comment->userId = $data['userId'];
 		$comment->content = $data['content'];
 		$comment->createTime = $data['createTime'];
+		$posterId=Posts::model()->findByAttributes(array('id'=>$data['postId']))->userId;
+		$userName = User::model()->findByAttributes(array('id'=>$data['userId']))->nickName;
+		$message = new Message;
+		$message->senderID=0;
+		$message->RecID=$posterId;
+		$message->body=$userName.' 评论了您的帖子';
+		$message->data=$data['postId'];
+		$message->type=1;
+		$message->status=1;
+		$message->ctime=date('U');
 		$post = Posts::model()->findByAttributes(array('id'=>$data['postId']));
 		$post->comment_num++;
-		if($comment->save()&&$post->save()){
+		if($comment->save()&&$post->save()&&$message->save()){
 			return array(
 					'code' => 200,
 					'mes' => 'success',
