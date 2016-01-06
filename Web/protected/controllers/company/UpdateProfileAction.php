@@ -7,7 +7,7 @@ class UpdateProfileAction extends CAction{
 				$name = Yii::app()->request->getParam('name');
 				$service = Yii::app()->request->getParam('service');
 				$result = Company::model()->findByAttributes(array('name'=>$name));
-				if($result['ownerId']!=Yii::app()->user->id){
+				if($result && $result['ownerId']!=Yii::app()->user->id){
 					echo CJSON::encode(array('code'=>400, 'message'=> 'HAVING'));die;
 				} else {
 					if(!$id){
