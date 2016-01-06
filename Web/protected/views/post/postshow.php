@@ -43,8 +43,8 @@
 	</div>
 	<?php if($data['likelist']): ?>
 	<h3 class="likepart">Likes</h3>
-	<?php foreach($data['likelist']  as  $value): ?>
 	<div class="likelist">
+	<?php foreach($data['likelist']  as  $value): ?>
 		<div class="option">
 			<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 			<div class="right">
@@ -53,8 +53,8 @@
 				<p><?php echo $value['companyName'] ?>,<?php echo $value['locationName'] ?></p>
 			</div>
 		</div>
-	</div>
 	<?php endforeach; ?>
+	</div>
 	<?php endif; ?>
 	<div class="footer">
 		<textarea placeholder="Reply" rows="1" class="commentContent"></textarea>
