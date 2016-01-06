@@ -179,3 +179,9 @@ body.messageshow{
 	color: #777;
 	font-weight: bold!important;
 }
+#messageshow .footer a:link,
+#messageshow .footer a:visited,
+#messageshow .footer a:hover{
+	color: #777;
+	text-decoration: none;
+}
