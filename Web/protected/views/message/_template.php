@@ -41,7 +41,7 @@
             <div class="item my">
                 <div class="imgWrapper">
                     <img src="{{myportrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
-                    <p class="date">{{$value.ctime | dataFormat:'yy/MM/dd'}}</p>
+                    <p class="date">{{$value.ctime | dataFormat:'MM/dd'}}</p>
                 </div>
                 <div class="content clearfix">
                     <div class="righto"></div>
@@ -52,7 +52,7 @@
             <div class="item other">
                 <div class="imgWrapper">
                     <img src="{{user.portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
-                    <p class="date">{{$value.ctime | dataFormat:'yy/MM/dd'}}</p>
+                    <p class="date">{{$value.ctime | dataFormat:'MM/dd'}}</p>
                 </div>
                 <div class="content">
                     <div class="lefto"></div>
