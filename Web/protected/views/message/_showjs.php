@@ -17,6 +17,12 @@ $.infinitRefresh({
 });
 
 $(function(){
+    $('.header img').hammer().on('tap',function(){
+        if($('.header a').attr('_id')!=0){
+            location.href = '/user/profile-'+$('.header a').attr('_id');
+        }
+    });
+
     if(friendId != 0){
         var conn = new Easemob.im.Connection();
         conn.init({

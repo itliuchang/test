@@ -3,7 +3,7 @@
 		<div class="option">
 		    <?php if($item['id2'] == 0): ?>
 				<a href="/message/<?php echo $item['id2'] ?>/chat" class="link"></a>
-				<a href="javascript:void(0);">
+				<a href="/message/<?php echo $item['id2'] ?>/chat">
 				  <img src="<?php echo $item['u2portrait']?>" onerror="this.src='/images/portrait-default.png'" alt="">
 				</a>
 				<div class="content">
@@ -12,7 +12,7 @@
 				</div>
 			<?php elseif($item['id2'] == Yii::app()->user->id): ?>
 				<a href="/message/<?php echo $item['id1'] ?>/chat" class="link"></a>
-				<a href="javascript:void(0);">
+				<a href="/message/<?php echo $item['id1'] ?>/chat">
 				  <img src="<?php echo $item['u1portrait']?>" onerror="this.src='/images/portrait-default.png'" alt="">
 				</a>
 				<div class="content">
@@ -21,7 +21,7 @@
 				</div>
 			<?php else: ?>
 				<a href="/message/<?php echo $item['id2'] ?>/chat" class="link"></a>
-				<a href="javascript:void(0);">
+				<a href="/message/<?php echo $item['id2'] ?>/chat">
 				  <img src="<?php echo $item['u2portrait']?>" onerror="this.src='/images/portrait-default.png'" alt="">
 				</a>
 				<div class="content">

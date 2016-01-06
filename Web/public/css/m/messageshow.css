@@ -11,7 +11,7 @@ body.messageshow{
 	top: 0;
 	width: 100%;
 	height: 100px;
-	padding-left: 20px;
+	padding-left: 10px;
 	z-index: 1000;
 	padding-top: 25px;
 	background-color: #eee;
@@ -34,7 +34,7 @@ body.messageshow{
 
 #messageshow .header .content{
 	height: 65px;
-	padding-left: 100px;
+	padding-left: 90px;
 }
 
 #messageshow .header .content p{
@@ -47,7 +47,7 @@ body.messageshow{
 	height: 80px;
 	border-radius: 100%;
 	position: absolute;
-	left:20px;
+	left:10px;
 	top: 10px;
 }
 
@@ -155,7 +155,7 @@ body.messageshow{
 	background-color: #eee;
 	width: 100%;
 	padding: 8px;
-	padding-right: 70px;
+	padding-right: 60px;
 }
 #messageshow .footer textarea{
 	width: 100%;
@@ -169,9 +169,9 @@ body.messageshow{
 }
 #messageshow .footer a{
 	position: absolute;
-	font-size: 18px;
+	font-size: 14px;
 	top: 5px;
-	right: 20px;
+	right: 10px;
 	display: inline-block;
 	height: 40px;
 	line-height: 40px;

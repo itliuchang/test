@@ -8,7 +8,7 @@
                 </a>
                 <div class="content">
                     <h3 class="overflow-line1">系统消息</h3>
-                    <p class="overflow-line1">{{v.lastMsg | filterXSS}}</p>
+                    <p class="overflow-line1">{{v.lastMsg | filterXSS | unhtml}}</p>
                 </div>
             {{else if v.id2 == uid}}
                 <a href="/message/{{v.id1}}/chat" class="link"></a>
@@ -17,7 +17,7 @@
                 </a>
                 <div class="content">
                     <h3 class="overflow-line1">{{v.u1name | filterXSS}}</h3>
-                    <p class="overflow-line1">{{v.lastMsg | filterXSS}}</p>
+                    <p class="overflow-line1">{{v.lastMsg | filterXSS | unhtml}}</p>
                 </div>
             {{else}}
                 <a href="/message/{{v.id2}}/chat" class="link"></a>
@@ -26,7 +26,7 @@
                 </a>
                 <div class="content">
                     <h3 class="overflow-line1">{{v.u2name | filterXSS}}</h3>
-                    <p class="overflow-line1">{{v.lastMsg | filterXSS}}</p>
+                    <p class="overflow-line1">{{v.lastMsg | filterXSS | unhtml}}</p>
                 </div>
             {{/if}}
             
@@ -45,7 +45,7 @@
                 </div>
                 <div class="content clearfix">
                     <div class="righto"></div>
-                    <p>{{$value.body | filterXSS}}</p>
+                    <p>{{$value.body | filterXSS | unhtml}}</p>
                 </div>
             </div>
        {{else}}
@@ -56,7 +56,7 @@
                 </div>
                 <div class="content">
                     <div class="lefto"></div>
-                    <p>{{$value.body | filterXSS}}</p>
+                    <p>{{$value.body | filterXSS | unhtml}}</p>
                 </div>
             </div>
        {{/if}}

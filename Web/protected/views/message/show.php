@@ -30,7 +30,7 @@
 					</div>
 					<div class="content clearfix">
 						<div class="righto"></div>
-						<p><?php echo CHtml::encode($item['body']) ?></p>
+						<p><?php echo CHtml::encode(strip_tags($item['body'])) ?></p>
 					</div>
 				</div>
 	    	<?php else: ?>
@@ -44,7 +44,7 @@
 						<?php if($item['type']==1): ?>
 						<a href="/post/postshow-<?php echo $item['data'] ?>"><?php echo CHtml::encode($item['body']) ?></a>
 						<?php else: ?>
-						<p><?php echo CHtml::encode($item['body']) ?></p>
+						<p><?php echo CHtml::encode(strip_tags($item['body'])) ?></p>
 						<?php endif; ?>
 					</div>
 				</div>
