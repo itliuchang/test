@@ -15,7 +15,7 @@
 		<img src="<?php echo $data['post']['picture'] ?>" alt="" class="face">
 		<?php endif; ?>
 		<div class="footerWrapper">
-			<p><span class="like_num"><?php echo $data['post']['like_num'] ?></span>like<span><?php echo $data['post']['comment_num'] ?></span>comment</p>
+			<p><span class="like_num"><?php echo $data['post']['like_num'] ?></span>like<span class="comment_num"><?php echo $data['post']['comment_num'] ?></span>comment</p>
 			<div class="operation">
 				<?php if($data['post']['islike']): ?>
 				<a class="liked" data-id="<?php echo $data['post']['likeId'] ?>"></a>

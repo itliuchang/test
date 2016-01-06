@@ -54,6 +54,7 @@ $(function(){
 					CHelper.toggleTip('show','ing..');
 				},
 				success:function(data){
+					$('.comment_num').val($('.comment_num').val()+1);
 					var html = template('postCommentTpl', {data: data});
 					$('.commentWrapper').append(html);
 					CHelper.toggleTip('show','comment success!','success',2000);
