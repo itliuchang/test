@@ -14,6 +14,24 @@ class CPost{
 			);
 	}
 
+	public function getProfileList($userId,$page=1,$size=2){
+		$result = Yii::app()->db->createCommand()->setText('SELECT a.*,b.nickName,b.portrait,b.title,c.name as companyName,d.name as location from post a  LEFT JOIN user b on b.id = a.userId left join company c on c.id = b.company left join hub d on d.id = b.location where a.status=1 and a.userId='.$userId.'  ORDER BY a.createTime desc limit '.($page-1)*$size.','.$size)->queryAll();
+		return array(
+				'code'=>200,
+				'mes'=>'success',
+				'data'=>$result
+			);
+	}
+
+	public function getCompanyList($companyId,$page=1,$size=2){
+		$result = Yii::app()->db->createCommand()->setText('SELECT a.*,b.nickName,b.portrait,b.title,c.name as companyName,d.name as location from post a  LEFT JOIN user b on b.id = a.userId left join company c on c.id = b.company left join hub d on d.id = b.location where a.status=1 and c.id='.$companyId.'  ORDER BY a.createTime desc limit '.($page-1)*$size.','.$size)->queryAll();
+		return array(
+				'code'=>200,
+				'mes'=>'success',
+				'data'=>$result
+			);
+	}
+
 	public function getpost($id){
 		$result = Yii::app()->db->createCommand()->setText('SELECT a.*,b.nickName,b.portrait,b.title,c.name as companyName,d.name as location from post a  LEFT JOIN user b on b.id = a.userId left join company c on c.id = b.company left join hub d on d.id = b.location where a.status=1 and a.id='.$id)->queryRow();
 		$item =Like::model()->findByAttributes(array('userId'=>Yii::app()->user->id,'postId'=>$result['id'],'status'=>1));

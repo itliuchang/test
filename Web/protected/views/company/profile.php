@@ -53,10 +53,10 @@
 		    </li>
 		</ul>
 	</div>
-	<div class="partOption">
+	<div class="partOption postlist">
 		<h3>Feed and Community</h3>
 		<div class="underLine"></div>
-		<div class="postWrapper">
+		<!-- <div class="postWrapper">
 			<div class="header">
 				<img src="/images/portrait-default.png" alt="">
 				<span class="time"></span>
@@ -68,9 +68,28 @@
 			<p class="content">
 				Membership at naked Hub offers individual the benefits of corporate work with 21st century freedom.
 			</p>
+		</div> -->
+		<?php foreach($postlist as $value): ?>
+		<div class="postWrapper" data-id="<?php echo $value['id'] ?>">
+			<div class="header">
+				<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
+				<h4><?php echo $value['nickName'] ?></h4>
+				<p class="title"><?php echo $value['title'] ?></p>
+				<p class="companyName"><?php echo $value['companyName'] ?></p>
+				<p class="location"><?php echo $value['location'] ?></p>
+				<p class="time"><?php echo CDate::dgm($value['createTime']) ?></p>
+			</div>
+			<p class="content">
+				<?php echo Assist::removeXSS(Assist::removeEmoji($value['content'])) ?>
+			</p>
+			<?php if($value['picture']): ?>
+			<img src="<?php echo $value['picture'] ?>" alt="" class="face">
+			<?php endif; ?>
 		</div>
+		<?php endforeach; ?>
 	</div>
 </div>
+<?php echo $this->renderPartial('_template') ?>
 <?php
     $cs = Yii::app()->clientScript;
     $js = $this->renderPartial('_profilejs', null ,true);

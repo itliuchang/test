@@ -144,25 +144,60 @@
 	font-size: 12px;
 	color: #9b9796;
 }
-#profile .partOption .postWrapper{
+#profile .postWrapper{
 	position: relative;
+	background-color: #fff;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ececec;
 }
-#profile .partOption .postWrapper .header{
+#profile .postWrapper .header{
 	position: relative;
 	padding-left: 100px;
-	margin-top: 20px;
+	padding-top: 20px;
+	height: 90px;
 }
-#profile .partOption .postWrapper .header p{
+#profile .like:after{
+	content: 'LIKE';
+}
+#profile .liked:after{
+	content: 'LIKED';
+	color: #F5AD38;
+}
+#profile .postWrapper .header p.time{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 12px;
+}
+#profile .postWrapper .header p{
 	color: #9b9796;
 	font-size: 12px;
 }
-#profile .partOption .postWrapper .header img{
-	position: absolute;
-	left: 0;
-	width: 80px;
-	height: 80px;
+#profile .postWrapper .header .title{
+	margin-top: 5px;
 }
-#profile .partOption .postWrapper .content{
-	padding: 20px 0;
-	font-size: 12px;
+#profile .postWrapper .header>img{
+	position: absolute;
+	border-radius: 100%;
+	left: 10px;
+	width: 75px;
+	height: 75px;
+	z-index: 1000;
+}
+#profile .postWrapper .content{
+	padding: 20px;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+#profile .postWrapper .face{
+	width: 100%;
+}
+#profile .loading{
+	height: 30px;
+	width: 100%;
+	background-image: url(/images/loading2.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 30px 30px;
+	background-color: #fff;
 }

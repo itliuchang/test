@@ -181,6 +181,13 @@ body.newpostlist{
 	line-height: 40px;
 	color: #000;
 	font-weight: normal;
+	text-decoration: none;
+}
+#newpostlist .footer a:hover,
+#newpostlist .footer a:link,
+#newpostlist .footer a:visited{
+	color: #000;
+	text-decoration: none;
 }
 #newpostlist .loading{
 	height: 30px;
