@@ -152,7 +152,7 @@
 }
 #profile .postWrapper .header{
 	position: relative;
-	padding-left: 100px;
+	padding-left: 90px;
 	padding-top: 20px;
 	height: 90px;
 }
@@ -179,13 +179,13 @@
 #profile .postWrapper .header>img{
 	position: absolute;
 	border-radius: 100%;
-	left: 10px;
+	left: 0;
 	width: 75px;
 	height: 75px;
 	z-index: 1000;
 }
 #profile .postWrapper .content{
-	padding: 20px;
+	padding: 20px 0;
 	font-size: 16px;
 	padding-bottom: 10px;
 }

@@ -7,7 +7,9 @@ class CComment{
 		$comment->userId = $data['userId'];
 		$comment->content = $data['content'];
 		$comment->createTime = $data['createTime'];
-		if($comment->save()){
+		$post = Posts::model()->findByAttributes(array('id'=>$data['postId']));
+		$post->comment_num++;
+		if($comment->save()&&$post->save()){
 			return array(
 					'code' => 200,
 					'mes' => 'success',
