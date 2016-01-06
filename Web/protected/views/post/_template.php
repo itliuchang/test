@@ -10,7 +10,7 @@
                 <p class="time">{{ v.createTime | dgm }}</p>
             </div>
             <p class="content">
-                {{ v.content }}
+                {{ v.content | unhtml }}
             </p>
             {{ if v.picture }}
             <img src="{{ v.picture }}" alt="" class="face">
