@@ -11,7 +11,6 @@ class IndexAction extends CAction{
             Yii::app()->user->isBindIM = 1;
             User::model()->updateByPk(Yii::app()->user->id, array('isBindIM' => 1));
         }
-
         $data = EasemobHelper::getAll($page, $size);
         if(Yii::app()->request->isAjaxRequest){
             echo CJSON::encode(array('code' => 200, 'data' => array('list' => $data)));

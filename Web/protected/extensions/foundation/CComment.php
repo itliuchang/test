@@ -15,7 +15,7 @@ class CComment{
 		$message->body=$userName.' 评论了您的帖子';
 		$message->data=$data['postId'];
 		$message->type=1;
-		$message->status=1;
+		$message->status=0;
 		$message->ctime=date('U');
 		$post = Posts::model()->findByAttributes(array('id'=>$data['postId']));
 		$post->comment_num++;
