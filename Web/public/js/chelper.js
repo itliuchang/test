@@ -267,7 +267,9 @@
                 return true;
             }
         },
-
+        checkPassword:function(str){
+            return /^[0-9_a-zA-Z]{6,20}$/.test(str);
+        },
         checkPhoneNum: function(tel){
             return /^0?1[3|4|5|6|7|8][0-9]\d{8}$/.test(tel);
         },

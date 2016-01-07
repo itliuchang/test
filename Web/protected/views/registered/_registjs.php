@@ -72,7 +72,10 @@ $(function(){
 				CHelper.toggleTip('show','The passwords you entered do not match.','error',1000);
 				return;
 			}
-			
+			if(!CHelper.checkPassword($('#basicInfo .password').first().val())){
+				CHelper.toggleTip('show','wrong passwords format!','error',2000);
+				return;
+			}
 			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
 			if(!re.test($('#basicInfo .email').val())) {
 				CHelper.toggleTip('show','Error email','error',1000);
