@@ -39,7 +39,7 @@ $(function(){
 		e.gesture.srcEvent.preventDefault();
 		var id = $(this).parent('.option').children('input[name="id"]').val(),
 			date = $('#date').val(),
-			seatsleft = $('input[name="seatsLeft"]').val();
+			seatsleft = $('.seatsLeft').text();
 		CHelper.asynRequest('/book/workspacelist', {"id":'999',"hub":id,"date":date} ,{
 			error:function(msg){
 				CHelper.toggleTip('show',msg,'warn',1000);

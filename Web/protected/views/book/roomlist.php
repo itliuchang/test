@@ -4,7 +4,7 @@
 		<option value='<?php echo $list['id']?>' <?php echo $list['id']==$hubid?'selected=selected':''?>><?php echo $list['name']?></option>
 	<?php endforeach;?>
 	</select>
-	<input type="date" id='date' value='<?php echo $date?>' min="<?php echo date('Y-m-d') ?>" max="<?php echo (date('Y')+2).'-'.date('m-d')?>">
+	<input type="date" id='date' value='<?php echo $date?>' min="" max="<?php echo (date('Y')+2).'-'.date('m-d')?>">
 	
 	<?php if($data):?>
 	<?php foreach($data as $value): ?>
