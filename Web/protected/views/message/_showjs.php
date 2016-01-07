@@ -2,6 +2,9 @@ $.infinitRefresh({
     container: '#messageshow .wrapper', item: '.item',
     url: '/message/' + friendId + '/chat/%(start)s/%(size)s.html',
     perPage: 5, data: null, callbacks: {
+        before:function(){
+         $('.wrapper').prepend("<div class='loading'></div>");
+        },
         success: function(response){
             if(typeof response.data == 'object' && $.isArray(response.data.list)){
                 var html = template('showTpl', {
@@ -12,6 +15,8 @@ $.infinitRefresh({
                 });
                 $('#messageshow .wrapper').prepend(html);
             }
+            $('.loading').remove();
+
         }
     }
 });

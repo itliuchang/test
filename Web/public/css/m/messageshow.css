@@ -186,3 +186,12 @@ body.messageshow{
 	color: #777;
 	text-decoration: none;
 }
+#messageshow .loading{
+	height: 30px;
+	width: 100%;
+	background-image: url(/images/loading2.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 30px 30px;
+	background-color: #fff;
+}
