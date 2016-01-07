@@ -15,7 +15,7 @@
 		<input type="password" placeholder="Enter a password" class="password">
 	</div>
 	<div class="agree"><div class="icon hasAgree"></div><p>I agree automatic landing</p></div>
-	<a class="footer" href="#">LOG IN</a>
+	<a class="footer">LOG IN</a>
 </div>
 <?php
     $cs = Yii::app()->clientScript;

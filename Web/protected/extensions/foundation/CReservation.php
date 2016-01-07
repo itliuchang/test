@@ -18,8 +18,11 @@ class CReservation{
 	}
 	public function cancel($id){
 		$result = Reservations::model()->findByAttributes(array('id'=>$id));
+		$order_productID = Yii::app()->db->createCommand("select b.id from reservation a  left join order_product b on b.orderId=a.orderId where DATE_FORMAT(a.startTime, '%Y%m%d' )>=b.startDate and DATE_FORMAT(a.startTime, '%Y%m%d' )<=b.endDate and a.id=".$id)->queryRow();
+		$item = OrderProduct::model()->findByAttributes(array('id'=>$order_productID['id']));
+		$item->usedTimes--;
 			$result->status=0;
-			if($result->save()){
+			if($result->save()&&$item->save()){
 				return array(
 					'code' => 200,
 					'mes' => 'success'

@@ -1,8 +1,8 @@
 <?php
 class TestController extends Controller{
 	public function actionIndex(){
-		$user = new CPost;
-		$result = $user->getCompanyList(64,1,2);
+		$user = new CReservation;
+		$result = $user->cancel(302);
 		print_r($result);die;
 	}
 }
