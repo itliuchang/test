@@ -98,7 +98,7 @@ class EasemobHelper extends Easemob{
     //分页获取当前用户好友列表,在消息列表中ajax添加dom时过滤已在dom存在的项，避免多终端显示消息列表时因有新聊天而导致取列表数据错位的问题
     public static function getAll($page = 1, $size = 15){
         $fields = ' mr.*, u1.nickName as u1name, u1.portrait as u1portrait, u2.nickName as u2name, u2.portrait as u2portrait';
-        $where = ' from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id where id1=:uid or id2=:uid order by ctime desc';
+        $where = ' from messageRelation mr left join user u1 on mr.id1=u1.id left join user u2 on mr.id2=u2.id where id1=:uid or id2=:uid order by utime desc';
         // $count = MessageRelation::model()->countBySql('select count(*) ' . $where, array(':uid' => Yii::app()->user->id));
         // $total = ceil($count / $size);
         $start = ($page - 1) * $size;
