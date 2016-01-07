@@ -86,7 +86,9 @@
 	line-height: 50px;
 	width: 100%;
 	background-color: #fca443;
+	font-size: 16px;
 	text-align: center;
+	color: #fff;
 }
 #login .footer:link,
 #login .footer:hover,
