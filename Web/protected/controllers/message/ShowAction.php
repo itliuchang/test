@@ -1,6 +1,6 @@
 <?php
 class ShowAction extends CAction{
-	public function run($fid, $start = 0, $size = 15){
+	public function run($fid, $start = 0, $size = 5){
 		$this->controller->bodyCss='messageshow';
         //检查是否已互为好友并将消息全部置为已读
         EasemobHelper::addAFriend($fid);

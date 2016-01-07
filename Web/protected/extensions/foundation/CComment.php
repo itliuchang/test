@@ -18,6 +18,7 @@ class CComment{
 			$message->type=1;
 			$message->status=0;
 			$message->ctime=date('U');
+			$message->save();
 		}
 		$post = Posts::model()->findByAttributes(array('id'=>$data['postId']));
 		$post->comment_num++;
