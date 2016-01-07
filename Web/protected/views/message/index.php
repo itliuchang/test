@@ -9,6 +9,9 @@
 				<div class="content">
 					<h3 class="overflow-line1">系统消息</h3>
 					<p class="overflow-line1"><?php echo CHtml::encode($item['lastMsg']) ?></p>
+					<?php if($item['ncount']>0): ?>
+					<span class="messageNum"><?php echo $item['ncount'] ?></span>
+					<?php endif; ?>
 				</div>
 			<?php elseif($item['id2'] == Yii::app()->user->id): ?>
 				<a href="/message/<?php echo $item['id1'] ?>/chat" class="link"></a>
@@ -18,6 +21,9 @@
 				<div class="content">
 					<h3 class="overflow-line1"><?php echo CHtml::encode($item['u1name']) ?></h3>
 					<p class="overflow-line1"><?php echo CHtml::encode($item['lastMsg']) ?></p>
+					<?php if($item['ncount']>0): ?>
+					<span class="messageNum"><?php echo $item['ncount'] ?></span>
+					<?php endif; ?>
 				</div>
 			<?php else: ?>
 				<a href="/message/<?php echo $item['id2'] ?>/chat" class="link"></a>
@@ -27,6 +33,9 @@
 				<div class="content">
 					<h3 class="overflow-line1"><?php echo CHtml::encode($item['u2name']) ?></h3>
 					<p class="overflow-line1"><?php echo CHtml::encode($item['lastMsg']) ?></p>
+					<?php if($item['ncount']>0): ?>
+					<span class="messageNum"><?php echo $item['ncount'] ?></span>
+					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 			
