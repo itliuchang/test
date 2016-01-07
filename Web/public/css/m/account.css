@@ -74,6 +74,7 @@ body.account{
 	background-color: #fca443;
 	bottom: 0;
 	text-align: center;
+	font-size: 16px;
 }
 #account .footer:hover,
 #account .footer:link,
