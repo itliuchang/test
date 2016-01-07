@@ -10,10 +10,9 @@ $(function(){
 			// console.log(response)
 			var seatsLeft;
 			for(var i = 0;i < $('.option').length;i++){
-				var seats = $('.option:eq('+i+') input[name="seatsLeft"]').val();
+				var seats = $('.option:eq('+i+') input[name="seats"]').val();
 				var seatsleft =seats-response['count'][i][0];
 				$('.option:eq('+i+') .seatsLeft').html(seatsleft);
-				$('.option:eq('+i+') input[name="seatsLeft"]').val(seatsleft);
 			}
 		}
 	});
@@ -27,12 +26,11 @@ $(function(){
 				CHelper.toggleTip('show','ERROR','warn',3000);
 			},
 			success:function(response){
-				// console.log(response['count'][0][0]['num'])
-				var seatsLeft;
+				// console.log(response)
 				for(var i = 0;i < $('.option').length;i++){
-					seatsleft =50-response['count'][i][0];
+					var seats = $('.option:eq('+i+') input[name="seats"]').val();
+					var seatsleft =seats-response['count'][i];
 					$('.option:eq('+i+') .seatsLeft').html(seatsleft);
-					$('.option:eq('+i+') input[name="seatsLeft"]').val(seatsleft);
 				}
 			}
 		});
