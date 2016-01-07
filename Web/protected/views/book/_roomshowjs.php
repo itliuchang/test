@@ -1,4 +1,5 @@
 $(function(){
+	var today = $('.date').val();
 	var tmp='';
 	for(var i=0;i<14;i++){
 		tmp += '<option value='+i*2+'>'+(9+i)+':00</option><option value="'+(i*2+1)+'">'+(9+i)+':30'; 
@@ -40,49 +41,54 @@ $(function(){
 		var date = $(this).val(),
 			id = $('input[name="id"]').val(),
 			hub = $('input[name="hubid"]').val();
-		CHelper.asynRequest('/book/roomshow-'+id,{
-				"date":date,
-				"hub":hub
-			},{
-				error:function(xhr,msg){
-					console.log(xhr)
-				},
-				success:function(response){
-					// other = response['other']
-					var option = eval($('.option input[name="other"]').attr("data-other"));
-					$('.starts option').each(function(){
-						for(var m in option){
-							if($(this).val()==option[m])
-								$(this).attr({disabled: false});
-						}
+		if(new Date() > Date.parse(new Date(date.replace(/-/g, "/")))){
+			$('.date').val(today);
+			CHelper.toggleTip('show','Can not select past time','warn',1200);
+		} else {
+			CHelper.asynRequest('/book/roomshow-'+id,{
+					"date":date,
+					"hub":hub
+				},{
+					error:function(xhr,msg){
+						console.log(xhr)
+					},
+					success:function(response){
+						// other = response['other']
+						var option = eval($('.option input[name="other"]').attr("data-other"));
+						$('.starts option').each(function(){
+							for(var m in option){
+								if($(this).val()==option[m])
+									$(this).attr({disabled: false});
+							}
 
-						for(var n in response['other']){
-							if($(this).val()==response['other'][n])
-								$(this).attr({disabled:'disabled'});
+							for(var n in response['other']){
+								if($(this).val()==response['other'][n])
+									$(this).attr({disabled:'disabled'});
+							}
+						})
+						$('.option input[name="other"]').attr("data-other",response['other'])
+						$('.option input[name="my"]').attr("data-my",response['my'])
+						$('.piece').removeClass('myselected').removeClass('selected fix');
+						for(var i = 0;i < $('.option').length;i++){
+							my = eval(response['my']);
+							if(my=='')
+							continue;
+							my.forEach(function(v){
+								$('.option:eq('+i+') .piece').eq(v).addClass('myselected fix');
+							});
 						}
-					})
-					$('.option input[name="other"]').attr("data-other",response['other'])
-					$('.option input[name="my"]').attr("data-my",response['my'])
-					$('.piece').removeClass('myselected').removeClass('selected fix');
-					for(var i = 0;i < $('.option').length;i++){
-						my = eval(response['my']);
-						if(my=='')
-						continue;
-						my.forEach(function(v){
-							$('.option:eq('+i+') .piece').eq(v).addClass('myselected fix');
-						});
+			
+						for(var i = 0;i < $('.option').length;i++){
+							other = eval(response['other']);
+							if(other=='')
+							continue;
+							other.forEach(function(v){
+								$('.option:eq('+i+') .piece').eq(v).addClass('selected');
+							});
+						}
 					}
-		
-					for(var i = 0;i < $('.option').length;i++){
-						other = eval(response['other']);
-						if(other=='')
-						continue;
-						other.forEach(function(v){
-							$('.option:eq('+i+') .piece').eq(v).addClass('selected');
-						});
-					}
-				}
-		});
+			});
+		}
 	});
 
 	var last='',

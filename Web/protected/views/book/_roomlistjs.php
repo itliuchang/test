@@ -1,4 +1,5 @@
 $(function(){
+	var today = $('#date').val();
 	$('.location').change(function(){
 		var id = $('.location').val();
 		location.href = '/book/roomlist-'+id;
@@ -32,7 +33,8 @@ $(function(){
 
 	$('#date').change(function() {
 		var date = $(this).val();
-		CHelper.asynRequest('/book/roomlist',{
+		if(new Date() < Date.parse(new Date(date.replace(/-/g, "/")))){
+			CHelper.asynRequest('/book/roomlist',{
 				"date":date,
 			},{
 				error:function(xhr,msg){
@@ -60,6 +62,11 @@ $(function(){
 						});
 					}
 				}
-		});
+			});
+		} else {
+			$('#date').val(today);
+			CHelper.toggleTip('show','Can not select past time','warn',1200);
+		}
+		
 	});
 });
