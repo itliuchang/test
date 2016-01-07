@@ -6,7 +6,7 @@
 	<?php foreach($data as $value):?>
 	<div class="option">
 	<input type='hidden' name='id' value='<?php echo $value['id']?>'>
-	<input type="hidden" name='seatsLeft' value='<?php echo $value['seats']?>'>
+	<input type="hidden" name='seats' value='<?php echo $value['seats']?>'>
 		<div class="imgWrapper">
 			<img src="<?php echo $value['picture']?>" alt="">
 		</div>
