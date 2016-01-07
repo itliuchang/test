@@ -1,7 +1,7 @@
 $.infinitRefresh({
     container: '#messageshow .wrapper', item: '.item',
     url: '/message/' + friendId + '/chat/%(start)s/%(size)s.html',
-    perPage: 5, data: null, callbacks: {
+    distance:60,perPage: 5, data: null, callbacks: {
         before:function(){
          $('.wrapper').prepend("<div class='loading'></div>");
         },
