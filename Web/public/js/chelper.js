@@ -897,5 +897,7 @@
     template.helper('getXDate', CHelper.getXDate);
     template.helper('getPayURL', CHelper.getPayURL);
     template.helper('getQiniuDomain', CHelper.getQiniuDomain);
+    template.helper('html', CHelper.html);
     template.helper('unhtml',function(str){return str.replace(/<[^>]+>/g,"");});
+    template.config('escape',false);
 })(window);

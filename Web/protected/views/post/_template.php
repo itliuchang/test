@@ -9,8 +9,8 @@
                 <p class="location">{{  v.location }}</p>
                 <p class="time">{{ v.createTime | dgm }}</p>
             </div>
-            <p class="content">
-                {{ v.content | unhtml }}
+            <p class="content overflow-line5">
+                {{ v.content  }}
             </p>
             {{ if v.picture }}
             <img src="{{ v.picture }}" alt="" class="face">
