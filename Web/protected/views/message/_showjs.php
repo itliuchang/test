@@ -141,7 +141,7 @@ $(function(){
                 }
             });
 
-            if(conn) conn.sendTextMessage({to: friendId, msg: content, type: 'chat'});
+            /*if(conn) conn.sendTextMessage({to: friendId, msg: content, type: 'chat'});*/
         }
     });
 });
