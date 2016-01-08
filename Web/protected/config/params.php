@@ -46,6 +46,14 @@ return array(
     		'login_tpl' => '验证码为%d，您现在正在进行裸心社手机登录［裸心社］',
     		'regist_tpl' => '验证码为%d，您现在正在进行裸心社手机注册［裸心社］',
     	),
+    	'submail' => array(
+    		'url' => 'http://api.submail.cn/message/xsend.json',
+    		'appid' => '10418',
+    		'signature' => '1fa78b2448cac45ba9a345cc0b4c5c68',
+    		'sign_type' => 'normal',
+    		'login_project' => 'j4VDX2',
+    		'regist_project' => 'd4HIa4'	
+    	),
          //阿里云OSS配置
         'oss' => array(
             'bucket' => 'naked',
