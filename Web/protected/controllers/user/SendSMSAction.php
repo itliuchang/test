@@ -12,7 +12,8 @@ class SendSMSAction extends CAction{
 				Yii::app()->session['login_code'.$mobile] = $code;
 				echo CJSON::encode(array('code'=>200,'message'=>''));
 			} elseif ($type === 'regist') {
-				$user = User::model()->findByAttributes(array('mobile' => $mobile));
+				// $user = User::model()->findByAttributes(array('mobile' => $mobile));
+				$user = Yii::app()->db->createCommand('select * from user where mobile='.$mobile.' and status!=0')->queryRow();
 				if($user) {
 					echo CJSON::encode(array('code'=>500,'message'=>'手机号已注册'));
 				} else {
