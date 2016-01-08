@@ -10,7 +10,6 @@ class RegistAction extends CAction{
 	
 				$email = Yii::app()->request->getParam('email');
 				$password = Yii::app()->request->getParam('password');
-				Yii::log('fsd', LEVEL_ERROR,'info');
 				$_code = Yii::app()->session['regist_code'.$mobile];
 				if ($_code && $_code == $code) {
 					$item = Yii::app()->db->createCommand('select * from user where mobile='.$mobile.' and status=0')->queryRow();
@@ -39,7 +38,7 @@ class RegistAction extends CAction{
 						$user->save();
 						Yii::app()->session['user'] = $user;
 						}else{
-							Yii::log(print_r($item,1), LEVEL_ERROR,'info');
+							Yii::log(print_r($item,1), CLogger::LEVEL_ERROR,'info');
 							Yii::app()->session['user'] = $item;
 						}
 						//如果用户注册过了，没付款不生成新的用户，读取数据库里的用户信息
