@@ -1,6 +1,7 @@
 <?php
 class IndexAction extends CAction{
 	public function run($page = 1, $size = 15){
+        $this->controller->pageTitle="Messages";
 	    $this->controller->bodyCss='messagelist';
         //检查user->isBindIM如未绑定环信则注册环信并绑定
         if(!Yii::app()->user->isBindIM){

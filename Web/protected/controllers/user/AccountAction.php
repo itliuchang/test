@@ -1,6 +1,8 @@
 <?php
 class AccountAction extends CAction{
 	public function run(){
+        $this->controller->pageTitle='My Account';
+
 		$order = new COrder;
 		$result = $order->getlist(Yii::app()->user->id);
 		$this->controller->bodyCss='account';

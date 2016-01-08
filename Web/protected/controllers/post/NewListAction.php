@@ -1,6 +1,7 @@
 <?php
 class NewListAction extends CAction{
 	public function run($page=1,$size=2){
+		$this->controller->pageTitle="naked HUB";
 		$post = new CPost;
 		$result = $post->getlist($page,$size);
 		if(Yii::app()->request->isAjaxRequest){

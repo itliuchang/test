@@ -1,7 +1,7 @@
 <?php
 class RoomShowAction extends CAction{
 	public function run($id,$date='',$hub=''){
-		$this->controller->pageTitle ="Rooms";
+		$this->controller->pageTitle ="Room";
 		// $now = str_replace('$','-',$date);
 		if($date){
 			$hub = substr($date,-1);

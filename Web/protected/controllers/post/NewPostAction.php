@@ -1,6 +1,7 @@
 <?php
 class NewPostAction extends CAction{
 	public function run(){
+		$this->controller->pageTitle="New Post";
 		$this->controller->pageTitle ="New Post";
 		if(Yii::app()->request->isAjaxRequest){
 			$img = Yii::app()->request->getParam('img');

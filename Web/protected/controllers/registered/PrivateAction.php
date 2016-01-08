@@ -1,6 +1,7 @@
 <?php 
 class PrivateAction extends CAction{
 	public function run(){
+		$this->controller->pageTitle="Private";
 		$proxy = new  CHub;
 		$result = $proxy->getHubList();
 		$type = MemberType::model()->findAll();

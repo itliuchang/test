@@ -1,6 +1,7 @@
 <?php
 class WorkspaceListAction extends CAction{
 	public function run(){
+        $this->controller->pageTitle='Book a Workspace';
 		$now = date('Y-m-d',time());
 		$date = Yii::app()->request->getParam('date');
 		$date = $date==''?$now:$date;

@@ -1,6 +1,7 @@
 <?php
 class ProfileAction extends CAction{
 	public function run($id=null,$page=1,$size=2){
+		$this->controller->pageTitle="Company";
 		if(Yii::app()->request->isAjaxRequest){
 			if(!$id){
 				$id=$company = Company::model()->findByAttributes(array('ownerId' => Yii::app()->user->id))->id;

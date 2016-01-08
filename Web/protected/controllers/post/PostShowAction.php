@@ -1,6 +1,7 @@
 <?php
 class PostShowAction extends CAction{
 	public function run($id){
+		$this->controller->pageTitle="Post";
 		$post = new CPost;
 		$result = $post->getpost($id);
 		if($result['code']=200){
