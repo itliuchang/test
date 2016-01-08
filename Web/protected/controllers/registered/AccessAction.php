@@ -7,8 +7,8 @@ class AccessAction extends CAction{
 			$identity->registAuth($user);
 			$duration = Yii::app()->getComponent('session')->getTimeout();
 			Yii::app()->user->login($identity, $duration);
-			Yii::log(print_r($user,1), CLogger::LEVEL_ERROR,'222');
-			$tuser = User::model()->findByAttributes(array('id'=>$user->id));
+			// Yii::log(print_r($user,1), CLogger::LEVEL_ERROR,'222');
+			$tuser = User::model()->findByAttributes(array('id'=>$user['id']));
 			$tuser->status = 1;
 			$tuser->save();
 			$this->controller->redirect('/user/updateProfile');
