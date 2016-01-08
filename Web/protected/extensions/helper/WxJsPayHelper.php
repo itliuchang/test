@@ -67,7 +67,8 @@ class WxJsPayHelper{
         if(!array_key_exists("appid", $UnifiedOrderResult)
         || !array_key_exists("prepay_id", $UnifiedOrderResult)
         || $UnifiedOrderResult['prepay_id'] == ""){
-            throw new WxPayException("参数错误");
+            // throw new WxPayException("参数错误");
+            Yii::app()->request->redirect(Assist::getDefaultURL());
         }
         $jsapi = new WxPayJsApiPay();
         $jsapi->SetAppid($UnifiedOrderResult["appid"]);
