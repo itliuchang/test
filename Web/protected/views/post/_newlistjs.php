@@ -2,7 +2,7 @@ $(function(){
 	$.infinitScroll({
 		container: '#newpostlist',
         item: '.postWrapper',
-        perPage :2 ,
+        perPage :8 ,
         distance:60,
         callbacks: {
         	before:function(){

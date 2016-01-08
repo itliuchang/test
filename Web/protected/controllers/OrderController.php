@@ -59,6 +59,16 @@ class OrderController extends Controller{
 
 	}
 
+	public function actionSuccess(){
+		$this->render('ok');
+	}
+	public function actionCancel(){
+		$this->render('cancel');
+	}
+	public function actionError(){
+		$this->render('error');
+	}
+
 	public function actionCreateSession(){
 		if(Yii::app()->request->isAjaxRequest){
 			try{
