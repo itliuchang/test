@@ -13,7 +13,7 @@ class RegistAction extends CAction{
 				
 				$_code = Yii::app()->session['regist_code'.$mobile];
 				if ($_code && $_code == $code) {
-					$item = Yii::app()->db->createCommand('select * from user where mobile='.$mobile.' and status!=0')->queryRow();
+					$item = Yii::app()->db->createCommand('select * from user where mobile='.$mobile.' and status=0')->queryRow();
 					if(!$item){
 						$user = new User();
 						$user->nickName = $name;
