@@ -47,7 +47,7 @@ class WxPayApi
 		if(!$inputObj->IsNotify_urlSet()){
 			$inputObj->SetNotify_url(WxPayConfig::NOTIFY_URL);//异步通知url
 		}
-		
+		Yii::log(WxPayConfig::MCHID, CLogger::LEVEL_ERROR,'mchid');
 		$inputObj->SetAppid(WxPayConfig::APPID);//公众账号ID
 		$inputObj->SetMch_id(WxPayConfig::MCHID);//商户号
 		$inputObj->SetSpbill_create_ip($_SERVER['REMOTE_ADDR']);//终端ip	  
