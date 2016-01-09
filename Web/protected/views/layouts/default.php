@@ -5,7 +5,7 @@
       <!-- <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"> -->
       <meta name="viewport" content="initial-scale=1.1,user-scalable=no">
 	    <title><?php echo $this->pageTitle ?></title>
-      <link rel="stylesheet" type="text/css" href="/css/m/all.css?v=1">
+      <link rel="stylesheet" type="text/css" href="/css/m/all.css?v=2">
       <!-- <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" /> -->
       <script type="text/javascript">
         var systemVar = {
