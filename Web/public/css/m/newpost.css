@@ -46,7 +46,7 @@
 	z-index: 10;
 }
 #newpost .imgWrapper .x{
-	background-image:url(/images/cancel.png);
+	background-image:url(/images/fail.png);
 	position:absolute;
 	background-size: 40px 40px;
 	top:0;
