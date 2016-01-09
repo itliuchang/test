@@ -1,4 +1,4 @@
 <div id="wxpayresult">
-    <div class="icon error"><i></i><p>支付失败</p></div>
-    <div id="footer"><a class="btn" href="/account/order.html">返 回</a></div>
+    <div class="icon error"><i></i><p>error</p></div>
+    <div id="footer"><a class="btn" href="/registered/">ok</a></div>
 </div>
