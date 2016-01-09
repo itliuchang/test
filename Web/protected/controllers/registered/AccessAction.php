@@ -23,11 +23,11 @@ class AccessAction extends CAction{
 				case 2:
 					$this->controller->redirect('/company/updateProfile');
 				default:
-					$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
-					$_identity= new UserIdentity();
-					$_identity->setPersistentStates($user);
-					$duration = Yii::app()->getComponent('session')->getTimeout();
-					Yii::app()->user->login($_identity,$duration);
+					// $user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+					// $_identity= new UserIdentity();
+					// $_identity->setPersistentStates($user);
+					// $duration = Yii::app()->getComponent('session')->getTimeout();
+					// Yii::app()->user->login($_identity,$duration);
 					$this->controller->redirect(Assist::getDefaultURL());
 					break;
 			}
