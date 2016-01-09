@@ -102,6 +102,7 @@ $(function(){
 				},
 				success:function(response){
 					// console.log(response['status'])
+					$('.footer').attr('disabled',true);
 					if(response['status'] == 2){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
