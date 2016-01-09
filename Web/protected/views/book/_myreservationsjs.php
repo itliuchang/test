@@ -15,17 +15,17 @@ $(function(){
 		var resId = $(this).parents('#deleteModal').attr('data-id');
 		CHelper.asynRequest('/book/cancel',{id:resId},{
 			before:function(){
-				CHelper.toggleTip('show','ing..','success',1000);
+				CHelper.toggleTip('show','ing..','success',2000);
 			},
 			success:function(){
 				$(".upcoming .option[data-id="+resId+"]").remove();
-				CHelper.toggleTip('show','cancel success','success',1000);
+				CHelper.toggleTip('show','cancel success','success',2000);
 			},
 			failure:function(m){
-				CHelper.toggleTip('show',m.message,'fail',1000);
+				CHelper.toggleTip('show',m.message,'fail',2000);
 			},
 			error:function(e){
-				CHelper.toggleTip('show',m.message,'fail',1000);
+				CHelper.toggleTip('show',m.message,'fail',2000);
 			}
 		});
 	});

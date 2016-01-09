@@ -70,7 +70,7 @@ $(function(){
 			linkedin = $('.linkIn').val(),
 			status = $('.status').val();
 		if(!name){
-			CHelper.toggleTip('show','Please input company name','warn',1000);
+			CHelper.toggleTip('show','Please input company name','warn',2000);
 		} else {
 			var arr = Array();
 			$('.serviceWrapper li').each(function(index){
@@ -94,7 +94,7 @@ $(function(){
 				},
 				error:function(msg,response){
 					// console.log(response)
-					CHelper.toggleTip('show','ERROR','warn',1000);
+					CHelper.toggleTip('show','ERROR','warn',2000);
 				},
 				failure:function(response){
 					if(response.code==400)

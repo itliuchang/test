@@ -10,7 +10,7 @@ $(function(){
 	$('.act').hammer().on('tap',timing);
 	function timing(){
 		if(!$('.phoneContent input').first().val()){
-			CHelper.toggleTip('show','Please Input Mobile Phone','error',1000);
+			CHelper.toggleTip('show','Please Input Mobile Phone','error',2000);
 		}else{
 		$(this).hammer().off();
 		var that = $(this);
@@ -27,15 +27,15 @@ $(function(){
 				$code.text(time);
 				time--;
 			}
-		}, 1000);
+		}, 2000);
 		CHelper.asynRequest('/user/sendsms',{mobile:$('.phoneContent input').first().val(),type:'login',parameter:{type:'GET'}},{
 			success:function(){
 			},
 			failure:function(){
-				CHelper.toggleTip('show',d.message,'error',1000);
+				CHelper.toggleTip('show',d.message,'error',2000);
 			},
 			error:function(){
-				CHelper.toggleTip('show','fail','error',1000);
+				CHelper.toggleTip('show','fail','error',2000);
 			}
 		});
 	}
@@ -48,38 +48,38 @@ $(function(){
 	
 		var nowClass = $('.now').hasClass('phone')? 'phoneContent' : 'EmailContent';
 		if(!$('.'+nowClass+' input').first().val()||!$('.'+nowClass+' input').last().val()){
-			CHelper.toggleTip('show','Some Input No Value','error',1000);
+			CHelper.toggleTip('show','Some Input No Value','error',2000);
 		}else if(nowClass == 'phoneContent'){
 			var re = /^1\d{10}$/;
 			if(!re.test($('.phoneContent input').first().val())){
-				CHelper.toggleTip('show','Number Is Wrong','error',1000);
+				CHelper.toggleTip('show','Number Is Wrong','error',2000);
 			}else{
 				CHelper.asynRequest('/login',{mobile:$('.phoneContent input').first().val(),code:$('.phoneContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){
 						location.href='/registered/access';;
 					},
 					failure:function(d){
-						CHelper.toggleTip('show',d.message,'error',1000);
+						CHelper.toggleTip('show',d.message,'error',2000);
 					},
 					error:function(d){
-						CHelper.toggleTip('show',d.message,'error',1000);
+						CHelper.toggleTip('show',d.message,'error',2000);
 					}
 				});
 			}
 		}else if(nowClass == 'EmailContent'){
 			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
 			if(!re.test($('.EmailContent input').first().val())){
-				CHelper.toggleTip('show','Email Is Wrong','error',1000);
+				CHelper.toggleTip('show','Email Is Wrong','error',2000);
 			}else{
 				CHelper.asynRequest('/login',{email:$('.EmailContent input').first().val(),password:$('.EmailContent input').last().val(),bind:bind,parameter:{type:'GET'}},{
 					success:function(){
 						location.href='/registered/access';
 					},
 					failure:function(d){
-						CHelper.toggleTip('show',d.message,'error',1000);
+						CHelper.toggleTip('show',d.message,'error',2000);
 					},
 					error:function(d){
-						CHelper.toggleTip('show',d.message,'error',1000);
+						CHelper.toggleTip('show',d.message,'error',2000);
 					}
 				});
 			}

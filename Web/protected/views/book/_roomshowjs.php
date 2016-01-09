@@ -43,7 +43,7 @@ $(function(){
 			hub = $('input[name="hubid"]').val();
 		if(new Date() > Date.parse(new Date(date.replace(/-/g, "/")))){
 			$('.date').val(today);
-			CHelper.toggleTip('show','Can not select past time','warn',1200);
+			CHelper.toggleTip('show','Can not select past time','warn',2000);
 		} else {
 			CHelper.asynRequest('/book/roomshow-'+id,{
 					"date":date,

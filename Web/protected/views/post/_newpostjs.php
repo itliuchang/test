@@ -19,7 +19,7 @@ $(function(){
 		var img = $('.postimg').attr('src'),
 			content = CHelper.filterXSS($('.content').val());
 		if(!content){
-			CHelper.toggleTip('show','The content can not be empty','warn',1200);
+			CHelper.toggleTip('show','The content can not be empty','warn',2000);
 		} else {
 			CHelper.asynRequest('/post/newpost',{
 				img:img,
@@ -29,7 +29,7 @@ $(function(){
 					CHelper.toggleTip('show','Creating...','loader');
 				},
 				error:function(msg){
-		           CHelper.toggleTip('show', msg , 'error', 1000);
+		           CHelper.toggleTip('show', msg , 'error', 2000);
 		        },
 		        success:function(){
 		          location.href = '/post/newlist';

@@ -2,6 +2,7 @@
 class LoginAction extends CAction{
 
 	public function run(){
+		$this->controller->pageTitle='Login';
 		if(Yii::app()->user->isGuest){
 			if(Yii::app()->request->isAjaxRequest){
 				$mobile = Yii::app()->request->getParam('mobile');

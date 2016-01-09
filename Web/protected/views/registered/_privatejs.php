@@ -9,9 +9,9 @@ $(function(){
 			membertype = $('.membertype').val(),
 			hub = $('.hub').val();
 		if(!name || !phone || !email || !remail || !number || !membertype || !hub){
-			CHelper.toggleTip('show','You should input all information','warn',1200);
+			CHelper.toggleTip('show','You should input all information','warn',2000);
 		} else if(email!=remail){
-			CHelper.toggleTip('show','The mail should be the same','warn',1200);
+			CHelper.toggleTip('show','The mail should be the same','warn',2000);
 		} else {
 			CHelper.asynRequest('/registered/private',{
 				name:name,
@@ -22,10 +22,10 @@ $(function(){
 				hub:hub
 			},{
 				error:function(msg){
-					CHelper.toggleTip('show',msg,'error',1000);
+					CHelper.toggleTip('show',msg,'error',2000);
 				},
 				success:function(response){
-					CHelper.toggleTip('show','SUCCESS','success',1200);
+					CHelper.toggleTip('show','SUCCESS','success',2000);
 					setInterval(function(){
 						location.href = '/wechat/index';
 					},1200);

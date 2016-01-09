@@ -61,7 +61,7 @@ $(function(){
 					CHelper.toggleTip('show','commiting...');
 				},
 				error:function(msg){
-					CHelper.toggleTip('show','ERROR','warn',1000);
+					CHelper.toggleTip('show','ERROR','warn',2000);
 				},
 				success:function(response){
 					if($('.footer').hasClass('save')){
@@ -79,7 +79,7 @@ $(function(){
 					}
 				},
 				failure:function(response){
-					CHelper.toggleTip('show',response.message,'fail',1000);
+					CHelper.toggleTip('show',response.message,'fail',2000);
 				}
 			});
 		}

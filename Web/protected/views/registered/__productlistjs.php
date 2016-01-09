@@ -38,10 +38,10 @@ $(function(){
 					location.href='/registered/basicInfo';
 				},
 				failure:function(d){
-					CHelper.toggleTip('show',d.message,'error',1000);
+					CHelper.toggleTip('show',d.message,'error',2000);
 				},
 				error:function(d){
-					CHelper.toggleTip('show',d.message,'error',1000);
+					CHelper.toggleTip('show',d.message,'error',2000);
 				}
 			});
 		

@@ -45,7 +45,7 @@ $(function(){
 		var content = $('.commentContent').val(),
 			postId = $('.postWrapper').attr('data-id');
 		if(!content){
-			CHelper.toggleTip('show','please input something!','','1000');
+			CHelper.toggleTip('show','please input something!','','2000');
 			return;
 		}else{
 			content = CHelper.filterXSS(CHelper.removeEmoji(content));

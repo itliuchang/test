@@ -2,7 +2,7 @@ $(function(){
 	$('.act').hammer().on('tap',timing);
 	function timing(){
 		if(!$('.phone').val()){
-			CHelper.toggleTip('show','Please Input Mobile Phone','error',1000);
+			CHelper.toggleTip('show','Please Input Mobile Phone','error',2000);
 		}else{
 		$(this).hammer().off();
 		var that = $(this);
@@ -18,18 +18,18 @@ $(function(){
 				$code.text(time);
 				time--;
 			}
-		}, 1000);
+		}, 2000);
 		CHelper.asynRequest('/user/sendsms',{mobile:$('.phone').val(),type:'regist',parameter:{type:'GET'}},{
 			success:function(){
 			},
 			failure:function(d){
-				CHelper.toggleTip('show',d.message,'error',1000);
+				CHelper.toggleTip('show',d.message,'error',2000);
 				that.hammer().on('tap',timing);
 				clearInterval(t);
 				$code.addClass('act').text('CODE');
 			},
 			error:function(){
-				CHelper.toggleTip('show','fail','error',1000);
+				CHelper.toggleTip('show','fail','error',2000);
 			}
 		});
 	}
@@ -37,39 +37,39 @@ $(function(){
 	
 	$('#basicInfo .footer .next').hammer().on('tap',function(){
 		if(!$('#basicInfo .name').val()) {
-			CHelper.toggleTip('show','Empty full name','error',1000);
+			CHelper.toggleTip('show','Empty full name','error',2000);
 			return;
 		}
 		
 		if(!$('#basicInfo .phone').val()) {
-			CHelper.toggleTip('show','Empty mobile number.','error',1000);
+			CHelper.toggleTip('show','Empty mobile number.','error',2000);
 			return;
 		}
 		
 		if(!$('#basicInfo .codenum').val()) {
-			CHelper.toggleTip('show','Empty code.','error',1000);
+			CHelper.toggleTip('show','Empty code.','error',2000);
 			return;
 		}
 
 		var re = /^1\d{10}$/;
 		if(!re.test($('#basicInfo .phone').val())) {
-			CHelper.toggleTip('show','Error mobile number.','error',1000);
+			CHelper.toggleTip('show','Error mobile number.','error',2000);
 			return;
 		}
 		
 		if($('#basicInfo .email').val()) {
 			if(!$('#basicInfo .password').first().val()) {
-				CHelper.toggleTip('show','Empty password.','error',1000);
+				CHelper.toggleTip('show','Empty password.','error',2000);
 				return;
 			}
 			
 			if(!$('#basicInfo .password').last().val()) {
-				CHelper.toggleTip('show','Empty repeat password.','error',1000);
+				CHelper.toggleTip('show','Empty repeat password.','error',2000);
 				return;
 			}
 			
 			if($('#basicInfo .password').first().val() != $('#basicInfo .password').last().val()) {
-				CHelper.toggleTip('show','The passwords you entered do not match.','error',1000);
+				CHelper.toggleTip('show','The passwords you entered do not match.','error',2000);
 				return;
 			}
 			if(!CHelper.checkPassword($('#basicInfo .password').first().val())){
@@ -78,7 +78,7 @@ $(function(){
 			}
 			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
 			if(!re.test($('#basicInfo .email').val())) {
-				CHelper.toggleTip('show','Error email','error',1000);
+				CHelper.toggleTip('show','Error email','error',2000);
 				return;
 			}
 		}
@@ -100,10 +100,10 @@ $(function(){
 				location.href='/payment/wxpay/jsapi/';
 			},
 			failure:function(d){
-				CHelper.toggleTip('show',d.message,'error',1000);
+				CHelper.toggleTip('show',d.message,'error',2000);
 			},
 			error:function(d){
-				CHelper.toggleTip('show',d.message,'error',1000);
+				CHelper.toggleTip('show',d.message,'error',2000);
 			}
 		});
 	});

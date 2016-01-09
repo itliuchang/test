@@ -4,7 +4,7 @@ $(function(){
 			"date":date
 	},{
 		error:function(msg){
-			CHelper.toggleTip('show','Please select time again','warn',1800);
+			CHelper.toggleTip('show','Please select time again','warn',2000);
 		},
 		success:function(response){
 			// console.log(response)
@@ -42,7 +42,7 @@ $(function(){
 			seatsleft = $('.seatsLeft').text();
 		CHelper.asynRequest('/book/workspacelist', {"id":'999',"hub":id,"date":date} ,{
 			error:function(msg){
-				CHelper.toggleTip('show',msg,'warn',1000);
+				CHelper.toggleTip('show',msg,'warn',2000);
 			},
 			success:function(response){
 				// console.log(response)
@@ -52,7 +52,7 @@ $(function(){
 					CHelper.toggleTip('show','On the same day can only choose once','warn',2000);
 				}else {
 					if(seatsleft<=0){
-						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',1800);
+						CHelper.toggleTip('show','There are no seats left,please select other HUB','warn',2000);
 					} else {
 						date = date.replace(/-/g,'$');		
 						location.href = '/book/workspaceconfirm-' + id +'/'+date;

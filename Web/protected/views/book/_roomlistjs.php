@@ -65,7 +65,7 @@ $(function(){
 			});
 		} else {
 			$('#date').val(today);
-			CHelper.toggleTip('show','Can not select past time','warn',1200);
+			CHelper.toggleTip('show','Can not select past time','warn',2000);
 		}
 		
 	});

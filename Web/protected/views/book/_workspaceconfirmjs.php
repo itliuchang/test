@@ -8,10 +8,10 @@ $(function(){
 				"hubId":hubId
 			},{
 				failure:function(){
-					CHelper.toggleTip('show','No remaining seats','warn',1800);
+					CHelper.toggleTip('show','No remaining seats','warn',2000);
 				},
 				error:function(){
-					CHelper.toggleTip('show','Error','warn',1000);
+					CHelper.toggleTip('show','Error','warn',2000);
 				},
 				success:function(){
 					CHelper.toggleTip('show','SUCCESS','success',2000);
