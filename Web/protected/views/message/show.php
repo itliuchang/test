@@ -63,7 +63,7 @@
 <?php echo $this->renderPartial('_template') ?>
 <script type="text/javascript">
 	var friendId = '<?php echo $friendId ?>',
-	    myportrait = '<?php echo Yii::app()->user->portrait ?>',
+	    myportrait = '<?php try{echo Yii::app()->user->portrait;}catch(Exception $e){ echo '';} ?>',
 	    fportrait = '<?php echo $fportrait ?>',
 	    appkeyIm = '<?php echo Yii::app()->params["partner"]["emchat"]["appkey"] ?>';
 </script>
