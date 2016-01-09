@@ -25,7 +25,7 @@
 	    	<?php if($item['senderID'] == Yii::app()->user->id): ?>
 				<div class="item my">
 					<div class="imgWrapper">
-						<img src="<?php echo Yii::app()->user->portrait ?>" onerror="this.src='/images/portrait-default.png'" alt="">
+						<img src="<?php try{echo Yii::app()->user->portrait;}catch(Exception $e){ echo '';} ?>" onerror="this.src='/images/portrait-default.png'" alt="">
 						<p class="date"><?php echo date('m/d', $item['ctime']) ?></p>
 					</div>
 					<div class="content clearfix">
