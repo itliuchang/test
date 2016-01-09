@@ -85,10 +85,12 @@
 		<h3>I Work At</h3>
 		<div class="underLine"></div>
 		<div class="companyWrapper">
+		<?php if($user['companyid']['id']):?>
 		<input type='hidden' class='companyid' value='<?php echo $user['companyid']['id']?>'>
 			<img src="<?php echo $user['companyid']['logo']?>" alt="">
 			<h4><?php echo $user['companyid']['name']?></h4>
 			<p><?php echo $companylocation?></p>
+		<?php endif;?>
 		</div>
 	</div>
 	<div class="partOption postlist">
