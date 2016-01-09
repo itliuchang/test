@@ -23,7 +23,7 @@
 			<?php endforeach;?>
 		</select>
 	</div>
-	<span class='ps'>We will contact you asap to confirm availabity of sufficlent wordspaces for your team in this location.</span>
+	<span class='ps'>We will check pod availability at your desired location and revert earliest via above contact details.</span>
 	<div class="footer">
 		<div class="next">SUBMIT</div>
 	</div>

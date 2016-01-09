@@ -73,7 +73,7 @@ $(function(){
 				return;
 			}
 			if(!CHelper.checkPassword($('#basicInfo .password').first().val())){
-				CHelper.toggleTip('show','wrong passwords format!','error',2000);
+				CHelper.toggleTip('show','Your password must be numbers, characters，underlines or the combination of them between 6 to 20 digits.','error',3000);
 				return;
 			}
 			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
