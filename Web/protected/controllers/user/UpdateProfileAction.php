@@ -14,8 +14,10 @@ class UpdateProfileAction extends CAction{
 			$user->birthday = Yii::app()->request->getParam('birthday');
 			$user->gender = Yii::app()->request->getParam('gender');
 			$user->location = Yii::app()->request->getParam('hub');
-			$user->skills = preg_replace('/，+/', ',',Yii::app()->request->getParam('skills'));
-			$user->interests =  preg_replace('/，+/', ',',Yii::app()->request->getParam('interests'));
+			$skills = preg_replace('/，+/', ',',Yii::app()->request->getParam('skills'));
+			$user->skills = preg_replace('/,+/', ',',$skills);
+			$interests =  preg_replace('/，+/', ',',Yii::app()->request->getParam('interests'));
+			$user->interests =  preg_replace('/,+/', ',',$interests);
 			//$user->wechatid = Yii::app()->request->getParam('wechatid');
 			
 			$user->facebookid = Yii::app()->request->getParam('facebookid');
