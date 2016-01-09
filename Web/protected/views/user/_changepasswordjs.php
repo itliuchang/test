@@ -8,8 +8,8 @@ $(function(){
 			CHelper.toggleTip('show','Password can not be empty','warn',2000);
 		}else if(newpassword!=repassword){
 			CHelper.toggleTip('show','Two passwords must be the same','warn',2000);
-		} else if(newpassword.length<3 || newpassword.length>16){
-			CHelper.toggleTip('show','Password length between 3 to 16','warn',2000);
+		} else if(!CHelper.checkPassword(newpassword)){
+			CHelper.toggleTip('show','Your password must be numbers, characters，underlines or the combination of them between 6 to 20 digits.','warn',2000);
 		} else {
 			CHelper.asynRequest('/user/changepassword',{
 				currentpassword:currentpassword,
