@@ -62,7 +62,7 @@ class COrder{
 	}
 
 	public function getlist($userId){
-		$result = Yii::app()->db->createCommand()->setText("select a.*,c.name as productName,c.id as productType from order_product a left join `order` b on a.orderId=b.id left join product c on b.productId=c.id where a.status!=0 and b.status!=0 and b.userId=".$userId." and a.endDate> DATE_FORMAT(CURDATE(), 'MM-dd-yyyy') order by a.endDate asc")->queryAll();
+		$result = Yii::app()->db->createCommand()->setText("select a.*,c.name as productName,c.id as productType from order_product a left join `order` b on a.orderId=b.id left join product c on b.productId=c.id where a.status!=0 and b.status!=0 and b.userId=".$userId." and a.endDate> DATE_FORMAT(CURDATE(), '%Y%m%d') order by a.endDate asc")->queryAll();
 		return array(
 				'code'=>200,
 				'mes'=> '',
