@@ -24,7 +24,9 @@ class AccessAction extends CAction{
 					$this->controller->redirect('/company/updateProfile');
 				default:
 					$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+					Yii::log($user->portrait, CLogger::LEVEL_ERROR,'fir');
 					Yii::app()->user->setState('portrait',$user->portrait);
+					Yii::log(Yii::app()->user->getState('portrait'), CLogger::LEVEL_ERROR,'sec');
 					// $_identity= new UserIdentity();
 					// $_identity->setPersistentStates($user);
 					// $duration = Yii::app()->getComponent('session')->getTimeout();
