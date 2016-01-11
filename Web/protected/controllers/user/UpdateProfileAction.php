@@ -7,6 +7,7 @@ class UpdateProfileAction extends CAction{
 			$user = User::model()->findByAttributes(array('id'=>$id));
 			$user->nickName = Yii::app()->request->getParam('nickName');
 			$user->portrait = Yii::app()->request->getParam('portrait');
+			Yii::app()->user->setState('portrait',Yii::app()->request->getParam('portrait'));
 			$user->background = Yii::app()->request->getParam('background');
 			$user->title = Yii::app()->request->getParam('title');
 			$user->website = Yii::app()->request->getParam('website');
