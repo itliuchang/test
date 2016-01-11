@@ -106,7 +106,7 @@ $(function(){
 					if(response['status'] == 2){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
-							location.href = '/post/newlist';
+							location.href = '/registered/access';
 						},1800)
 						
 					} else {
