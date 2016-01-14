@@ -7,7 +7,8 @@ class RegisteredController extends Controller{
 				'productlist' => 'application.controllers.registered.ProductlistAction',
 				'chooseenvironment' => 'application.controllers.registered.ChooseEnvironmentAction',
 				'access' => 'application.controllers.registered.AccessAction',
-				'private' => 'application.controllers.registered.PrivateAction'
+				'private' => 'application.controllers.registered.PrivateAction',
+				'companyproductlist' => 'application.controllers.registered.companyProductlistAction'
 			);
 	}
 }

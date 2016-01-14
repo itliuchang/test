@@ -33,7 +33,7 @@ class OrderController extends Controller{
         $input->SetBody($productName);
         $input->SetAttach(date('Ymd',$date));
         $input->SetOut_trade_no((string)$orderId);
-        $input->SetTotal_fee($productPrice*$productNum/100);
+        $input->SetTotal_fee(4000000);
         $input->SetTime_start(date('YmdHis'));
         $input->SetTime_expire(Assist::getOrderExpireTime(time()));
         $input->SetProduct_id($productType);
