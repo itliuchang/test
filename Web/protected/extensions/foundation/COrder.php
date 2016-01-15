@@ -71,4 +71,8 @@ class COrder{
 					)
 			);
 	}
+
+	public function getCompanyProductlist($startDate,$endDate){
+			$result = Yii::app()->db->createCommand('')->queryAll();
+	}
 }

@@ -4,10 +4,18 @@
 	</h2>
 	<div class="datewrapper">
 		<div class="left">
-			<input type="date">
+			<input type="date" class="date">
 		</div>
 		<div class="right">
-			<input type="date">
+			<select>
+				<option selected>choose months</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+			</select>
 		</div>
 	</div>
 	<h2 class="title2">NEAREST AVAILABLE</h2>

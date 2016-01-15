@@ -8,7 +8,7 @@ $(function(){
 		});
 		$('.item.selected .choosenum .add').hammer().off().on('tap',function(){
 			var $item = $(this).parents('.item');
-			if($(this).next().text()<parseFloat($item.find('.numleft').text())){
+			if($(this).prev().text()<parseFloat($item.find('.numleft').text())){
 				$(this).prev().text(Number($(this).prev().text())+1);
 			}
 		});
@@ -21,7 +21,8 @@ $(function(){
 	$('.item.selected .choosenum .add').hammer().on('tap',function(){
 		var $item = $(this).parents('.item');
 		console.log(parseFloat($item.find('.numleft').text()));
-		if($(this).next().text()<parseFloat($item.find('.numleft').text())){
+		console.log(Number($(this).prev().text()));
+		if(Number($(this).prev().text())<parseFloat($item.find('.numleft').text())){
 			$(this).prev().text(Number($(this).prev().text())+1);
 		}
 	});

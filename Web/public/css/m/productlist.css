@@ -113,7 +113,6 @@
 	float: left;
 }
 #productlist .datewrapper .left{
-	border-right: 1px solid #C6C6C6;
 }
 #productlist .datewrapper>div>input{
 	border: 0;
@@ -124,4 +123,19 @@
 	color: #4A4A4A;
 	padding-bottom: 10px;
 	padding-left: 20px;
+}
+#productlist .datewrapper .right{
+	border-left: 1px solid #C6C6C6;
+}
+#productlist .date{
+	padding-left: 20px;
+	background-image: url(/images/date.png);
+	background-repeat: no-repeat;
+	background-size: 12px 12px ;
+	background-position: 5px center;
+}
+#productlist .datewrapper .right select{
+	border: 0;
+	height: 40px;
+	width: 100%;
 }
