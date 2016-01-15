@@ -36,7 +36,8 @@ class UserController extends Controller{
             'changepassword' => 'application.controllers.user.ChangePasswordAction',
             'like' => 'application.controllers.user.LikeAction',
             'liked' => 'application.controllers.user.LikedAction',
-            'sendcomment' => 'application.controllers.user.SendCommentAction'
+            'sendcomment' => 'application.controllers.user.SendCommentAction',
+            'coderegist' => 'application.controllers.user.CodeRegistAction'
 		);
 	}
 }

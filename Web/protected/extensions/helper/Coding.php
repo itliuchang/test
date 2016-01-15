@@ -30,4 +30,20 @@
  			return true;
  		}
  	}
+
+ 	public static function isValidCode($code){
+ 		$result = Yii::app()->db->createCommand('select * from code where status!=0 and times!=0 and endDate>curdate() and code='."'".$code."'")->queryRow();
+ 		if($result){
+ 			return array(
+ 					'code'=>200,
+ 					'mes'=>'success',
+ 					'data'=> array('code'=>$code)
+ 				);
+ 		}else{
+ 			return array(
+ 					'code'=>500,
+ 					'mes' => 'fail'
+ 				);
+ 		}
+ 	}
  }

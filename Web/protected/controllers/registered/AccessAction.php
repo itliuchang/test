@@ -22,6 +22,10 @@ class AccessAction extends CAction{
 					break;
 				case 2:
 					$this->controller->redirect('/company/updateProfile');
+				case 21:
+					$this->controller->redirect('/user/updateProfile');
+				case 22:    
+					$this->controller->redirect('/user/updatecompany');
 				default:
 					$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 					Yii::app()->user->setState('portrait',$user->portrait);

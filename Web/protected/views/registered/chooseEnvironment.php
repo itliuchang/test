@@ -14,9 +14,19 @@
     		<img src="/images/banner/7.png" alt="">
     		<h4>designated Pods</h4>
     	</div>
+        <a class="a_code">[ I have an activation code ]</a>
+        <div class="code hide">
+            <input type="text" value="" placeholder="Enter CDK">
+            <a class="btn_verify">verify</a>
+        </div>
 	</div>
 	<div class="footer">
 		<a href="/registered/productlist" class="open">OPEN DESK</a>
 		<a href="/registered/private" class="private">DESIGNATED POD</a>
 	</div>
 </div>
+<?php
+    $cs = Yii::app()->clientScript;
+    $js = $this->renderPartial('_chooseEnvironmentjs', null ,true);
+    $cs->registerScript('regist', $js, CClientScript::POS_END);
+?>

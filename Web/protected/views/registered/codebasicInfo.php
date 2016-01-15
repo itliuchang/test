@@ -26,6 +26,6 @@
 </div>
 <?php
     $cs = Yii::app()->clientScript;
-    $js = $this->renderPartial('_registjs', null ,true);
+    $js = $this->renderPartial('_codebasicInfojs', null ,true);
     $cs->registerScript('regist', $js, CClientScript::POS_END);
 ?>

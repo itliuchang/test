@@ -31,6 +31,7 @@ return array(
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
         'registered/' => 'wechat/index',
+        'code-<code:\w+>' => 'registered/codeaccess',
 
         'community/servicescompany-<id:\d+>' => 'community/servicescompany',
 

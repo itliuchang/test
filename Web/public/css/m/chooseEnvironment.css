@@ -91,3 +91,28 @@
 	font-size: 20px;
 	border-bottom: 1px solid #C7C7C7;
 }
+#chooseEnvironment .a_code{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+#chooseEnvironment .code{
+	text-align: center;
+	padding: 10px 30px;
+}
+#chooseEnvironment .code input{
+	border: 1px solid #979797;
+	height: 40px;
+	width: 100%;
+	padding-left: 20px;
+}
+#chooseEnvironment .code .btn_verify{
+	display: inline-block;
+	margin-top: 10px;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #4A4A4A;
+	color: #fff;
+	font-size: 16px;
+}
