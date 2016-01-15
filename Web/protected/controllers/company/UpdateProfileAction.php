@@ -53,7 +53,12 @@ class UpdateProfileAction extends CAction{
 									
 					$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 					$status = $user['status'];
-					$user->status = 3;
+					if($status==2){
+						$user->status = 3;
+					} else {
+						$user->status = 23;
+					}
+					
 					$user->company = $company->id;
 					$user->save();			
 					echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS','data'=>array('status'=>$status)));

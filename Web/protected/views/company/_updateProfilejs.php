@@ -88,6 +88,7 @@ $(function(){
 				service:arr,
 				facebookid:facebook,
 				linkedinid:linkedin,
+				status:status
 			},{
 				before:function(){
 					CHelper.toggleTip('show','Creating...');
@@ -103,7 +104,7 @@ $(function(){
 				success:function(response){
 					// console.log(response['status'])
 					$('.footer').attr('disabled',true);
-					if(response['status'] == 2){
+					if(response['status'] == 2 || response['status']==22){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
 							location.href = '/registered/access';

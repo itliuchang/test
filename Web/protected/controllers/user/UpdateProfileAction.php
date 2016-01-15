@@ -28,8 +28,13 @@ class UpdateProfileAction extends CAction{
 			$user->linkedinid = Yii::app()->request->getParam('linkedinid');
 			$user->instagramid = Yii::app()->request->getParam('instagramid');
 			$status = Yii::app()->request->getParam('status');
+			$havecode = Code::model()->findByAttributes(array('userId'=>$id));
 			if($status == 1){
 				$user->status = 2;
+			} else if($status==21 && $havecode){
+				$user->status = 22;
+			} else {
+				$user->status = 23;
 			}
 			if($user->save()){
 				echo CJSON::encode(array('code'=>200, 'message'=> $user->status));
