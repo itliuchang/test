@@ -64,7 +64,7 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',2000);
 				},
 				success:function(response){
-					if($('.footer').hasClass('save')){
+					if(response['message']==23){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
 							location.href='/more';

@@ -3,7 +3,7 @@ class UpdateProfileAction extends CAction{
 	public function run(){
 		$this->controller->pageTitle="Profile";
 		if(Yii::app()->request->isAjaxRequest){
-			$id = Yii::app()->user->id;
+			$id = Yii::app()->user->id;$id=1217;
 			$user = User::model()->findByAttributes(array('id'=>$id));
 			$user->nickName = Yii::app()->request->getParam('nickName');
 			$user->portrait = Yii::app()->request->getParam('portrait');
