@@ -72,7 +72,21 @@ class COrder{
 			);
 	}
 
-	public function getCompanyProductlist($startDate,$endDate){
-			$result = Yii::app()->db->createCommand('')->queryAll();
+	public function getCompanyProductlist($startDate,$endDate=''){
+		if(!$endDate){
+			$endDate = date('Y-m-d',strtotime($startDate)+(date('t',strtotime($startDate))-1)*60*60*24);
+		}
+		// $result = CompanyProduct::model()->findAll("startDate<='".$startDate."' and endDate >='".$endDate."'");
+		$result = Yii::app()->db->createCommand("select * from product_company where startDate<='".$startDate."' and endDate >='".$endDate."'")->queryAll();
+		if($result){
+			foreach ($result as &$list){
+				$num = OrderCompany::model()->findAll("(startDate<='".$startDate."' and endDate<='".$endDate."' or startDate<='".$endDate."' and endDate>='".$endDate."' or startDate>='".$startDate."' and endDate<='".$endDate."' or startDate<='".$startDate."' and endDate>='".$endDate."') and cproductId=".$list['id']);
+				$list['left'] = $list['num']-count($num);
+			}
+			return $result;
+		} else {
+			return '';
+		}		
+		
 	}
 }
