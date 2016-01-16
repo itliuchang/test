@@ -81,7 +81,16 @@ class COrder{
 		if($result){
 			foreach ($result as &$list){
 				$num = OrderCompany::model()->findAll("(startDate<='".$startDate."' and endDate<='".$endDate."' or startDate<='".$endDate."' and endDate>='".$endDate."' or startDate>='".$startDate."' and endDate<='".$endDate."' or startDate<='".$startDate."' and endDate>='".$endDate."') and cproductId=".$list['id']);
-				$list['left'] = $list['num']-count($num);
+				if($num){
+					$count = 0;
+					foreach($num as $item){
+						$count += $item['num'];
+					}
+					$list['left'] = $list['num']-$count;
+				} else {
+					$list['left'] = $list['num'];
+				}
+						
 			}
 			return $result;
 		} else {
