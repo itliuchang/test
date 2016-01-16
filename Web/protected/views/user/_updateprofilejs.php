@@ -64,13 +64,18 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',2000);
 				},
 				success:function(response){
-					if(response['message']==23){
+					if(response==23 && status == 23 || status == 3){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
 							location.href='/more';
 						},1800);
 						
-					} else {
+					} else if(response==23 && status==21){
+						CHelper.toggleTip('show','SUCCESS','success',1200);
+						setInterval(function(){
+							location.href='/post/newlist';
+						},1800);
+					}else{
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
 							location.href = '/company/updateprofile';

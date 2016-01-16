@@ -3,7 +3,7 @@ class UpdateProfileAction extends CAction{
 	public function run(){
 		$this->controller->pageTitle="Profile";
 		if(Yii::app()->request->isAjaxRequest){
-			$id = Yii::app()->user->id;$id=1217;
+			$id = Yii::app()->user->id;
 			$user = User::model()->findByAttributes(array('id'=>$id));
 			$user->nickName = Yii::app()->request->getParam('nickName');
 			$user->portrait = Yii::app()->request->getParam('portrait');
@@ -37,7 +37,7 @@ class UpdateProfileAction extends CAction{
 				$user->status = 23;
 			}
 			if($user->save()){
-				echo CJSON::encode(array('code'=>200, 'message'=> $user->status));
+				echo CJSON::encode(array('code'=>200, 'message'=> 'success','data'=>$user->status));
 			}
 		} else {
 			$id = Yii::app()->user->id;
