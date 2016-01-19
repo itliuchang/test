@@ -37,7 +37,7 @@ class CodeRegistAction extends CAction{
 						$user->insert();
 						//消息系统初始化
 						EasemobHelper::initIM($user->id, array('username' => $user->id, 'password' => 'nakedim', 'nickname' => $name));
-						
+						$user->type=2;
 						$user->isBindIM = 1;
 						$user->save();
 						$codedetail->times--;
