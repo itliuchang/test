@@ -66,6 +66,7 @@ class OrderController extends Controller{
 		}else{
 			$userId = Yii::app()->user->id;
 		}
+		$wechat = Yii::app()->params['partner']['wechat'];
 		$jsapi = new WxJsPayHelper();
         $openid = $jsapi->GetOpenid();
 		$this->bodyCss='orderDetail';
