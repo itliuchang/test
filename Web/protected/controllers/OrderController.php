@@ -97,7 +97,8 @@ class OrderController extends Controller{
         $input->SetTrade_type('JSAPI');
         $input->SetOpenid($openid);
         $bill = WxPayApi::unifiedOrder($input);
-		$this->render('company',array('list'=>$list,'date'=>$date,'months'=>$months,'totalPrice'=>$totalPrice));
+        $jsApiParameters = $jsapi->GetJsApiParameters($bill);
+		$this->render('company',array('list'=>$list,'date'=>$date,'months'=>$months,'totalPrice'=>$totalPrice,'jsparams' => $jsApiParameters));
 	}
 	public function actionNotify(){
 		Yii::log($GLOBALS['HTTP_RAW_POST_DATA'], CLogger::LEVEL_ERROR, 'heeh');
