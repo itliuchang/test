@@ -96,6 +96,7 @@ class OrderController extends Controller{
         $input->SetNotify_url('http://hubapp.livenaked.com' . $wechat['payment']['notify']);
         $input->SetTrade_type('JSAPI');
         $input->SetOpenid($openid);
+        Yii::log(print_r($input->values,1), CLogger::LEVEL_ERROR,'input');
         $bill = WxPayApi::unifiedOrder($input);
         $jsApiParameters = $jsapi->GetJsApiParameters($bill);
 		$this->render('company',array('list'=>$list,'date'=>$date,'months'=>$months,'totalPrice'=>$totalPrice,'jsparams' => $jsApiParameters));
