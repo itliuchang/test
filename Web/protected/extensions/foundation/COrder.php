@@ -26,8 +26,23 @@ class COrder{
 		}
 	}
 	public function update($id){
-		$order = Order::model()->findByAttributes(array('id'=>$id));
-		$order->status = 1;
+		$transaction = Yii::app()->db->beginTransaction();
+		try{
+			$order = Order::model()->findByAttributes(array('id'=>$id));
+			$order->status = 1;
+			$ordercompanyproduct = OrderProduct::model()->findAllByAttributes(array('orderId'=>$id));
+			if($ordercompanyproduct){
+				foreach ($ordercompanyproduct as &$value) {
+					$value->status=1;
+					if(!$value->save()){
+						throw new Exception("Error Processing Request", 1);
+					}
+				}
+			}
+		}catch(Exception $e){
+			$transaction->rollback(); 
+		}
+		
 		if($order->save()){
 			return array(
 					'code' => 200,

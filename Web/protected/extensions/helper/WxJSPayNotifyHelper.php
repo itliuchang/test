@@ -72,7 +72,9 @@ class WxJSPayNotifyHelper extends WxPayNotify{
             if($user->status==0){
                 $user->status=1;
             }
+        if($data['attach']){
             $user->deadDate = $data['attach'];
+        }
             if($user->save()){
                 return true;
             }else{
