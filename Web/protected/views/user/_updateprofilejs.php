@@ -64,23 +64,16 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',2000);
 				},
 				success:function(response){
-					if(response==23 && status == 23 || status == 3){
+					if($('.footer').text() == 'SAVE'){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
-							location.href='/more';
+							location.href = '/more';
 						},1800);
-						
-					} else if(response==23 && status==21){
+					} else {
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
-							location.href='/post/newlist';
+							location.href = '/registered/access';
 						},1800);
-					}else{
-						CHelper.toggleTip('show','SUCCESS','success',1200);
-						setInterval(function(){
-							location.href = '/company/updateprofile';
-						},1800)
-						
 					}
 				},
 				failure:function(response){
