@@ -127,7 +127,7 @@ class COrder{
 		$result = Yii::app()->db->createCommand("select * from product_company where startDate<='".$startDate."' and endDate >='".$endDate."'")->queryAll();
 		if($result){
 			foreach ($result as &$list){
-				$num = OrderCompany::model()->findAll("(startDate<='".$startDate."' and endDate<='".$endDate."' or startDate<='".$endDate."' and endDate>='".$endDate."' or startDate>='".$startDate."' and endDate<='".$endDate."' or startDate<='".$startDate."' and endDate>='".$endDate."') and cproductId=".$list['id']);
+				$num = OrderCompany::model()->findAll("(startDate<='".$startDate."' and endDate<='".$endDate."' or startDate<='".$endDate."' and endDate>='".$endDate."' or startDate>='".$startDate."' and endDate<='".$endDate."' or startDate<='".$startDate."' and endDate>='".$endDate."') and status=1 and cproductId=".$list['id']);
 				if($num){
 					$count = 0;
 					foreach($num as $item){

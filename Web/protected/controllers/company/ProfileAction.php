@@ -27,7 +27,8 @@ class ProfileAction extends CAction{
 				$post = new CPost;
 				$postlist = $post->getCompanyList($id,$page,$size);
 			}else{
-				$company = Company::model()->findByAttributes(array('ownerId' => Yii::app()->user->id));
+				$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+				$company = Company::model()->findByAttributes(array('id' => $user['company']));
 				$service = Service_company::model()->findAllByAttributes(array('companyId'=>$company['id'],'status'=>1));
 				if($service){
 					foreach($service as $list){
