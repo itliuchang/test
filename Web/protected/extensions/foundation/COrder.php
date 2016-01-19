@@ -41,7 +41,8 @@ class COrder{
 					}
 				}
 			}
-
+			$order->save();
+			$transaction->commit();
 		}catch(Exception $e){
 			$transaction->rollback(); 
 			Yii::log('update fail', CLogger::LEVEL_ERROR,'updatedb');
@@ -50,18 +51,11 @@ class COrder{
 					'mes' => 'update fail'
 				);
 		}
-		
-		if($order->save()){
-			return array(
-					'code' => 200,
-					'mes' =>'success'
-				);
-		}else{
-			return array(
-					'code' => 500,
-					'mes' => 'update fail'
-				);
-		}	
+		return array(
+				'code' => 200,
+				'mes' =>'success'
+			);
+			
 
 	}
 	public function createProduct($data){
