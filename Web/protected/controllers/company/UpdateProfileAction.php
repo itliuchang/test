@@ -51,14 +51,8 @@ class UpdateProfileAction extends CAction{
 					$company->linkedinid = Yii::app()->request->getParam('linkedinid');
 					$company->save();
 									
-					$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
-					$status = $user['status'];
-					if($status==2){
-						$user->status = 3;
-					} else {
-						$user->status = 23;
-					}
-					
+					$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));					
+					$user->status = 3;					
 					$user->company = $company->id;
 					$user->save();			
 					echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS','data'=>array('status'=>$status)));

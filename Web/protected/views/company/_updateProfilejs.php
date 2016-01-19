@@ -104,19 +104,10 @@ $(function(){
 				success:function(response){
 					// console.log(response['status'])
 					$('.footer').attr('disabled',true);
-					if(response['status'] == 2 || response['status']==22){
-						CHelper.toggleTip('show','SUCCESS','success',1200);
-						setInterval(function(){
-							location.href = '/registered/access';
-						},1800)
-						
-					} else {
-						CHelper.toggleTip('show','SUCCESS','success',1200);
-						setInterval(function(){
-							location.href = '/more';
-						},1800)
-						
-					}
+					CHelper.toggleTip('show','SUCCESS','success',1200);
+					setInterval(function(){
+						location.href = '/registered/access';
+					},1800);					
 				}
 			});
 		}
