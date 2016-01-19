@@ -33,14 +33,22 @@ class COrder{
 			$ordercompanyproduct = OrderProduct::model()->findAllByAttributes(array('orderId'=>$id));
 			if($ordercompanyproduct){
 				foreach ($ordercompanyproduct as &$value) {
+					$code = Code::model()->findByAttributes(array('ordercompanyproductId'=>$value->id));
+					$code->status=1;
 					$value->status=1;
-					if(!$value->save()){
+					if(!$value->save()||!$code->save()){
 						throw new Exception("Error Processing Request", 1);
 					}
 				}
 			}
+
 		}catch(Exception $e){
 			$transaction->rollback(); 
+			Yii::log('update fail', CLogger::LEVEL_ERROR,'updatedb');
+			return array(
+					'code' => 500,
+					'mes' => 'update fail'
+				);
 		}
 		
 		if($order->save()){
