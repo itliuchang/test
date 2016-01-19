@@ -9,7 +9,9 @@ class RegisteredController extends Controller{
 				'access' => 'application.controllers.registered.AccessAction',
 				'private' => 'application.controllers.registered.PrivateAction',
 				'companyproductlist' => 'application.controllers.registered.companyProductlistAction',
-				'codeaccess' => 'application.controllers.registered.CodeAccessAction'
+				'codeaccess' => 'application.controllers.registered.CodeAccessAction',
+				'companyaccess' => 'application.controllers.registered.CompanyAccessAction',
+				'code' => 'application.controllers.registered.CodeAction',
 			);
 	}
 }

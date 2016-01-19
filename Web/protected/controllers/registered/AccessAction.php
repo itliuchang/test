@@ -15,27 +15,63 @@ class AccessAction extends CAction{
 		}else{
 			$tem = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 			$status = $tem->status;
-			// Yii::log($status, CLogger::LEVEL_ERROR,'status');
-			switch ($status) {
-				case 1:
-					$this->controller->redirect('/user/updateProfile');
-					break;
-				case 2:
-					$this->controller->redirect('/company/updateProfile');
-				case 21:
-					$this->controller->redirect('/user/updateProfile');
-				case 22:    
-					$this->controller->redirect('/user/updatecompany');
-				default:
-					$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
-					Yii::app()->user->setState('portrait',$user->portrait);
-					// $_identity= new UserIdentity();
-					// $_identity->setPersistentStates($user);
-					// $duration = Yii::app()->getComponent('session')->getTimeout();
-					// Yii::app()->user->login($_identity,$duration);
-					$this->controller->redirect(Assist::getDefaultURL());
-					break;
+			$type = $tem->type;
+			if($type==1){
+				switch ($status) {
+					case 1:
+						$this->controller->redirect('/user/updateProfile');
+						break;
+					default:
+						$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+						Yii::app()->user->setState('portrait',$user->portrait);
+						$this->controller->redirect(Assist::getDefaultURL());
+						break;
+				}
+			}else if($type==2){
+				switch ($status) {
+					case 1:
+						$this->controller->redirect('/user/updateProfile');
+						break;
+					default:
+						$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+						Yii::app()->user->setState('portrait',$user->portrait);
+						$this->controller->redirect(Assist::getDefaultURL());
+						break;
+				}
+			}else if($type==3){
+				switch ($status) {
+					case 1:
+						$this->controller->redirect('/user/updateProfile');
+						break;
+					case 2:
+						$this->controller->redirect('/company/updateProfile');
+						break;
+					case 3:
+						$this->controller->redirect('/registered/code');
+					default:
+						$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+						Yii::app()->user->setState('portrait',$user->portrait);
+						$this->controller->redirect(Assist::getDefaultURL());
+						break;
+				}
 			}
+			// Yii::log($status, CLogger::LEVEL_ERROR,'status');
+			// switch ($status) {
+			// 	case 1:
+			// 		$this->controller->redirect('/user/updateProfile');
+			// 		break;
+			// 	case 2:
+			// 		$this->controller->redirect('/company/updateProfile');
+			// 	case 21:
+			// 		$this->controller->redirect('/user/updateProfile');
+			// 	case 22:    
+			// 		$this->controller->redirect('/user/updatecompany');
+			// 	default:
+			// 		$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+			// 		Yii::app()->user->setState('portrait',$user->portrait);
+			// 		$this->controller->redirect(Assist::getDefaultURL());
+			// 		break;
+			// }
 			
 		}
 	}

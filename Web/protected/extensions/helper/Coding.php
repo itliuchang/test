@@ -1,22 +1,22 @@
 <?php 
  class Coding{
- 	public static function makeCode($num,$userId,$type,$startDate,$endDate){
- 		for($i = 0; $i < $num; $i++){
- 			$code = rand(10000000,99999999);
- 			if(self::checkCode($code)){
- 				$a[] = $code;
-	 			$proxy = new Code;
-	 			$proxy->code = $code;
-	 			$proxy->userId = $userId;
-	 			$proxy->type = $type;
-	 			$proxy->startDate = $startDate;
-	 			$proxy->endDate = $endDate;
-	 			$proxy->createTime = date('Y-m-d H:i:s');
-	 			$proxy->save();
- 			} else {
- 				return false;
- 			}
- 		}
+ 	public static function makeCode($data){
+		$code = rand(10000000,99999999);
+		if(self::checkCode($code)){
+			$a[] = $code;
+			$proxy = new Code;
+			$proxy->code = $code;
+			$proxy->userId = $data['userId'];
+			$proxy->type = $data['type'];
+			$proxy->startDate = $data['startDate'];
+			$proxy->endDate = $data['endDate'];
+			$proxy->createTime = date('Y-m-d H:i:s');
+			$proxy->times = $data['times'];
+			$proxy->ordercompanyproductId = $data['ordercompanyProductId'];
+			$proxy->save();
+		} else {
+			return false;
+		}
  		return $a;
  	}
 

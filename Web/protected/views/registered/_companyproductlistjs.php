@@ -102,17 +102,25 @@ $(function(){
 			mouth = $('.mouth').val(),
 			select = $('.selected').length;
 		if(!date || !mouth){
-			CHelper.toggleTip('show','You should select date or mouth','warn',2000);
+			CHelper.toggleTip('show','You should select date or month','warn',2000);
 		} else if(select < 1){
 			CHelper.toggleTip('show','You should select product','warn',2000);
 		} else {
-			var array =new Array;
+			var list =[];
 			for(var i = 0 ; i< $('.selected').length;i++){
-				a = new Array;
-				a['id'] = $('.selected:eq('+i+') input').val();
-				a['num'] = $('.selected:eq('+i+') .choosenum .value').text();
-				array.push(a);
+				var a={};
+				a.id = $('.selected:eq('+i+') input').val();
+				a.num = $('.selected:eq('+i+') .choosenum .value').text();
+				list.push(a);
 			}
+			CHelper.asynRequest('/order/createcompanysession',{list:list,date:date,month:mouth},{
+				success:function(e){
+					location.href = '/order/company';
+				},
+				error:function(e){
+					console.log(e);
+				}
+			});
 		}
 	});
 	

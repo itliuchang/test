@@ -107,3 +107,64 @@ body.orderDetail{
 	color: #fff;
 	text-decoration: none;
 }
+
+#orderDetail .date{
+	width: 100%;
+	line-height: 40px;
+	font-size: 16px;
+	padding-left: 35px;
+	color: #fff;
+	height: 40px;
+	background-color: #9B9B9B;
+	background-image: url(/images/date-white.png);
+	background-repeat: no-repeat;
+	background-size: 20px 17px;
+	background-position: 5px center;
+}
+#orderDetail .location{
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding-left: 20px;
+	font-size: 18px;
+	font-weight: 200;
+	border-bottom: 1px solid #e8e8e8;
+}
+#orderDetail .companyopt{
+	position: relative;
+	height: 70px;
+	border-bottom: 1px solid #e8e8e8;
+}
+#orderDetail .companyopt .num{
+	float: left;
+	margin-top: 15px;
+	margin-left: 30px;
+	font-size: 16px;
+	font-weight: bolder;
+}
+#orderDetail .companyopt .num p{
+	color: #9B9B9B;
+	font-size: 14px;
+}
+#orderDetail .companyopt h2{
+	float: left;
+	font-size: 18px;
+	height: 70px;
+	line-height: 70px;
+	font-weight: 200;
+}
+#orderDetail .companyopt .price{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 20px;
+}
+#orderDetail .content .companytotal .price{
+	font-size: 26px;
+	font-weight: normal;
+	right: 20px;
+}
+#orderDetail .content .companytotal h2{
+	font-size: 26px;
+	font-weight: normal;
+}

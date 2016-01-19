@@ -21,8 +21,8 @@
         </div>
 	</div>
 	<div class="footer">
-		<a href="/registered/productlist" class="open">OPEN DESK</a>
-		<a href="/registered/private" class="private">DESIGNATED POD</a>
+		<a href="/registered/productlist" class="open">Random</a>
+		<a href="/registered/companyaccess" class="private">Fixed</a>
 	</div>
 </div>
 <?php

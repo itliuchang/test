@@ -2,11 +2,15 @@
 class COrder{
 	public function create($data=array()){
 		$order = new Order;
-		$order-> productId =  $data['productId'];
-		$order-> userId = $data['userId'];
-		$order-> price = $data['price'];
-		$order-> orderTime = $data['orderTime'];
-		$order-> createTime = $data['orderTime'];
+		try {
+			$order-> productId =  $data['productId'];
+			$order-> userId = $data['userId'];
+			$order-> price = $data['price'];
+			$order-> orderTime = $data['orderTime'];
+			$order-> createTime = $data['orderTime'];
+			$order-> type = $data['type'];
+			$order-> hubId = $data['hubId'];
+		} catch (Exception $e) {}
 		if($order->save()){
 			$result = Order::model()->findByAttributes(array('orderTime'=> $data['orderTime']));
 			return array(
@@ -39,15 +43,17 @@ class COrder{
 	}
 	public function createProduct($data){
 		$orderProduct = new OrderProduct;
+		$createTime = date('Y-m-d H:i:s');
 		$orderProduct-> orderId = $data['orderId'];
 		$orderProduct-> startDate = $data['startDate'];
 		$orderProduct-> endDate = $data['endDate'];
 		$orderProduct-> totalTimes = $data['totalTimes'];
 		$orderProduct-> usedTimes = $data['use'];
+		$orderProduct-> createTime = $createTime;
 		if($orderProduct->save()){
 			return array(
 					'code' => 200,
-					'mes' =>'success'
+					'mes' =>'success',
 				);
 		}else{
 			return array(
@@ -55,6 +61,30 @@ class COrder{
 					'mes' => 'create fail'
 				);
 		}	
+	}
+
+	public function createCompanyProduct($data){
+		$orderProduct = new OrderCompany;
+		$createTime = date('Y-m-d H:i:s');
+		$orderProduct-> orderId = $data['orderId'];
+		$orderProduct-> startDate = $data['startDate'];
+		$orderProduct-> endDate = $data['endDate'];
+		$orderProduct-> num = $data['num'];
+		$orderProduct-> cproductId = $data['cproductId'];
+		$orderProduct-> createTime = $createTime;
+		$orderProduct-> insert();
+		if($orderProduct->save()){
+			return array(
+					'code' => 200,
+					'mes' =>'success',
+					'data' => array('id'=>$orderProduct['id'])
+				);
+		}else{
+			return array(
+					'code' => 500,
+					'mes' => 'create fail'
+				);
+		}
 	}
 
 	public function checkProduct($orderId){

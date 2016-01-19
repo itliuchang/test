@@ -1,0 +1,32 @@
+#code h2{
+	margin: 20px 20px;
+	font-size: 18px;
+}
+#code .wrapper{
+	padding: 50px 40px;
+}
+#code .wrapper input,
+#code .wrapper a{
+	display: inline-block;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+}
+#code .wrapper input{
+	border: 1px solid #979797;
+	padding: 5px 10px;
+}
+#code .wrapper a{
+	color: #fff;
+	margin-top: 20px;
+	text-align: center;
+	background-color: #4A4A4A;
+	text-decoration: none;
+	font-size: 16px;
+}
+#code .wrapper a:hover,
+#code .wrapper a:link,
+#code .wrapper a:visited{
+	text-decoration: none;
+	color: #fff;
+}

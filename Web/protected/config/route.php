@@ -28,10 +28,12 @@ return array(
         'user/like-<id:\d+>' => 'user/like',
         'user/liked-<id:\d+>' => 'user/liked',
         'payment/wxpay/jsapi/' => 'order/',
+        'payment/wxpay/jsapi/company' => 'order/company',
         'payment/wxpay/notify' => 'order/notify',
         'registered/basicinfo' => 'registered/basicinfo',
         'registered/' => 'wechat/index',
         'code-<code:\w+>' => 'registered/codeaccess',
+        'codeauth-<code:\w+>' => 'user/codeauth',
 
         'community/servicescompany-<id:\d+>' => 'community/servicescompany',
 
