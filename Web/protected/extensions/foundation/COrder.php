@@ -30,7 +30,7 @@ class COrder{
 		try{
 			$order = Order::model()->findByAttributes(array('id'=>$id));
 			$order->status = 1;
-			$ordercompanyproduct = Ordercompany::model()->findAllByAttributes(array('orderId'=>$id));
+			$ordercompanyproduct = OrderCompany::model()->findAllByAttributes(array('orderId'=>$id));
 			if($ordercompanyproduct){
 				foreach ($ordercompanyproduct as &$value) {
 					$code = Code::model()->findByAttributes(array('ordercompanyproductId'=>$value->id));
