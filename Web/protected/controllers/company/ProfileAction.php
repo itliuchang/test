@@ -26,6 +26,8 @@ class ProfileAction extends CAction{
 				$hub = Hub::model()->findByAttributes(array('id'=>$company['location']));
 				$post = new CPost;
 				$postlist = $post->getCompanyList($id,$page,$size);
+				//取出公司所有成员
+				$member = User::model()->findAllByAttributes(array('company'=>$id));
 			}else{
 				$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 				$company = Company::model()->findByAttributes(array('id' => $user['company']));
@@ -39,12 +41,14 @@ class ProfileAction extends CAction{
 				$hub = Hub::model()->findByAttributes(array('id'=>$company['location']));
 				$post = new CPost;
 				$postlist = $post->getCompanyList($company->id,$page,$size);
+				$member = User::model()->findAllByAttributes(array('company'=>$user['company']));
 			}
 			$this->controller->render('profile', array(
 				'company' => $company,
 				'service' =>$servicelist,
 				'location' => $hub['location'],
-				'postlist' => $postlist['data']
+				'postlist' => $postlist['data'],
+				'member' => $member
 			));
 			}
 	}

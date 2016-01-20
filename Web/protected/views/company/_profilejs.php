@@ -10,7 +10,7 @@ $(function(){
 	});
 	var id = location.href.split('-')[1];
 	if(!id){
-		id= $('input[name=id]').attr(id);
+		id= $('input[name=id]').val(id);
 	}
 	$.infinitScroll({
 		container: '.postlist',
@@ -41,4 +41,11 @@ $(function(){
 			location.href = '/post/postshow-'+postId;
 		});
 	}
+
+	$('.memberlist li').each(function(){
+		$(this).hammer().on('tap',function(){
+			var id = $(this).attr('data-id');
+			location.href = '/user/profile-'+id;
+		});
+	});
 });

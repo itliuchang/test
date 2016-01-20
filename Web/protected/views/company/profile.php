@@ -53,6 +53,17 @@
 		    </li>
 		</ul>
 	</div>
+	<div class='partOption'>
+		<h3>Our Team</h3>
+		<div class="underLine"></div>
+		<ul class='memberlist clearfix'>
+		<?php if($member):?>
+			<?php foreach ($member as $list):?>
+			<li data-id='<?php echo $list['id']?>'><img src="<?php echo $list['portrait']?>"></li>
+			<?php endforeach;?>
+		<?php endif;?>
+		</ul>
+	</div>
 	<div class="partOption postlist">
 		<h3>Feed and Community</h3>
 		<div class="underLine"></div>
