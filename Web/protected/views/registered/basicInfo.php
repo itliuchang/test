@@ -20,7 +20,7 @@
 		<input type="password" placeholder="Repeat password" class="password">
 	</div>
 	<div class="footer">
-		<a href="/registered/productlist" class="back">BACK</a>
+		<a class="back">BACK</a>
 		<div class="next">NEXT</div>
 	</div>
 </div>

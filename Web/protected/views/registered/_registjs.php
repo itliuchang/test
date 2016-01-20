@@ -1,4 +1,7 @@
 $(function(){
+	$('.back').hammer().on('tap',function(){
+		location.href="/registered/productlist";
+	});
 	$('.act').hammer().on('tap',timing);
 	function timing(){
 		if(!$('.phone').val()){
