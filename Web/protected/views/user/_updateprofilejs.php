@@ -69,7 +69,7 @@ $(function(){
 						setInterval(function(){
 							location.href = '/post/newlist';
 						},1800);
-					} else if($('.footer').text() == 'SAVE' && status == 2){
+					} else if($('.footer').text() == 'SAVE' && (status == 2 || status == 3 || status == 4)){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
 							location.href = '/more';
