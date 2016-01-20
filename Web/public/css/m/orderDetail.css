@@ -108,7 +108,7 @@ body.orderDetail{
 	text-decoration: none;
 }
 
-#orderDetail .date{
+#orderDetail .companydate{
 	width: 100%;
 	line-height: 40px;
 	font-size: 16px;

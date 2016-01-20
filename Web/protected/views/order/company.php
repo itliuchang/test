@@ -1,6 +1,6 @@
 <div id="orderDetail">
 	<h2 class="title">MEMBERSHIP SUMMARY</h2>
-	<h3 class="date"><?php echo str_replace('-','/', $date) ?> - <?php echo date('Y/m/d',strtotime($date)+(date('t',strtotime($date))-1)*$months*60*60*24) ?></h3>
+	<h3 class="companydate"><?php echo str_replace('-','/', $date) ?> - <?php echo date('Y/m/d',strtotime($date)+(date('t',strtotime($date))-1)*$months*60*60*24) ?></h3>
 	<h3 class="location">Location:Fuxing</h3>
 	<div class="content">
 		<?php foreach($list as $value): ?>
