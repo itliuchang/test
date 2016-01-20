@@ -115,7 +115,7 @@ $(function(){
 			}
 			CHelper.asynRequest('/order/createcompanysession',{list:list,date:date,month:mouth},{
 				success:function(e){
-					location.href = '/payment/wxpay/jsapi/company';
+					location.href = '/registered/companyaccess';
 				},
 				error:function(e){
 					console.log(e);

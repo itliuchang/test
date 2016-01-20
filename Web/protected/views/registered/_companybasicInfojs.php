@@ -97,7 +97,7 @@ $(function(){
 				CHelper.toggleTip('show','ing..','success');
 			},
 			success:function(){
-				location.href='/registered/companyproductlist';
+				location.href='/payment/wxpay/jsapi/company';
 			},
 			failure:function(d){
 				CHelper.toggleTip('show',d.message,'error',2000);

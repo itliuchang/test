@@ -22,7 +22,7 @@
 	</div>
 	<div class="footer">
 		<a href="/registered/productlist" class="open">Random</a>
-		<a href="/registered/companyaccess" class="private">Fixed</a>
+		<a href="/registered/companyproductlist" class="private">Fixed</a>
 	</div>
 </div>
 <?php
