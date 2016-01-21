@@ -109,12 +109,51 @@ class COrder{
 	}
 
 	public function getlist($userId){
-		$result = Yii::app()->db->createCommand()->setText("select a.*,c.name as productName,c.id as productType from order_product a left join `order` b on a.orderId=b.id left join product c on b.productId=c.id where a.status!=0 and b.status!=0 and b.userId=".$userId." and a.endDate> DATE_FORMAT(CURDATE(), '%Y%m%d') order by a.endDate asc")->queryAll();
+		$result = Yii::app()->db->createCommand()->setText("select  d.name productName ,c.startDate,c.endDate,e.name location,a.createTime   from code_used a left join code b on a.codeId=b.id left join order_company_product c on b.ordercompanyproductId=c.id left join product_company d on c.cproductId=d.id left join hub e on d.hubId=e.id  where a.userId=".$userId." and c.`status`!=0 and a.`status`!=0  and b.`status`!=0  and d.`status`!=0  and e.`status`!=0")->queryAll();
+		// $resultOpen = Yii::app()->db->createCommand()->setText("select a.id ,a.price as orderPrice,a.orderTime, c.name ,c.price as productPrice from `order` a left join order_product b on a.id=b.orderId left join product c on a.productId=c.id where a.type=1 and a.`status`!=0 and b.`status`!=0 and c.`status`!=0 and  a.userId=".$userId." order by a.orderTime desc ")->queryAll();
+		$resultOpen = Yii::app()->db->createCommand()->setText("select a.*,c.name as productName,c.id as productType from order_product a left join `order` b on a.orderId=b.id left join product c on b.productId=c.id where a.status!=0 and b.status!=0 and b.userId=".$userId." and a.endDate> DATE_FORMAT(CURDATE(), '%Y%m%d') order by a.endDate asc")->queryAll();
+		$array = [];
+		foreach ($result as $value) {
+			array_push($array,$value);
+		}
+		foreach ($resultOpen as $value) {
+			array_push($array,$value);
+		}
+		usort($array,'static::sortByTime');
 		return array(
 				'code'=>200,
 				'mes'=> '',
 				'data' => array(
-						'list'=> $result,
+						'list'=> $array,
+					)
+			);
+	}
+
+	static public function sortByTime($a,$b){
+		if(strtotime($a['createTime'])<strtotime($b['createTime'])){
+			return 1;
+		}else{
+			return -1;
+		}
+	}
+
+	public function getOrderlist($userId){
+		$result = Yii::app()->db->createCommand()->setText("select a.id orderId,a.createTime, DATE_FORMAT(a.orderTime,'%Y-%m-%d') orderTime,a.price amountPrice,b.startDate startDate,b.endDate endDate,d.location location,c.name productName,b.num num from `order` a left join order_company_product b on a.id=b.orderId left join product_company c on b.cproductId = c.id left join hub d on a.hubId = d.id  where a.type = 2 and a.userId = ".$userId." and a.`status`!=0")->queryAll();
+		$resultOpen = Yii::app()->db->createCommand()->setText("select a.id,a.createTime ,a.price as orderPrice,a.orderTime, c.name ,c.price as productPrice from `order` a left join order_product b on a.id=b.orderId left join product c on a.productId=c.id where a.type=1 and a.`status`!=0 and b.`status`!=0 and c.`status`!=0 and  a.userId=".$userId." order by a.orderTime desc ")->queryAll();
+		$array = [];
+		foreach ($result as $value) {
+			array_push($array,$value);
+		}
+		foreach ($resultOpen as $value) {
+			array_push($array,$value);
+		}
+		usort($array,'static::sortByTime');
+		print_r($array);die;
+		return array(
+				'code'=>200,
+				'mes'=>'',
+				'data'=>array(
+						'list'=>$array,
 					)
 			);
 	}

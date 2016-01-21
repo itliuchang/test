@@ -361,6 +361,31 @@ a:hover,a:active {
     background-color: #f3a64a;
     color: #fff;
 }
+
+.tabTitle{
+    padding: 20px;
+    background-color: #fff;
+}
+.tabTitle .wrapper{
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    margin: 0;
+}
+.tabTitle .wrapper .p{
+    border-right: 1px solid #bebebe;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.tabTitle .wrapper .p,
+.tabTitle .wrapper .u{
+    display: inline-block;
+    text-align: center;
+    line-height: 25px;
+}
+.tabTitle .wrapper div.selected{
+    color: #fff;
+    background-color: #6D6D6D;
+}
 /*Layout*/
 /*#container{
     overflow: hidden;

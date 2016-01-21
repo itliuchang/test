@@ -14,13 +14,13 @@
     		<img src="/images/banner/7.png" alt="">
     		<h4>designated Pods</h4>
     	</div>
+	</div>
+	<div class="footer">
         <a class="a_code">[ I have an activation code ]</a>
         <div class="code hide">
             <input type="text" value="" placeholder="Enter CDK">
             <a class="btn_verify">verify</a>
         </div>
-	</div>
-	<div class="footer">
 		<a href="/registered/productlist" class="open">Random</a>
 		<a href="/registered/companyproductlist" class="private">Fixed</a>
 	</div>

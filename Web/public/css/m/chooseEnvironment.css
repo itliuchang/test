@@ -95,10 +95,13 @@
 	display: inline-block;
 	width: 100%;
 	text-align: center;
+	color: #4A90E2!important;
+	background-color: #fff;
 }
 #chooseEnvironment .code{
 	text-align: center;
 	padding: 10px 30px;
+	background-color: #fff;
 }
 #chooseEnvironment .code input{
 	border: 1px solid #979797;

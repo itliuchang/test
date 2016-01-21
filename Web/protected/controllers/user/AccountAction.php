@@ -5,6 +5,7 @@ class AccountAction extends CAction{
 
 		$order = new COrder;
 		$result = $order->getlist(Yii::app()->user->id);
+		$orderlist = $order->getOrderlist(Yii::app()->user->id);
 		$this->controller->bodyCss='account';
 		if($result['code']==200){
 			$this->controller->render('account',array('data'=>$result['data']));
