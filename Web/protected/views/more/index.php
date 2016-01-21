@@ -5,6 +5,7 @@
 	</div>
 	<ul class="option">
 		<li class="reservations"><a href="/book/myreservations">Upcoming Reservations</a></li>
+		<li class="guide"><a href="/about/faq">Guide</a></li>
 		<li class="myprofile" ><a href='/user/profile'>My Profile</a></li>
 		<li class="companyProfile"><a href='/company/profile'>Company Profile</a></li>
 		<li class="account"><a href="/user/account">Account</a></li>

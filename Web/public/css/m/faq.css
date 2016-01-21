@@ -1,0 +1,107 @@
+#faq{
+	background-color: #ffffff;
+	padding-bottom: 50px;
+}
+#faq .banner{
+	padding-top: 30px;
+	padding-left: 30px;
+	background-color: #000000;
+	color: #ffffff;
+	min-height: 90px;
+}
+#faq .menu{
+	background-color: #000000;
+	padding-left: 80px;
+}
+#faq .menu a:hover{
+	text-decoration: none;
+}
+#faq .menu li{
+	height: 50px;
+	color:#9c9a9b;
+	font-size: 16px;
+	padding:5px 10px 20px 25px;
+}
+#faq .banner h2{
+	width: 50%;
+	float: left;
+}
+#faq .banner span{
+	float: right;
+	margin-right: 50px;
+	font-size: 14px;
+	padding-right: 40px;
+	background-image: url(/images/now-more.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 30px 20px;
+}
+#faq .main{
+	padding:10px 0 0 15px;
+	height: 100%;
+}
+#faq .main h1{
+	margin:40px 0 40px 10px;
+}
+#faq .main h2{
+	color: #4b4b4b;
+	margin:30px 0 30px 10px;
+}
+#faq .main ul{
+	margin-left: 20px;
+	color: #9a9a98;
+}
+#faq .main li{
+	font-size: 16px;
+	margin:30px 0 5px 10px;
+}
+#faq .main .fir li::before{
+	content:'●';
+	color:#9a9a98;
+	padding-right: 10px;
+}
+#faq .main .sec li::before{
+	content:'○';
+}
+#faq .select{
+	color: #ffffff!important;
+	background-image: url(/images/right-white.png);
+	background-repeat: no-repeat;
+	background-position: 2px 10px;
+	background-size: 10px 15px;
+}
+#faq ol li{
+	font-size: 16px;
+	color:#9a9a98;
+	margin:30px 30px 5px 10px!important;
+	list-style: decimal;
+}
+#faq p{
+	font-size: 16px;
+	color:#9a9a98;
+	margin:30px 30px 5px 10px;
+}
+#faq #chooseEnvironment img{
+	width: 100%;
+	
+	
+	margin-top: 15px;
+}
+@media screen and (max-width: 320px){
+	#faq #chooseEnvironment .pic{
+		
+	}
+}
+#faq #chooseEnvironment .underLine{
+	width: 20px;
+	height: 5px;
+	background-color: #000;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+#faq #chooseEnvironment h2{
+	margin-top: 20px;
+	font-size: 16px;
+	text-align: center;
+}
