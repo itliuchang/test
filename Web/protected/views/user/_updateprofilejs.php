@@ -64,7 +64,12 @@ $(function(){
 					CHelper.toggleTip('show','ERROR','warn',2000);
 				},
 				success:function(response){
-					if($('.footer').text() == 'SAVE'){
+					if($('.footer').text() == 'SAVE' && status == 1){
+						CHelper.toggleTip('show','SUCCESS','success',1200);
+						setInterval(function(){
+							location.href = '/post/newlist';
+						},1800);
+					} else if($('.footer').text() == 'SAVE' && (status == 2 || status == 3 || status == 4)){
 						CHelper.toggleTip('show','SUCCESS','success',1200);
 						setInterval(function(){
 							location.href = '/more';

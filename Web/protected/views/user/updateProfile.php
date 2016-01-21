@@ -51,7 +51,7 @@
 		<input type="email" placeholder="LinkIn " class="linkIn" value='<?php echo $user['linkedinid']?>'>
 		<input type="email" placeholder="Instagram " class="instagram lastinput" value='<?php echo $user['instagramid']?>'>
 	</div>
-	<?php if($user['status'] == 1 && $user['type'] == 3):?>
+	<?php if($user['status'] == 1 && ($user['type'] == 3 || $user['type'] == 1)):?>
 		<h2 class="footer">NEXT</h2>
 	<?php else:?>
 		<h2 class="footer save">SAVE</h2>

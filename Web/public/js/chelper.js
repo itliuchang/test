@@ -189,21 +189,17 @@
                 },
 
                 init: {
-                    PostInit: function(){
-                        uploader.setOption('multipart_params',{
-                            'key':'img/'+uploader.id,
-                            'policy':token.policy,
-                            'OSSAccessKeyId':token.OSSAccessKeyId,
-                            'success_action_status':'200',
-                            'signature':token.signature
-                        });
-
-                    },
-
                     FilesAdded: function(up, files) {
                         // console.log(up);
                         
                         plupload.each(files, function(file) {
+                            uploader.setOption('multipart_params',{
+                                'key':'img/'+file.id,
+                                'policy':token.policy,
+                                'OSSAccessKeyId':token.OSSAccessKeyId,
+                                'success_action_status':'200',
+                                'signature':token.signature
+                            });
                             CHelper.toggleTip('show', '上传中(<span style="color:#EA2424;">0%</span>)..', 'loader');
                             uploader.start(); 
                         });                                       

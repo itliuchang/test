@@ -201,3 +201,16 @@
 	background-size: 30px 30px;
 	background-color: #fff;
 }
+#companyProfile .memberlist{
+	min-height: 80px;
+}
+#companyProfile .memberlist li{
+	float: left;
+	margin:15px 5px 0px 5px;
+	height: 60px;
+}
+#companyProfile .memberlist li img{
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+}
