@@ -6,7 +6,8 @@ class AboutController extends Controller{
 			'locations' => 'application.controllers.about.LocationsAction',
 			'membertype' => 'application.controllers.about.MembertypeAction',
 			'terms' => 'application.controllers.about.TermsAction',
-			'community' => 'application.controllers.about.CommunityAction'
+			'community' => 'application.controllers.about.CommunityAction',
+			'aboutus' => 'application.controllers.about.AboutusAction'
 		);
 	}
 }

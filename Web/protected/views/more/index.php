@@ -12,7 +12,7 @@
 		<li class="password"><a href='/user/changepassword'>Change password</a></li>
 	</ul>
 	<ul class="option">
-		<li class="about"><a>About</a></li>
+		<li class="about"><a href='/about/aboutus'>About</a></li>
 		<li class="logout"><a href='/logout'>Log out</a></li>
 	</ul>
 </div>
