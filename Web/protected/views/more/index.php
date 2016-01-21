@@ -5,6 +5,7 @@
 	</div>
 	<ul class="option">
 		<li class="reservations"><a href="/book/myreservations">Upcoming Reservations</a></li>
+		<li class="guide"><a href="/about/faq">Guide</a></li>
 		<li class="myprofile" ><a href='/user/profile'>My Profile</a></li>
 		<?php if($user->company): ?>
 		<li class="companyProfile"><a href='/company/profile'>Company Profile</a></li>
@@ -13,7 +14,7 @@
 		<li class="password"><a href='/user/changepassword'>Change password</a></li>
 	</ul>
 	<ul class="option">
-		<li class="about"><a>About</a></li>
+		<li class="about"><a href='/about/aboutus'>About</a></li>
 		<li class="logout"><a href='/logout'>Log out</a></li>
 	</ul>
 </div>

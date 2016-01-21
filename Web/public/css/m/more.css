@@ -53,6 +53,10 @@
 	background-image: url(/images/workspace.png);
 	background-size: 20px 12px;
 }
+#more .option li.guide a{
+	background-image: url(/images/guide.png);
+	background-size: 20px 20px;
+}
 #more .option li.myprofile a{
 	background-image: url(/images/myprofile.png);
 	background-size: 20px 15px;
