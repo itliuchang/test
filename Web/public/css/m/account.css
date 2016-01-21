@@ -22,7 +22,7 @@ body.account{
 	position: relative;
 }
 #account .content .left {
-	height: 70px;
+	min-height: 70px;
 }
 #account .content .left h4{
 	font-size: 14px;
@@ -80,4 +80,38 @@ body.account{
 #account .footer:visited{
 	text-decoration: none;
 	color: #fff;
+}
+#account .order .left{
+	min-height: 50px;
+}
+#account .order .right{
+	background: 0;
+}
+#account .order .right h2{
+	font-size: 20px;
+}
+#account .order small{
+	margin-left: 20px;
+}
+#account .order .date,
+#account .order .code{
+	font-size: 14px;
+	color: #9B9B9B;
+	margin-bottom: 10px;
+}
+#account .order .code{
+	margin-top: 10px;
+}
+#account .order .left h4{
+	margin-bottom: 5px;
+}
+#account .order .left p{
+	margin: 3px 0;
+}
+#account .order .left  .value{
+	display: inline-block;
+	width: 50px;
+}
+#account .order .left .times{
+	margin-left: 20px;
 }
