@@ -56,7 +56,11 @@
                 </div>
                 <div class="content">
                     <div class="lefto"></div>
+                    {{ if $value.type==1 }}
+                    <a href="/post/postshow-{{ $value.data }}">{{$value.body | filterXSS | unhtml}}</a>
+                    {{ else }}
                     <p>{{$value.body | filterXSS | unhtml}}</p>
+                    {{ /if }}
                 </div>
             </div>
        {{/if}}

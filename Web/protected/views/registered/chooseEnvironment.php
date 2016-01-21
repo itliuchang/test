@@ -21,8 +21,8 @@
             <input type="text" value="" placeholder="Enter CDK">
             <a class="btn_verify">verify</a>
         </div>
-		<a href="/registered/productlist" class="open">Random</a>
-		<a href="/registered/companyproductlist" class="private">Fixed</a>
+		<!-- <a href="/registered/productlist" class="open">Random</a>
+		<a href="/registered/companyproductlist" class="private">Fixed</a> -->
 	</div>
 </div>
 <?php

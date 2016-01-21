@@ -7,6 +7,7 @@ $.infinitRefresh({
         },
         success: function(response){
             if(typeof response.data == 'object' && $.isArray(response.data.list)){
+            console.log(response.data.list);
                 var html = template('showTpl', {
                     data: response.data.list, uid: systemVar.uid,
                     user: response.data.user,

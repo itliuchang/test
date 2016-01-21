@@ -1,8 +1,10 @@
 $(function(){
 	$('.p,.u').hammer().on('tap',function(e){
 		e.gesture.srcEvent.preventDefault();
-		$('.p,.u').toggleClass('selected');
-		$('.previous,.upcoming').toggleClass('hide');
+		if(!$(this).hasClass('selected')){
+			$('.p,.u').toggleClass('selected');
+			$('.previous,.upcoming').toggleClass('hide');
+		}
 	});
 	$('.right').hammer().off().on('tap',function(e){
 		e.gesture.srcEvent.preventDefault();

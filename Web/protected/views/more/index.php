@@ -6,7 +6,9 @@
 	<ul class="option">
 		<li class="reservations"><a href="/book/myreservations">Upcoming Reservations</a></li>
 		<li class="myprofile" ><a href='/user/profile'>My Profile</a></li>
+		<?php if($user->company): ?>
 		<li class="companyProfile"><a href='/company/profile'>Company Profile</a></li>
+		<?php endif; ?>
 		<li class="account"><a href="/user/account">Account</a></li>
 		<li class="password"><a href='/user/changepassword'>Change password</a></li>
 	</ul>

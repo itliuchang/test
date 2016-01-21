@@ -89,7 +89,6 @@
 	margin-top: 30px;
 	padding-bottom: 20px;
 	font-size: 20px;
-	border-bottom: 1px solid #C7C7C7;
 }
 #chooseEnvironment .a_code{
 	display: inline-block;
@@ -97,6 +96,7 @@
 	text-align: center;
 	color: #4A90E2!important;
 	background-color: #fff;
+	border-top: 1px solid #ececec;
 }
 #chooseEnvironment .code{
 	text-align: center;
