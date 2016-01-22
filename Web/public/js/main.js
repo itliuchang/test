@@ -32,7 +32,7 @@ $(function(){
         $('a .more').hammer().on('tap',function(){
             location.href = '/more/';
         });
-    }, 1000);
+    }, 10);
     
     checkNewMessage();
     setInterval(checkNewMessage, 60 * 1000);
