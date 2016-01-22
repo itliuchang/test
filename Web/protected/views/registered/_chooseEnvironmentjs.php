@@ -9,7 +9,7 @@ $(function(){
 			},
 			success:function(data){
 				CHelper.toggleTip('show','success','success','2000');
-				setInterval(location.href="/code-"+data.code, 2000);
+				setTimeout(location.href="/code-"+data.code, 2000);
 			},
 			error:function(res){
 				CHelper.toggleTip('show','error','error','2000');

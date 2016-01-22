@@ -19,7 +19,7 @@ $(function(){
             });
         }
     }
-    setInterval(tapon, 10);
+    setTimeout(tapon, 10);
     function tapon(){
         $('a .home').hammer().on('tap',function(){
         location.href = '/post/newlist';
