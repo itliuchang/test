@@ -9,24 +9,24 @@
 			<a href='/about/locations'><li class='select'>Locations</li></a>
 			<a href='/about/membertype'><li>Membership Types</li></a>
 			<a href='/about/terms'><li>Terms & Conditions</li></a>
-			<a href='/about/community'><li>Community Guidelines</li></a>
+			<a href='/about/community'><li class='last'>Community Guidelines</li></a>
 		</ul>
 	</div>
 	<div id="chooseEnvironment">
 		<div>
-			<img src="/images/banner/1.jpg">
+			<img src="/images/banner/1.jpg" class='hub'>
 	    	<h2><?php echo Yii::t('registered','FuXing    ') ?></h2>
 	    	<div class="underLine"></div>
-	    	<img src="/images/banner/2.jpg">
+	    	<img src="/images/banner/2.jpg" class='hub'>
 	    	<h2><?php echo Yii::t('registered','Hunan Road    ') ?></h2>
 	    	<div class="underLine"></div>
-	    	<img src="/images/banner/3.jpg">
+	    	<img src="/images/banner/3.jpg" class='hub'>
 	    	<h2><?php echo Yii::t('registered','West Nanjing Road   ') ?></h2>
 	    	<div class="underLine"></div>
-	    	<img src="/images/banner/4.jpg">
+	    	<img src="/images/banner/4.jpg" class='hub'>
 	    	<h2><?php echo Yii::t('registered','Lu Jia Zui    ') ?></h2>
 	    	<div class="underLine"></div>
-	    	<img src="/images/banner/5.jpg">
+	    	<img src="/images/banner/5.jpg" class='hub'>
 	    	<h2><?php echo Yii::t('registered','Hong Qiao   ') ?></h2>
 	    	<div class="underLine"></div>
 		</div>

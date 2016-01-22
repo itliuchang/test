@@ -4,14 +4,17 @@
 }
 #faq .banner{
 	padding-top: 30px;
-	padding-left: 30px;
+	padding-left: 20px;
 	background-color: #000000;
 	color: #ffffff;
 	min-height: 90px;
 }
+#faq .banner h2{
+	font-size: 22px;
+}
 #faq .menu{
 	background-color: #000000;
-	padding-left: 80px;
+	padding-left: 20px;
 }
 #faq .menu a:hover{
 	text-decoration: none;
@@ -20,7 +23,10 @@
 	height: 50px;
 	color:#9c9a9b;
 	font-size: 16px;
-	padding:5px 10px 20px 25px;
+	padding:20px 10px 20px 25px;
+}
+#faq .menu .last{
+	padding-bottom: 50px;
 }
 #faq .banner h2{
 	width: 50%;
@@ -28,63 +34,69 @@
 }
 #faq .banner span{
 	float: right;
-	margin-right: 50px;
-	font-size: 14px;
+	margin-right: 30px;
+	font-size: 12px;
 	padding-right: 40px;
+	padding-top: 4px;
 	background-image: url(/images/now-more.png);
-	background-position: right top;
+	background-position: right 4px;
 	background-repeat: no-repeat;
-	background-size: 30px 20px;
+	background-size: 25px 16px;
 }
 #faq .main{
 	padding:10px 0 0 15px;
 	height: 100%;
 }
 #faq .main h1{
-	margin:40px 0 40px 10px;
+	font-size: 24px;
+	font-weight: bold;
+	margin:40px 0 40px 0;
 }
 #faq .main h2{
+	font-size: 20px;
 	color: #4b4b4b;
-	margin:30px 0 30px 10px;
+	margin:30px 0 30px 0;
 }
 #faq .main ul{
-	margin-left: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 	color: #9a9a98;
 }
 #faq .main li{
-	font-size: 16px;
-	margin:30px 0 5px 10px;
+	font-size: 12px;
+	margin:16px 0 5px 10px;
+	list-style: disc;
 }
-#faq .main .fir li::before{
-	content:'●';
-	color:#9a9a98;
-	padding-right: 10px;
-}
-#faq .main .sec li::before{
-	content:'○';
+#faq .main .sec li{
+	list-style: circle;
 }
 #faq .select{
 	color: #ffffff!important;
 	background-image: url(/images/right-white.png);
 	background-repeat: no-repeat;
-	background-position: 2px 10px;
+	background-position: 2px 24px;
 	background-size: 10px 15px;
 }
+#faq ol{
+	padding-left: 10px!important;
+	padding-right: 10px;
+}
 #faq ol li{
-	font-size: 16px;
+	font-size: 12px;
 	color:#9a9a98;
-	margin:30px 30px 5px 10px!important;
-	list-style: decimal;
+	margin:16px 0 5px 10px;
+	list-style: decimal!important;
 }
 #faq p{
-	font-size: 16px;
+	font-size: 12px;
 	color:#9a9a98;
 	margin:30px 30px 5px 10px;
 }
-#faq #chooseEnvironment img{
+#faq #chooseEnvironment{
+	padding-bottom: 0;
+}
+#faq #chooseEnvironment .hub{
 	width: 100%;
-	
-	
 	margin-top: 15px;
 }
 @media screen and (max-width: 320px){

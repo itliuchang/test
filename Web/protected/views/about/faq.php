@@ -9,7 +9,7 @@
 			<a href='/about/locations'><li>Locations</li></a>
 			<a href='/about/membertype'><li>Membership Types</li></a>
 			<a href='/about/terms'><li>Terms & Conditions</li></a>
-			<a href='/about/community'><li>Community Guidelines</li></a>
+			<a href='/about/community'><li class='last'>Community Guidelines</li></a>
 		</ul>
 	</div>
 	<div class='main'>
