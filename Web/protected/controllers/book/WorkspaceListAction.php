@@ -27,9 +27,17 @@ class WorkspaceListAction extends CAction{
 						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
 					}
 				} else {
-					$code = Code::model()->findAll('endDate>='.$date.' and startDate<='.$date.' and userId='.Yii::app()->user->id);
+					$code = CodeUsed::model()->findAll('userId='.Yii::app()->user->id);
 					if($code){
-						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>1,'count'=>count($record))));
+						foreach($code as $list){
+							$value = Code::model()->find('endDate>='.$date .' and id='.$list['codeId'].' and startDate<='.$date);
+							if($value){break;}
+						}
+						if($value){
+							echo CJSON::encode(array('code'=>200,'data'=>array('num'=>1,'count'=>count($record))));
+						} else {
+							echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
+						}
 					} else {
 						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
 					}
