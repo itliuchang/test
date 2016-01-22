@@ -19,6 +19,18 @@ $(function(){
             });
         }
     }
+    $('a .home').hammer().on('tap',function(){
+        location.href = '/post/newlist';
+    });
+    $('a .community').hammer().on('tap',function(){
+        location.href = '/community/serviceslist';
+    });
+    $('a .message').hammer().on('tap',function(){
+        location.href = '/message/';
+    });
+    $('a .more').hammer().on('tap',function(){
+        location.href = '/more/';
+    });
     checkNewMessage();
     setInterval(checkNewMessage, 60 * 1000);
 });
