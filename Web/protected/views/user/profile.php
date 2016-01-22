@@ -1,13 +1,15 @@
 <div id="profile">
 	<div class="top">
 		<div class="background">
-			<img src="<?php echo empty($user['background']) ? '/images/background-default.png' : $user['background']?>"/>
+			<?php if($user['background']): ?>
+			<img src="<?php echo empty($user['background']) ?>"/>
+			<?php endif; ?>
 			<?php if($user['id']==Yii::app()->user->id): ?>
 			<a href="/user/updateprofile"><div class="update"></div></a>
 			<?php endif; ?>
 		</div>
 		<div class="wrapperPortrait">
-			<img class="portrait" src='<?php echo empty($user['portrait']) ? '/images/portrait-default.png' : $user['portrait']?>'/>
+			<img class="portrait" src='<?php echo empty($user['portrait']) ? '/images/account-default.png' : $user['portrait']?>'/>
 			<div class="messageWrapper">
 				<h3 class="community"><?php echo $user['nickName']?></h3>
 				<p class="membership"><?php echo empty($user['title']) ? 'No title.' : $user['title']?></p>
@@ -87,7 +89,7 @@
 		<div class="companyWrapper">
 		<?php if($user['companyid']['id']):?>
 		<input type='hidden' class='companyid' value='<?php echo $user['companyid']['id']?>'>
-			<img src="<?php echo $user['companyid']['logo']?>" alt="">
+			<img src="<?php echo $user['companyid']['logo']?:'/images/company-default.png' ?>" alt="">
 			<h4><?php echo $user['companyid']['name']?></h4>
 			<p><?php echo $companylocation?></p>
 		<?php endif;?>
@@ -112,7 +114,7 @@
 		<?php foreach($postlist as $value): ?>
 		<div class="postWrapper" data-id="<?php echo $value['id'] ?>">
 			<div class="header">
-				<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
+				<img class="user" src="<?php echo $value['portrait']?:'/images/account-default.png' ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 				<h4><?php echo $value['nickName'] ?></h4>
 				<p class="title"><?php echo $value['title'] ?></p>
 				<p class="companyName"><?php echo $value['companyName'] ?></p>

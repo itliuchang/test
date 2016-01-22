@@ -1,5 +1,5 @@
 <div id="companyProfile">
-<input type='hidden' name='id' value='<?php echo $company['id']?>'>
+<input type='hidden' name='id' id="<?php echo $company['id'] ?>" >
 	<div class="top">
 		<div class="background" style="background-image:url(<?php echo $company['background']?>)">
 			<?php if($company['ownerId']==Yii::app()->user->id): ?>
@@ -59,7 +59,7 @@
 		<ul class='memberlist clearfix'>
 		<?php if($member):?>
 			<?php foreach ($member as $list):?>
-			<li data-id='<?php echo $list['id']?>'><img src="<?php echo $list['portrait']?>"></li>
+			<li data-id='<?php echo $list['id']?>'><img src="<?php echo $list['portrait']?:'/images/account-default.png' ?>"></li>
 			<?php endforeach;?>
 		<?php endif;?>
 		</ul>
@@ -83,7 +83,7 @@
 		<?php foreach($postlist as $value): ?>
 		<div class="postWrapper" data-id="<?php echo $value['id'] ?>">
 			<div class="header">
-				<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
+				<img class="user" src="<?php echo $value['portrait']?:'/images/account-default.png' ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 				<h4><?php echo $value['nickName'] ?></h4>
 				<p class="title"><?php echo $value['title'] ?></p>
 				<p class="companyName"><?php echo $value['companyName'] ?></p>

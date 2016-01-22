@@ -1,7 +1,7 @@
 <div id="newpostlist">
 	<div class="postWrapper" data-id="<?php echo $data['post']['id'] ?>">
 		<div class="header">
-			<img class="user" src="<?php echo $data['post']['portrait'] ?>" alt="" data-id="<?php echo $data['post']['userId'] ?>">
+			<img class="user" src="<?php echo $data['post']['portrait']?:'/images/account-default.png' ?>" alt="" data-id="<?php echo $data['post']['userId'] ?>">
 			<h4><?php echo $data['post']['nickName'] ?></h4>
 			<p class="title"><?php echo $data['post']['title'] ?></p>
 			<p class="companyName"><?php echo $data['post']['companyName'] ?></p>
@@ -29,7 +29,7 @@
 			<?php foreach($data['commentlist'] as $value): ?>
 			<div class="comment">
 				<p class="time"><?php echo CDate::dgm($value['createTime']) ?></p>
-				<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
+				<img class="user" src="<?php echo $value['portrait']?:'/images/account-default.png' ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 				<div class="right">
 					<div class="title">
 						<h3 class="name"><?php echo $value['nickName'] ?></h3>
@@ -46,7 +46,7 @@
 	<div class="likelist">
 	<?php foreach($data['likelist']  as  $value): ?>
 		<div class="option">
-			<img class="user" src="<?php echo $value['portrait'] ?>" alt="" data-id="<?php echo $value['userId'] ?>">
+			<img class="user" src="<?php echo $value['portrait']?:'/images/account-default.png' ?>" alt="" data-id="<?php echo $value['userId'] ?>">
 			<div class="right">
 				<h3><?php echo $value['nickName'] ?></h3>
 				<p><?php echo $value['title'] ?></p>

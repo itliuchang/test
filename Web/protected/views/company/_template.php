@@ -2,7 +2,7 @@
     {{each data as v k}}
         <div class="postWrapper" data-id="{{ v.id }}">
             <div class="header">
-                <img src="{{ v.portrait }}" alt="" class="user" data-id="{{ v.userId }}">
+                <img src="{{ v.portrait||'/images/account-default.png' }}" alt="" class="user" data-id="{{ v.userId }}">
                 <h4>{{ v.nickName }}</h4>
                 <p class="title">{{ v.title }}</p>
                 <p class="companyName">{{ v.companyName }}</p>

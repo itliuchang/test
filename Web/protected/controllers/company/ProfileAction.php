@@ -4,7 +4,7 @@ class ProfileAction extends CAction{
 		$this->controller->pageTitle="Company";
 		if(Yii::app()->request->isAjaxRequest){
 			if(!$id){
-				$id=$company = Company::model()->findByAttributes(array('ownerId' => Yii::app()->user->id))->id;
+				$id= User::model()->findByAttributes(array('id' => Yii::app()->user->id))->company;
 			}
 			$post = new CPost;
 			$result = $post->getCompanyList($id,$page,$size);
@@ -43,6 +43,7 @@ class ProfileAction extends CAction{
 				$postlist = $post->getCompanyList($company->id,$page,$size);
 				$member = User::model()->findAllByAttributes(array('company'=>$user['company']));
 			}
+			// print_r($company);die;
 			$this->controller->render('profile', array(
 				'company' => $company,
 				'service' =>$servicelist,

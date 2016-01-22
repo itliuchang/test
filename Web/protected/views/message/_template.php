@@ -4,7 +4,7 @@
             {{if v.id2 == 0}}
                 <a href="/message/{{v.id2}}/chat" class="link"></a>
                 <a href="javascript:void(0);">
-                  <img src="{{v.u2portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
+                  <img src="{{v.u2portrait}}" onerror="this.src='/images/account-default.png'" alt="">
                 </a>
                 <div class="content">
                     <h3 class="overflow-line1">系统消息</h3>
@@ -13,7 +13,7 @@
             {{else if v.id2 == uid}}
                 <a href="/message/{{v.id1}}/chat" class="link"></a>
                 <a href="javascript:void(0);">
-                  <img src="{{v.u1portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
+                  <img src="{{v.u1portrait}}" onerror="this.src='/images/account-default.png'" alt="">
                 </a>
                 <div class="content">
                     <h3 class="overflow-line1">{{v.u1name | filterXSS}}</h3>
@@ -22,7 +22,7 @@
             {{else}}
                 <a href="/message/{{v.id2}}/chat" class="link"></a>
                 <a href="javascript:void(0);">
-                  <img src="{{v.u2portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
+                  <img src="{{v.u2portrait}}" onerror="this.src='/images/account-default.png'" alt="">
                 </a>
                 <div class="content">
                     <h3 class="overflow-line1">{{v.u2name | filterXSS}}</h3>
@@ -40,7 +40,7 @@
        {{if $value.senderID == uid}}
             <div class="item my">
                 <div class="imgWrapper">
-                    <img src="{{myportrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
+                    <img src="{{myportrait}}" onerror="this.src='/images/account-default.png'" alt="">
                     <p class="date">{{$value.ctime | dataFormat:'MM/dd'}}</p>
                 </div>
                 <div class="content clearfix">
@@ -51,7 +51,7 @@
        {{else}}
             <div class="item other">
                 <div class="imgWrapper">
-                    <img src="{{user.portrait}}" onerror="this.src='/images/portrait-default.png'" alt="">
+                    <img src="{{user.portrait}}" onerror="this.src='/images/account-default.png'" alt="">
                     <p class="date">{{$value.ctime | dataFormat:'MM/dd'}}</p>
                 </div>
                 <div class="content">

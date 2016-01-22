@@ -4,7 +4,7 @@
 		    <?php if($item['id2'] == 0): ?>
 				<a href="/message/<?php echo $item['id2'] ?>/chat" class="link"></a>
 				<a href="/message/<?php echo $item['id2'] ?>/chat">
-				  <img src="<?php echo $item['u2portrait']?>" onerror="this.src='/images/portrait-default.png'" alt="">
+				  <img src="<?php echo $item['u2portrait']?>" onerror="this.src='/images/account-default.png'" alt="">
 				</a>
 				<div class="content">
 					<h3 class="overflow-line1">系统消息</h3>
@@ -16,7 +16,7 @@
 			<?php elseif($item['id2'] == Yii::app()->user->id): ?>
 				<a href="/message/<?php echo $item['id1'] ?>/chat" class="link"></a>
 				<a href="/message/<?php echo $item['id1'] ?>/chat">
-				  <img src="<?php echo $item['u1portrait']?>" onerror="this.src='/images/portrait-default.png'" alt="">
+				  <img src="<?php echo $item['u1portrait']?>" onerror="this.src='/images/account-default.png'" alt="">
 				</a>
 				<div class="content">
 					<h3 class="overflow-line1"><?php echo CHtml::encode($item['u1name']) ?></h3>
@@ -28,7 +28,7 @@
 			<?php else: ?>
 				<a href="/message/<?php echo $item['id2'] ?>/chat" class="link"></a>
 				<a href="/message/<?php echo $item['id2'] ?>/chat">
-				  <img src="<?php echo $item['u2portrait']?>" onerror="this.src='/images/portrait-default.png'" alt="">
+				  <img src="<?php echo $item['u2portrait']?>" onerror="this.src='/images/account-default.png'" alt="">
 				</a>
 				<div class="content">
 					<h3 class="overflow-line1"><?php echo CHtml::encode($item['u2name']) ?></h3>

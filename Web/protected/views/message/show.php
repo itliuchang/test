@@ -2,7 +2,7 @@
 	<div class="header">
 	    <?php if($user['id'] == 0): ?>
 			<a href="javascript:void(0)" _id="<?php echo $user['id'] ?>" _name="系统消息" _portrait="<?php echo $user['portrait']?>">
-				<img src="<?php echo $user['portrait'] ?>" onerror="this.src='/images/portrait-default.png'" alt="">
+				<img src="<?php echo $user['portrait'] ?>" onerror="this.src='/images/account-default.png'" alt="">
 			</a>
 			<div class="content">
 				<h3 class="overflow-line1">系统消息</h3>
@@ -10,7 +10,7 @@
 			</div>
 		<?php else: ?>
 			<a href="javascript:void(0)" _id="<?php echo $user->id ?>" _name="<?php echo CHtml::encode($user->nickName) ?>" _portrait="<?php echo $user->portrait ?>">
-				<img src="<?php echo $user->portrait ?>" onerror="this.src='/images/portrait-default.png'" alt="">
+				<img src="<?php echo $user->portrait ?>" onerror="this.src='/images/account-default.png'" alt="">
 			</a>
 			<div class="content">
 				<h3 class="overflow-line1"><?php echo CHtml::encode($user->nickName) ?></h3>
@@ -25,7 +25,7 @@
 	    	<?php if($item['senderID'] == Yii::app()->user->id): ?>
 				<div class="item my">
 					<div class="imgWrapper">
-						<img src="<?php echo Yii::app()->user->getState('portrait') ?>" onerror="this.src='/images/portrait-default.png'" alt="">
+						<img src="<?php echo Yii::app()->user->getState('portrait') ?>" onerror="this.src='/images/account-default.png'" alt="">
 						<p class="date"><?php echo date('m/d', $item['ctime']) ?></p>
 					</div>
 					<div class="content clearfix">
@@ -36,7 +36,7 @@
 	    	<?php else: ?>
 				<div class="item other">
 					<div class="imgWrapper">
-						<img src="<?php echo $user['portrait'] ?>" onerror="this.src='/images/portrait-default.png'" alt="">
+						<img src="<?php echo $user['portrait'] ?>" onerror="this.src='/images/account-default.png'" alt="">
 						<p class="date"><?php echo date('m/d', $item['ctime']) ?></p>
 					</div>
 					<div class="content">

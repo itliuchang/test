@@ -1,7 +1,7 @@
 $(function(){
 	$('.update').hammer().on('tap press',function(e){
 		e.gesture.srcEvent.preventDefault();
-		var id = $('input[name="id"]').val();
+		var id = $('input[name="id"]').attr('id');
 		if(id){
 			location.href='/company/updateprofile-'+id;
 		} else {
@@ -10,7 +10,7 @@ $(function(){
 	});
 	var id = location.href.split('-')[1];
 	if(!id){
-		id= $('input[name=id]').val(id);
+		id= $('input[name=id]').attr('id');
 	}
 	$.infinitScroll({
 		container: '.postlist',

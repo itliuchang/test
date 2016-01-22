@@ -6,7 +6,7 @@
 		<?php foreach($list as $value): ?>
 		<div class="option">
 			<input type='text' id='<?php echo $value['id'] ?>' hidden>
-			<img src="<?php echo $value['logo'] ?>" alt="">
+			<img src="<?php echo $value['logo']?:'/images/company-default.png' ?>" alt="">
 			<div class="content">
 				<h3><?php echo $value['name'] ?></h3>
 				<p><?php echo $value['locationName'] ?></p>
