@@ -59,11 +59,13 @@ class UpdateProfileAction extends CAction{
 					$code = Code::model()->findAllByAttributes(array('userId'=>Yii::app()->user->id,'status'=>1));
 					if($code){
 						foreach ($code as $list) {
-							$user = CodeUsed::model()->findAllByAttributes(array('codeId'=>$list['id']));
-							foreach ($user as $value) {
-								$item = User::model()->findByAttributes(array('id'=>$value['userId']));
-								$item->company = $company->id;
-								$item->save();
+							$user = CodeUsed::model()->findAll('codeId='.$list['id']);
+							if($user){
+								foreach ($user as $value) {
+									$item = User::model()->findByAttributes(array('id'=>$value['userId']));
+									$item->company = $company->id;
+									$item->save();
+								}
 							}
 						}
 					}
