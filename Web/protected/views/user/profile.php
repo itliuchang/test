@@ -2,7 +2,7 @@
 	<div class="top">
 		<div class="background">
 			<?php if($user['background']): ?>
-			<img src="<?php echo empty($user['background']) ?>"/>
+			<img src="<?php echo $user['background'] ?>"/>
 			<?php endif; ?>
 			<?php if($user['id']==Yii::app()->user->id): ?>
 			<a href="/user/updateprofile"><div class="update"></div></a>
