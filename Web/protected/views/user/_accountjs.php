@@ -20,7 +20,7 @@ $(function(){
 				},
 				success:function(data){
 					var html = template('productTpl',{data:data});
-					$('.product').append(html);
+					$('.product').prepend(html);
 					CHelper.toggleTip('show','success','success','2000');
 				},
 				error:function(res){

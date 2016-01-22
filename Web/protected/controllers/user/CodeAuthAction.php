@@ -4,7 +4,8 @@ class CodeAuthAction extends CAction{
 		if(Yii::app()->request->isAjaxRequest){
 			$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 			$result = Coding::isValidCode($code);
-			if($result['code']==200&&$user->status>=3){
+			$hasused = Coding::hasUsedCode($code);
+			if($result['code']==200&&$user->status>=3&&!$hasused){
 				$code = Code::model()->findByAttributes(array('code'=>$code));
 				$code ->times--;
 				$code -> save();

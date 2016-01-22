@@ -46,4 +46,15 @@
  				);
  		}
  	}
+
+ 	//判断改激活码是否被自己用过
+ 	public static function hasUsedCode($code){
+ 		$result = Yii::app()->db->createCommand('select * from code_used a left join code b on a.codeId = b.id where b.code ='.$code.' and a.userId='.Yii::app()->user->id)->queryRow();
+ 		if($result){
+ 			//使用过了
+ 			return true;
+ 		}else{
+ 			return false;
+ 		}
+ 	}
  }

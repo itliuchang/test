@@ -83,6 +83,7 @@
 		    </li>
 		</ul>
 	</div>
+	<?php if($user['company']): ?>
 	<div class="partOption">
 		<h3>I Work At</h3>
 		<div class="underLine"></div>
@@ -95,6 +96,7 @@
 		<?php endif;?>
 		</div>
 	</div>
+	<?php endif; ?>
 	<div class="partOption postlist">
 		<h3>Feed and Community</h3>
 		<div class="underLine"></div>
