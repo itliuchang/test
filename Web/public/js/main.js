@@ -19,8 +19,8 @@ $(function(){
             });
         }
     }
-    setTimeout(tapon, 10);
-    function tapon(){
+    // setTimeout(tapon, 10);
+    // function tapon(){
         $('a .home').hammer().on('tap',function(){
         location.href = '/post/newlist';
         });
@@ -33,7 +33,7 @@ $(function(){
         $('a .more').hammer().on('tap',function(){
             location.href = '/more/';
         });
-    }
+    // }
     checkNewMessage();
     setInterval(checkNewMessage, 60 * 1000);
 });
