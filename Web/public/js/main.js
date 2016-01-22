@@ -19,18 +19,21 @@ $(function(){
             });
         }
     }
-    $('a .home').hammer().on('tap',function(){
+    setInterval(function(){
+        $('a .home').hammer().on('tap',function(){
         location.href = '/post/newlist';
-    });
-    $('a .community').hammer().on('tap',function(){
-        location.href = '/community/serviceslist';
-    });
-    $('a .message').hammer().on('tap',function(){
-        location.href = '/message/';
-    });
-    $('a .more').hammer().on('tap',function(){
-        location.href = '/more/';
-    });
+        });
+        $('a .community').hammer().on('tap',function(){
+            location.href = '/community/serviceslist';
+        });
+        $('a .message').hammer().on('tap',function(){
+            location.href = '/message/';
+        });
+        $('a .more').hammer().on('tap',function(){
+            location.href = '/more/';
+        });
+    }, 1000);
+    
     checkNewMessage();
     setInterval(checkNewMessage, 60 * 1000);
 });
