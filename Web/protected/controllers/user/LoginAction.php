@@ -51,7 +51,7 @@ class LoginAction extends CAction{
 				$this->controller->render('login');
 			}
 		}else{
-			$this->controller->redirect(Assist::getDefaultURL());
+			$this->controller->redirect(Assist::getAccessURL());
 		}
 	}
 

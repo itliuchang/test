@@ -48,6 +48,7 @@ class AccessAction extends CAction{
 						break;
 					case 3:
 						$this->controller->redirect('/registered/code');
+						break;
 					default:
 						$user= User::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 						Yii::app()->user->setState('portrait',$user->portrait);
