@@ -27,7 +27,12 @@ class WorkspaceListAction extends CAction{
 						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
 					}
 				} else {
-					echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
+					$code = Code::model()->findAll('endDate>='.$date.' and startDate<='.$date.' and userId='.Yii::app()->user->id);
+					if($code){
+						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>1,'count'=>count($record))));
+					} else {
+						echo CJSON::encode(array('code'=>200,'data'=>array('num'=>0)));
+					}
 				}
 			} else {
 				$proxy = new CReservation();
