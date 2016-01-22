@@ -1,7 +1,7 @@
 <?php
 class CReservation{
 	public function getupcomingRes($userId,$page=1,$size=10){
-		$data = Yii::app()->db->createCommand()->select('a.id,a.type,a.createTime,a.startTime,a.endTime,a.type,c.name roomname,b.name hubname')->from('reservation a')->leftJoin('hub b','a.hubId=b.id')->leftJoin('conferenceRoom c','a.conferenceroomId=c.id')->where('a.status!=0 and a.userId='.$userId.' and a.startTime>'.date('Ymdhms'))->order('startTime desc')->queryAll();
+		$data = Yii::app()->db->createCommand()->select('a.id,a.type,a.createTime,a.startTime,a.endTime,a.type,c.name roomname,b.name hubname')->from('reservation a')->leftJoin('hub b','a.hubId=b.id')->leftJoin('conferenceRoom c','a.conferenceroomId=c.id')->where('a.status!=0 and a.userId='.$userId.' and a.startTime>'.date('Ymdhms'))->order('createTime desc')->queryAll();
 		return array(
 				'code'=>200,
 				'mes'=>'',
