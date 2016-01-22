@@ -64,7 +64,10 @@ body.account{
 #account .option.nouse .detailtime{
 	visibility:hidden;
 }
-#account .footer{
+#account .option.nouse:last-child{
+	margin-bottom: 200px;
+}
+/*#account .footer{
 	width: 100%;
 	color: #fff;
 	position: fixed;
@@ -80,6 +83,51 @@ body.account{
 #account .footer:visited{
 	text-decoration: none;
 	color: #fff;
+}*/
+#account .footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: #fff;
+	z-index: 1000;
+}
+#account .footer a{
+	display: inline-block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+}
+#account .a_code{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	color: #4A90E2!important;
+	background-color: #fff;
+	border-top: 1px solid #ececec;
+}
+#account .code{
+	text-align: center;
+	padding: 10px 30px;
+	background-color: #fff;
+}
+#account .code input{
+	border: 1px solid #979797;
+	height: 40px;
+	width: 100%;
+	padding-left: 20px;
+}
+#account .code .btn_verify{
+	display: inline-block;
+	margin-top: 10px;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #4A4A4A;
+	color: #fff;
+	font-size: 16px;
 }
 #account .order .left{
 	min-height: 50px;

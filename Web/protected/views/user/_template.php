@@ -18,3 +18,20 @@
         </div>
     {{/each}}
 </script>
+<script id="productTpl" type="text/html">
+    <div class="option nouse ">
+        <h3>Fixed</h3>
+        <div class="content">
+            <div class="left">
+                <h4>Entries:{{ data.name }}</h4>
+                <p>Member Type:Company</p>
+                <p>Location:{{ data.location }}</p>                             
+                <p>{{ data.startDate }} - {{ data.endDate }}</p>
+            </div>
+            <div class="right">
+                <h3 class="unlimited"></h3>
+                <p>unlimited</p>
+            </div>
+        </div>
+    </div>
+</script>

@@ -58,6 +58,13 @@
 			</div>
 		<?php endif; ?>
 		<?php endforeach; ?>
+		<div class="footer">
+			<a class="a_code">[ I have an activation code ]</a>
+	        <div class="code hide">
+	            <input type="text" value="" placeholder="Enter CDK">
+	            <a class="btn_verify">verify</a>
+	        </div>
+		</div>
 		<!-- <a href="/registered/productlist" class="footer">ADD SUBSCRIPTION</a> -->
 	</div>
 	<div class="order hide">
@@ -101,6 +108,7 @@
 		<?php endforeach; ?>
 	</div>
 </div>
+<?php echo $this->renderPartial('_template') ?>
 <?php
     $cs = Yii::app()->clientScript;
     $js = $this->renderPartial('_accountjs', null ,true);

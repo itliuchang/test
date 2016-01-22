@@ -19,7 +19,7 @@ class CodeRegistAction extends CAction{
 						$user->nickName = $name;
 						$user->mobile = $mobile;
 						$user->email = $email;
-						$user->status = 21;
+						$user->status = 4;
 						if($password) {
 							$user->password = md5($password);
 						}
