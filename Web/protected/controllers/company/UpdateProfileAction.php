@@ -54,7 +54,22 @@ class UpdateProfileAction extends CAction{
 					$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));					
 					$user->status = 3;					
 					$user->company = $company->id;
-					$user->save();			
+					$user->save();
+					//所有公司员工设置公司
+					$code = Code::model()->findAllByAttributes(array('userId'=>Yii::app()->user->id,'status'=>1));
+					if($code){
+						foreach ($code as $list) {
+							$user = CodeUsed::model()->findAll('codeId='.$list['id']);
+							if($user){
+								foreach ($user as $value) {
+									$item = User::model()->findByAttributes(array('id'=>$value['userId']));
+									$item->company = $company->id;
+									$item->save();
+								}
+							}
+						}
+					}
+						
 					echo CJSON::encode(array('code'=>200, 'message'=> 'SUCCESS','data'=>array('status'=>$status)));
 				}						
 			} else {
