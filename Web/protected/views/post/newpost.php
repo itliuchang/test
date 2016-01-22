@@ -3,7 +3,7 @@
 	<div id='img_container'>
 		<p class="addimage" id='selectimg'></p>
 	</div>
-	<a href="#" class='footer'>SUBMIT</a>
+	<a class='footer'>SUBMIT</a>
 </div>
 <script type="text/javascript">
 	var domain = '<?php echo Assist::getOSSToken()['domain'] ?>',
