@@ -29,7 +29,7 @@ $(function(){
 		'FileUploaded':function(up,file){
 			CHelper.toggleTip('hide');
 			
-			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!chang'
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+file.id+'@!chang'
 			$('.backgroundurl').val(link);
 			$('.background').attr('style','background-image:url('+link+')');
 		}
@@ -38,7 +38,7 @@ $(function(){
 		'FileUploaded':function(up,file){
 			
 			CHelper.toggleTip('hide');
-			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+up.id+'@!zheng';
+			link = 'http://naked.img-cn-shanghai.aliyuncs.com/img/'+file.id+'@!zheng';
 			$('#selectlogo').attr('src', link);
 		}
 	});
