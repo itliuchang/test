@@ -9,6 +9,15 @@ class CComment{
 		$comment->createTime = $data['createTime'];
 		$posterId=Posts::model()->findByAttributes(array('id'=>$data['postId']))->userId;
 		$userName = User::model()->findByAttributes(array('id'=>$data['userId']))->nickName;
+		$messageRe = MessageRelation::model()->findByAttributes(array('id1'=>$posterId,'id2'=>0));
+		if($messageRe){
+			$messageRe->utime=date('U');
+		}else{
+			$messageRe=new MessageRelation;
+			$messageRe->id1 = $posterId;
+			$messageRe->id2 = 0;
+			$messageRe->utime = date('u');
+		}
 		if($posterId!=$data['userId']){
 			$message = new Message;
 			$message->senderID=0;
@@ -19,6 +28,7 @@ class CComment{
 			$message->status=0;
 			$message->ctime=date('U');
 			$message->save();
+			$messageRe->save();
 		}
 		$post = Posts::model()->findByAttributes(array('id'=>$data['postId']));
 		$post->comment_num++;

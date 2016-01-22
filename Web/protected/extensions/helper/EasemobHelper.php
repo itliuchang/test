@@ -103,7 +103,6 @@ class EasemobHelper extends Easemob{
         // $total = ceil($count / $size);
         $start = ($page - 1) * $size;
         $limit = " limit {$start},{$size}";
-
         // $list = MessageRelation::model()->findAllBySql('select' . $fields . $where . $limit, array(':uid' => Yii::app()->user->id));
         $dbcmd = Yii::app()->db->createCommand('select' . $fields . $where . $limit);
         $dbcmd->bindParam(':uid', Yii::app()->user->id);

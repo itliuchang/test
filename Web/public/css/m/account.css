@@ -108,9 +108,12 @@ body.account{
 	background-color: #fff;
 	border-top: 1px solid #ececec;
 }
-#account .code{
-	text-align: left;
+#account .footer .code{
 	padding: 10px 0px;
+}
+#account .footer .code{
+	text-align: left;
+	padding: 10px 30px;
 	background-color: #fff;
 }
 #account .code input{
