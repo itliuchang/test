@@ -116,6 +116,7 @@ class EasemobHelper extends Easemob{
                 $sysaccount = Yii::app()->params['partner']['emchat']['sysAccount'];
                 $item['u2name'] = $sysaccount['nickName'];
                 $item['u2portrait'] = $sysaccount['portrait'];
+                $item['utime'] = $sysaccount['utime'];
             }else{
                 $item['ncount'] = self::getNewMessageNum($item['id1'] != Yii::app()->user->id? $item['id1'] : $item['id2']);
             }
