@@ -29,7 +29,7 @@ $(function(){
         }
     });
 
-    if(friendId != 0){
+    /*if(friendId != 0){
         var conn = new Easemob.im.Connection();
         conn.init({
             https: true,
@@ -110,7 +110,7 @@ $(function(){
                 // return navigator.userAgent.indexOf('Firefox') > 0? ' ' : '';
             }
         });
-    }
+    }*/
 
     $('.footer .sendbtn').hammer().on('tap', function(e){
         e.gesture.srcEvent.preventDefault();
