@@ -127,9 +127,9 @@ class EasemobHelper extends Easemob{
     }
     public static function sortByUtime($a,$b){
             if($a['utime']>$b['utime']){
-                return -1;
-            }else{
                 return 1;
+            }else{
+                return -1;
             }
     }
 
