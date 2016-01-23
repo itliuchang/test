@@ -55,7 +55,7 @@ class UpdateProfileAction extends CAction{
 					if($user['type'] == 1){
 						$user->status = 4;
 					} else if($user['type'] == 3){
-						$user->status = 3;
+						$user->status = 4;
 					}
 					$user->company = $company->id;
 					$user->save();
