@@ -3,8 +3,11 @@ return array(
     'adminEmail' => 'admin@naked.com',
     'partner' => array(
         'wechat' => array(
-            'appid' => 'wx05fa6a81aeab3873',
-            'appsecret' => '8d5c9f76490e185aee2c4bf33b33f765',
+            //naked 测试账号
+            // 'appid' => 'wx05fa6a81aeab3873',
+            // 'appsecret' => '8d5c9f76490e185aee2c4bf33b33f765',
+            'appid' => 'wx81050376249cfc14',
+            'appsecret' => '9a4f13a5a32d3c5939dacd3f977765ee',
             'oauth2' => array(
                 'callback' => '/wechat/login/callback',
                 'callback-quiet' => '/wechat/quiet/login/callback',
