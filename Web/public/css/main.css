@@ -368,7 +368,7 @@ a:hover,a:active {
 }
 .tabTitle .wrapper{
     border: 1px solid #dfdfdf;
-    border-radius: 5px;
+    border-radius: 9px;
     margin: 0;
 }
 .tabTitle .wrapper .p{
