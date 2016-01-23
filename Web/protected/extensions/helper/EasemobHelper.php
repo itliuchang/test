@@ -121,8 +121,15 @@ class EasemobHelper extends Easemob{
                 $item['ncount'] = self::getNewMessageNum($item['id1'] != Yii::app()->user->id? $item['id1'] : $item['id2']);
             }
             array_push($items, $item);
-        }
+            usort($items,'static::sortByUtime');
         return $items;
+    }
+    public static function sortByUtime($a,$b){
+            if($a['utime']>$b['utime']){
+                return -1;
+            }else{
+                return 1;
+            }
     }
 
     //分页获取当前用户与某好友的聊天消息列表,使用start而非使用常规分页是为了避免当在聊天窗口有新的聊天记录时获取消息列表错位的问题
