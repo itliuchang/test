@@ -372,9 +372,12 @@ a:hover,a:active {
     margin: 0;
 }
 .tabTitle .wrapper .p{
-    border-right: 1px solid #bebebe;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+.tabTitle .wrapper .u{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .tabTitle .wrapper .p,
 .tabTitle .wrapper .u{

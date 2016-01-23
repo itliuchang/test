@@ -2,7 +2,7 @@
 class UserController extends Controller{
 	public function filters(){
         return array(
-            'wechat','accessControl','main - login,logout,regist,bind,edit,updateprofile,coderegist,companyregist,codeauth,sendsms'
+            'accessControl','main - login,logout,regist,bind,edit,updateprofile,coderegist,companyregist,codeauth,sendsms'
         );
     }
 
