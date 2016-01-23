@@ -122,6 +122,7 @@ class EasemobHelper extends Easemob{
             }
             array_push($items, $item);
             usort($items,'static::sortByUtime');
+        }
         return $items;
     }
     public static function sortByUtime($a,$b){
