@@ -15,7 +15,12 @@ $(function(){
         		listObserve();
         	},
         	fail:function(){
-        		alert('fail');
+        		CHelper.toggleTip('show','Connection error! Please check your Internet connection and retry!','error','2000');
+        		$('#newpostlist .loading').remove();
+        	},
+        	error:function(){
+        		CHelper.toggleTip('show','Connection error! Please check your Internet connection and retry!','error','2000');
+        		$('#newpostlist .loading').remove();
         	}
         },
         url: '/post/newlist/%(page)s/%(size)s',
