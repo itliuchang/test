@@ -2,18 +2,18 @@
 class UserController extends Controller{
 	public function filters(){
         return array(
-            'wechat','accessControl','main - login,logout,regist,bind,edit,updateprofile,coderegist,companyregist,codeauth'
+            'wechat','accessControl','main - login,logout,regist,bind,edit,updateprofile,coderegist,companyregist,codeauth,sendsms'
         );
     }
 
     public function accessRules(){
         return array(
         	array('allow',
-                'actions' => array('login','logout','regist','bind','edit','updateprofile','coderegist','companyregist','codeauth'),
+                'actions' => array('sendsms','login','logout','regist','bind','edit','updateprofile','coderegist','companyregist','codeauth'),
                 'users' => array('*'),
             ),
             array('allow',
-                'actions' => array('sendsms','profile','account','changepassword','like','liked','sendcomment'),
+                'actions' => array('profile','account','changepassword','like','liked','sendcomment'),
                 'users' => array('@'),
             ),
             array('deny',
