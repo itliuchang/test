@@ -22,7 +22,7 @@ class CComment{
 			$message = new Message;
 			$message->senderID=0;
 			$message->RecID=$posterId;
-			$message->body=$userName.' 评论了您的帖子';
+			$message->body=$userName.' commented on your post.';
 			$message->data=$data['postId'];
 			$message->type=1;
 			$message->status=0;
