@@ -52,7 +52,11 @@ class UpdateProfileAction extends CAction{
 					$company->save();
 									
 					$user = User::model()->findByAttributes(array('id'=>Yii::app()->user->id));					
-					$user->status = 4;					
+					if($user['type'] == 1){
+						$user->status = 4;
+					} else if($user['type'] == 3){
+						$user->status = 3;
+					}
 					$user->company = $company->id;
 					$user->save();
 					//所有公司员工设置公司
