@@ -1,27 +1,26 @@
 <?php
 class UserController extends Controller{
-	// public function filters() {
-	// 	return array(
-	// 		 'accessRules'
-	// 	);
-	// }
-	// public function accessRules(){
- //        return array(
- //            array('allow',
- //                'actions'=>array(
- //                    'wechatconnect', 'wechatconnectcallback',
- //                ),
- //                'users'=>array('*'),
- //            ),
- //            array('allow',
- //                'actions' => array('login','logout','sendsms','regist','bind','profile','edit','account','updateprofile','changepassword'),
- //                'users' => array('@'),
- //            ),
- //            array('deny',
- //               'users' => array('*'),
- //            ),
- //        );
- //    }
+	public function filters(){
+        return array(
+            'wechat','accessControl','main - login,logout,regist,bind,edit,updateprofile,coderegist,companyregist,codeauth'
+        );
+    }
+
+    public function accessRules(){
+        return array(
+        	array('allow',
+                'actions' => array('login','logout','regist','bind','edit','updateprofile','coderegist','companyregist','codeauth'),
+                'users' => array('*'),
+            ),
+            array('allow',
+                'actions' => array('sendsms','profile','account','changepassword','like','liked','sendcomment'),
+                'users' => array('@'),
+            ),
+            array('deny',
+               'users' => array('*'),
+            ),
+        );
+    }
 	public function actions(){
 		return array(
 			'login' => 'application.controllers.user.LoginAction',

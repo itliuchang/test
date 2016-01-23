@@ -3,26 +3,14 @@ class PostController extends Controller{
 
 	public function filters(){
         return array(
-            'accessControl',
+            'wechat','accessControl','main'
         );
     }
 
     public function accessRules(){
         return array(
-            // array('allow',
-            //     'actions'=>array(
-            //         'wechatquietconnect', 'wechatquietconnectcallback',
-            //     ),
-            //     'users'=>array('?'),
-            // ),
             array('allow',
-                'actions'=>array(
-                    'postshow','newpost'
-                ),
-                'users'=>array('*'),
-            ),
-            array('allow',
-                'actions' => array('newlist',),
+                'actions' => array('newlist','postshow','newpost'),
                 'users' => array('@'),
             ),
             array('deny',

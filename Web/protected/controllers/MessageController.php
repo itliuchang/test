@@ -2,7 +2,7 @@
 class MessageController extends Controller{
     public function filters(){
         return array(
-            'accessControl',
+            'wechat','accessControl','main'
         );
     }
 

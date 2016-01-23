@@ -1,5 +1,10 @@
 <?php
 class RegisteredController extends Controller{
+	public function filters(){
+        return array(
+            'wechat'
+        );
+    }
 	public function actions(){
 		return array(
 				'index' => 'application.controllers.registered.IndexAction',

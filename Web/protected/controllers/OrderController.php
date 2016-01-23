@@ -1,6 +1,11 @@
 <?php
 class OrderController extends Controller{
 	public $pageTitle ="Order";
+	public function filters(){
+        return array(
+            'wechat'
+        );
+    }
 	public function actionIndex(){
 		if(!Yii::app()->request->isAjaxRequest){
 			if(Yii::app()->user->isGuest){

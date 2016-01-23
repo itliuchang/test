@@ -36,20 +36,30 @@ class Controller extends CController{
         }
 	}
 	
-	public function filters() {
-		return array(
-			  //'wechat'
-		);
+	public function filterMain($filterChain){
+		if(Yii::app()->user->isGuest){
+			$this->redirect('/login');
+			return false;
+		}else{
+			$status = User::model()->findByAttributes(array('id'=>Yii::app()->user->id))->status;
+			if($status!=4){
+				$this->redirect('/login');
+				return false;
+			}else{
+				$filterChain->run();
+				return true;
+			}
+		}
 	}
-	
+
 	public function filterWechat($filterChain) {
 		if(Assist::isWeixin()){
-			if(!Yii::app()->session['wechat']) {
-				if(!strpos(Yii::app()->request->getPathInfo(), 'wechatconnect')){
-					$this->redirect('/wechat/wechatconnect');
-					return false;
-				}
-			}
+			// if(!Yii::app()->session['wechat']) {
+			// 	if(!strpos(Yii::app()->request->getPathInfo(), 'wechatconnect')){
+			// 		$this->redirect('/wechat/wechatconnect');
+			// 		return false;
+			// 	}
+			// }
 			$filterChain->run();
 			return true;
 		} else {
@@ -57,7 +67,7 @@ class Controller extends CController{
 			$this->layout = '//layouts/error';
 			$this->render('/site/error',array(
 				'code' => 403,
-				'message' => yii::t('yii','只能在微信登录')
+				'message' => yii::t('yii','Only login in wechat')
 			));
 		}
 		
