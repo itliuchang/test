@@ -24,7 +24,7 @@ class CCommunity{
 	}
 	public function getMemberList(){
 		$result = Yii::app()->db->CreateCommand()->setText('select a.*,b.name as locationName from user a left join hub b on a.location=b.id where a.status !=0')->queryAll();
-		usort($result, 'static::sortByNickName');
+		usort($result,'static::sortByNickName');
 		return array(
 				'code' => 200,
 				'mes' => 'success',
@@ -40,14 +40,14 @@ class CCommunity{
 			);
 	}
 	static public function sortByName($a,$b){
-		if(substr(strtoupper($a['name']),0,1)>substr(strtoupper($b['name']),0,1)){
+		if(strtoupper($a['name'])>strtoupper($b['name'])){
 			return 1;
 		}else{
 			return -1;
 		}
 	}
 	static public function sortByNickName($a,$b){
-		if(substr(strtoupper($a['nicName']),0,1)>substr(strtoupper($b['nickName']),0,1)){
+		if(strtoupper($a['nickName'])>strtoupper($b['nickName'])){
 			return 1;
 		}else{
 			return -1;
