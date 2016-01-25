@@ -44,9 +44,9 @@ class CReservation{
 		foreach($data as $k=> $v){
 			$result->$k=$v;
 		}
-		
-		if($data['type']==1){
-			$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
+		$type = User::model()->findByAttributes(array('id'=>$data['userId']));
+		if($data['type']==1 && $type==1){
+			$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id,'type'=>1));
 			if($orderid){
 				$now = date('Ymd',strtotime(substr($data['startTime'],0,10)));
 				foreach ($orderid as $list){
