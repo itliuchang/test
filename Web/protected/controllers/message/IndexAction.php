@@ -16,7 +16,6 @@ class IndexAction extends CAction{
         if(Yii::app()->request->isAjaxRequest){
             echo CJSON::encode(array('code' => 200, 'data' => array('list' => $data)));
         }else{
-            // print_r($data);die;
             $this->controller->render('index', array('data' => $data));
         }
 	}

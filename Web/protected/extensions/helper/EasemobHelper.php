@@ -124,7 +124,6 @@ class EasemobHelper extends Easemob{
             array_push($items, $item);
             usort($items,'static::sortByUtime');
         }
-        // print_r($items);die;
         return $items;
     }
     public static function sortByUtime($a,$b){
@@ -153,7 +152,7 @@ class EasemobHelper extends Easemob{
 
     //更新最后的聊天记录
     public static function updateLastMsg($senderId, $recId, $msg){
-        $lastMsg = mb_substr(Assist::removeXSS(Assist::removeEmoji($msg)), 0, 50, 'utf-8');
+        $lastMsg = mb_substr(Assist::removeXSS($msg), 0, 50, 'utf-8');
         if($senderId == 0){//系统消息/通知
             $mr = MessageRelation::model()->findBySql('select * from messageRelation where id1=:senderId and id2=0', array(':senderId' => Yii::app()->user->id));
             $senderID = Yii::app()->user->id;

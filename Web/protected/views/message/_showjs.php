@@ -120,6 +120,7 @@ $(function(){
         var content = $.trim($('.footer textarea').val());
         if(!content){
             CHelper.toggleTip('show', '消息是空的', 'warn', 800);
+            $('.footer .sendbtn').removeClass('disabled');
         }else{
             // content = Easemob.im.Helper.parseTextMessage(content.replace(/\n/g, '<br>'));
             content = content.replace(/\n/g, '<br>');
