@@ -56,7 +56,7 @@ return array(
 			'connectionString' => 'mysql:host=120.55.160.183:3306;dbname=naked',
 			'username' => 'root',
 			'password' => 'Email@2015',
-			'charset' => 'utf8',
+			'charset' => 'utf8mb4',
 			'emulatePrepare' => true,
 		),
 

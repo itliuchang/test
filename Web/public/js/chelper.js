@@ -894,6 +894,7 @@
     template.helper('getPayURL', CHelper.getPayURL);
     template.helper('getQiniuDomain', CHelper.getQiniuDomain);
     template.helper('html', CHelper.html);
+    template.helper('removeEmoji',CHelper.removeEmoji);
     template.helper('unhtml',function(str){return str.replace(/<[^>]+>/g,"");});
     template.config('escape',false);
 })(window);
