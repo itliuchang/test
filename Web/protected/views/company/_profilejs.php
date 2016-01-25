@@ -28,7 +28,12 @@ $(function(){
         		listObserve();
         	},
         	fail:function(){
-        		alert('fail');
+        		CHelper.toggleTip('show','Connection error! Please check your Internet connection and retry!','error','2000');
+        		$('.postlist .loading').remove();
+        	},
+        	error:function(){
+        		CHelper.toggleTip('show','Connection error! Please check your Internet connection and retry!','error','2000');
+        		$('.postlist .loading').remove();
         	}
         },
         url: '/company/profile-'+id+'/%(page)s/%(size)s',
