@@ -6,6 +6,7 @@ class CCommunity{
 			$tmp=Yii::app()->db->createCommand()->setText('select count( distinct a.companyId ) as num from service_company a left join service b on a.serviceId=b.id where a.status=1 and b.parentId='.$value['id'])->queryRow();
 			$value['num'] = $tmp['num'];
 		}
+		usort($firstService,'static::sortByName');
 		return array(
 				'code' => 200,
 				'mes' => 'success',
@@ -14,6 +15,7 @@ class CCommunity{
 	}
 	public function getCompanyList(){
 		$result = Yii::app()->db->createCommand()->setText('select a.*,b.name as locationName from company a left join hub b on a.hubId=b.id where a.status !=0 ')->queryAll();
+		usort($result,'static::sortByName');
 		return array(
 				'code' => 200,
 				'mes' => 'success',
@@ -22,6 +24,7 @@ class CCommunity{
 	}
 	public function getMemberList(){
 		$result = Yii::app()->db->CreateCommand()->setText('select a.*,b.name as locationName from user a left join hub b on a.location=b.id where a.status !=0')->queryAll();
+		usort($result, 'static::sortByNickName');
 		return array(
 				'code' => 200,
 				'mes' => 'success',
@@ -35,5 +38,19 @@ class CCommunity{
 				'mes' => 'success',
 				'data' => $result
 			);
+	}
+	static public function sortByName($a,$b){
+		if(substr(strtoupper($a['name']),0,1)>substr(strtoupper($b['name']),0,1)){
+			return 1;
+		}else{
+			return -1;
+		}
+	}
+	static public function sortByNickName($a,$b){
+		if(substr(strtoupper($a['nicName']),0,1)>substr(strtoupper($b['nickName']),0,1)){
+			return 1;
+		}else{
+			return -1;
+		}
 	}
 }

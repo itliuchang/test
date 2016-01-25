@@ -27,6 +27,7 @@ class CComment{
 			$message->type=1;
 			$message->status=0;
 			$message->ctime=date('U');
+			$message->commenterId = $data['userId'];
 			$message->save();
 			$messageRe->save();
 		}

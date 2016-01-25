@@ -3,7 +3,7 @@ class PostController extends Controller{
 
 	public function filters(){
         return array(
-            'accessControl','main'
+            'wechat','accessControl','main'
         );
     }
 
