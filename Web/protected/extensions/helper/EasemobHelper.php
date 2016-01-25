@@ -111,25 +111,27 @@ class EasemobHelper extends Easemob{
         foreach($list as $item){
             // $item = $item->attributes;
             if($item['id2'] == 0){
-                $item['lastMsg']=Yii::app()->db->createCommand('select body from message where senderID=0 and RecID='.Yii::app()->user->id.' order by ctime desc limit 1')->queryRow()['body'];
+                $syslast = Yii::app()->db->createCommand('select * from message where senderID=0 and RecID='.Yii::app()->user->id.' or RecId=0 order by ctime desc limit 1')->queryRow();
+                $item['lastMsg']= $syslast['body'];
                 $item['ncount'] = self::getNewMessageNum(0);
                 $sysaccount = Yii::app()->params['partner']['emchat']['sysAccount'];
                 $item['u2name'] = $sysaccount['nickName'];
                 $item['u2portrait'] = $sysaccount['portrait'];
-                $item['utime'] = $sysaccount['utime'];
+                $item['utime'] = $syslast['ctime'];
             }else{
                 $item['ncount'] = self::getNewMessageNum($item['id1'] != Yii::app()->user->id? $item['id1'] : $item['id2']);
             }
             array_push($items, $item);
             usort($items,'static::sortByUtime');
         }
+        // print_r($items);die;
         return $items;
     }
     public static function sortByUtime($a,$b){
             if($a['utime']>$b['utime']){
-                return 1;
-            }else{
                 return -1;
+            }else{
+                return 1;
             }
     }
 

@@ -26,7 +26,7 @@
 				<div class="item my">
 					<div class="imgWrapper">
 						<img src="<?php echo Yii::app()->user->getState('portrait') ?>" onerror="this.src='/images/account-default.png'" alt="">
-						<p class="date"><?php echo date('m/d', $item['ctime']) ?></p>
+						<p class="date"><?php echo CDate::dgm(date('YmdHis', $item['ctime'])) ?></p>
 					</div>
 					<div class="content clearfix">
 						<div class="righto"></div>
@@ -37,7 +37,7 @@
 				<div class="item other">
 					<div class="imgWrapper">
 						<img src="<?php echo $user['portrait'] ?>" onerror="this.src='/images/account-default.png'" alt="">
-						<p class="date"><?php echo date('m/d', $item['ctime']) ?></p>
+						<p class="date"><?php echo CDate::dgm(date('YmdHis', $item['ctime'])) ?></p>
 					</div>
 					<div class="content">
 						<div class="lefto"></div>
