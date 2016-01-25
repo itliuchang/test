@@ -15,7 +15,7 @@ class WorkspaceListAction extends CAction{
 			if($id){
 				$date = date('Ymd',strtotime($date));
 				$record = Reservations::model()->findAll('startTime ='.date('Ymd',strtotime($date)).'100000' .' and userId='.Yii::app()->user->id.' and type=1 and status=1');
-				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id));
+				$orderid = Order::model()->findAllByAttributes(array('status'=>1,'userId'=>Yii::app()->user->id,'type'=>1));
 				if($orderid){
 					foreach ($orderid as $list){
 						$order = OrderProduct::model()->find('endDate>='.$date .' and orderId='.$list['id'].' and startDate<='.$date);
