@@ -20,9 +20,12 @@ class CReservation{
 		$result = Reservations::model()->findByAttributes(array('id'=>$id));
 		if($result->type==1){
 			$order_productID = Yii::app()->db->createCommand("select b.id from reservation a  left join order_product b on b.orderId=a.orderId where DATE_FORMAT(a.startTime, '%Y%m%d' )>=b.startDate and DATE_FORMAT(a.startTime, '%Y%m%d' )<=b.endDate and a.id=".$id)->queryRow();
-			$item = OrderProduct::model()->findByAttributes(array('id'=>$order_productID['id']));
-			$item->usedTimes--;
-			$item->save();
+			$userType = User::model()->findByAttributes(array('id'=>Yii::app()->user->id))->type;
+			if($userType == 1){
+				$item = OrderProduct::model()->findByAttributes(array('id'=>$order_productID['id']));
+				$item->usedTimes--;
+				$item->save();
+			}
 		}
 			$result->status=0;
 			if($result->save()){
