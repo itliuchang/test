@@ -38,8 +38,9 @@
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
-			
+			<?php if($item['id2'] != 0): ?>
 			<p class="time"><?php echo CDate::dgm($item['utime']) ?></p>
+			<?php endif; ?>
 		</div>
 	<?php endforeach; ?>
 </div>
