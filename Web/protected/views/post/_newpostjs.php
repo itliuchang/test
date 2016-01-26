@@ -17,7 +17,7 @@ $(function(){
 		e.gesture.srcEvent.preventDefault;
 		var img = $('.postimg').attr('src'),
 			content = CHelper.filterXSS($('.content').val());
-		if(!content){
+		if(!content && !img){
 			CHelper.toggleTip('show','The content can not be empty','warn',2000);
 		} else {
 			CHelper.asynRequest('/post/newpost',{
