@@ -5,7 +5,7 @@ class NewPostAction extends CAction{
 		$this->controller->pageTitle ="New Post";
 		if(Yii::app()->request->isAjaxRequest){
 			$img = Yii::app()->request->getParam('img');
-			$content = CHtml::encode(Assist::removeXSS(Assist::removeEmoji(Yii::app()->request->getParam('content'))));
+			$content = CHtml::encode(Assist::removeXSS(Yii::app()->request->getParam('content')));
 			$content = preg_replace('/\n/mi', '<br/>', $content);
 			$proxy = new Posts;
 			$proxy->content = $content;
